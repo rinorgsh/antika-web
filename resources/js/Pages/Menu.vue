@@ -4,23 +4,24 @@ import { computed } from 'vue';
 import AppLayout from '@/Layouts/AppLayout.vue';
 import Eyebrow from '@/Components/Eyebrow.vue';
 import MenuCategory from '@/Components/MenuCategory.vue';
+import PhotoCluster from '@/Components/PhotoCluster.vue';
 import { t } from '@/i18n';
 
 const page = usePage();
 const categories = computed(() => page.props.translations.menu.categories);
 
-// Photo de mise en avant par grande catégorie (les autres restent compactes).
-const featuredImg = {
-    starters: '/images/menu/starters.jpg',
-    pasta: '/images/menu/pasta.jpg',
-    grill: '/images/menu/grill.jpg',
-    sea: '/images/menu/sea.jpg',
-    specials: '/images/menu/specials.jpg',
-    sides: '/images/menu/sides.jpg',
+// Trio de photos qui se chevauchent, par grande catégorie.
+const clusters = {
+    starters: ['/images/menu/cluster/29.jpg', '/images/menu/cluster/44.jpg', '/images/menu/cluster/47.jpg'],
+    pasta: ['/images/menu/cluster/37.jpg', '/images/menu/cluster/7.jpg', '/images/menu/cluster/46.jpg'],
+    grill: ['/images/menu/cluster/19.jpg', '/images/menu/cluster/24.jpg', '/images/menu/cluster/31.jpg'],
+    sea: ['/images/menu/cluster/38.jpg', '/images/menu/cluster/47.jpg', '/images/menu/cluster/29.jpg'],
+    specials: ['/images/menu/cluster/24.jpg', '/images/menu/cluster/19.jpg', '/images/menu/cluster/38.jpg'],
+    sides: ['/images/menu/cluster/12.jpg', '/images/menu/cluster/30.jpg', '/images/menu/cluster/46.jpg'],
 };
 
-const featured = computed(() => categories.value.filter((c) => featuredImg[c.key]));
-const compact = computed(() => categories.value.filter((c) => !featuredImg[c.key]));
+const featured = computed(() => categories.value.filter((c) => clusters[c.key]));
+const compact = computed(() => categories.value.filter((c) => !clusters[c.key]));
 </script>
 
 <template>
@@ -46,18 +47,17 @@ const compact = computed(() => categories.value.filter((c) => !featuredImg[c.key
             </div>
         </nav>
 
-        <!-- Grandes catégories : image + liste alternées -->
-        <div class="space-y-20 py-20 sm:space-y-28">
+        <!-- Grandes catégories : trio de photos + liste alternés -->
+        <div class="space-y-24 py-20 sm:space-y-32">
             <section
                 v-for="(c, i) in featured"
                 :id="`cat-${c.key}`"
                 :key="c.key"
                 class="mx-auto max-w-6xl scroll-mt-32 px-6"
             >
-                <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-                    <div v-reveal class="relative" :class="i % 2 === 1 ? 'lg:order-2' : ''">
-                        <img :src="featuredImg[c.key]" alt="" class="aspect-[4/3] w-full rounded-sm object-cover shadow-2xl" />
-                        <div class="absolute -bottom-4 h-24 w-24 border border-antika-copper/60" :class="i % 2 === 1 ? '-left-4' : '-right-4'"></div>
+                <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+                    <div v-reveal :class="i % 2 === 1 ? 'lg:order-2' : ''">
+                        <PhotoCluster :images="clusters[c.key]" />
                     </div>
                     <div v-reveal="120" :class="i % 2 === 1 ? 'lg:order-1' : ''">
                         <MenuCategory :label="c.label" :items="c.items" :note="c.note" />
