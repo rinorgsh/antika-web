@@ -14,6 +14,17 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                serif: ['"Playfair Display"', ...defaultTheme.fontFamily.serif],
+            },
+            colors: {
+                // Palette Antika (dark luxe) extraite du site existant.
+                antika: {
+                    ink: '#0c0a09', // fond quasi noir
+                    panel: '#16110e', // panneaux / cartes légèrement plus clairs
+                    copper: '#d9551f', // accent cuivre/orange (eyebrows, soulignés)
+                    coral: '#e0654f', // boutons d'action (CTA)
+                    cream: '#f5efcf', // crème/or du logo et highlights
+                },
             },
         },
     },

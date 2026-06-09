@@ -29,11 +29,17 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+        $locale = app()->getLocale();
+
         return [
             ...parent::share($request),
-            'auth' => [
-                'user' => $request->user(),
-            ],
+            // Internationalisation : la langue active, la liste des langues
+            // disponibles, et toutes les chaînes traduites de la langue active.
+            'locale' => $locale,
+            'locales' => SetLocale::SUPPORTED,
+            'translations' => trans('site'),
+            // Coordonnées et liens externes (identiques quelle que soit la langue).
+            'site' => config('antika'),
         ];
     }
 }
