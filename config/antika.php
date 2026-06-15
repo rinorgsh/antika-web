@@ -10,6 +10,17 @@
 */
 
 return [
+    // URL publique du site (canonical, Open Graph, sitemap). À adapter au domaine réel.
+    'url' => rtrim(env('ANTIKA_SITE_URL', 'https://antikaresto.com'), '/'),
+
+    // Données SEO / référencement.
+    'seo' => [
+        'cuisine' => ['Albanian', 'Mediterranean', 'Seafood'],
+        'price_range' => '€€',
+        // Coordonnées GPS approximatives (Elewijt / Zemst) — À VÉRIFIER avec l'adresse exacte.
+        'geo' => ['lat' => '50.9595', 'lng' => '4.5103'],
+    ],
+
     'contact' => [
         'address' => 'Pater Penninckxstraat 32, 1982 Zemst',
         'phone' => '+32 495 52 66 56',

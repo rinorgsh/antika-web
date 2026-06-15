@@ -25,3 +25,25 @@ Route::get('/locale/{locale}', function (string $locale) {
 
     return back();
 })->name('locale.switch');
+
+// SEO : robots.txt et sitemap.xml générés depuis l'URL de config.
+Route::get('/robots.txt', function () {
+    $content = "User-agent: *\nAllow: /\n\nSitemap: " . config('antika.url') . "/sitemap.xml\n";
+
+    return response($content, 200, ['Content-Type' => 'text/plain']);
+});
+
+Route::get('/sitemap.xml', function () {
+    $base = config('antika.url');
+    $paths = ['/' => '1.0', '/menu' => '0.8', '/events' => '0.8', '/contact' => '0.6'];
+
+    $xml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
+    $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
+    foreach ($paths as $path => $priority) {
+        $loc = $base . $path;
+        $xml .= "    <url><loc>{$loc}</loc><changefreq>monthly</changefreq><priority>{$priority}</priority></url>\n";
+    }
+    $xml .= '</urlset>';
+
+    return response($xml, 200, ['Content-Type' => 'application/xml']);
+});

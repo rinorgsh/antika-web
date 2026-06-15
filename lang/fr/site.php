@@ -1,6 +1,11 @@
 <?php
 
 return [
+    'meta' => [
+        'title' => 'Antika Restaurant — cuisine albanaise & méditerranéenne à Zemst',
+        'description' => 'Antika Molenveld à Elewijt (Zemst) : cuisine albanaise et méditerranéenne, lounge, bar et événements. Réservez une table ou demandez un devis pour votre événement.',
+    ],
+
     'nav' => [
         'home' => 'Accueil',
         'menu' => 'Notre carte',
