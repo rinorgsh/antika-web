@@ -58,6 +58,8 @@ return [
     'menu' => [
         'title' => 'Notre carte',
         'intro' => 'Poissons frais, viandes et plats à partager.',
+        'cta' => 'Voir la carte complète',
+        'cta_note' => 'Nourriture · Boissons · Desserts — carte multilingue',
         'categories' => [
             [
                 'key' => 'starters',

@@ -58,6 +58,8 @@ return [
     'menu' => [
         'title' => 'Our menu',
         'intro' => 'Fresh fish, meats and dishes to share.',
+        'cta' => 'View the full menu',
+        'cta_note' => 'Food · Drinks · Desserts — multilingual menu',
         'categories' => [
             [
                 'key' => 'starters',

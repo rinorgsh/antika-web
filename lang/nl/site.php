@@ -58,6 +58,8 @@ return [
     'menu' => [
         'title' => 'Onze menukaart',
         'intro' => 'Verse vis, vlees en gerechten om te delen.',
+        'cta' => 'Bekijk de volledige kaart',
+        'cta_note' => 'Gerechten · Dranken · Desserts — meertalige kaart',
         'categories' => [
             [
                 'key' => 'starters',

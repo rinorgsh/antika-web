@@ -30,6 +30,8 @@ return [
 
     'links' => [
         // À remplacer par les URLs réelles fournies par le client.
+        // Carte interactive multilingue (photos, boissons, desserts) — la même que le QR au resto.
+        'menu' => rtrim(env('ANTIKA_MENU_URL', 'https://menu.antika-resto.ovh/menu.pdf'), '/'),
         'reserve' => env('ANTIKA_RESERVE_URL', 'https://bookings.zenchef.com/'),
         'takeaway' => env('ANTIKA_TAKEAWAY_URL', 'https://www.takeaway.com/'),
         // Simulateur de devis location de salle / événements (plateforme Baba Events).
