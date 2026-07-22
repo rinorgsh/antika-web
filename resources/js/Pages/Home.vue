@@ -3,14 +3,16 @@ import { Head, Link, usePage } from '@inertiajs/vue3';
 import { computed } from 'vue';
 import AppLayout from '@/Layouts/AppLayout.vue';
 import Eyebrow from '@/Components/Eyebrow.vue';
-import MenuCategory from '@/Components/MenuCategory.vue';
 import HeroCarousel from '@/Components/HeroCarousel.vue';
 import { t } from '@/i18n';
 
 const page = usePage();
 const site = computed(() => page.props.site);
 const tr = computed(() => page.props.translations);
-const starters = computed(() => tr.value.menu.categories[0]);
+const locale = computed(() => page.props.locale || 'fr');
+
+// Carte interactive multilingue (la même qu'au restaurant) — on ouvre le hub dans la langue du site.
+const menuUrl = computed(() => `${site.value.links.menu}/carte.html?lang=${locale.value}`);
 </script>
 
 <template>
@@ -92,8 +94,18 @@ const starters = computed(() => tr.value.menu.categories[0]);
                         <img src="/images/dishes/d2.jpg" alt="" class="aspect-[4/5] w-full rounded-sm object-cover shadow-xl" />
                     </div>
                     <div v-reveal="120">
-                        <MenuCategory :label="starters.label" :items="starters.items" />
-                        <Link href="/menu" class="mt-10 inline-block rounded-full bg-antika-coral px-7 py-3 text-sm font-medium text-white transition-colors hover:bg-antika-copper">{{ $t('menu.title') }}</Link>
+                        <Eyebrow>{{ $t('menu.title') }}</Eyebrow>
+                        <p class="mt-5 max-w-md leading-relaxed text-stone-400">{{ $t('menu.intro') }}</p>
+                        <a
+                            :href="menuUrl"
+                            target="_blank"
+                            rel="noopener"
+                            class="mt-8 inline-flex items-center gap-2.5 rounded-full bg-antika-coral px-9 py-4 text-sm font-semibold uppercase tracking-wide text-white transition-colors hover:bg-antika-copper"
+                        >
+                            {{ $t('menu.cta') }}
+                            <span aria-hidden="true">&rarr;</span>
+                        </a>
+                        <p class="mt-4 text-xs uppercase tracking-widest text-stone-500">{{ $t('menu.cta_note') }}</p>
                     </div>
                 </div>
             </div>
