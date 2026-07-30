@@ -30,6 +30,9 @@ class MenuItemForm
                     ->searchable()->required(),
                 TextInput::make('slug')->label('Identifiant (clé)')->required()
                     ->helperText('Technique — à ne pas changer sans raison.'),
+                Toggle::make('is_active')->label('Actif (visible sur la carte)')->default(true)
+                    ->helperText('Désactive pour masquer temporairement le plat, sans le supprimer.')
+                    ->columnSpanFull(),
             ]),
 
             Tabs::make('Traductions')->tabs(

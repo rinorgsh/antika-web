@@ -13,6 +13,7 @@ class MenuChef extends Model
     protected function casts(): array
     {
         return [
+            'is_active' => 'boolean',
             'eyebrow' => 'array',
             'title' => 'array',
             'description' => 'array',

@@ -12,6 +12,7 @@ class MenuItem extends Model
     protected function casts(): array
     {
         return [
+            'is_active' => 'boolean',
             'is_subheader' => 'boolean',
             'per_person' => 'boolean',
             'is_zero' => 'boolean',

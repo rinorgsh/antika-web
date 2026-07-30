@@ -64,13 +64,18 @@ class MenuBuilder
         $items = array_fill_keys($this->langs, []);
 
         foreach ($cats as $cat) {
+            $activeItems = $cat->items->filter(fn ($it) => $it->is_active)->values();
+            if ($activeItems->isEmpty()) {
+                continue; // section sans plat actif -> masquée
+            }
+
             $section = ['id' => $cat->slug];
             if ($cat->has_note) {
                 $section['note'] = true;
             }
             $section['items'] = [];
 
-            foreach ($cat->items as $it) {
+            foreach ($activeItems as $it) {
                 $row = ['k' => $it->slug, 'ph' => $it->photo, 'p' => $it->price];
                 if ($it->per_person) {
                     $row['pp'] = true;
@@ -123,7 +128,7 @@ class MenuBuilder
             return [];
         }
 
-        $out = ['img' => $c->image, 'price' => $c->price];
+        $out = ['active' => (bool) $c->is_active, 'img' => $c->image, 'price' => $c->price];
         foreach ($this->langs as $l) {
             $out[$l] = [
                 'eyebrow' => $c->eyebrow[$l] ?? '',
@@ -147,8 +152,12 @@ class MenuBuilder
         $names = array_fill_keys($this->langs, []);
 
         foreach ($cats as $cat) {
+            $activeItems = $cat->items->filter(fn ($it) => $it->is_active)->values();
+            if ($activeItems->isEmpty()) {
+                continue;
+            }
             $section = ['id' => $cat->slug, 'items' => []];
-            foreach ($cat->items as $it) {
+            foreach ($activeItems as $it) {
                 $row = ['k' => $it->slug, 'n' => $it->default_name, 'p' => $it->price];
                 if ($it->photo) {
                     $row['img'] = $it->photo;
@@ -195,8 +204,15 @@ class MenuBuilder
         $desc = array_fill_keys($this->langs, []);
 
         foreach ($cats as $cat) {
+            // on garde les sous-titres + les boissons actives ; section masquée si aucune boisson active
+            $keep = $cat->items->filter(fn ($it) => $it->is_subheader || $it->is_active)->values();
+            $hasActive = $cat->items->contains(fn ($it) => ! $it->is_subheader && $it->is_active);
+            if (! $hasActive) {
+                continue;
+            }
+
             $section = ['id' => $cat->slug, 'items' => []];
-            foreach ($cat->items as $it) {
+            foreach ($keep as $it) {
                 if ($it->is_subheader) {
                     $section['items'][] = ['sub' => $it->slug];
 

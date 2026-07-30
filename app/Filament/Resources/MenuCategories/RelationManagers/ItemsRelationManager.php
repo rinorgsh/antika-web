@@ -12,6 +12,7 @@ use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\TextInputColumn;
+use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
 
 class ItemsRelationManager extends RelationManager
@@ -31,6 +32,7 @@ class ItemsRelationManager extends RelationManager
             ->reorderable('position')
             ->defaultSort('position')
             ->columns([
+                ToggleColumn::make('is_active')->label('Actif'),
                 TextColumn::make('name')->label('Nom')
                     ->getStateUsing(fn ($record) => $record->name['fr'] ?? $record->default_name ?? $record->slug),
                 TextInputColumn::make('price')->label('Prix (€)'),

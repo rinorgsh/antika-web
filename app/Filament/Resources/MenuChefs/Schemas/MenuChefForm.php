@@ -4,6 +4,7 @@ namespace App\Filament\Resources\MenuChefs\Schemas;
 
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Tabs;
 use Filament\Schemas\Components\Tabs\Tab;
@@ -17,6 +18,9 @@ class MenuChefForm
     {
         return $schema->components([
             Section::make('Suggestion du chef')->columns(2)->schema([
+                Toggle::make('is_active')->label('Afficher la suggestion sur la carte')->default(true)
+                    ->helperText('Désactive pour masquer la suggestion de la semaine (sans perdre son contenu).')
+                    ->columnSpanFull(),
                 TextInput::make('image')->label('Photo (chemin fichier)')
                     ->helperText('ex. photos/moules-frites.jpg'),
                 TextInput::make('price')->label('Prix')->placeholder('27'),

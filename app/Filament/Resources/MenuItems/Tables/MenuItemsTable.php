@@ -8,7 +8,9 @@ use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\TextInputColumn;
+use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -19,6 +21,7 @@ class MenuItemsTable
         return $table
             ->defaultSort('position')
             ->columns([
+                ToggleColumn::make('is_active')->label('Actif'),
                 TextColumn::make('category.surface')->label('Surface')->badge()->sortable(),
                 TextColumn::make('category_label')->label('Catégorie')
                     ->getStateUsing(fn ($record) => $record->category->title['fr'] ?? $record->category->slug),
@@ -38,6 +41,8 @@ class MenuItemsTable
                     }),
             ])
             ->filters([
+                TernaryFilter::make('is_active')->label('Actif')
+                    ->trueLabel('Actifs')->falseLabel('Masqués')->placeholder('Tous'),
                 SelectFilter::make('surface')
                     ->label('Surface')
                     ->options(['food' => 'Nourriture', 'desserts' => 'Desserts', 'drinks' => 'Boissons'])
