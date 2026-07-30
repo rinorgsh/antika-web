@@ -1,0 +1,4351 @@
+{
+  "categories": [
+    {
+      "surface": "food",
+      "slug": "entrees",
+      "position": 0,
+      "has_note": false,
+      "title": {
+        "nl": "Voorgerechten",
+        "fr": "Entrées",
+        "en": "Starters",
+        "al": "Antipasta"
+      },
+      "subtitle": {
+        "nl": "Om te beginnen",
+        "fr": "Pour commencer",
+        "en": "To start",
+        "al": "Për të filluar"
+      },
+      "note": null,
+      "items": [
+        {
+          "slug": "calamars",
+          "position": 0,
+          "is_subheader": false,
+          "price": "13,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "calamars",
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": {
+            "nl": "Octo rings",
+            "fr": "Rondelles de calamars",
+            "en": "Octo rings",
+            "al": "Ringjat e oktapodit"
+          },
+          "description": {
+            "nl": "Calamaresringen, elk omhuld met een knapperige laag deeg.",
+            "fr": "Anneaux de calamars enrobés d'une couche croquante de pâte.",
+            "en": "Calamari rings, each coated with a crispy layer of batter.",
+            "al": "Ringjat e kalamares, secila e mbuluar me një shtresë krokante brumi."
+          }
+        },
+        {
+          "slug": "croq_bruges",
+          "position": 1,
+          "is_subheader": false,
+          "price": "16,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "croquettes-bruges",
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": {
+            "nl": "Duo van Brugse kaaskroketten",
+            "fr": "Duo de croquettes de Bruges",
+            "en": "Duo of Bruges cheese croquettes",
+            "al": "Duo kroketash me djathë Brugge"
+          },
+          "description": {
+            "nl": "Kroketten gevuld met romige kaas, krokante korst, geserveerd met een heerlijke salade.",
+            "fr": "Croquettes au fromage crémeux, croûte croustillante, servies avec une salade.",
+            "en": "Croquettes filled with creamy cheese, crispy crust, served with a delicious salad.",
+            "al": "Kroketa të mbushura me djathë kremoz, lëvore krokante, të shërbyera me sallatë të shijshme."
+          }
+        },
+        {
+          "slug": "scampi",
+          "position": 2,
+          "is_subheader": false,
+          "price": "18",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "scampi-ail",
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": {
+            "nl": "Scampi's à la ajo supreme",
+            "fr": "Scampi à l'ail suprême",
+            "en": "Scampi à l'ail suprême",
+            "al": "Scampi me ajë supreme"
+          },
+          "description": {
+            "nl": "Sappige scampi's in een rijke lookbotersaus, met knapperig brood om te dippen.",
+            "fr": "Scampis juteux dans une riche sauce au beurre à l'ail, avec pain croustillant.",
+            "en": "Succulent scampi in a rich garlic butter sauce, with crispy bread to dip.",
+            "al": "Scampi të shijshme në salcë të pasur me gjalpë dhe hudhër, me bukë krokante për t'u ngjyer."
+          }
+        },
+        {
+          "slug": "carpaccio",
+          "position": 3,
+          "is_subheader": false,
+          "price": "19,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "carpaccio-truffe",
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": {
+            "nl": "Truffelaroma carpaccio",
+            "fr": "Carpaccio arôme de truffe",
+            "en": "Truffle flavored carpaccio",
+            "al": "Carpaccio me aromë trufe"
+          },
+          "description": {
+            "nl": "Dunne plakjes mals rundvlees, verse rucola, geschaafde Parmezaan en truffeldressing.",
+            "fr": "Fines tranches de bœuf, roquette fraîche, parmesan et vinaigrette à la truffe.",
+            "en": "Thin slices of tender beef, fresh arugula, shaved Parmesan and a truffle dressing.",
+            "al": "Fletë të holla mish viçi, rukola të freskët, djathë parmezan dhe vaj me aromë trufe."
+          }
+        },
+        {
+          "slug": "tapas",
+          "position": 4,
+          "is_subheader": false,
+          "price": "12,50",
+          "per_person": true,
+          "is_zero": false,
+          "has_description": false,
+          "tags": [
+            "min2"
+          ],
+          "variants": null,
+          "photo": "tapas-plancha",
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": {
+            "nl": "Tapas plancha",
+            "fr": "Tapas plancha",
+            "en": "Tapas plancha",
+            "al": "Tapas plancha"
+          },
+          "description": {
+            "nl": "Een bruisende selectie van tapas op een traditionele plancha.",
+            "fr": "Une sélection savoureuse de tapas sur une plancha traditionnelle.",
+            "en": "A sparkling selection of tapas on a traditional plancha.",
+            "al": "Një përzgjedhje tapasi në një planxha tradicionale."
+          }
+        },
+        {
+          "slug": "croq_crevettes",
+          "position": 5,
+          "is_subheader": false,
+          "price": "19,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "croquettes-crevettes",
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": {
+            "nl": "Duo van garnaalkroketten",
+            "fr": "Duo de croquettes de crevettes",
+            "en": "Duo of shrimp croquettes",
+            "al": "Duo kroketash me garnale"
+          },
+          "description": {
+            "nl": "Twee krokante garnaalkroketten, gevuld met een romige garnaalvulling.",
+            "fr": "Croquettes garnies d'une préparation crémeuse aux crevettes.",
+            "en": "Two crispy shrimp croquettes, filled with a creamy shrimp filling.",
+            "al": "Dy kroketë krokante me garnale, të mbushura me një mbushje kremoze me garnale."
+          }
+        }
+      ]
+    },
+    {
+      "surface": "food",
+      "slug": "salade",
+      "position": 1,
+      "has_note": false,
+      "title": {
+        "nl": "Salades",
+        "fr": "Salades",
+        "en": "Salads",
+        "al": "Sallata"
+      },
+      "subtitle": {
+        "nl": "Vers",
+        "fr": "Fraîcheur",
+        "en": "Fresh",
+        "al": "Të freskëta"
+      },
+      "note": null,
+      "items": [
+        {
+          "slug": "caesar",
+          "position": 0,
+          "is_subheader": false,
+          "price": "22,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "salade-caesar",
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": {
+            "nl": "Caesar's secret village salade",
+            "fr": "Salade Caesar du village secret",
+            "en": "Caesar's secret village salad",
+            "al": "Sallatë Caesar e fshatit"
+          },
+          "description": {
+            "nl": "Gegrilde kip, romeinse sla, Parmezaan, croutons en heerlijke Caesardressing.",
+            "fr": "Poulet grillé, laitue romaine, parmesan, croûtons et vinaigrette César.",
+            "en": "Grilled chicken, romaine lettuce, Parmesan, croutons and delicious Caesar dressing.",
+            "al": "Pulë e pjekur, sallatë romaine, djathë parmezan, krostina dhe salcë Caesar."
+          }
+        },
+        {
+          "slug": "chevre",
+          "position": 1,
+          "is_subheader": false,
+          "price": "23,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "fromage-chevre",
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": {
+            "nl": "Herder geitenkaas salade",
+            "fr": "Fromage de chèvre du paysan",
+            "en": "Herder goat cheese salad",
+            "al": "Sallatë me djathë dhie"
+          },
+          "description": {
+            "nl": "Romige geitenkaas met een subtiele hint van honing, vers fruit en een delicate dressing.",
+            "fr": "Salade de chèvre crémeux, touche de miel, fruits frais et vinaigrette délicate.",
+            "en": "Creamy goat cheese with a hint of honey, refreshing fruit and a delicate dressing.",
+            "al": "Djathë dhie i kremëzuar me një shenjë delikate mjalti, fruta të freskëta dhe salcë delikate."
+          }
+        }
+      ]
+    },
+    {
+      "surface": "food",
+      "slug": "pates",
+      "position": 2,
+      "has_note": false,
+      "title": {
+        "nl": "Pasta",
+        "fr": "Pâtes",
+        "en": "Pasta",
+        "al": "Pasta"
+      },
+      "subtitle": {
+        "nl": "Huisgemaakt",
+        "fr": "Fait maison",
+        "en": "Homemade",
+        "al": "Shtëpiake"
+      },
+      "note": null,
+      "items": [
+        {
+          "slug": "penne",
+          "position": 0,
+          "is_subheader": false,
+          "price": "22,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "penne-prosciutto",
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": {
+            "nl": "Penne panna e prosciutto",
+            "fr": "Penne crème au prosciutto",
+            "en": "Penne panna e prosciutto",
+            "al": "Penne panna dhe pershutë"
+          },
+          "description": {
+            "nl": "Romige pasta met runds prosciutto, roomsaus en truffelolie.",
+            "fr": "Pâtes crémeuses au prosciutto de bœuf, sauce à la crème et huile de truffe.",
+            "en": "Creamy pasta with beef prosciutto, cream sauce and truffle oil.",
+            "al": "Pasta kremoze me prosciutto viçi, salcë kremoze dhe vaj trufe."
+          }
+        },
+        {
+          "slug": "serenade",
+          "position": 1,
+          "is_subheader": false,
+          "price": "24,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "pates-saumon",
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": {
+            "nl": "Serenade van zalm pasta",
+            "fr": "Sérénade de pâtes au saumon",
+            "en": "Serenade of salmon pasta",
+            "al": "Pasta serenade me salmon"
+          },
+          "description": {
+            "nl": "Harmonieus samenspel van verse zalm en al dente pasta, subtiele kruiden en heerlijke saus.",
+            "fr": "Saumon frais et pâtes al dente, herbes subtiles et sauce délicate.",
+            "en": "A harmonious blend of fresh salmon and al dente pasta, subtle herbs and a delicious sauce.",
+            "al": "Bashkëpunim harmonik i salmonit të freskët dhe pastës al dente, erëza delikate dhe salcë e shijshme."
+          }
+        },
+        {
+          "slug": "aglio",
+          "position": 2,
+          "is_subheader": false,
+          "price": "18,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "aglio-olio",
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": {
+            "nl": "Aglio & olio delizia pasta",
+            "fr": "Pâtes aglio & olio delizia",
+            "en": "Aglio & olio delizia pasta",
+            "al": "Aglio & olio delizia pasta"
+          },
+          "description": {
+            "nl": "Al dente pasta met olijfolie, knoflook, chilivlokken, Parmezaan en verse kruiden.",
+            "fr": "Huile d'olive, ail, flocons de piment, parmesan et herbes fraîches.",
+            "en": "Al dente pasta with olive oil, garlic, chili flakes, a touch of Parmesan and fresh herbs.",
+            "al": "Pasta al dente me salcë vaj ulliri, hudhër dhe vaj djegës, prekje djathi parmezan dhe erëza të freskëta."
+          }
+        },
+        {
+          "slug": "teresa",
+          "position": 3,
+          "is_subheader": false,
+          "price": "19,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "pates-teresa",
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": {
+            "nl": "Teresa village pasta",
+            "fr": "Pâtes du village Teresa",
+            "en": "Teresa village pasta",
+            "al": "Pasta me perime — Teresa"
+          },
+          "description": {
+            "nl": "De beste seizoensgroenten, gecombineerd met al dente pasta en een smaakvolle saus.",
+            "fr": "Les meilleurs légumes de saison, pâtes al dente et sauce savoureuse.",
+            "en": "The best seasonal vegetables combined with al dente pasta and a flavorful sauce.",
+            "al": "Perimet më të mira të stinës, të kombinuara me pasta al dente dhe salcë me shije."
+          }
+        }
+      ]
+    },
+    {
+      "surface": "food",
+      "slug": "grillade",
+      "position": 3,
+      "has_note": true,
+      "title": {
+        "nl": "Van de Grill",
+        "fr": "Grillades",
+        "en": "From the Grill",
+        "al": "Nga Grilli"
+      },
+      "subtitle": {
+        "nl": "Van de grill",
+        "fr": "Du grill",
+        "en": "From the grill",
+        "al": "Nga grilli"
+      },
+      "note": {
+        "nl": "<b>Saus naar keuze:</b> peperroom · champignonroom · vleesbouillon.<br><b>Extra bijgerecht</b> (friet · aardappelen · wedges) : € 2,5",
+        "fr": "<b>Sauce au choix :</b> poivre · champignons · bouillon de viande.<br><b>Supplément accompagnement</b> (frites · pommes de terre · wedges) : € 2,5",
+        "en": "<b>Choose your sauce:</b> pepper cream · mushroom cream · beef broth.<br><b>Extra sides</b> (fries · potatoes · wedges) : € 2.5",
+        "al": "<b>Zgjidh salcën tënde:</b> salcë piper · salcë kërpudhash · salcë lëng mishi.<br><b>Pjata shtesë</b> (patate të skuqura · patate · wedges) : € 2,5"
+      },
+      "items": [
+        {
+          "slug": "poulet_grille",
+          "position": 0,
+          "is_subheader": false,
+          "price": "28,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "poulet-grille",
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": {
+            "nl": "Gegrilde kipfilet",
+            "fr": "Filet de poulet grillé",
+            "en": "Grilled chicken breast",
+            "al": "Filet pule në grill"
+          },
+          "description": {
+            "nl": "Malse kipfilet, gegrild en geserveerd met een frisse salade en frieten. Saus naar keuze inbegrepen.",
+            "fr": "Filet de poulet grillé, servi avec salade fraîche et frites. Sauce au choix incluse.",
+            "en": "Tender chicken breast, grilled and served with a fresh salad and fries. Sauce of your choice included.",
+            "al": "Pulë e pjekur në grill, e shërbyer me sallatë të freskët dhe patate. Salcë sipas zgjedhjes e përfshirë."
+          }
+        },
+        {
+          "slug": "agneau",
+          "position": 1,
+          "is_subheader": false,
+          "price": "36,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "cotes-agneau",
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": {
+            "nl": "Village lamskoteletten",
+            "fr": "Côtes d'agneau du village",
+            "en": "Village lamb chops",
+            "al": "Kotleta qingj fshati"
+          },
+          "description": {
+            "nl": "Sappige lamskoteletten met gegrilde groenten en aardappelen. Saus naar keuze inbegrepen.",
+            "fr": "Côtelettes d'agneau, légumes grillés et pommes de terre. Sauce au choix incluse.",
+            "en": "Juicy lamb chops with grilled vegetables and potatoes. Sauce of your choice included.",
+            "al": "Kotleta qingji të shijshme me perime të pjekura dhe patate. Salcë sipas zgjedhjes e përfshirë."
+          }
+        },
+        {
+          "slug": "filet_mignon",
+          "position": 2,
+          "is_subheader": false,
+          "price": "34,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "filet-mignon",
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": {
+            "nl": "Steak filet mignon",
+            "fr": "Steak filet mignon",
+            "en": "Steak filet mignon",
+            "al": "Steak filet mignon"
+          },
+          "description": {
+            "nl": "Malse biefstukfilet, geserveerd met frieten en een frisse salade. Saus naar keuze inbegrepen.",
+            "fr": "Filet de bœuf tendre, servi avec frites et salade fraîche. Sauce au choix incluse.",
+            "en": "Tender beef steak, served with fries and a fresh salad. Sauce of your choice included.",
+            "al": "Biftek i butë, i shërbyer me patate të skuqura dhe sallatë të freskët. Salcë sipas zgjedhjes e përfshirë."
+          }
+        },
+        {
+          "slug": "filet_pur",
+          "position": 3,
+          "is_subheader": false,
+          "price": "39,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "filet-pur",
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": {
+            "nl": "Steak filet pur",
+            "fr": "Steak filet pur",
+            "en": "Steak filet pur",
+            "al": "Steak filet pur"
+          },
+          "description": {
+            "nl": "Filet pur met gegrilde asperges en truffelcrème-wortelpuree, op mediterrane wijze. Saus naar keuze inbegrepen.",
+            "fr": "Filet pur, asperges grillées, purée de carottes à la crème de truffe. Sauce au choix incluse.",
+            "en": "Filet mignon with grilled asparagus and truffle cream carrot purée, Mediterranean style. Sauce of your choice included.",
+            "al": "Filet pur me shpargje të pjekura, pure karotash me krem trufe, në stilin mesdhetar. Salcë sipas zgjedhjes e përfshirë."
+          }
+        }
+      ]
+    },
+    {
+      "surface": "food",
+      "slug": "mer",
+      "position": 4,
+      "has_note": false,
+      "title": {
+        "nl": "Van de Zee",
+        "fr": "De la Mer",
+        "en": "From the Sea",
+        "al": "Nga Deti"
+      },
+      "subtitle": {
+        "nl": "Vers",
+        "fr": "Fraîcheur",
+        "en": "Fresh",
+        "al": "Të freskëta"
+      },
+      "note": null,
+      "items": [
+        {
+          "slug": "gambas",
+          "position": 0,
+          "is_subheader": false,
+          "price": "28",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "gambas",
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": {
+            "nl": "Gegrilde gambas van de chef",
+            "fr": "Gambas grillées du chef",
+            "en": "Grilled chef's gambas",
+            "al": "Gambas të pjekura nga shefi"
+          },
+          "description": {
+            "nl": "Perfect gekruid met citroenbotersaus, kroketten en een frisse salade.",
+            "fr": "Assaisonnées, sauce au beurre de citron, croquettes et salade fraîche.",
+            "en": "Perfectly seasoned with a lemon butter sauce, croquettes and a fresh salad.",
+            "al": "Të aromatizuara në mënyrë perfekte me salcë gjalpi dhe limoni, kroketë dhe sallatë të freskët."
+          }
+        },
+        {
+          "slug": "daurade",
+          "position": 1,
+          "is_subheader": false,
+          "price": "32",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "daurade",
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": {
+            "nl": "Dorade",
+            "fr": "Daurade",
+            "en": "Seabream",
+            "al": "Doradë"
+          },
+          "description": {
+            "nl": "Frisse, delicate dorade in zijn geheel, gegrild met groenten, aardappelen en citroenbotersaus.",
+            "fr": "Daurade fraîche grillée à la perfection, légumes, pommes de terre, sauce beurre-citron.",
+            "en": "Fresh, delicate whole dorade, grilled with vegetables, potatoes and a light lemon butter sauce.",
+            "al": "Doradë e freskët e pjekur në tërësi me perime, patate dhe salcë e lehtë gjalpi e limoni."
+          }
+        },
+        {
+          "slug": "barre",
+          "position": 2,
+          "is_subheader": false,
+          "price": "31",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "barre",
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": {
+            "nl": "Zeebaars",
+            "fr": "Barre",
+            "en": "Seabass",
+            "al": "Bar deti"
+          },
+          "description": {
+            "nl": "Verfijnde visfilet, mediterraans gegrild, met broccolipuree en groene seizoensgroenten.",
+            "fr": "Filet de poisson raffiné grillé à la méditerranéenne, purée de brocoli et légumes verts.",
+            "en": "A refined fish fillet grilled Mediterranean style, with broccoli purée and green seasonal vegetables.",
+            "al": "Fileto peshku e rafinuar, e pjekur në stilin mesdhetar, me pure brokoli dhe perime të freskëta të stinës."
+          }
+        },
+        {
+          "slug": "saumon",
+          "position": 3,
+          "is_subheader": false,
+          "price": "30",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "saumon",
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": {
+            "nl": "Zalmfilet",
+            "fr": "Saumon",
+            "en": "Salmon",
+            "al": "Salmon"
+          },
+          "description": {
+            "nl": "Malse gegrilde zalmfilet, citrussalade, zoete aardappelen en sauce vierge.",
+            "fr": "Filet de saumon grillé, salade d'agrumes, patates douces et sauce vierge.",
+            "en": "Tender grilled salmon fillet, citrus fruit salad, sweet potatoes and sauce vierge.",
+            "al": "Fileto salmoni e butë e pjekur në grilë, me fruta agrume, patate të ëmbla dhe salcë natyrale vierge."
+          }
+        },
+        {
+          "slug": "dela_mare",
+          "position": 4,
+          "is_subheader": false,
+          "price": "38",
+          "per_person": true,
+          "is_zero": false,
+          "has_description": false,
+          "tags": [
+            "min2"
+          ],
+          "variants": null,
+          "photo": "dela-mare",
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": {
+            "nl": "Dela Mare — Albanian Grill",
+            "fr": "Dela Mare — Grill Albanais",
+            "en": "Dela Mare — Albanian Grill",
+            "al": "Dela Mare — Shqipëria Grill"
+          },
+          "description": {
+            "nl": "Verfijnd plateau van gegrilde vis en schaaldieren, met bijgerechten en groenten.",
+            "fr": "Plateau raffiné de poissons et fruits de mer grillés, garnitures et légumes.",
+            "en": "A refined platter of grilled fish and shellfish, served with sides and vegetables.",
+            "al": "Pjatë e rafinuar e frymëzuar nga detet e Shqipërisë, me peshq dhe frutash deti të pjekura."
+          }
+        }
+      ]
+    },
+    {
+      "surface": "food",
+      "slug": "albanaises",
+      "position": 5,
+      "has_note": false,
+      "title": {
+        "nl": "Albanese Specialiteiten",
+        "fr": "Spécialités Albanaises",
+        "en": "Albanian Specials",
+        "al": "Specialitete Shqiptare"
+      },
+      "subtitle": {
+        "nl": "Onze wortels",
+        "fr": "Nos racines",
+        "en": "Our roots",
+        "al": "Rrënjët tona"
+      },
+      "note": null,
+      "items": [
+        {
+          "slug": "pleskavica",
+          "position": 0,
+          "is_subheader": false,
+          "price": "24,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "pleskavica",
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": {
+            "nl": "Gevulde pleskavica sensatie",
+            "fr": "Pleskavica farcie sensation",
+            "en": "Stuffed pleskavica sensation",
+            "al": "Pleskavicë e mbushur"
+          },
+          "description": {
+            "nl": "Pleskavica gevuld met feta & mozzarella, frieten, huisgemaakte pita en dipsaus.",
+            "fr": "Pleskavica de bœuf farcie feta & mozzarella, frites, pita maison et sauce.",
+            "en": "Beef patty stuffed with feta & mozzarella, fries, homemade pita and dipping sauce.",
+            "al": "Pleskavicë viçi e mbushur me djathë feta dhe mozzarella, patate të skuqura dhe salcë kremoze."
+          }
+        },
+        {
+          "slug": "combi",
+          "position": 1,
+          "is_subheader": false,
+          "price": "27,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "combi-trio",
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": {
+            "nl": "Kombi trio grill",
+            "fr": "Combi trio grill",
+            "en": "Kombi trio grill",
+            "al": "Kombinim zgarë"
+          },
+          "description": {
+            "nl": "Qebapa · kofte · kipfilet / chorizo, frisse salade, huisgemaakte tzatziki, in een deegbord.",
+            "fr": "Qebapa · kofte · poulet / chorizo, salade fraîche, tzatziki maison, pain plat.",
+            "en": "Qebapa · kofte · chicken / chorizo, fresh salad, homemade tzatziki, in a dough bowl.",
+            "al": "Tre lloje mishi: qebapa · kofte · pulë / suxhuk, sallatë e freskët, kos me hudhër, në pjatë brumi."
+          }
+        },
+        {
+          "slug": "spicy",
+          "position": 2,
+          "is_subheader": false,
+          "price": "29",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "spicy-treasure",
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": {
+            "nl": "Antika's spicy treasure",
+            "fr": "Antika's spicy treasure",
+            "en": "Antika's spicy treasure",
+            "al": "Pasuri shtëpije Antika"
+          },
+          "description": {
+            "nl": "Smaakvol eerbetoon aan de mediterrane keuken, knapperig deegbord, aardappelen en gegrilde kip.",
+            "fr": "Hommage épicé à la Méditerranée, panier de pâte croustillant, pommes de terre et poulet grillé.",
+            "en": "A flavorful tribute to Mediterranean cuisine, crispy dough bowl, potatoes and grilled chicken.",
+            "al": "Homazh i shijshëm për kuzhinën mesdhetare, në pjatë brumi krokante me patate dhe copa pule të pjekura."
+          }
+        },
+        {
+          "slug": "dela_terra",
+          "position": 3,
+          "is_subheader": false,
+          "price": "32",
+          "per_person": true,
+          "is_zero": false,
+          "has_description": false,
+          "tags": [
+            "min2"
+          ],
+          "variants": null,
+          "photo": "dela-terra",
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": {
+            "nl": "Dela Terra — Kosova Grill",
+            "fr": "Dela Terra — Kosova Grill",
+            "en": "Dela Terra — Kosova Grill",
+            "al": "Dela Tera — Kosova Grill"
+          },
+          "description": {
+            "nl": "Robuust vleesplateau geïnspireerd op de Kosovaarse keuken, illyrische bijgerechten en groenten.",
+            "fr": "Plateau de viandes grillées inspiré des montagnes du Kosovo, garnitures et légumes illyriens.",
+            "en": "Robust grilled meat platter inspired by Kosovar cuisine, with Illyrian sides and vegetables.",
+            "al": "Pjatë e pasur mishi e frymëzuar nga traditat e Kosovës, me anësoqërues ilirë dhe perime."
+          }
+        },
+        {
+          "slug": "dela_mare",
+          "position": 4,
+          "is_subheader": false,
+          "price": "38",
+          "per_person": true,
+          "is_zero": false,
+          "has_description": false,
+          "tags": [
+            "min2"
+          ],
+          "variants": null,
+          "photo": "dela-mare",
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": {
+            "nl": "Dela Mare — Albanian Grill",
+            "fr": "Dela Mare — Grill Albanais",
+            "en": "Dela Mare — Albanian Grill",
+            "al": "Dela Mare — Shqipëria Grill"
+          },
+          "description": {
+            "nl": "Verfijnd plateau van gegrilde vis en schaaldieren, met bijgerechten en groenten.",
+            "fr": "Plateau raffiné de poissons et fruits de mer grillés, garnitures et légumes.",
+            "en": "A refined platter of grilled fish and shellfish, served with sides and vegetables.",
+            "al": "Pjatë e rafinuar e frymëzuar nga detet e Shqipërisë, me peshq dhe frutash deti të pjekura."
+          }
+        },
+        {
+          "slug": "sofra_art",
+          "position": 5,
+          "is_subheader": false,
+          "price": "25",
+          "per_person": true,
+          "is_zero": false,
+          "has_description": false,
+          "tags": [
+            "sundayonly",
+            "min2"
+          ],
+          "variants": null,
+          "photo": "sofra",
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": {
+            "nl": "Artisan Balkan sofra",
+            "fr": "Sofra artisanale",
+            "en": "Artisan Balkan sofra",
+            "al": "Sofra artizanale"
+          },
+          "description": {
+            "nl": "Weelderige Balkantafel: gegrild vlees, speciale deegwaren, vers brood en traditionele bijgerechten.",
+            "fr": "Table balkanique : viandes grillées, pâtes spéciales, pain frais et garnitures traditionnelles.",
+            "en": "A lavish Balkan table: grilled meats, special pastries, fresh bread and traditional sides.",
+            "al": "Sofra ballkanike: mish të pjekur, pjata speciale me brumë, bukë e sapopjekur dhe anësoqërues tradicionalë."
+          }
+        },
+        {
+          "slug": "qebapa",
+          "position": 6,
+          "is_subheader": false,
+          "price": "20",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "qebapa",
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": {
+            "nl": "Qebapa — Albanese gegrilde worstjes",
+            "fr": "Qebapa",
+            "en": "Qebapa — Albanian grilled sausages",
+            "al": "Qebapa — nga Kosova"
+          },
+          "description": {
+            "nl": "Tien sappige gegrilde worstjes van gekruid rundvlees, een Albanese lekkernij.",
+            "fr": "Dix petites saucisses grillées de bœuf épicé, spécialité albanaise.",
+            "en": "Ten juicy grilled sausages of seasoned beef, a popular Albanian treat.",
+            "al": "Dhjetë qebapa të shijshme të bëra nga mishi i viçit të aromatizuar, delikatesë shqiptare."
+          }
+        }
+      ]
+    },
+    {
+      "surface": "food",
+      "slug": "bijgerechten",
+      "position": 6,
+      "has_note": false,
+      "title": {
+        "nl": "Bijgerechten",
+        "fr": "Accompagnements",
+        "en": "Sides",
+        "al": "Pjata anësore"
+      },
+      "subtitle": {
+        "nl": "Om te delen",
+        "fr": "À partager",
+        "en": "To share",
+        "al": "Për të ndarë"
+      },
+      "note": null,
+      "items": [
+        {
+          "slug": "fli",
+          "position": 0,
+          "is_subheader": false,
+          "price": "12",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "fli",
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": {
+            "nl": "Fli — traditionele Albanese pannenkoek",
+            "fr": "Fli — crêpe albanaise",
+            "en": "Fli — traditional Albanian pancake",
+            "al": "Fli — recetë tradicionale kosovare"
+          },
+          "description": {
+            "nl": "Dunne, gestapelde pannenkoeken met romige vulling van yoghurt en kaas.",
+            "fr": "Fines crêpes empilées, garniture crémeuse de yaourt et fromage.",
+            "en": "Thin, stacked pancakes with a creamy, savory filling of yogurt and cheese.",
+            "al": "Fli të shtresuara, të shërbyera me mbushje kremoze e të kripur me djathë dhe jogurt."
+          }
+        },
+        {
+          "slug": "poivrons_rotis",
+          "position": 1,
+          "is_subheader": false,
+          "price": "15",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "poivrons-rotis",
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": {
+            "nl": "Gebakken paprika's met room en feta",
+            "fr": "Poivrons rôtis, crème & feta",
+            "en": "Roasted peppers with cream and feta",
+            "al": "Speca me gjizë"
+          },
+          "description": {
+            "nl": "Gebakken paprika's in een romige saus van room en feta.",
+            "fr": "Poivrons rôtis dans une sauce crémeuse à la crème et à la feta.",
+            "en": "Delicious roasted peppers in a creamy sauce of cream and feta.",
+            "al": "Speca të pjekura në salcë kremoze me krem dhe djathë feta."
+          }
+        },
+        {
+          "slug": "salade_paysanne",
+          "position": 2,
+          "is_subheader": false,
+          "price": "16",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "salade-paysanne",
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": {
+            "nl": "Albanese herder salade",
+            "fr": "Salade paysanne albanaise",
+            "en": "Albanian shepherd salad",
+            "al": "Sallatë qobona"
+          },
+          "description": {
+            "nl": "Frisse salade met lokale groenten, smaakvolle dressing, olijven en feta.",
+            "fr": "Légumes locaux frais, vinaigrette savoureuse, olives et feta.",
+            "en": "A fresh salad of local vegetables, flavorful dressing, olives and feta.",
+            "al": "Sallatë e freskët me perime lokale, salcë e shijshme, ullinj dhe djathë feta."
+          }
+        },
+        {
+          "slug": "tzatziki",
+          "position": 3,
+          "is_subheader": false,
+          "price": "14",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "tzatziki",
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": {
+            "nl": "Yoghurt met knoflook — tzatziki",
+            "fr": "Yaourt à l'ail — Tzatziki",
+            "en": "Yogurt with garlic — tzatziki",
+            "al": "Kos me hudhër — tzatziki"
+          },
+          "description": {
+            "nl": "Romige yoghurt met aromatische knoflook, als dip of bijgerecht.",
+            "fr": "Yaourt crémeux à l'ail aromatique, en dip ou en accompagnement.",
+            "en": "Creamy yogurt mixed with aromatic garlic, as a dip or a side.",
+            "al": "Kos kremoz i përzier me hudhër aromatik, si salcë dip ose anësoqërues."
+          }
+        },
+        {
+          "slug": "poivrons_saumures",
+          "position": 4,
+          "is_subheader": false,
+          "price": "10",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "poivrons-saumures",
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": {
+            "nl": "Gepekelde paprika's met yoghurt",
+            "fr": "Poivrons saumurés au yaourt",
+            "en": "Pickled peppers with yogurt",
+            "al": "Speca me ajkë"
+          },
+          "description": {
+            "nl": "Gepekelde paprika's met romige, dikke yoghurt — zout en fris.",
+            "fr": "Poivrons saumurés servis avec un yaourt crémeux et épais.",
+            "en": "Pickled peppers served with creamy, thick yogurt — salty and fresh.",
+            "al": "Speca të turshi të shërbyera me kos të trashë kremoz — të kripur dhe të freskët."
+          }
+        }
+      ]
+    },
+    {
+      "surface": "food",
+      "slug": "burger",
+      "position": 7,
+      "has_note": false,
+      "title": {
+        "nl": "Burgers",
+        "fr": "Burgers",
+        "en": "Burgers",
+        "al": "Burgera"
+      },
+      "subtitle": {
+        "nl": "Signature",
+        "fr": "Signature",
+        "en": "Signature",
+        "al": "Signature"
+      },
+      "note": null,
+      "items": [
+        {
+          "slug": "bigbaba",
+          "position": 0,
+          "is_subheader": false,
+          "price": "21",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "burger-bigbaba",
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": {
+            "nl": "BBB — Big Baba",
+            "fr": "BBB — Big Baba",
+            "en": "BBB — Big Baba",
+            "al": "BBB — Big Baba"
+          },
+          "description": {
+            "nl": "Dubbele burger & kaas, speciaal broodje, burgersaus en frieten.",
+            "fr": "Double burger & fromage, pain spécial, sauce burger et frites.",
+            "en": "Double burger & cheese, special bun, burger sauce and fries.",
+            "al": "Burger dyfish me djathë, bukë speciale, salcë burger dhe patate të skuqura."
+          }
+        },
+        {
+          "slug": "poulet_boeuf",
+          "position": 1,
+          "is_subheader": false,
+          "price": "19",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "burger-poulet-boeuf",
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": {
+            "nl": "Chicken Beef",
+            "fr": "Poulet et Bœuf",
+            "en": "Chicken Beef",
+            "al": "Pulë & Burger"
+          },
+          "description": {
+            "nl": "Kip- en rundsburger, briochebroodje, speciale saus en frieten.",
+            "fr": "Burger poulet et bœuf, pain brioche, sauce spéciale et frites.",
+            "en": "Chicken & beef burger, brioche bun, special sauce and fries.",
+            "al": "Burger pulë dhe viçi në bukë brioche, salcë speciale dhe patate të skuqura."
+          }
+        },
+        {
+          "slug": "veggie",
+          "position": 2,
+          "is_subheader": false,
+          "price": "18",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "burger-veggie",
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": {
+            "nl": "Viva Veggie",
+            "fr": "Viva Veggie",
+            "en": "Viva Veggie",
+            "al": "Viva Veggie"
+          },
+          "description": {
+            "nl": "Groenten-veggieburger, briochebroodje, burgersaus en frieten.",
+            "fr": "Burger végétarien aux légumes, pain brioche, sauce burger et frites.",
+            "en": "The veggie burger, brioche bun, burger sauce and fries.",
+            "al": "Burger perime veggie në bukë brioche, salcë burger dhe patate të skuqura."
+          }
+        }
+      ]
+    },
+    {
+      "surface": "food",
+      "slug": "enfants",
+      "position": 8,
+      "has_note": false,
+      "title": {
+        "nl": "Kinderen",
+        "fr": "Enfants",
+        "en": "Kids",
+        "al": "Fëmijët"
+      },
+      "subtitle": {
+        "nl": "Voor de kleintjes",
+        "fr": "Pour les petits",
+        "en": "For the little ones",
+        "al": "Për të vegjlit"
+      },
+      "note": null,
+      "items": [
+        {
+          "slug": "nuggets",
+          "position": 0,
+          "is_subheader": false,
+          "price": "12,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "nuggets",
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": {
+            "nl": "Nuggets",
+            "fr": "Nuggets",
+            "en": "Nuggets",
+            "al": "Nuggets"
+          },
+          "description": {
+            "nl": "6 nuggets met frietjes en saus naar keuze.",
+            "fr": "6 nuggets avec frites et sauce au choix.",
+            "en": "6 nuggets with fries and sauce of your choice.",
+            "al": "6 nuggets me patate të skuqura dhe salcë sipas zgjedhjes."
+          }
+        },
+        {
+          "slug": "pates_enfant",
+          "position": 1,
+          "is_subheader": false,
+          "price": "12,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "pates-enfant",
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": {
+            "nl": "Kids pasta",
+            "fr": "Pâtes enfant",
+            "en": "Kids pasta",
+            "al": "Pasta fëmijë"
+          },
+          "description": {
+            "nl": "Kinderpasta met topping en saus naar keuze.",
+            "fr": "Pâtes enfant avec garnitures et sauce au choix.",
+            "en": "Kids' pasta with toppings and sauce of your choice.",
+            "al": "Pasta për fëmijë me toping dhe salcë sipas zgjedhjes."
+          }
+        },
+        {
+          "slug": "burger_enfant",
+          "position": 2,
+          "is_subheader": false,
+          "price": "12,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "burger-enfant",
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": {
+            "nl": "Kids burger",
+            "fr": "Burger enfant",
+            "en": "Kids burger",
+            "al": "Burger fëmijë"
+          },
+          "description": {
+            "nl": "Kinderburger met frietjes, topping en saus naar keuze.",
+            "fr": "Burger enfant avec frites, garnitures et sauce au choix.",
+            "en": "Kids' burger with fries, toppings and sauce of your choice.",
+            "al": "Burger për fëmijë me patate të skuqura, toping dhe salcë sipas zgjedhjes."
+          }
+        }
+      ]
+    },
+    {
+      "surface": "desserts",
+      "slug": "hotdrinks",
+      "position": 0,
+      "has_note": false,
+      "title": {
+        "nl": "Warme dranken",
+        "fr": "Boissons chaudes",
+        "en": "Hot Drinks",
+        "al": "Pije të nxehta"
+      },
+      "subtitle": {
+        "nl": "Koffie & thee",
+        "fr": "Café & thé",
+        "en": "Coffee & tea",
+        "al": "Kafe & çaj"
+      },
+      "note": null,
+      "items": [
+        {
+          "slug": "coffee",
+          "position": 0,
+          "is_subheader": false,
+          "price": "3,20",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "coffee.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Coffee",
+          "name": {
+            "fr": "Café",
+            "al": "Kafe"
+          },
+          "description": null
+        },
+        {
+          "slug": "macchiato",
+          "position": 1,
+          "is_subheader": false,
+          "price": "3,80",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "macchiato.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Macchiato",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "cappuccino",
+          "position": 2,
+          "is_subheader": false,
+          "price": "3,90",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "cappuccino.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Cappuccino",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "espresso",
+          "position": 3,
+          "is_subheader": false,
+          "price": "3,00",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "espresso.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Espresso",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "double_espresso",
+          "position": 4,
+          "is_subheader": false,
+          "price": "4,20",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "double_espresso.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Double espresso",
+          "name": {
+            "nl": "Dubbele espresso",
+            "al": "Espresso dopio"
+          },
+          "description": null
+        },
+        {
+          "slug": "albanian_coffee",
+          "position": 5,
+          "is_subheader": false,
+          "price": "3,20",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "albanian_coffee.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Albanian coffee",
+          "name": {
+            "nl": "Albanese koffie",
+            "fr": "Café albanais",
+            "al": "Kafe shqiptare"
+          },
+          "description": null
+        },
+        {
+          "slug": "mint_tea",
+          "position": 6,
+          "is_subheader": false,
+          "price": "4,00",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "mint_tea.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Fresh mint tea",
+          "name": {
+            "nl": "Verse muntthee",
+            "fr": "Thé à la menthe fraîche",
+            "al": "Çaj mente i freskët"
+          },
+          "description": null
+        },
+        {
+          "slug": "tea",
+          "position": 7,
+          "is_subheader": false,
+          "price": "3,00",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "tea.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Tea",
+          "name": {
+            "nl": "Thee",
+            "fr": "Thé",
+            "al": "Çaj"
+          },
+          "description": null
+        }
+      ]
+    },
+    {
+      "surface": "desserts",
+      "slug": "specialcoffee",
+      "position": 1,
+      "has_note": false,
+      "title": {
+        "nl": "Special Coffee",
+        "fr": "Cafés spéciaux",
+        "en": "Special Coffee",
+        "al": "Kafe speciale"
+      },
+      "subtitle": {
+        "nl": "Met een shot",
+        "fr": "Avec un trait d'alcool",
+        "en": "With a shot",
+        "al": "Me pikë alkooli"
+      },
+      "note": null,
+      "items": [
+        {
+          "slug": "irish",
+          "position": 0,
+          "is_subheader": false,
+          "price": "8,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "irish.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Irish Coffee",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "french",
+          "position": 1,
+          "is_subheader": false,
+          "price": "8,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "french.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "French Coffee",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "italian",
+          "position": 2,
+          "is_subheader": false,
+          "price": "8,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "italian.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Italian Coffee",
+          "name": null,
+          "description": null
+        }
+      ]
+    },
+    {
+      "surface": "desserts",
+      "slug": "desserts",
+      "position": 2,
+      "has_note": false,
+      "title": {
+        "nl": "Desserts",
+        "fr": "Desserts",
+        "en": "Desserts",
+        "al": "Ëmbëlsira"
+      },
+      "subtitle": {
+        "nl": "Zoete lekkernijen",
+        "fr": "Douceurs maison",
+        "en": "Sweet treats",
+        "al": "Të ëmbla"
+      },
+      "note": null,
+      "items": [
+        {
+          "slug": "panna",
+          "position": 0,
+          "is_subheader": false,
+          "price": "9,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "panna.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Panna Cotta Del Sol",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "dreamisu",
+          "position": 1,
+          "is_subheader": false,
+          "price": "9,00",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "dreamisu.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Strawberry Dreamisu",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "lady",
+          "position": 2,
+          "is_subheader": false,
+          "price": "9,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "lady.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Lady Blanche",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "flame",
+          "position": 3,
+          "is_subheader": false,
+          "price": "11,00",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "flame.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Crème de la Flame",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "colonel",
+          "position": 4,
+          "is_subheader": false,
+          "price": "11,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "colonel.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "The Ice Colonel",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "milkyway",
+          "position": 5,
+          "is_subheader": false,
+          "price": "9,00",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "milkyway.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "The 3 Milky Way",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "meltdown",
+          "position": 6,
+          "is_subheader": false,
+          "price": "9,00",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "meltdown.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Chocolate Meltdown",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "balkan",
+          "position": 7,
+          "is_subheader": false,
+          "price": "8,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "balkan.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Artisan Balkan desserts",
+          "name": {
+            "nl": "Ambachtelijke Balkan toetjes",
+            "fr": "Desserts balkaniques artisanaux",
+            "al": "Ëmbëlsira artizanale ballkanike"
+          },
+          "description": null
+        },
+        {
+          "slug": "koffiebeleving",
+          "position": 8,
+          "is_subheader": false,
+          "price": "11,00",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "koffiebeleving.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Gourmet coffee experience",
+          "name": {
+            "nl": "Gourmet koffiebeleving",
+            "fr": "Café gourmand",
+            "al": "Përvojë kafeje gurme"
+          },
+          "description": null
+        }
+      ]
+    },
+    {
+      "surface": "desserts",
+      "slug": "digestif",
+      "position": 3,
+      "has_note": false,
+      "title": {
+        "nl": "Digestieven",
+        "fr": "Digestifs",
+        "en": "Digestifs",
+        "al": "Digestive"
+      },
+      "subtitle": {
+        "nl": "Om af te sluiten",
+        "fr": "Pour terminer",
+        "en": "To finish",
+        "al": "Për të mbyllur"
+      },
+      "note": null,
+      "items": [
+        {
+          "slug": "raki",
+          "position": 0,
+          "is_subheader": false,
+          "price": "7,90",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "raki.png",
+          "link": null,
+          "default_name": "Raki",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "brandy",
+          "position": 1,
+          "is_subheader": false,
+          "price": "8,20",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "brandy.png",
+          "link": null,
+          "default_name": "Brandy",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "amaretto",
+          "position": 2,
+          "is_subheader": false,
+          "price": "7,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "amaretto.png",
+          "link": null,
+          "default_name": "Amaretto",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "amaretto_velvet",
+          "position": 3,
+          "is_subheader": false,
+          "price": "7,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "disaronno-velvet.png",
+          "link": null,
+          "default_name": "Amaretto Velvet",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "grand_marnier",
+          "position": 4,
+          "is_subheader": false,
+          "price": "8,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "grandmarnier.png",
+          "link": null,
+          "default_name": "Grand Marnier",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "baileys",
+          "position": 5,
+          "is_subheader": false,
+          "price": "7,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "baileys.png",
+          "link": null,
+          "default_name": "Baileys",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "calvados",
+          "position": 6,
+          "is_subheader": false,
+          "price": "9,00",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "calvados.png",
+          "link": null,
+          "default_name": "Calvados",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "cointreau",
+          "position": 7,
+          "is_subheader": false,
+          "price": "7,70",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "cointreau.png",
+          "link": null,
+          "default_name": "Cointreau",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "don_papa",
+          "position": 8,
+          "is_subheader": false,
+          "price": "14,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "donpapa.png",
+          "link": null,
+          "default_name": "Don Papa",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "limoncello",
+          "position": 9,
+          "is_subheader": false,
+          "price": "7,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "limoncello.png",
+          "link": null,
+          "default_name": "Limoncello",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "grappa",
+          "position": 10,
+          "is_subheader": false,
+          "price": "7,90",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "grappa.png",
+          "link": null,
+          "default_name": "Grappa",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "jack",
+          "position": 11,
+          "is_subheader": false,
+          "price": "8,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "jack.png",
+          "link": null,
+          "default_name": "Jack Daniel's",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "chivas",
+          "position": 12,
+          "is_subheader": false,
+          "price": "9,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "chivas.png",
+          "link": null,
+          "default_name": "Chivas",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "genever",
+          "position": 13,
+          "is_subheader": false,
+          "price": "8,00",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "genever.png",
+          "link": null,
+          "default_name": "Genever",
+          "name": {
+            "fr": "Genièvre"
+          },
+          "description": null
+        },
+        {
+          "slug": "cognac",
+          "position": 14,
+          "is_subheader": false,
+          "price": "9,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "cognac.png",
+          "link": null,
+          "default_name": "Cognac",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "sambuca",
+          "position": 15,
+          "is_subheader": false,
+          "price": "7,80",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "sambuca.png",
+          "link": null,
+          "default_name": "Sambuca",
+          "name": null,
+          "description": null
+        }
+      ]
+    },
+    {
+      "surface": "drinks",
+      "slug": "apero",
+      "position": 0,
+      "has_note": false,
+      "title": {
+        "nl": "Apéro",
+        "fr": "Apéro",
+        "en": "Apéro",
+        "al": "Apéro"
+      },
+      "subtitle": {
+        "nl": "Om te openen",
+        "fr": "Pour ouvrir",
+        "en": "To open",
+        "al": "Për të hapur"
+      },
+      "note": null,
+      "items": [
+        {
+          "slug": "aperol",
+          "position": 0,
+          "is_subheader": false,
+          "price": "9,40",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "aperol.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Aperol Spritz",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "aperol0",
+          "position": 1,
+          "is_subheader": false,
+          "price": "8,40",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "aperol.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Aperol Spritz 0%",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "hugo",
+          "position": 2,
+          "is_subheader": false,
+          "price": "9,90",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "hugo.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Hugo Spritz",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "limoncello_spritz",
+          "position": 3,
+          "is_subheader": false,
+          "price": "9,40",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "limoncello_spritz.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Limoncello Spritz",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "mandarinetto",
+          "position": 4,
+          "is_subheader": false,
+          "price": "9,40",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "mandarinetto.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Mandarinetto Spritz",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "campari",
+          "position": 5,
+          "is_subheader": false,
+          "price": "8,90",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "campari.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Campari Orange",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "martini_bianco",
+          "position": 6,
+          "is_subheader": false,
+          "price": "6,80",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "martini_bianco.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Martini Bianco",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "martini_rosso",
+          "position": 7,
+          "is_subheader": false,
+          "price": "6,80",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "martini_rosso.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Martini Rosso",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "martini_bellini",
+          "position": 8,
+          "is_subheader": false,
+          "price": "8,90",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "martini_bellini.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Martini Bellini",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "porto",
+          "position": 9,
+          "is_subheader": false,
+          "price": "6,80",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "porto.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Porto White / Red",
+          "name": {
+            "nl": "Porto Wit / Rood",
+            "fr": "Porto Blanc / Rouge",
+            "en": "Port White / Red",
+            "al": "Porto i bardhë / i kuq"
+          },
+          "description": null
+        },
+        {
+          "slug": "ricard",
+          "position": 10,
+          "is_subheader": false,
+          "price": "7,20",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "ricard.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Ricard",
+          "name": null,
+          "description": null
+        }
+      ]
+    },
+    {
+      "surface": "drinks",
+      "slug": "cocktails",
+      "position": 1,
+      "has_note": false,
+      "title": {
+        "nl": "Cocktails",
+        "fr": "Cocktails",
+        "en": "Cocktails",
+        "al": "Kokteje"
+      },
+      "subtitle": {
+        "nl": "Signature & klassiekers",
+        "fr": "Signature & classiques",
+        "en": "Signature & classics",
+        "al": "Signature & klasikë"
+      },
+      "note": null,
+      "items": [
+        {
+          "slug": "signature",
+          "position": 0,
+          "is_subheader": true,
+          "price": null,
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "antika_sunset",
+          "position": 1,
+          "is_subheader": false,
+          "price": "12,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": true,
+          "tags": null,
+          "variants": null,
+          "photo": "antika_sunset.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Antika Sunset",
+          "name": null,
+          "description": {
+            "nl": "Cîroc · passievrucht · limoen · vanillesiroop · prosecco",
+            "fr": "Cîroc · fruit de la passion · citron vert · sirop de vanille · prosecco",
+            "en": "Cîroc · passion fruit · lime · vanilla syrup · prosecco",
+            "al": "Cîroc · fruta pasioni · limon jeshil · shurup vanilje · prosecco"
+          }
+        },
+        {
+          "slug": "house",
+          "position": 2,
+          "is_subheader": true,
+          "price": null,
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "pornstar",
+          "position": 3,
+          "is_subheader": false,
+          "price": "13,00",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "pornstar.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Pornstar Martini",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "mojito",
+          "position": 4,
+          "is_subheader": false,
+          "price": "12,00",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "mojito.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Mojito",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "amaretto_sour",
+          "position": 5,
+          "is_subheader": false,
+          "price": "11,00",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "amaretto_sour.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Amaretto Sour",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "classics",
+          "position": 6,
+          "is_subheader": true,
+          "price": null,
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "margarita",
+          "position": 7,
+          "is_subheader": false,
+          "price": "12,00",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "margarita.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Margarita",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "cosmopolitan",
+          "position": 8,
+          "is_subheader": false,
+          "price": "11,00",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "cosmopolitan.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Cosmopolitan",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "pina_colada",
+          "position": 9,
+          "is_subheader": false,
+          "price": "11,00",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "pina_colada.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Piña Colada",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "espresso_martini",
+          "position": 10,
+          "is_subheader": false,
+          "price": "12,00",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "espresso_martini.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Espresso Martini",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "strawberry_daiquiri",
+          "position": 11,
+          "is_subheader": false,
+          "price": "12,00",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "strawberry_daiquiri.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Strawberry Daiquiri",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "mule",
+          "position": 12,
+          "is_subheader": true,
+          "price": null,
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "disaronno_mule",
+          "position": 13,
+          "is_subheader": false,
+          "price": "12,00",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": true,
+          "tags": null,
+          "variants": null,
+          "photo": "disaronno_mule.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Disaronno Mule",
+          "name": null,
+          "description": {
+            "nl": "Likeur",
+            "fr": "Liqueur",
+            "en": "Liqueur",
+            "al": "Liker"
+          }
+        },
+        {
+          "slug": "dominican_mule",
+          "position": 14,
+          "is_subheader": false,
+          "price": "12,00",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": true,
+          "tags": null,
+          "variants": null,
+          "photo": "dominican_mule.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Dominican Mule",
+          "name": null,
+          "description": {
+            "nl": "Rum",
+            "fr": "Rhum",
+            "en": "Rum",
+            "al": "Rum"
+          }
+        },
+        {
+          "slug": "london_mule",
+          "position": 15,
+          "is_subheader": false,
+          "price": "12,00",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": true,
+          "tags": null,
+          "variants": null,
+          "photo": "london_mule.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "London Mule",
+          "name": null,
+          "description": {
+            "nl": "Gin",
+            "fr": "Gin",
+            "en": "Gin",
+            "al": "Gin"
+          }
+        },
+        {
+          "slug": "mexican_mule",
+          "position": 16,
+          "is_subheader": false,
+          "price": "12,00",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": true,
+          "tags": null,
+          "variants": null,
+          "photo": "mexican_mule.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Mexican Mule",
+          "name": null,
+          "description": {
+            "nl": "Tequila",
+            "fr": "Tequila",
+            "en": "Tequila",
+            "al": "Tekila"
+          }
+        },
+        {
+          "slug": "fire_mule",
+          "position": 17,
+          "is_subheader": false,
+          "price": "12,00",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": true,
+          "tags": null,
+          "variants": null,
+          "photo": "fire_mule.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Fire Mule",
+          "name": null,
+          "description": {
+            "nl": "Whisky",
+            "fr": "Whisky",
+            "en": "Whiskey",
+            "al": "Whisky"
+          }
+        },
+        {
+          "slug": "mocktails",
+          "position": 18,
+          "is_subheader": true,
+          "price": null,
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "antika_sweet",
+          "position": 19,
+          "is_subheader": false,
+          "price": "10,00",
+          "per_person": false,
+          "is_zero": true,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "antika_sweet.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Antika Sweet",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "antika_bitter",
+          "position": 20,
+          "is_subheader": false,
+          "price": "10,00",
+          "per_person": false,
+          "is_zero": true,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "antika_bitter.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Antika Bitter",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "ginger_mule",
+          "position": 21,
+          "is_subheader": false,
+          "price": "10,00",
+          "per_person": false,
+          "is_zero": true,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "ginger_mule.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Ginger Mule",
+          "name": null,
+          "description": null
+        }
+      ]
+    },
+    {
+      "surface": "drinks",
+      "slug": "wine",
+      "position": 2,
+      "has_note": false,
+      "title": {
+        "nl": "Wijnen",
+        "fr": "Vins",
+        "en": "Wines",
+        "al": "Verëra"
+      },
+      "subtitle": {
+        "nl": "Wit · Rood · Rosé",
+        "fr": "Blanc · Rouge · Rosé",
+        "en": "White · Red · Rosé",
+        "al": "I bardhë · I kuq · Rosé"
+      },
+      "note": null,
+      "items": [
+        {
+          "slug": "wine_house",
+          "position": 0,
+          "is_subheader": false,
+          "price": null,
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": [
+            [
+              "glass",
+              "5,50"
+            ],
+            [
+              "q",
+              "9,90"
+            ],
+            [
+              "h",
+              "17,00"
+            ],
+            [
+              "bottle",
+              "26,00"
+            ]
+          ],
+          "photo": "wine_house.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": {
+            "nl": "Selectie van het huis",
+            "fr": "Sélection maison",
+            "en": "House selection",
+            "al": "Përzgjedhja e shtëpisë"
+          },
+          "description": null
+        },
+        {
+          "slug": "wine_quality",
+          "position": 1,
+          "is_subheader": false,
+          "price": null,
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": [
+            [
+              "glass",
+              "7,00"
+            ],
+            [
+              "q",
+              "12,00"
+            ],
+            [
+              "h",
+              "22,00"
+            ],
+            [
+              "bottle",
+              "33,00"
+            ]
+          ],
+          "photo": "wine_quality.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": {
+            "nl": "Geselecteerde kwaliteitswijnen",
+            "fr": "Vins de qualité sélectionnés",
+            "en": "Selected quality wines",
+            "al": "Verëra cilësore të përzgjedhura"
+          },
+          "description": null
+        }
+      ]
+    },
+    {
+      "surface": "drinks",
+      "slug": "bubbles",
+      "position": 3,
+      "has_note": false,
+      "title": {
+        "nl": "Bubbels",
+        "fr": "Bulles",
+        "en": "Bubbles",
+        "al": "Të gazuara"
+      },
+      "subtitle": {
+        "nl": "Prosecco & champagne",
+        "fr": "Prosecco & champagne",
+        "en": "Prosecco & champagne",
+        "al": "Prosecco & shampanjë"
+      },
+      "note": null,
+      "items": [
+        {
+          "slug": "prosecco",
+          "position": 0,
+          "is_subheader": false,
+          "price": null,
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": [
+            [
+              "glass",
+              "6,50"
+            ],
+            [
+              "bottle",
+              "32,00"
+            ]
+          ],
+          "photo": "prosecco.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Prosecco",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "pinot_grigio",
+          "position": 1,
+          "is_subheader": false,
+          "price": null,
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": [
+            [
+              "half375",
+              "18,90"
+            ],
+            [
+              "bottle75",
+              "34,50"
+            ]
+          ],
+          "photo": "pinot_grigio.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Pinot Grigio Rosé",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "champagne",
+          "position": 2,
+          "is_subheader": true,
+          "price": null,
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "lanson",
+          "position": 3,
+          "is_subheader": false,
+          "price": null,
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": [
+            [
+              "half375",
+              "48,00"
+            ],
+            [
+              "bottle75",
+              "85,00"
+            ]
+          ],
+          "photo": "lanson.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Lanson Black",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "veuve",
+          "position": 4,
+          "is_subheader": false,
+          "price": null,
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": [
+            [
+              "bottle75",
+              "110,00"
+            ]
+          ],
+          "photo": "veuve.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Veuve Clicquot",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "moet",
+          "position": 5,
+          "is_subheader": false,
+          "price": null,
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": [
+            [
+              "bottle75",
+              "130,00"
+            ]
+          ],
+          "photo": "moet.jpg",
+          "logo": null,
+          "link": null,
+          "default_name": "Moët · Ice Impérial",
+          "name": null,
+          "description": null
+        }
+      ]
+    },
+    {
+      "surface": "drinks",
+      "slug": "beer",
+      "position": 4,
+      "has_note": false,
+      "title": {
+        "nl": "Bieren",
+        "fr": "Bières",
+        "en": "Beers",
+        "al": "Birra"
+      },
+      "subtitle": {
+        "nl": "Van 't vat & fles",
+        "fr": "Pression & bouteille",
+        "en": "Draft & bottle",
+        "al": "Draft & shishe"
+      },
+      "note": null,
+      "items": [
+        {
+          "slug": "jupiler25",
+          "position": 0,
+          "is_subheader": false,
+          "price": "3,30",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "jupiler.png",
+          "link": null,
+          "default_name": "Jupiler 25 cl · Draft",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "jupiler33",
+          "position": 1,
+          "is_subheader": false,
+          "price": "3,90",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "jupiler.png",
+          "link": null,
+          "default_name": "Jupiler 33 cl · Draft",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "jupiler0",
+          "position": 2,
+          "is_subheader": false,
+          "price": "3,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "jupiler-0.png",
+          "link": null,
+          "default_name": "Jupiler 0%",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "corona0",
+          "position": 3,
+          "is_subheader": false,
+          "price": "4,70",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "corona-0.png",
+          "link": null,
+          "default_name": "Corona 0%",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "leffe_blonde0",
+          "position": 4,
+          "is_subheader": false,
+          "price": "4,80",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "leffe.png",
+          "link": null,
+          "default_name": "Leffe Blonde 0%",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "peja",
+          "position": 5,
+          "is_subheader": false,
+          "price": "4,00",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "peja.png",
+          "link": null,
+          "default_name": "Birra Peja (Kosova)",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "leffe_blonde",
+          "position": 6,
+          "is_subheader": false,
+          "price": "4,90",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "leffe.png",
+          "link": null,
+          "default_name": "Leffe Blonde · Draft",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "leffe_bruin",
+          "position": 7,
+          "is_subheader": false,
+          "price": "4,90",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "leffe-bruin.png",
+          "link": null,
+          "default_name": "Leffe Bruin",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "hoegaarden",
+          "position": 8,
+          "is_subheader": false,
+          "price": "3,90",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "hoegaarden.png",
+          "link": null,
+          "default_name": "Hoegaarden Blanche · Draft",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "karmeliet",
+          "position": 9,
+          "is_subheader": false,
+          "price": "5,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "karmeliet.png",
+          "link": null,
+          "default_name": "Tripel Karmeliet · Draft",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "omer",
+          "position": 10,
+          "is_subheader": false,
+          "price": "5,40",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "omer.png",
+          "link": null,
+          "default_name": "Omer",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "hoegaarden_rose",
+          "position": 11,
+          "is_subheader": false,
+          "price": "4,00",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "hoegaarden-rose.png",
+          "link": null,
+          "default_name": "Hoegaarden Rosé",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "duvel",
+          "position": 12,
+          "is_subheader": false,
+          "price": "5,10",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "duvel.png",
+          "link": null,
+          "default_name": "Duvel",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "buta_biru",
+          "position": 13,
+          "is_subheader": false,
+          "price": "4,80",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "buta_biru.jpg",
+          "logo": null,
+          "link": "https://sweyn.beer/",
+          "default_name": "Buta Biru · Local Sweynbeer",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "hubeer",
+          "position": 14,
+          "is_subheader": false,
+          "price": "4,80",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "hubeer.jpg",
+          "logo": null,
+          "link": "https://sweyn.beer/",
+          "default_name": "Hubeer · Local Sweynbeer",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "chili_ipa",
+          "position": 15,
+          "is_subheader": false,
+          "price": "4,80",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": "chili_ipa.jpg",
+          "logo": null,
+          "link": "https://sweyn.beer/",
+          "default_name": "Chili IPA · Local Sweynbeer",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "corona",
+          "position": 16,
+          "is_subheader": false,
+          "price": "5,20",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "corona.png",
+          "link": null,
+          "default_name": "Corona",
+          "name": null,
+          "description": null
+        }
+      ]
+    },
+    {
+      "surface": "drinks",
+      "slug": "soft",
+      "position": 5,
+      "has_note": false,
+      "title": {
+        "nl": "Frisdrank",
+        "fr": "Softs",
+        "en": "Soft Drinks",
+        "al": "Pije freskuese"
+      },
+      "subtitle": {
+        "nl": "Fris",
+        "fr": "Sans alcool",
+        "en": "Soft drinks",
+        "al": "Pa alkool"
+      },
+      "note": null,
+      "items": [
+        {
+          "slug": "coca",
+          "position": 0,
+          "is_subheader": false,
+          "price": "3,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "coca.png",
+          "link": null,
+          "default_name": "Coca-Cola",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "coca_zero",
+          "position": 1,
+          "is_subheader": false,
+          "price": "3,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "coca-zero.png",
+          "link": null,
+          "default_name": "Coca-Cola Zero",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "fanta",
+          "position": 2,
+          "is_subheader": false,
+          "price": "3,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "fanta.png",
+          "link": null,
+          "default_name": "Fanta",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "sprite",
+          "position": 3,
+          "is_subheader": false,
+          "price": "3,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "sprite.png",
+          "link": null,
+          "default_name": "Sprite",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "fuze_sparkling",
+          "position": 4,
+          "is_subheader": false,
+          "price": "3,70",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "fuze-sparkling.png",
+          "link": null,
+          "default_name": "Fuze Tea Sparkling",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "fuze_peach",
+          "position": 5,
+          "is_subheader": false,
+          "price": "3,70",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "fuze-peach.png",
+          "link": null,
+          "default_name": "Fuze Tea Peach",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "fuze_mango",
+          "position": 6,
+          "is_subheader": false,
+          "price": "3,70",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "fuze-green.png",
+          "link": null,
+          "default_name": "Fuze Tea Mango",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "chaud",
+          "position": 7,
+          "is_subheader": false,
+          "price": "3,00",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "chaudfontaine.png",
+          "link": null,
+          "default_name": "Chaudfontaine",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "chaud_half",
+          "position": 8,
+          "is_subheader": false,
+          "price": "5,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "chaudfontaine.png",
+          "link": null,
+          "default_name": "Chaudfontaine 1/2 L",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "chaud_1l",
+          "position": 9,
+          "is_subheader": false,
+          "price": "8,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "chaudfontaine.png",
+          "link": null,
+          "default_name": "Chaudfontaine 1 L",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "chaud_p",
+          "position": 10,
+          "is_subheader": false,
+          "price": "3,00",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "chaudfontaine-red.png",
+          "link": null,
+          "default_name": "Chaudfontaine Pétillante",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "chaud_p_half",
+          "position": 11,
+          "is_subheader": false,
+          "price": "5,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "chaudfontaine-red.png",
+          "link": null,
+          "default_name": "Chaudfontaine Pétillante 1/2 L",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "chaud_p_1l",
+          "position": 12,
+          "is_subheader": false,
+          "price": "8,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "chaudfontaine-red.png",
+          "link": null,
+          "default_name": "Chaudfontaine Pétillante 1 L",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "tonic_indian",
+          "position": 13,
+          "is_subheader": false,
+          "price": "3,80",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "rb-tonic.png",
+          "link": null,
+          "default_name": "Royal Bliss Indian Tonic",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "tonic_agrume",
+          "position": 14,
+          "is_subheader": false,
+          "price": "3,80",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "rb-agrumes.png",
+          "link": null,
+          "default_name": "Royal Bliss Agrumes Tonic",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "tonic_lemon",
+          "position": 15,
+          "is_subheader": false,
+          "price": "3,80",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "rb-lemon.png",
+          "link": null,
+          "default_name": "Royal Bliss Lemon Tonic",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "tonic_pink",
+          "position": 16,
+          "is_subheader": false,
+          "price": "3,80",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "rb-pink.png",
+          "link": null,
+          "default_name": "Royal Bliss Pink Tonic",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "mm_appel",
+          "position": 17,
+          "is_subheader": false,
+          "price": "3,70",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "mm-appel.png",
+          "link": null,
+          "default_name": "Minute Maid Apple",
+          "name": {
+            "nl": "Minute Maid Appel",
+            "fr": "Minute Maid Pomme",
+            "al": "Minute Maid Mollë"
+          },
+          "description": null
+        },
+        {
+          "slug": "mm_appel_kers",
+          "position": 18,
+          "is_subheader": false,
+          "price": "3,70",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "mm-kers.png",
+          "link": null,
+          "default_name": "Minute Maid Apple-Cherry",
+          "name": {
+            "nl": "Minute Maid Appel-Kers",
+            "fr": "Minute Maid Pomme-Cerise",
+            "al": "Minute Maid Mollë-Qershi"
+          },
+          "description": null
+        },
+        {
+          "slug": "mm_pompelmoes",
+          "position": 19,
+          "is_subheader": false,
+          "price": "3,70",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "mm-pompelmoes.png",
+          "link": null,
+          "default_name": "Minute Maid Grapefruit",
+          "name": {
+            "nl": "Minute Maid Pompelmoes",
+            "fr": "Minute Maid Pamplemousse",
+            "al": "Minute Maid Grejpfrut"
+          },
+          "description": null
+        },
+        {
+          "slug": "mm_multi",
+          "position": 20,
+          "is_subheader": false,
+          "price": "3,70",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "mm-multi.png",
+          "link": null,
+          "default_name": "Minute Maid Multivitamin",
+          "name": {
+            "nl": "Minute Maid Multivitamine",
+            "fr": "Minute Maid Multivitaminé",
+            "al": "Minute Maid Multivitaminë"
+          },
+          "description": null
+        },
+        {
+          "slug": "almdudler",
+          "position": 21,
+          "is_subheader": false,
+          "price": "3,90",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "almdudler.png",
+          "link": null,
+          "default_name": "Almdudler",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "redbull",
+          "position": 22,
+          "is_subheader": false,
+          "price": "4,30",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "redbull.png",
+          "link": null,
+          "default_name": "Red Bull",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "golden_eagle",
+          "position": 23,
+          "is_subheader": false,
+          "price": "3,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "golden-eagle.png",
+          "link": null,
+          "default_name": "Golden Eagle",
+          "name": null,
+          "description": null
+        }
+      ]
+    },
+    {
+      "surface": "drinks",
+      "slug": "spirits",
+      "position": 6,
+      "has_note": false,
+      "title": {
+        "nl": "Sterke drank",
+        "fr": "Spiritueux",
+        "en": "Spirits",
+        "al": "Pije alkoolike"
+      },
+      "subtitle": {
+        "nl": "Rum · Whisky · Vodka · Gin",
+        "fr": "Rhum · Whisky · Vodka · Gin",
+        "en": "Rum · Whisky · Vodka · Gin",
+        "al": "Rum · Whisky · Vodka · Gin"
+      },
+      "note": null,
+      "items": [
+        {
+          "slug": "rum",
+          "position": 0,
+          "is_subheader": true,
+          "price": null,
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "bacardi",
+          "position": 1,
+          "is_subheader": false,
+          "price": "8,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "bacardi.png",
+          "link": null,
+          "default_name": "Bacardi Carta Blanca",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "havana",
+          "position": 2,
+          "is_subheader": false,
+          "price": "8,70",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "havana.png",
+          "link": null,
+          "default_name": "Havana Club 3 Años",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "don_papa_rum",
+          "position": 3,
+          "is_subheader": false,
+          "price": "14,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "donpapa.png",
+          "link": null,
+          "default_name": "Don Papa",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "whiskey",
+          "position": 4,
+          "is_subheader": true,
+          "price": null,
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "jack",
+          "position": 5,
+          "is_subheader": false,
+          "price": "8,80",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "jack.png",
+          "link": null,
+          "default_name": "Jack Daniel's",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "jack_honey",
+          "position": 6,
+          "is_subheader": false,
+          "price": "8,80",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "jack-honey.png",
+          "link": null,
+          "default_name": "Jack Daniel's Honey",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "jack_fire",
+          "position": 7,
+          "is_subheader": false,
+          "price": "8,80",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "jack-fire.png",
+          "link": null,
+          "default_name": "Jack Daniel's Fire",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "johnnie",
+          "position": 8,
+          "is_subheader": false,
+          "price": "8,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "johnnie.png",
+          "link": null,
+          "default_name": "Johnnie Walker Red Label",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "chivas12",
+          "position": 9,
+          "is_subheader": false,
+          "price": "9,80",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "chivas.png",
+          "link": null,
+          "default_name": "Chivas Regal 12",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "vodka",
+          "position": 10,
+          "is_subheader": true,
+          "price": null,
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "eristoff",
+          "position": 11,
+          "is_subheader": false,
+          "price": "7,90",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "eristoff.png",
+          "link": null,
+          "default_name": "Eristoff",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "eristoff_red",
+          "position": 12,
+          "is_subheader": false,
+          "price": "7,90",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "eristoff-red.png",
+          "link": null,
+          "default_name": "Eristoff Red",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "absolut",
+          "position": 13,
+          "is_subheader": false,
+          "price": "8,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "absolut.png",
+          "link": null,
+          "default_name": "Absolut Vodka",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "ciroc",
+          "position": 14,
+          "is_subheader": false,
+          "price": "9,80",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "ciroc.png",
+          "link": null,
+          "default_name": "Cîroc",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "belvedere",
+          "position": 15,
+          "is_subheader": false,
+          "price": "9,90",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "belvedere.png",
+          "link": null,
+          "default_name": "Belvedere",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "grey_goose",
+          "position": 16,
+          "is_subheader": false,
+          "price": "9,90",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "greygoose.png",
+          "link": null,
+          "default_name": "Grey Goose",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "gin",
+          "position": 17,
+          "is_subheader": true,
+          "price": null,
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": null,
+          "link": null,
+          "default_name": null,
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "gordons",
+          "position": 18,
+          "is_subheader": false,
+          "price": "8,50",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "gordons.png",
+          "link": null,
+          "default_name": "Gordon's Gin",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "hendricks",
+          "position": 19,
+          "is_subheader": false,
+          "price": "8,90",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "hendricks.png",
+          "link": null,
+          "default_name": "Hendrick's",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "gin_mare",
+          "position": 20,
+          "is_subheader": false,
+          "price": "9,20",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "ginmare.png",
+          "link": null,
+          "default_name": "Gin Mare",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "copperhead",
+          "position": 21,
+          "is_subheader": false,
+          "price": "9,30",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "copperhead.png",
+          "link": null,
+          "default_name": "Copperhead",
+          "name": null,
+          "description": null
+        },
+        {
+          "slug": "monkey47",
+          "position": 22,
+          "is_subheader": false,
+          "price": "11,60",
+          "per_person": false,
+          "is_zero": false,
+          "has_description": false,
+          "tags": null,
+          "variants": null,
+          "photo": null,
+          "logo": "monkey47.png",
+          "link": null,
+          "default_name": "Monkey 47",
+          "name": null,
+          "description": null
+        }
+      ]
+    }
+  ],
+  "chef": {
+    "image": "photos/moules-frites.jpg",
+    "price": "27",
+    "eyebrow": {
+      "nl": "Suggestie van de week",
+      "fr": "Suggestion de la semaine",
+      "en": "Suggestion of the week",
+      "al": "Sugjerimi i javës"
+    },
+    "title": {
+      "nl": "Mosselen met Friet",
+      "fr": "Moules Frites",
+      "en": "Mussels & Fries",
+      "al": "Midhje me Patate"
+    },
+    "description": {
+      "nl": "Dagverse mosselen, zorgvuldig bereid en geserveerd met goudbruin gebakken, krokante frietjes. Een heerlijke Belgische klassieker, vol pure smaak.",
+      "fr": "Moules extra-fraîches du jour, préparées avec soin et servies avec des frites croustillantes dorées à souhait. Un délicieux classique belge, plein de saveurs.",
+      "en": "Fresh mussels of the day, carefully prepared and served with golden, crispy fries. A delicious Belgian classic, full of pure flavour.",
+      "al": "Midhje të freskëta të ditës, të përgatitura me kujdes dhe të shërbyera me patate të skuqura krokante e të arta. Një klasik i shijshëm belg, plot shije të pastër."
+    },
+    "plabel": {
+      "nl": "Keuze uit 3 bereidingen:",
+      "fr": "Au choix, 3 préparations :",
+      "en": "Choice of 3 preparations:",
+      "al": "Zgjidhni nga 3 përgatitje:"
+    },
+    "preps": {
+      "nl": [
+        [
+          "Natuur",
+          "klassiek bereid met groenten en kruiden."
+        ],
+        [
+          "Witte Wijn",
+          "verfijnd bereid in een aromatische wittewijnsaus."
+        ],
+        [
+          "Curry",
+          "romige currysaus met een subtiele kruidige toets."
+        ]
+      ],
+      "fr": [
+        [
+          "Nature",
+          "préparées à la façon classique, aux légumes et fines herbes."
+        ],
+        [
+          "Vin blanc",
+          "finement mijotées dans une sauce au vin blanc aromatique."
+        ],
+        [
+          "Curry",
+          "sauce curry crémeuse, subtilement relevée."
+        ]
+      ],
+      "en": [
+        [
+          "Natural",
+          "classically prepared with vegetables and herbs."
+        ],
+        [
+          "White Wine",
+          "delicately cooked in an aromatic white wine sauce."
+        ],
+        [
+          "Curry",
+          "creamy curry sauce with a subtle spicy touch."
+        ]
+      ],
+      "al": [
+        [
+          "Natyrale",
+          "përgatitur klasikisht me perime dhe erëza."
+        ],
+        [
+          "Verë e Bardhë",
+          "përgatitur me delikatesë në një salcë aromatike vere të bardhë."
+        ],
+        [
+          "Curry",
+          "salcë curry kremoze me një prekje delikate pikante."
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "langs": [
+      {
+        "code": "nl",
+        "flag": "🇳🇱",
+        "label": "Nederlands"
+      },
+      {
+        "code": "fr",
+        "flag": "🇫🇷",
+        "label": "Français"
+      },
+      {
+        "code": "en",
+        "flag": "🇬🇧",
+        "label": "English"
+      },
+      {
+        "code": "al",
+        "flag": "🇦🇱",
+        "label": "Shqip"
+      }
+    ],
+    "food.ui": {
+      "nl": {
+        "perPers": "/ pers.",
+        "min2": "min. 2 pers.",
+        "sundayonly": "Enkel op zondag verkrijgbaar",
+        "sunday1": "Zondag · 10u–13u",
+        "sunday2": "Zondag · 13u–21u",
+        "group": "Voor groepen van 6 personen of meer: keuze uit maximaal 6 verschillende gerechten.",
+        "web": "antikaresto.com"
+      },
+      "fr": {
+        "perPers": "/ pers.",
+        "min2": "min. 2 pers.",
+        "sundayonly": "Disponible uniquement le dimanche",
+        "sunday1": "Dimanche · 10h–13h",
+        "sunday2": "Dimanche · 13h–21h",
+        "group": "Pour les groupes de 6 personnes et plus, choix de 6 plats maximum.",
+        "web": "antikaresto.com"
+      },
+      "en": {
+        "perPers": "/ pers.",
+        "min2": "min. 2 pers.",
+        "sundayonly": "Available on Sundays only",
+        "sunday1": "Sunday · 10am–1pm",
+        "sunday2": "Sunday · 1pm–9pm",
+        "group": "For groups of 6 or more, choose from up to 6 different dishes.",
+        "web": "antikaresto.com"
+      },
+      "al": {
+        "perPers": "/ pers.",
+        "min2": "min. 2 persona",
+        "sundayonly": "Vetëm të dielën",
+        "sunday1": "Të dielën · 10:00–13:00",
+        "sunday2": "Të dielën · 13:00–21:00",
+        "group": "Për grupet prej 6 personash ose më shumë, zgjedhje deri në 6 pjata të ndryshme.",
+        "web": "antikaresto.com"
+      }
+    },
+    "food.hero": {
+      "nl": {
+        "lead": "Brood, zout & hart.",
+        "al": "Bukë, kripë e zemer",
+        "note": "Dit spreekwoord drukt perfect uit wat de Albanezen vertegenwoordigen."
+      },
+      "fr": {
+        "lead": "Pain, sel & cœur.",
+        "al": "Bukë, kripë e zemër",
+        "note": "Un proverbe qui exprime parfaitement ce que représentent les Albanais."
+      },
+      "en": {
+        "lead": "Bread, salt & heart.",
+        "al": "Bukë, kripë e zemer",
+        "note": "This proverb perfectly expresses what the Albanians represent."
+      },
+      "al": {
+        "lead": "Bukë, kripë & zemër.",
+        "al": "Bukë, kripë e zemer",
+        "note": "Ky fjalëthënie shpreh përkryer se çfarë përfaqësojnë shqiptarët."
+      }
+    },
+    "desserts.head": {
+      "nl": {
+        "s": "Zoet afsluiten",
+        "t": "Dessert & Digestief"
+      },
+      "fr": {
+        "s": "Pour finir en douceur",
+        "t": "Dessert & Digestif"
+      },
+      "en": {
+        "s": "A sweet ending",
+        "t": "Dessert & Digestif"
+      },
+      "al": {
+        "s": "Për të mbyllur ëmbël",
+        "t": "Ëmbëlsira & Digestive"
+      }
+    },
+    "drinks.hero": {
+      "nl": {
+        "lead": "Start de avond goed…",
+        "al": "…met de perfecte cocktail."
+      },
+      "fr": {
+        "lead": "Commencez la soirée comme il se doit…",
+        "al": "…avec le cocktail parfait."
+      },
+      "en": {
+        "lead": "Start the evening right…",
+        "al": "…with the perfect cocktail."
+      },
+      "al": {
+        "lead": "Filloni mbrëmjen si duhet…",
+        "al": "…me koktejin perfekt."
+      }
+    },
+    "drinks.web": {
+      "nl": "antikaresto.com",
+      "fr": "antikaresto.com",
+      "en": "antikaresto.com",
+      "al": "antikaresto.com"
+    },
+    "drinks.subs": {
+      "nl": {
+        "signature": "Signature",
+        "house": "Huisfavorieten",
+        "classics": "Klassiekers",
+        "mule": "Mule",
+        "mocktails": "Mocktails",
+        "champagne": "Champagne",
+        "rum": "Rum",
+        "whiskey": "Whisky",
+        "vodka": "Vodka",
+        "gin": "Gin"
+      },
+      "fr": {
+        "signature": "Signature",
+        "house": "Coups de cœur maison",
+        "classics": "Classiques",
+        "mule": "Mule",
+        "mocktails": "Mocktails",
+        "champagne": "Champagne",
+        "rum": "Rhum",
+        "whiskey": "Whisky",
+        "vodka": "Vodka",
+        "gin": "Gin"
+      },
+      "en": {
+        "signature": "Signature",
+        "house": "House favorites",
+        "classics": "Classics",
+        "mule": "Mule",
+        "mocktails": "Mocktails",
+        "champagne": "Champagne",
+        "rum": "Rum",
+        "whiskey": "Whiskey",
+        "vodka": "Vodka",
+        "gin": "Gin"
+      },
+      "al": {
+        "signature": "Signature",
+        "house": "Të preferuarat e shtëpisë",
+        "classics": "Klasikë",
+        "mule": "Mule",
+        "mocktails": "Mocktails",
+        "champagne": "Shampanjë",
+        "rum": "Rum",
+        "whiskey": "Whisky",
+        "vodka": "Vodka",
+        "gin": "Gin"
+      }
+    },
+    "drinks.labels": {
+      "nl": {
+        "glass": "Glas",
+        "q": "1/4 L",
+        "h": "1/2 L",
+        "bottle": "Fles",
+        "half375": "Halve fles · 37,5 cl",
+        "bottle75": "Fles · 75 cl"
+      },
+      "fr": {
+        "glass": "Verre",
+        "q": "1/4 L",
+        "h": "1/2 L",
+        "bottle": "Bouteille",
+        "half375": "1/2 bouteille · 37,5 cl",
+        "bottle75": "Bouteille · 75 cl"
+      },
+      "en": {
+        "glass": "Glass",
+        "q": "1/4 L",
+        "h": "1/2 L",
+        "bottle": "Bottle",
+        "half375": "Half bottle · 37.5 cl",
+        "bottle75": "Bottle · 75 cl"
+      },
+      "al": {
+        "glass": "Gotë",
+        "q": "1/4 L",
+        "h": "1/2 L",
+        "bottle": "Shishe",
+        "half375": "Gjysmë shishe · 37,5 cl",
+        "bottle75": "Shishe · 75 cl"
+      }
+    },
+    "drinks.sharedTail": [
+      "hotdrinks",
+      "specialcoffee",
+      "digestif"
+    ]
+  }
+}

@@ -44,6 +44,17 @@ return [
         'facebook' => env('ANTIKA_FACEBOOK_URL', ''),
     ],
 
+    // Publication de la carte QR : commit des fichiers de données régénérés
+    // dans le repo GitHub Pages (menu.antika-resto.ovh).
+    'github' => [
+        'token' => env('ANTIKA_GITHUB_TOKEN', ''),
+        'owner' => env('ANTIKA_GITHUB_OWNER', 'antika-resto'),
+        'repo' => env('ANTIKA_GITHUB_REPO', 'menu'),
+        'branch' => env('ANTIKA_GITHUB_BRANCH', 'main'),
+        // Dossier des fichiers de la carte dans le repo.
+        'base_path' => env('ANTIKA_GITHUB_BASE_PATH', 'menu.pdf'),
+    ],
+
     // Images du carrousel d'accueil (défilement automatique).
     // 01 = vraie salle Antika, 02 = salle banquet, 04 = carpaccio, 05 = calamars
     // (vraies photos client) ; 03 = visuel gastronomique libre de droits (Pexels).
