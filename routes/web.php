@@ -59,6 +59,12 @@ Route::get('/sitemap.xml', function () {
 | ici est exactement ce que verront les clients après publication.
 */
 Route::get('/admin/event/preview', function (MenuBuilder $builder) {
+    // Le middleware "auth" redirigerait vers une route login inexistante :
+    // le panneau Filament a la sienne. On contrôle donc à la main.
+    if (! auth()->check()) {
+        return redirect('/admin/login');
+    }
+
     $base = rtrim(config('antika.menu_url', 'https://menu.antika-resto.ovh/menu.pdf'), '/').'/';
 
     $res = Http::timeout(15)->get($base.'event.html');
@@ -78,4 +84,4 @@ Route::get('/admin/event/preview', function (MenuBuilder $builder) {
     $html = preg_replace('/<body([^>]*)>/', '<body$1>'.$banner, $html, 1);
 
     return response($html)->header('Content-Type', 'text/html; charset=utf-8');
-})->middleware(['auth'])->name('event.preview');
+})->name('event.preview');
