@@ -82,6 +82,13 @@ class EventSettings extends Page
     protected function getHeaderActions(): array
     {
         return [
+            Action::make('preview')
+                ->label('Aperçu de la soirée')
+                ->icon('heroicon-o-eye')
+                ->color('gray')
+                ->url(fn () => route('event.preview'))
+                ->openUrlInNewTab(),
+
             Action::make('save')
                 ->label('Enregistrer')
                 ->icon('heroicon-o-check')

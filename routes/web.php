@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Middleware\SetLocale;
+use App\Services\MenuBuilder;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -47,3 +49,33 @@ Route::get('/sitemap.xml', function () {
 
     return response($xml, 200, ['Content-Type' => 'application/xml']);
 });
+
+/*
+|--------------------------------------------------------------------------
+| Aperçu de la soirée événement (réservé à l'admin connecté)
+|--------------------------------------------------------------------------
+| On récupère la vraie page event.html du menu QR et on y injecte les
+| données fraîches de la base. Aucune duplication du HTML : ce qu'on voit
+| ici est exactement ce que verront les clients après publication.
+*/
+Route::get('/admin/event/preview', function (MenuBuilder $builder) {
+    $base = rtrim(config('antika.menu_url', 'https://menu.antika-resto.ovh/menu.pdf'), '/').'/';
+
+    $res = Http::timeout(15)->get($base.'event.html');
+    abort_unless($res->successful(), 502, "Page événement introuvable sur le menu QR.");
+
+    $html = $res->body();
+
+    // Les images, le logo et les polices sont relatifs à la page d'origine.
+    $html = str_replace('<head>', '<head><base href="'.e($base).'">', $html);
+
+    // Données non publiées, injectées avant le chargeur (voir event.html).
+    $data = $builder->all()['event-data.js'];
+    $banner = '<div style="background:#b5822f;color:#111;font:600 12px/1.4 system-ui;'
+        .'padding:8px 14px;text-align:center;letter-spacing:.08em;text-transform:uppercase">'
+        .'Aperçu — données non publiées</div>';
+    $html = str_replace('</head>', '<script>'.$data.'</script></head>', $html);
+    $html = preg_replace('/<body([^>]*)>/', '<body$1>'.$banner, $html, 1);
+
+    return response($html)->header('Content-Type', 'text/html; charset=utf-8');
+})->middleware(['auth'])->name('event.preview');

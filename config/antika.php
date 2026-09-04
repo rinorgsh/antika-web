@@ -13,6 +13,9 @@ return [
     // URL publique du site (canonical, Open Graph, sitemap). À adapter au domaine réel.
     'url' => rtrim(env('ANTIKA_SITE_URL', 'https://antikaresto.com'), '/'),
 
+    // Menu QR publié (GitHub Pages) — sert à l'aperçu de la soirée événement.
+    'menu_url' => rtrim(env('ANTIKA_MENU_URL', 'https://menu.antika-resto.ovh/menu.pdf'), '/'),
+
     // Données SEO / référencement.
     'seo' => [
         'cuisine' => ['Albanian', 'Mediterranean', 'Seafood'],
