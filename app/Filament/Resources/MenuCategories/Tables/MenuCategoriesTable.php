@@ -25,7 +25,7 @@ class MenuCategoriesTable
             ])
             ->filters([
                 SelectFilter::make('surface')->label('Surface')
-                    ->options(['food' => 'Nourriture', 'desserts' => 'Desserts', 'drinks' => 'Boissons']),
+                    ->options(['food' => 'Nourriture', 'desserts' => 'Desserts', 'drinks' => 'Boissons', 'event' => 'Événement']),
             ])
             ->recordActions([
                 EditAction::make(),

@@ -51,6 +51,9 @@ class MenuItemForm
                 Toggle::make('is_subheader')->label('Ligne sous-titre'),
                 TextInput::make('default_name')->label('Nom de marque')
                     ->helperText('Identique dans toutes les langues (ex. Aperol Spritz).'),
+                TextInput::make('hint')->label('Mention (événement)')
+                    ->placeholder('rhum, vodka…')
+                    ->helperText('Affichée en orange à côté du nom, sur la page événement uniquement.'),
             ]),
 
             Section::make('Photo & logo')->columns(2)->collapsible()->schema([

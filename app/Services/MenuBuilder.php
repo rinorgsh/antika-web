@@ -31,6 +31,100 @@ class MenuBuilder
             'food-data.js' => $this->js('FOOD', $this->food()),
             'desserts-data.js' => $this->js('DESSERTS', $this->desserts()),
             'boisson-data.js' => $this->js('BOISSON', $this->drinks()),
+            'event-data.js' => $this->js('EVENT', $this->event()),
+            // Porte la bascule Restaurant <-> Événement lue par les 5 pages du menu.
+            'config.json' => $this->configJson(),
+        ];
+    }
+
+    /**
+     * Bascule Restaurant / Événement. Écrite à chaque publication : c'est
+     * l'interrupteur du back-office qui fait foi, plus une édition manuelle.
+     */
+    private function configJson(): string
+    {
+        return json_encode([
+            'event' => [
+                'enabled' => (bool) MenuSetting::get('event.enabled', false),
+                'file' => 'event.html',
+            ],
+        ], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)."\n";
+    }
+
+    /** Première valeur non vide parmi en / fr / nl : la page événement est en anglais. */
+    private function en(?array $field): string
+    {
+        foreach (['en', 'fr', 'nl', 'al'] as $l) {
+            if (! empty($field[$l])) {
+                return $field[$l];
+            }
+        }
+
+        return '';
+    }
+
+    /**
+     * Page événement : sections = catégories de surface « event »,
+     * lignes = plats actifs, sous-titres = lignes marquees is_subheader.
+     */
+    private function event(): array
+    {
+        $cats = MenuCategory::with('items')->where('surface', 'event')->orderBy('position')->get();
+
+        $sections = [];
+        foreach ($cats as $cat) {
+            $hasActive = $cat->items->contains(fn ($it) => ! $it->is_subheader && $it->is_active);
+            if (! $hasActive) {
+                continue;   // section vide -> masquée
+            }
+
+            $section = ['id' => $cat->slug, 'title' => $this->en($cat->title)];
+            if ($cat->banner) {
+                $section['art'] = $cat->banner;
+            }
+            $section['items'] = [];
+
+            $keep = $cat->items->filter(fn ($it) => $it->is_subheader || $it->is_active)
+                ->sortBy('position')->values();
+
+            foreach ($keep as $it) {
+                if ($it->is_subheader) {
+                    $row = ['h' => $it->default_name ?: $this->en($it->name)];
+                    if ($note = $this->en($it->description)) {
+                        $row['note'] = $note;
+                    }
+                    $section['items'][] = $row;
+
+                    continue;
+                }
+
+                $row = ['n' => $this->en($it->name) ?: ($it->default_name ?: $it->slug)];
+                if ($it->hint) {
+                    $row['sub'] = $it->hint;
+                }
+                if ($it->price !== null && $it->price !== '') {
+                    $row['p'] = $it->price;
+                }
+                if ($it->per_person) {
+                    $row['pp'] = true;
+                }
+                if ($d = $this->en($it->description)) {
+                    $row['d'] = $d;
+                }
+                $section['items'][] = $row;
+            }
+
+            $sections[] = $section;
+        }
+
+        return [
+            'title' => MenuSetting::get('event.title', ''),
+            'subtitle' => MenuSetting::get('event.subtitle', ''),
+            'sections' => $sections,
+            'footer' => [
+                'note' => MenuSetting::get('event.footerNote', ''),
+                'web' => MenuSetting::get('event.web', 'antikaresto.com'),
+            ],
         ];
     }
 

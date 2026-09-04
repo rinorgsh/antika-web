@@ -45,7 +45,7 @@ class MenuItemsTable
                     ->trueLabel('Actifs')->falseLabel('Masqués')->placeholder('Tous'),
                 SelectFilter::make('surface')
                     ->label('Surface')
-                    ->options(['food' => 'Nourriture', 'desserts' => 'Desserts', 'drinks' => 'Boissons'])
+                    ->options(['food' => 'Nourriture', 'desserts' => 'Desserts', 'drinks' => 'Boissons', 'event' => 'Événement'])
                     ->query(fn (Builder $query, array $data) => filled($data['value'] ?? null)
                         ? $query->whereHas('category', fn ($q) => $q->where('surface', $data['value']))
                         : $query),
