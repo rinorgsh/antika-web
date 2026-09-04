@@ -17,6 +17,10 @@ use Filament\Tables\Table;
 
 class MenuCategoryResource extends Resource
 {
+    // Accessible par URL depuis l'écran carte, mais retiré du menu :
+    // la navigation se fait desormais par la carte elle-meme.
+    protected static bool $shouldRegisterNavigation = false;
+
     protected static ?string $model = MenuCategory::class;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedSquares2x2;
