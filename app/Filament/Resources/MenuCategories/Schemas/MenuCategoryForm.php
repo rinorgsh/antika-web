@@ -20,12 +20,7 @@ class MenuCategoryForm
         return $schema->components([
             Section::make('Section')->columns(2)->schema([
                 Select::make('surface')->label('Surface')->required()
-                    ->options(['food' => 'Nourriture', 'desserts' => 'Desserts', 'drinks' => 'Boissons', 'event' => 'Événement'])
-                    ->live(),
-                TextInput::make('banner')->label('Bandeau illustré (événement)')
-                    ->placeholder('titre-cocktails.jpg')
-                    ->helperText('Nom du fichier dans le dossier event/ du menu. Laisser vide pour un titre typographié.')
-                    ->visible(fn ($get) => $get('surface') === 'event'),
+                    ->options(['food' => 'Nourriture', 'desserts' => 'Desserts', 'drinks' => 'Boissons', 'event' => 'Événement']),
                 TextInput::make('slug')->label('Identifiant (clé)')->required(),
                 TextInput::make('position')->label('Ordre')->numeric()->default(0),
                 Toggle::make('has_note')->label('Afficher une note de bas de section'),

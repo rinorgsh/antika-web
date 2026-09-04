@@ -78,11 +78,8 @@ class MenuBuilder
                 continue;   // section vide -> masquée
             }
 
-            $section = ['id' => $cat->slug, 'title' => $this->en($cat->title)];
-            if ($cat->banner) {
-                $section['art'] = $cat->banner;
-            }
-            $section['items'] = [];
+            // Le titre de section est dessiné en CSS par la page : rien à publier ici.
+            $section = ['id' => $cat->slug, 'title' => $this->en($cat->title), 'items' => []];
 
             $keep = $cat->items->filter(fn ($it) => $it->is_subheader || $it->is_active)
                 ->sortBy('position')->values();
@@ -110,6 +107,9 @@ class MenuBuilder
                 }
                 if ($d = $this->en($it->description)) {
                     $row['d'] = $d;
+                }
+                if ($it->photo) {
+                    $row['img'] = $it->photo;
                 }
                 $section['items'][] = $row;
             }
