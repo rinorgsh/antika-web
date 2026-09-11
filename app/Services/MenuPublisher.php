@@ -59,13 +59,9 @@ class MenuPublisher
             $files[$path] = ['content' => $content, 'binary' => true];
         }
 
-        // 1. réf de la branche -> commit de base -> tree de base
-        $ref = $this->api('GET', "git/ref/heads/{$this->branch}");
-        $baseCommitSha = $ref['object']['sha'];
-        $baseCommit = $this->api('GET', "git/commits/{$baseCommitSha}");
-        $baseTreeSha = $baseCommit['tree']['sha'];
-
-        // 2. un blob par fichier
+        // 1. un blob par fichier. Indépendant de l'état de la branche : GitHub
+        //    adresse les blobs par leur contenu, on peut donc les créer une
+        //    seule fois même si l'écriture de la branche doit être rejouée.
         $tree = [];
         foreach ($files as $path => $file) {
             $blob = $this->api('POST', 'git/blobs', $file['binary']
@@ -74,14 +70,42 @@ class MenuPublisher
             $tree[] = ['path' => $path, 'mode' => '100644', 'type' => 'blob', 'sha' => $blob['sha']];
         }
 
-        // 3. nouvel arbre + commit + avance la branche
-        $newTree = $this->api('POST', 'git/trees', ['base_tree' => $baseTreeSha, 'tree' => $tree]);
-        $commit = $this->api('POST', 'git/commits', [
-            'message' => $message,
-            'tree' => $newTree['sha'],
-            'parents' => [$baseCommitSha],
-        ]);
-        $this->api('PATCH', "git/refs/heads/{$this->branch}", ['sha' => $commit['sha']]);
+        // 2. arbre + commit + avance de la branche, en repartant de la tête
+        //    courante. Si quelqu'un a publié entre-temps — ou si GitHub nous a
+        //    servi un état périmé juste après une poussée — l'écriture est
+        //    refusée (422 « not a fast forward ») : on relit et on rejoue.
+        $tentatives = 3;
+        for ($essai = 1; ; $essai++) {
+            $ref = $this->api('GET', "git/ref/heads/{$this->branch}");
+            $baseCommitSha = $ref['object']['sha'];
+            $baseCommit = $this->api('GET', "git/commits/{$baseCommitSha}");
+
+            $newTree = $this->api('POST', 'git/trees', [
+                'base_tree' => $baseCommit['tree']['sha'],
+                'tree' => $tree,
+            ]);
+            $commit = $this->api('POST', 'git/commits', [
+                'message' => $message,
+                'tree' => $newTree['sha'],
+                'parents' => [$baseCommitSha],
+            ]);
+
+            try {
+                $this->api('PATCH', "git/refs/heads/{$this->branch}", ['sha' => $commit['sha']]);
+                break;
+            } catch (RuntimeException $e) {
+                $conflit = str_contains($e->getMessage(), 'not a fast forward')
+                    || str_contains($e->getMessage(), '422');
+
+                if (! $conflit || $essai >= $tentatives) {
+                    throw $conflit
+                        ? new RuntimeException('La carte a changé sur GitHub pendant la publication. Réessayez dans quelques secondes.')
+                        : $e;
+                }
+
+                usleep(1_200_000);   // laisse GitHub se stabiliser avant de rejouer
+            }
+        }
 
         return $commit['html_url'] ?? "https://github.com/{$this->owner}/{$this->repo}/commit/{$commit['sha']}";
     }
