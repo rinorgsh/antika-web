@@ -129,8 +129,10 @@ class MenuPublisher
             if ($item->photo_upload && Storage::disk('public')->exists($item->photo_upload)) {
                 $bytes = Storage::disk('public')->get($item->photo_upload);
                 $ext = strtolower(pathinfo($item->photo_upload, PATHINFO_EXTENSION)) ?: 'jpg';
-                if ($surface === 'food') {
-                    // Le rendu ajoute "photos/" + ".jpg" ; la référence = clé sans extension.
+                if ($surface === 'food' || $surface === 'event') {
+                    // Ces deux rendus ajoutent "photos/" + ".jpg" : la référence
+                    // stockée est la clé nue, sans extension. Oublier 'event' ici
+                    // produisait des liens "photos/xxx.jpg.jpg" introuvables.
                     $extra["photos/{$item->slug}.jpg"] = $bytes;
                     $item->photo = $item->slug;
                 } else {
