@@ -98,7 +98,7 @@ class ImportLegacySimulator extends Command
             }
         }
 
-        $this->info('Import terminé. Vérifiez l\'admin (Événements) puis traduisez les textes en NL / EN.');
+        $this->info('Import terminé. Vérifiez l\'admin (Location de salle) puis traduisez les textes en NL / EN.');
 
         return self::SUCCESS;
     }

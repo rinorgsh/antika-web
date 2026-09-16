@@ -111,6 +111,23 @@ if (!/\/$/.test(location.pathname) && !/\.html$/.test(location.pathname)) {
     text-transform:uppercase;
     color:#5a554e;
   }
+  /* Bouton « retour au site » (en haut à droite) */
+  .site{
+    position:fixed;
+    top:calc(16px + env(safe-area-inset-top));
+    right:16px;
+    display:inline-flex;align-items:center;gap:8px;
+    height:42px;padding:0 14px;border-radius:12px;
+    border:1px solid var(--line);
+    background:var(--card);
+    color:var(--ink);text-decoration:none;
+    font-size:13px;font-weight:500;letter-spacing:.02em;
+    -webkit-tap-highlight-color:transparent;
+    z-index:5;
+  }
+  .site svg{color:var(--gold);flex:0 0 auto}
+  .site:active{transform:scale(.96)}
+  .site:hover{border-color:var(--gold)}
   /* écran d'attente pendant la lecture de la config / redirection événement */
   #loading{
     position:fixed;inset:0;
@@ -126,6 +143,8 @@ if (!/\/$/.test(location.pathname) && !/\.html$/.test(location.pathname)) {
 <body>
   <div id="loading">Chargement…</div>
 
+  <a class="site" href="/" aria-label="antikaresto.com"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/></svg><span>antikaresto.com</span></a>
+
   <img class="logo" src="logo-antika-white.png" alt="Antika">
 
   <div class="pick">Taal · Langue · Language · Gjuha</div>
@@ -137,7 +156,7 @@ if (!/\/$/.test(location.pathname) && !/\.html$/.test(location.pathname)) {
     <a class="lang" href="carte.html?lang=al"><span class="flag">🇦🇱</span> Shqip</a>
   </nav>
 
-  <footer>Antika</footer>
+  <footer><a href="/" style="color:inherit;text-decoration:none">antikaresto.com</a></footer>
 
 <!-- Mode événement : logique partagée par les cinq pages (voir event-check.js).
      Ici en fin de page car elle masque aussi l'écran « Chargement… ». -->
