@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Antika — Event</title>
+<meta name="theme-color" content="#050505">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#050505;
+    --ink:#f4ece0;
+    --muted:#8d8175;
+    --gold:#e0ac52;
+    --gold-deep:#b5822f;
+    --neon:#ff2f74;
+    --ember:#ff8a2b;
+    --line:rgba(224,172,82,.22);
+    --serif:"Cormorant Garamond",Georgia,serif;
+    --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:calc(48px + env(safe-area-inset-bottom));
+    /* halo chaud très diffus, comme les lanternes du visuel */
+    background-image:
+      radial-gradient(120% 60% at 50% -10%, rgba(255,138,43,.13), transparent 60%),
+      radial-gradient(90% 50% at 50% 105%, rgba(255,47,116,.09), transparent 60%);
+    background-attachment:fixed;
+  }
+  img{display:block;max-width:100%}
+  main{max-width:640px;margin:0 auto;padding:0 20px}
+
+  /* ---------- Hero ---------- */
+  .hero{text-align:center;padding:44px 0 26px}
+  .hero .logo{width:96px;margin:0 auto 22px;opacity:.9}
+  .hero .title{
+    font-family:var(--serif);font-weight:700;
+    font-size:clamp(38px,12vw,62px);line-height:1.02;
+    letter-spacing:.01em;
+    background:linear-gradient(178deg,#fbe4b4 4%,var(--gold) 42%,var(--gold-deep) 78%,#7d5518 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;
+    /* la lueur doit venir du fond, pas du texte : on la porte par un filtre */
+    filter:drop-shadow(0 2px 10px rgba(224,172,82,.34));
+  }
+  .hero .sub{
+    margin-top:14px;
+    font-size:11px;font-weight:600;letter-spacing:.34em;text-transform:uppercase;
+    color:var(--neon);
+  }
+  .hero .rule{
+    display:flex;align-items:center;justify-content:center;gap:12px;margin-top:20px;
+  }
+  .hero .rule::before,.hero .rule::after{
+    content:"";height:1px;width:52px;
+    background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  }
+  .hero .rule i{width:5px;height:5px;background:var(--gold);transform:rotate(45deg);display:block}
+
+  /* ---------- Sections ---------- */
+  section{padding-top:46px}
+  .sec-title{
+    text-align:center;font-family:var(--serif);font-weight:700;
+    font-size:clamp(30px,9vw,44px);line-height:1.06;
+    text-transform:uppercase;letter-spacing:.05em;
+    background:linear-gradient(177deg,#fff2d6 0%,#eec277 34%,var(--gold) 58%,var(--gold-deep) 82%,#6d4712 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    filter:drop-shadow(0 2px 14px rgba(224,172,82,.3));
+  }
+  .sec-rule{display:flex;align-items:center;justify-content:center;gap:12px;margin:14px 0 2px}
+  .sec-rule::before,.sec-rule::after{
+    content:"";height:1px;width:56px;
+    background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  }
+  .sec-rule i{width:5px;height:5px;background:var(--gold);transform:rotate(45deg);display:block}
+
+  /* ---------- Sous-titres ---------- */
+  .head{
+    display:flex;align-items:baseline;gap:10px;
+    margin:26px 0 10px;padding-bottom:7px;
+    border-bottom:1px solid var(--line);
+  }
+  .head .t{
+    font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--neon);
+  }
+  .head .n{font-size:11px;color:var(--muted);font-style:italic}
+
+  /* ---------- Lignes ---------- */
+  .row{
+    display:flex;align-items:center;gap:14px;
+    padding:9px 0;
+  }
+  .row + .row{border-top:1px solid rgba(255,255,255,.05)}
+  .row .txt{flex:1 1 auto;min-width:0}
+  .row .line{display:flex;align-items:baseline;gap:10px}
+  .row .ph{
+    flex:0 0 auto;width:60px;height:60px;border-radius:12px;object-fit:cover;
+    border:1px solid rgba(224,172,82,.28);
+    box-shadow:0 6px 18px rgba(0,0,0,.5);
+  }
+  .row .ph.logo{background:#fff;object-fit:contain;padding:7px;border-color:rgba(255,255,255,.2)}
+  .nm{font-family:var(--serif);font-weight:600;font-size:21px;line-height:1.2}
+  .nm .sub{
+    font-family:var(--sans);font-size:11.5px;font-weight:500;
+    color:var(--ember);margin-left:8px;letter-spacing:.02em;
+  }
+  .dots{flex:1 1 auto;border-bottom:1px dotted rgba(224,172,82,.3);transform:translateY(-4px);min-width:12px}
+  .pr{
+    font-family:var(--serif);font-weight:700;font-size:20px;
+    color:var(--gold);white-space:nowrap;
+  }
+  .pr small{font-family:var(--sans);font-size:10px;font-weight:500;color:var(--muted);letter-spacing:.02em}
+  .note{
+    font-size:12.5px;color:var(--muted);line-height:1.5;
+    margin:3px 0 0;max-width:46ch;
+  }
+  .row.nopr .dots{display:none}
+
+  /* ---------- Pied ---------- */
+  footer{
+    text-align:center;margin-top:54px;padding-top:28px;
+    border-top:1px solid var(--line);
+  }
+  footer .fb{font-family:var(--serif);font-size:28px;font-weight:700;color:var(--ink)}
+  footer .fs{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+  footer .fn{font-size:11.5px;color:var(--muted);margin-top:16px}
+  footer .fw{
+    display:inline-block;margin-top:14px;
+    font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--gold);text-decoration:none;
+  }
+  #loading{
+    position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
+    background:var(--bg);color:var(--muted);
+    font-size:12px;letter-spacing:.24em;text-transform:uppercase;z-index:5;
+  }
+  .hidden{display:none !important}
+
+  @media (min-width:560px){
+    .nm{font-size:23px}
+    .pr{font-size:22px}
+  }
+</style>
+</head>
+<body>
+
+<div id="loading">Loading…</div>
+<main id="main"></main>
+
+<script>
+/* ============================================================
+   PAGE ÉVÉNEMENT
+   Contenu et titre pilotés par event-data.js, régénéré depuis le
+   back-office. Volontairement en anglais et sur fond noir : rien à
+   voir avec la carte du restaurant, c'est une soirée lounge.
+   Cette page n'inclut PAS event-check.js — elle EST la destination
+   de la bascule, l'inclure la ferait se rediriger sur elle-même.
+   ============================================================ */
+
+function esc(s){
+  return String(s == null ? "" : s)
+    .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+
+function rowHtml(it){
+  /* sous-titre de groupe : "In glass", "Champagne", "35 €"… */
+  if(it.h){
+    return '<div class="head"><span class="t">'+esc(it.h)+'</span>'+
+      (it.note ? '<span class="n">'+esc(it.note)+'</span>' : '')+'</div>';
+  }
+  var nom = '<span class="nm">'+esc(it.n)+
+    (it.sub ? '<span class="sub">'+esc(it.sub)+'</span>' : '')+'</span>';
+  var prix = it.p
+    ? '<span class="dots"></span><span class="pr">'+esc(it.p)+' €'+
+      (it.pp ? ' <small>/ pers.</small>' : '')+'</span>'
+    : '';
+  /* Photo facultative, ajoutée plat par plat depuis le back-office.
+     Deux écritures acceptées :
+       "burger-bigbaba"      -> photos/burger-bigbaba.jpg  (téléversement admin)
+       "drinks/mojito.jpg"   -> chemin tel quel, pour réutiliser une image
+                                déjà présente sur la carte du restaurant.
+     Un logo de marque est posé sur une pastille blanche : ces fichiers sont
+     dessinés pour le menu clair, ils disparaîtraient sur fond noir. */
+  var photo = '';
+  if(it.img){
+    /* "drinks/x.jpg" -> tel quel · "x.jpg" -> photos/x.jpg · "x" -> photos/x.jpg */
+    var src = it.img.indexOf('/') >= 0
+      ? it.img
+      : 'photos/' + (/\.(jpe?g|png|webp)$/i.test(it.img) ? it.img : it.img + '.jpg');
+    var estLogo = src.indexOf('logos/') === 0;
+    photo = '<img class="ph'+(estLogo ? ' logo' : '')+'" loading="lazy" src="'+
+      esc(src)+'" alt="'+esc(it.n)+'">';
+  }
+  return '<div class="row'+(it.p ? '' : ' nopr')+'">'+
+      '<div class="txt"><div class="line">'+nom+prix+'</div>'+
+        (it.d ? '<div class="note">'+esc(it.d)+'</div>' : '')+
+      '</div>'+photo+
+    '</div>';
+}
+
+function render(E){
+  document.title = "Antika — " + (E.title || "Event");
+
+  var html = '<div class="hero">'+
+      '<img class="logo" src="logo-antika-white.png" alt="Antika">'+
+      '<div class="title">'+esc(E.title || "")+'</div>'+
+      (E.subtitle ? '<div class="sub">'+esc(E.subtitle)+'</div>' : '')+
+      '<div class="rule"><i></i></div>'+
+    '</div>';
+
+  (E.sections || []).forEach(function(sec){
+    html += '<section id="'+esc(sec.id)+'">';
+    html += '<div class="sec-title">'+esc(sec.title || "")+'</div>'+
+            '<div class="sec-rule"><i></i></div>';
+    (sec.items || []).forEach(function(it){ html += rowHtml(it); });
+    html += '</section>';
+  });
+
+  var f = E.footer || {};
+  html += '<footer>'+
+      '<div class="fb">Antika</div>'+
+      '<div class="fs">Resto · Lounge · Bar · Event</div>'+
+      (f.note ? '<div class="fn">'+esc(f.note)+'</div>' : '')+
+      (f.web ? '<a class="fw" href="https://www.'+esc(f.web)+'" target="_blank" rel="noopener">'+esc(f.web)+'</a>' : '')+
+    '</footer>';
+
+  document.getElementById("main").innerHTML = html;
+  document.getElementById("loading").classList.add("hidden");
+}
+
+/* Chargement anti-cache (même principe que les autres pages) */
+(function(){
+  /* Aperçu depuis le back-office : les données fraîches sont injectées
+     dans la page avant ce script, on les utilise telles quelles. */
+  if(window.EVENT){ render(window.EVENT); return; }
+
+  var s = document.createElement("script");
+  s.src = "event-data.js?v=" + Date.now();
+  s.onload = function(){
+    if(window.EVENT){ render(window.EVENT); }
+    else { document.getElementById("loading").textContent = "No event menu"; }
+  };
+  s.onerror = function(){
+    document.getElementById("loading").textContent = "Menu unavailable — please ask our team";
+  };
+  document.head.appendChild(s);
+})();
+</script>
+</body>
+</html>

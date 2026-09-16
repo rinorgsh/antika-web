@@ -16,6 +16,7 @@ return [
         'contact' => 'Contact',
         'reserve' => 'Book a table',
         'quote' => 'Get a quote',
+        'quote_short' => 'Quote',
     ],
 
     'hero' => [
@@ -130,5 +131,11 @@ return [
         'contact_title' => 'Contact',
         'hours_title' => 'Opening hours',
         'rights' => 'All rights reserved.',
+    ],
+
+    'cookies' => [
+        'text' => 'We use cookies to measure visits to our website and how well our ads perform. You can accept or decline them.',
+        'refuse' => 'Decline',
+        'accept' => 'Accept',
     ],
 ];

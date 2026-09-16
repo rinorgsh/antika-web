@@ -32,6 +32,21 @@ return [
 
     'connections' => [
 
+        // Base de l'ancien simulateur baba-event, lue une seule fois par
+        // php artisan events:import-legacy (voir la commande).
+        'legacy_simulator' => [
+            'driver' => env('LEGACY_SIM_DB_CONNECTION', 'mysql'),
+            'host' => env('LEGACY_SIM_DB_HOST', env('DB_HOST', '127.0.0.1')),
+            'port' => env('LEGACY_SIM_DB_PORT', env('DB_PORT', '3306')),
+            'database' => env('LEGACY_SIM_DB_DATABASE', 'babaevent'),
+            'username' => env('LEGACY_SIM_DB_USERNAME', env('DB_USERNAME', 'forge')),
+            'password' => env('LEGACY_SIM_DB_PASSWORD', env('DB_PASSWORD', '')),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'foreign_key_constraints' => true,
+        ],
+
         'sqlite' => [
             'driver' => 'sqlite',
             'url' => env('DB_URL'),

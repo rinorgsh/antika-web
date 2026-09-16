@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Inertia\Middleware;
 
 class HandleInertiaRequests extends Middleware
@@ -39,7 +40,8 @@ class HandleInertiaRequests extends Middleware
             'locales' => SetLocale::SUPPORTED,
             'translations' => trans('site'),
             // Coordonnées et liens externes (identiques quelle que soit la langue).
-            'site' => config('antika'),
+            // Sans le bloc « events » : il contient les e-mails de notification.
+            'site' => Arr::except(config('antika'), ['events']),
         ];
     }
 }

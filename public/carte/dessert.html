@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dessert & Digestif — Antika</title>
+<meta name="theme-color" content="#ffffff">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff;
+    --ink:#161512;
+    --muted:#7a7268;
+    --faint:#a9a196;
+    --line:#ece8e1;
+    --line-strong:#ddd7cc;
+    --gold:#b08324;
+    --gold-soft:#c9a24a;
+    --serif:"Cormorant Garamond",Georgia,serif;
+    --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:calc(40px + env(safe-area-inset-bottom));
+  }
+  img{display:block;max-width:100%}
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;top:0;z-index:30;
+    background:rgba(255,255,255,.92);
+    backdrop-filter:saturate(180%) blur(12px);
+    -webkit-backdrop-filter:saturate(180%) blur(12px);
+    border-bottom:1px solid var(--line);
+    padding-top:env(safe-area-inset-top);
+  }
+  .bar{
+    max-width:680px;margin:0 auto;
+    display:flex;align-items:center;justify-content:space-between;
+    gap:12px;padding:11px 16px;
+  }
+  .back{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:38px;height:38px;border-radius:11px;
+    border:1px solid var(--line-strong);
+    color:var(--ink);text-decoration:none;flex:0 0 auto;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .back:active{background:#f6f3ee}
+  .brand{text-align:center;line-height:1;flex:1 1 auto;overflow:hidden}
+  .brand .name{
+    font-family:var(--serif);font-weight:600;
+    font-size:25px;letter-spacing:.02em;
+  }
+  .brand .sub{
+    font-size:9.5px;letter-spacing:.34em;text-transform:uppercase;
+    color:var(--muted);margin-top:2px;
+  }
+  /* language chip + dropdown */
+  .lang-wrap{position:relative;flex:0 0 auto}
+  .lang-btn{
+    display:inline-flex;align-items:center;gap:7px;
+    height:38px;padding:0 12px;border-radius:11px;
+    border:1px solid var(--line-strong);background:#fff;
+    font-family:var(--sans);font-size:13px;font-weight:600;color:var(--ink);
+    cursor:pointer;-webkit-tap-highlight-color:transparent;
+  }
+  .lang-btn .fl{font-size:16px;line-height:1}
+  .lang-btn .ca{color:var(--faint);font-size:10px;transition:transform .2s}
+  .lang-wrap.open .lang-btn .ca{transform:rotate(180deg)}
+  .lang-menu{
+    position:absolute;right:0;top:46px;min-width:172px;
+    background:#fff;border:1px solid var(--line-strong);border-radius:14px;
+    box-shadow:0 18px 44px rgba(30,24,10,.16);
+    padding:6px;opacity:0;visibility:hidden;transform:translateY(-6px);
+    transition:opacity .16s ease,transform .16s ease,visibility .16s;
+  }
+  .lang-wrap.open .lang-menu{opacity:1;visibility:visible;transform:none}
+  .lang-menu a{
+    display:flex;align-items:center;gap:11px;
+    padding:10px 12px;border-radius:9px;
+    text-decoration:none;color:var(--ink);font-size:15px;font-weight:500;
+  }
+  .lang-menu a .fl{font-size:19px}
+  .lang-menu a:active{background:#f6f3ee}
+  .lang-menu a.on{color:var(--gold);font-weight:600}
+  .lang-menu a.on::after{content:"✓";margin-left:auto;color:var(--gold);font-size:13px}
+
+  /* ---------- Category nav ---------- */
+  .cats{
+    position:sticky;top:calc(61px + env(safe-area-inset-top));z-index:20;
+    background:rgba(255,255,255,.92);
+    backdrop-filter:saturate(180%) blur(12px);
+    -webkit-backdrop-filter:saturate(180%) blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .cats-inner{
+    max-width:680px;margin:0 auto;
+    display:flex;gap:8px;overflow-x:auto;
+    padding:10px 16px;scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+  }
+  .cats-inner::-webkit-scrollbar{display:none}
+  .chip{
+    flex:0 0 auto;white-space:nowrap;
+    padding:8px 15px;border-radius:999px;
+    border:1px solid var(--line-strong);background:#fff;
+    font-size:13px;font-weight:500;color:var(--muted);
+    text-decoration:none;-webkit-tap-highlight-color:transparent;
+    transition:all .18s ease;cursor:pointer;
+  }
+  .chip.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+  /* ---------- Content ---------- */
+  main{max-width:680px;margin:0 auto;padding:0 16px}
+
+  .hero{text-align:center;padding:30px 6px 10px}
+  .hero .logo{width:110px;margin:0 auto 16px;opacity:.96}
+  .hero .lead{
+    font-family:var(--serif);font-style:italic;font-size:23px;
+    color:var(--ink);line-height:1.35;
+  }
+  .hero .lead .al{display:block;font-style:italic;font-size:20px;color:var(--gold);letter-spacing:.01em;margin-top:2px}
+
+  section{padding-top:30px;scroll-margin-top:118px}
+  .sec-head{text-align:center;margin-bottom:14px}
+  .sec-head .t{
+    font-family:var(--serif);font-weight:600;font-size:30px;
+    letter-spacing:.01em;position:relative;display:inline-block;padding:0 2px;
+  }
+  .sec-head .s{
+    display:block;font-family:var(--sans);
+    font-size:10.5px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--gold);margin-bottom:9px;
+  }
+  .rule{
+    display:flex;align-items:center;justify-content:center;gap:10px;margin-top:11px;
+  }
+  .rule::before,.rule::after{content:"";height:1px;width:38px;background:var(--line-strong)}
+  .rule .dot{width:5px;height:5px;border-radius:50%;background:var(--gold-soft)}
+
+  .ic-tile{
+    flex:0 0 auto;width:54px;height:54px;border-radius:14px;
+    display:inline-flex;align-items:center;justify-content:center;
+    color:var(--gold);background:#faf6ec;border:1px solid #efe3c8;overflow:hidden;
+  }
+  .ic-tile svg{width:24px;height:24px}
+  .ic-tile.logo{background:#fff;padding:5px}
+  .ic-tile.logo img{width:100%;height:100%;object-fit:contain}
+  .ic-tile.photo{background:#fff;padding:0}
+  .ic-tile.photo img{width:100%;height:100%;object-fit:contain}
+  .item{
+    display:flex;gap:12px;align-items:center;
+    padding:12px 0;border-bottom:1px solid var(--line);
+  }
+  .item:last-child{border-bottom:0}
+  .item .nm{
+    font-family:var(--serif);font-weight:600;font-size:20px;line-height:1.2;
+    letter-spacing:.01em;color:var(--ink);flex:0 1 auto;
+  }
+  .item .lead-dots{
+    flex:1 1 auto;border-bottom:1px dotted var(--line-strong);
+    transform:translateY(-3px);min-width:14px;
+  }
+  .item .pr{
+    font-family:var(--serif);font-weight:600;font-size:19px;
+    color:var(--gold);white-space:nowrap;flex:0 0 auto;
+  }
+
+  /* desserts en mode photo (comme la carte nourriture) */
+  .dish{
+    display:flex;gap:14px;align-items:center;
+    padding:15px 0;border-bottom:1px solid var(--line);
+  }
+  .dish:last-child{border-bottom:0}
+  .dish-txt{flex:1 1 auto;min-width:0;display:flex;align-items:baseline;gap:8px}
+  .dish-nm{
+    font-family:var(--serif);font-weight:600;font-size:21px;line-height:1.2;
+    letter-spacing:.01em;color:var(--ink);flex:0 1 auto;
+  }
+  .dish-dots{flex:1 1 auto;border-bottom:1px dotted var(--line-strong);transform:translateY(-3px);min-width:14px}
+  .dish-pr{font-family:var(--serif);font-weight:600;font-size:19px;color:var(--gold);white-space:nowrap;flex:0 0 auto}
+  .dish-ph{
+    flex:0 0 auto;width:96px;height:96px;border-radius:14px;object-fit:cover;
+    background:#f3efe8;box-shadow:0 4px 14px rgba(40,30,10,.10);
+    cursor:zoom-in;-webkit-tap-highlight-color:transparent;
+  }
+
+  /* lightbox photo dessert */
+  .lb{
+    position:fixed;inset:0;z-index:60;
+    background:rgba(15,12,6,.92);
+    display:flex;align-items:center;justify-content:center;padding:24px;
+    opacity:0;visibility:hidden;transition:opacity .2s ease,visibility .2s;
+  }
+  .lb.show{opacity:1;visibility:visible}
+  .lb img{max-width:100%;max-height:80vh;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+  .lb .cap{position:absolute;left:0;right:0;bottom:calc(28px + env(safe-area-inset-bottom));text-align:center;color:#f3efe7;font-family:var(--serif);font-size:20px;padding:0 24px}
+  .lb .x{position:absolute;top:calc(16px + env(safe-area-inset-top));right:18px;width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.3);color:#fff;font-size:20px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+
+  footer{
+    text-align:center;margin-top:44px;padding-top:26px;
+    border-top:1px solid var(--line);
+  }
+  footer .fb{font-family:var(--serif);font-size:26px;font-weight:600}
+  footer .fs{font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+  footer .fw{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-top:16px;text-decoration:none;display:inline-block}
+
+  @media (min-width:560px){
+    .item .nm{font-size:22px}
+    .hero .lead{font-size:26px}
+  }
+</style>
+<!-- Mode événement : bascule vers le PDF de l'événement si config.json l'active.
+     Chargé tôt pour qu'un client arrivant par un favori ou le bouton retour
+     ne reste pas sur la carte normale (voir event-check.js). -->
+<script src="event-check.js"></script>
+</head>
+<body>
+
+<header>
+  <div class="bar">
+    <a class="back" id="back" href="carte.html" aria-label="Retour">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    </a>
+    <div class="brand">
+      <div class="name">Antika</div>
+      <div class="sub">Molenveld</div>
+    </div>
+    <div class="lang-wrap" id="langWrap">
+      <button class="lang-btn" id="langBtn" aria-haspopup="true">
+        <span class="fl" id="langFlag">🇫🇷</span>
+        <span id="langCode">FR</span>
+        <span class="ca">▾</span>
+      </button>
+      <div class="lang-menu" id="langMenu"></div>
+    </div>
+  </div>
+  <div class="cats">
+    <div class="cats-inner" id="cats"></div>
+  </div>
+</header>
+
+<main id="main"></main>
+
+<div class="lb" id="lb">
+  <div class="x" id="lbx">✕</div>
+  <img id="lbimg" src="" alt="">
+  <div class="cap" id="lbcap"></div>
+</div>
+
+<script src="icons.js"></script>
+<script>
+/* ============================================================
+   DESSERTS & DIGESTIFS
+   Données (prix + noms) : desserts-data.js (source partagée avec menu.html).
+   Ici : uniquement les textes propres à cette page (hero, footer).
+   ============================================================ */
+
+var LANGS = [
+  {code:"nl", flag:"🇳🇱", label:"Nederlands"},
+  {code:"fr", flag:"🇫🇷", label:"Français"},
+  {code:"en", flag:"🇬🇧", label:"English"},
+  {code:"al", flag:"🇦🇱", label:"Shqip"}
+];
+
+var MENU = [];  /* rempli après chargement anti-cache des données */
+
+var PAGE = {
+  fr:{ web:"antikaresto.com", hero:{ lead:"On ne peut pas acheter le bonheur…", al:"…mais on peut s'offrir un dessert !" } },
+  nl:{ web:"antikaresto.com", hero:{ lead:"Geluk kun je niet kopen…", al:"…maar dessert wel !" } },
+  en:{ web:"antikaresto.com", hero:{ lead:"You can't buy happiness…", al:"…but you can buy dessert !" } },
+  al:{ web:"antikaresto.com", hero:{ lead:"Lumturinë nuk mund ta blesh…", al:"…por ëmbëlsirën po !" } }
+};
+
+/* ============================================================
+   MOTEUR DE RENDU
+   ============================================================ */
+function getLang(){
+  var p = new URLSearchParams(location.search).get("lang");
+  if(p && PAGE[p]) return p;
+  return "fr";
+}
+
+function render(lang){
+  var p = PAGE[lang] || PAGE.fr;
+  var D = (window.DESSERTS && (DESSERTS.i18n[lang] || DESSERTS.i18n.fr)) || {sections:{}, names:{}};
+  var L = { ui:{web:p.web}, hero:p.hero, sections:D.sections, names:D.names };
+  document.documentElement.lang = lang;
+
+  // back -> hub de catégories dans la même langue
+  document.getElementById("back").setAttribute("href", "carte.html?lang="+lang);
+
+  // header lang chip
+  var cur = LANGS.filter(function(x){return x.code===lang})[0] || LANGS[1];
+  document.getElementById("langFlag").textContent = cur.flag;
+  document.getElementById("langCode").textContent = cur.code.toUpperCase();
+
+  // lang menu
+  document.getElementById("langMenu").innerHTML = LANGS.map(function(x){
+    return '<a class="'+(x.code===lang?"on":"")+'" href="?lang='+x.code+'"><span class="fl">'+x.flag+'</span>'+x.label+'</a>';
+  }).join("");
+
+  // category chips
+  document.getElementById("cats").innerHTML = MENU.map(function(sec){
+    return '<a class="chip" data-sec="'+sec.id+'" href="#'+sec.id+'">'+L.sections[sec.id].t+'</a>';
+  }).join("");
+
+  // hero
+  var html = ''+
+    '<div class="hero">'+
+      '<img class="logo" src="logo-antika.png" alt="Antika">'+
+      '<div class="lead">'+L.hero.lead+'<span class="al">'+L.hero.al+'</span></div>'+
+    '</div>';
+
+  // sections
+  MENU.forEach(function(sec){
+    var st = L.sections[sec.id];
+    html += '<section id="'+sec.id+'">'+
+      '<div class="sec-head"><span class="s">'+st.s+'</span>'+
+      '<div class="t">'+st.t+'</div>'+
+      '<div class="rule"><span class="dot"></span></div></div>';
+
+    sec.items.forEach(function(it){
+      var name = (L.names && L.names[it.k]) || it.n;
+      if(sec.id==="desserts" && it.img){
+        html += '<div class="dish">'+
+            '<div class="dish-txt"><span class="dish-nm">'+name+'</span>'+
+              '<span class="dish-dots"></span><span class="dish-pr">€ '+it.p+'</span></div>'+
+            '<img class="dish-ph" loading="lazy" src="drinks/'+it.img+'" alt="'+name+'" data-cap="'+name+'">'+
+          '</div>';
+      } else {
+        html += '<div class="item">'+
+            window.brandTile(it.logo, sec.id, name, it.img)+
+            '<span class="nm">'+name+'</span>'+
+            '<span class="lead-dots"></span>'+
+            '<span class="pr">€ '+it.p+'</span>'+
+          '</div>';
+      }
+    });
+    html += '</section>';
+  });
+
+  // footer
+  html += '<footer>'+
+      '<div class="fb">Antika</div>'+
+      '<div class="fs">Resto · Lounge · Bar · Event</div>'+
+      '<a class="fw" href="https://www.'+L.ui.web+'" target="_blank" rel="noopener">'+L.ui.web+'</a>'+
+    '</footer>';
+
+  document.getElementById("main").innerHTML = html;
+  wireScrollSpy();
+  wireLightbox();
+}
+
+/* lightbox — agrandir les photos de desserts */
+function wireLightbox(){
+  var lb=document.getElementById("lb"), img=document.getElementById("lbimg"), cap=document.getElementById("lbcap");
+  document.querySelectorAll(".dish-ph").forEach(function(el){
+    el.addEventListener("click", function(){
+      img.src=el.src; cap.textContent=el.getAttribute("data-cap")||""; lb.classList.add("show");
+    });
+  });
+  function close(){ lb.classList.remove("show"); img.src=""; }
+  document.getElementById("lbx").addEventListener("click", close);
+  lb.addEventListener("click", function(e){ if(e.target===lb) close(); });
+}
+
+/* language dropdown */
+var lw = document.getElementById("langWrap");
+document.getElementById("langBtn").addEventListener("click", function(e){
+  e.stopPropagation(); lw.classList.toggle("open");
+});
+document.addEventListener("click", function(){ lw.classList.remove("open"); });
+
+/* scroll-spy for category chips */
+function wireScrollSpy(){
+  var chips = [].slice.call(document.querySelectorAll(".chip"));
+  var secs = MENU.map(function(s){return document.getElementById(s.id)});
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        var id=en.target.id;
+        chips.forEach(function(c){ c.classList.toggle("active", c.getAttribute("data-sec")===id); });
+        var active=document.querySelector(".chip.active");
+        if(active) active.scrollIntoView({inline:"center",block:"nearest",behavior:"smooth"});
+      }
+    });
+  },{rootMargin:"-120px 0px -70% 0px",threshold:0});
+  secs.forEach(function(s){ if(s) obs.observe(s); });
+
+  chips.forEach(function(c){
+    c.addEventListener("click", function(e){
+      e.preventDefault();
+      var t=document.getElementById(c.getAttribute("data-sec"));
+      if(t) window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-112,behavior:"smooth"});
+    });
+  });
+}
+
+/* Chargement anti-cache des données (voir menu.html) */
+(function(){
+  var v = "?v=" + Date.now();
+  function load(src){
+    return new Promise(function(res, rej){
+      var s = document.createElement("script");
+      s.src = src + v; s.onload = res; s.onerror = rej;
+      document.head.appendChild(s);
+    });
+  }
+  load("desserts-data.js").then(function(){
+    MENU = (window.DESSERTS && DESSERTS.sections) || [];
+    render(getLang());
+  });
+})();
+</script>
+</body>
+</html>

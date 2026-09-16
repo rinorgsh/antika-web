@@ -25,6 +25,6 @@ class CarteRestaurant extends MenuBoardPage
 
     public function previewUrl(): ?string
     {
-        return rtrim(config('antika.menu_url'), '/').'/';
+        return url('/carte').'/';
     }
 }

@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Boissons — Antika</title>
+<meta name="theme-color" content="#ffffff">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff;
+    --ink:#161512;
+    --muted:#7a7268;
+    --faint:#a9a196;
+    --line:#ece8e1;
+    --line-strong:#ddd7cc;
+    --gold:#b08324;
+    --gold-soft:#c9a24a;
+    --serif:"Cormorant Garamond",Georgia,serif;
+    --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:calc(40px + env(safe-area-inset-bottom));
+  }
+  img{display:block;max-width:100%}
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;top:0;z-index:30;
+    background:rgba(255,255,255,.92);
+    backdrop-filter:saturate(180%) blur(12px);
+    -webkit-backdrop-filter:saturate(180%) blur(12px);
+    border-bottom:1px solid var(--line);
+    padding-top:env(safe-area-inset-top);
+  }
+  .bar{
+    max-width:680px;margin:0 auto;
+    display:flex;align-items:center;justify-content:space-between;
+    gap:12px;padding:11px 16px;
+  }
+  .back{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:38px;height:38px;border-radius:11px;
+    border:1px solid var(--line-strong);
+    color:var(--ink);text-decoration:none;flex:0 0 auto;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .back:active{background:#f6f3ee}
+  .brand{text-align:center;line-height:1;flex:1 1 auto;overflow:hidden}
+  .brand .name{
+    font-family:var(--serif);font-weight:600;
+    font-size:25px;letter-spacing:.02em;
+  }
+  .brand .sub{
+    font-size:9.5px;letter-spacing:.34em;text-transform:uppercase;
+    color:var(--muted);margin-top:2px;
+  }
+  .lang-wrap{position:relative;flex:0 0 auto}
+  .lang-btn{
+    display:inline-flex;align-items:center;gap:7px;
+    height:38px;padding:0 12px;border-radius:11px;
+    border:1px solid var(--line-strong);background:#fff;
+    font-family:var(--sans);font-size:13px;font-weight:600;color:var(--ink);
+    cursor:pointer;-webkit-tap-highlight-color:transparent;
+  }
+  .lang-btn .fl{font-size:16px;line-height:1}
+  .lang-btn .ca{color:var(--faint);font-size:10px;transition:transform .2s}
+  .lang-wrap.open .lang-btn .ca{transform:rotate(180deg)}
+  .lang-menu{
+    position:absolute;right:0;top:46px;min-width:172px;
+    background:#fff;border:1px solid var(--line-strong);border-radius:14px;
+    box-shadow:0 18px 44px rgba(30,24,10,.16);
+    padding:6px;opacity:0;visibility:hidden;transform:translateY(-6px);
+    transition:opacity .16s ease,transform .16s ease,visibility .16s;
+  }
+  .lang-wrap.open .lang-menu{opacity:1;visibility:visible;transform:none}
+  .lang-menu a{
+    display:flex;align-items:center;gap:11px;
+    padding:10px 12px;border-radius:9px;
+    text-decoration:none;color:var(--ink);font-size:15px;font-weight:500;
+  }
+  .lang-menu a .fl{font-size:19px}
+  .lang-menu a:active{background:#f6f3ee}
+  .lang-menu a.on{color:var(--gold);font-weight:600}
+  .lang-menu a.on::after{content:"✓";margin-left:auto;color:var(--gold);font-size:13px}
+
+  /* ---------- Category nav ---------- */
+  .cats{
+    position:sticky;top:calc(61px + env(safe-area-inset-top));z-index:20;
+    background:rgba(255,255,255,.92);
+    backdrop-filter:saturate(180%) blur(12px);
+    -webkit-backdrop-filter:saturate(180%) blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .cats-inner{
+    max-width:680px;margin:0 auto;
+    display:flex;gap:8px;overflow-x:auto;
+    padding:10px 16px;scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+  }
+  .cats-inner::-webkit-scrollbar{display:none}
+  .chip{
+    flex:0 0 auto;white-space:nowrap;
+    padding:8px 15px;border-radius:999px;
+    border:1px solid var(--line-strong);background:#fff;
+    font-size:13px;font-weight:500;color:var(--muted);
+    text-decoration:none;-webkit-tap-highlight-color:transparent;
+    transition:all .18s ease;cursor:pointer;
+  }
+  .chip.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+  /* ---------- Content ---------- */
+  main{max-width:680px;margin:0 auto;padding:0 16px}
+
+  .hero{text-align:center;padding:30px 6px 10px}
+  .hero .logo{width:110px;margin:0 auto 16px;opacity:.96}
+  .hero .lead{
+    font-family:var(--serif);font-style:italic;font-size:23px;
+    color:var(--ink);line-height:1.35;
+  }
+  .hero .lead .al{display:block;font-style:italic;font-size:20px;color:var(--gold);letter-spacing:.01em;margin-top:2px}
+
+  section{padding-top:30px;scroll-margin-top:118px}
+  .sec-head{text-align:center;margin-bottom:14px}
+  .sec-head .t{
+    font-family:var(--serif);font-weight:600;font-size:30px;
+    letter-spacing:.01em;position:relative;display:inline-block;padding:0 2px;
+  }
+  .sec-head .s{
+    display:block;font-family:var(--sans);
+    font-size:10.5px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--gold);margin-bottom:9px;
+  }
+  .rule{
+    display:flex;align-items:center;justify-content:center;gap:10px;margin-top:11px;
+  }
+  .rule::before,.rule::after{content:"";height:1px;width:38px;background:var(--line-strong)}
+  .rule .dot{width:5px;height:5px;border-radius:50%;background:var(--gold-soft)}
+
+  .subhead{
+    font-family:var(--serif);font-weight:600;font-size:17px;
+    color:var(--gold);letter-spacing:.01em;
+    margin:20px 0 2px;padding-bottom:6px;border-bottom:1px solid var(--line);
+  }
+  .subhead:first-child{margin-top:4px}
+
+  .ic-tile{
+    flex:0 0 auto;width:54px;height:54px;border-radius:14px;
+    display:inline-flex;align-items:center;justify-content:center;
+    color:var(--gold);background:#faf6ec;border:1px solid #efe3c8;overflow:hidden;
+  }
+  .ic-tile svg{width:24px;height:24px}
+  .ic-tile.logo{background:#fff;padding:5px}
+  .ic-tile.logo img{width:100%;height:100%;object-fit:contain}
+  .ic-tile.photo{background:#fff;padding:0}
+  .ic-tile.photo img{width:100%;height:100%;object-fit:contain}
+  .item{
+    display:flex;gap:12px;align-items:center;
+    padding:12px 0;border-bottom:1px solid var(--line);
+  }
+  .item.block{flex-direction:column;align-items:stretch;gap:0}
+  .item:last-child{border-bottom:0}
+  .itop{display:flex;gap:12px;align-items:center;width:100%}
+  .item .nm{
+    font-family:var(--serif);font-weight:600;font-size:20px;line-height:1.2;
+    letter-spacing:.01em;color:var(--ink);flex:0 1 auto;
+  }
+  a.nmlink{
+    text-decoration:none;color:var(--ink);
+    -webkit-tap-highlight-color:transparent;
+  }
+  a.nmlink .extico{
+    width:13px;height:13px;margin-left:5px;
+    color:var(--gold);vertical-align:baseline;position:relative;top:1px;
+  }
+  a.nmlink:active{color:var(--gold)}
+  .zero{
+    flex:0 0 auto;font-size:10px;font-weight:700;letter-spacing:.02em;
+    color:var(--gold);background:#faf5ea;border:1px solid #efe3c8;
+    padding:2px 7px;border-radius:999px;
+  }
+  .item .lead-dots{
+    flex:1 1 auto;border-bottom:1px dotted var(--line-strong);
+    transform:translateY(-3px);min-width:14px;
+  }
+  .item .pr{
+    font-family:var(--serif);font-weight:600;font-size:19px;
+    color:var(--gold);white-space:nowrap;flex:0 0 auto;
+  }
+  .item .desc{font-size:13px;color:var(--muted);margin-top:5px;line-height:1.5;max-width:52ch;margin-left:52px}
+  .vars{display:flex;flex-wrap:wrap;gap:6px 22px;margin-top:9px;margin-left:52px}
+  .vars .v{display:inline-flex;align-items:baseline;gap:8px}
+  .vars .vl{font-size:12.5px;color:var(--muted)}
+  .vars .vp{font-family:var(--serif);font-weight:600;font-size:17px;color:var(--gold)}
+
+  footer{
+    text-align:center;margin-top:44px;padding-top:26px;
+    border-top:1px solid var(--line);
+  }
+  footer .fb{font-family:var(--serif);font-size:26px;font-weight:600}
+  footer .fs{font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+  footer .fw{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-top:16px;text-decoration:none;display:inline-block}
+
+  @media (min-width:560px){
+    .item .nm{font-size:22px}
+    .hero .lead{font-size:26px}
+  }
+  /* ---------- Rappel « Nourriture » en bas de la carte boissons ---------- */
+  .foodblock .fb-top{margin-top:48px;padding-top:38px;border-top:1px solid var(--line-strong)}
+  .foodblock .chef{
+    margin:20px 0 6px;border:1px solid var(--line-strong);border-radius:20px;overflow:hidden;
+    background:linear-gradient(180deg,#fffdf7,#ffffff);box-shadow:0 12px 34px rgba(40,30,10,.09);
+  }
+  .foodblock .chef-ph{width:100%;height:212px;object-fit:cover;display:block}
+  .foodblock .chef-body{padding:18px 18px 20px}
+  .foodblock .chef-eyebrow{
+    font-size:10.5px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--gold);display:flex;align-items:center;gap:7px;
+  }
+  .foodblock .chef-eyebrow::before{content:"★";font-size:12px;line-height:1}
+  .foodblock .chef-titlerow{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:7px 0 9px}
+  .foodblock .chef-title{font-family:var(--serif);font-weight:600;font-size:30px;line-height:1.1}
+  .foodblock .chef-price{font-family:var(--serif);font-weight:600;font-size:27px;color:var(--gold);white-space:nowrap}
+  .foodblock .chef-desc{font-size:14px;color:var(--muted);line-height:1.55}
+  .foodblock .chef-plabel{font-size:12px;font-weight:600;letter-spacing:.02em;color:var(--ink);margin:15px 0 9px}
+  .foodblock .chef-preps{list-style:none;display:flex;flex-direction:column;gap:9px}
+  .foodblock .chef-preps li{font-size:13.5px;color:var(--ink);line-height:1.45;padding-left:16px;position:relative}
+  .foodblock .chef-preps li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:var(--gold-soft)}
+  .foodblock .chef-preps b{font-family:var(--serif);font-weight:600;font-size:15px;color:var(--gold)}
+  .foodblock .item{
+    display:flex;gap:14px;align-items:flex-start;
+    padding:16px 0;border-bottom:1px solid var(--line);
+  }
+  .foodblock .item:last-child{border-bottom:0}
+  .foodblock .item .txt{flex:1 1 auto;min-width:0}
+  .foodblock .item .row1{display:flex;align-items:baseline;gap:8px}
+  .foodblock .item .nm{
+    font-family:var(--serif);font-weight:600;font-size:20px;line-height:1.2;
+    letter-spacing:.01em;color:var(--ink);
+  }
+  .foodblock .item .lead-dots{
+    flex:1 1 auto;border-bottom:1px dotted var(--line-strong);
+    transform:translateY(-3px);min-width:14px;
+  }
+  .foodblock .item .pr{
+    font-family:var(--serif);font-weight:600;font-size:19px;
+    color:var(--gold);white-space:nowrap;flex:0 0 auto;
+  }
+  .foodblock .item .pr small{font-size:11px;font-weight:500;color:var(--muted);font-family:var(--sans);letter-spacing:.02em}
+  .foodblock .item .desc{font-size:13px;color:var(--muted);margin-top:5px;line-height:1.5;max-width:44ch}
+  .foodblock .badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+  .foodblock .badge{
+    font-size:10.5px;font-weight:600;letter-spacing:.03em;
+    color:var(--gold);background:#faf5ea;border:1px solid #efe3c8;
+    padding:3px 9px;border-radius:999px;
+  }
+  .foodblock .badge.day{color:#8a5a1e;background:#fbf1e4;border-color:#f0dcc2}
+  .foodblock .item .ph{
+    flex:0 0 auto;width:92px;height:92px;border-radius:14px;
+    object-fit:cover;background:#f3efe8;box-shadow:0 4px 14px rgba(40,30,10,.10);
+  }
+  .foodblock .item.nophoto .ph{display:none}
+  .foodblock .foot-note{
+    font-size:12px;color:var(--muted);line-height:1.6;
+    background:#faf8f3;border:1px solid var(--line);border-radius:14px;
+    padding:13px 15px;margin-top:16px;
+  }
+  .foodblock .foot-note b{color:var(--ink);font-weight:600}
+  @media (min-width:560px){
+    .foodblock .chef{display:flex;align-items:stretch}
+    .foodblock .chef-ph{width:44%;height:auto;min-height:236px}
+    .foodblock .chef-body{flex:1 1 auto;padding:24px 26px;align-self:center}
+    .foodblock .chef-title{font-size:34px}
+    .foodblock .item .ph{width:104px;height:104px}
+    .foodblock .item .nm{font-size:22px}
+  }
+</style>
+<!-- Mode événement : bascule vers le PDF de l'événement si config.json l'active.
+     Chargé tôt pour qu'un client arrivant par un favori ou le bouton retour
+     ne reste pas sur la carte normale (voir event-check.js). -->
+<script src="event-check.js"></script>
+</head>
+<body>
+
+<header>
+  <div class="bar">
+    <a class="back" id="back" href="carte.html" aria-label="Retour">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    </a>
+    <div class="brand">
+      <div class="name">Antika</div>
+      <div class="sub">Molenveld</div>
+    </div>
+    <div class="lang-wrap" id="langWrap">
+      <button class="lang-btn" id="langBtn" aria-haspopup="true">
+        <span class="fl" id="langFlag">🇫🇷</span>
+        <span id="langCode">FR</span>
+        <span class="ca">▾</span>
+      </button>
+      <div class="lang-menu" id="langMenu"></div>
+    </div>
+  </div>
+  <div class="cats">
+    <div class="cats-inner" id="cats"></div>
+  </div>
+</header>
+
+<main id="main"></main>
+
+<script src="icons.js"></script>
+<script>
+/* ============================================================
+   CARTE DES BOISSONS — moteur de rendu
+   Données : boisson-data.js + desserts-data.js (digestif, boissons chaudes)
+   ============================================================ */
+
+var LANGS = [
+  {code:"nl", flag:"🇳🇱", label:"Nederlands"},
+  {code:"fr", flag:"🇫🇷", label:"Français"},
+  {code:"en", flag:"🇬🇧", label:"English"},
+  {code:"al", flag:"🇦🇱", label:"Shqip"}
+];
+
+var B, DZ, FOOD;  /* remplis après chargement anti-cache des données */
+
+/* Titre du rappel Nourriture en bas de la carte boissons */
+var FOOD_HEAD = {
+  fr:{s:"À table", t:"Notre carte Nourriture"},
+  nl:{s:"Aan tafel", t:"Onze gerechten"},
+  en:{s:"Let's eat", t:"Our Food Menu"},
+  al:{s:"Në tryezë", t:"Menuja jonë"}
+};
+
+/* Construit le rappel Nourriture (suggestion du chef + cartes plats),
+   même rendu que la page nourriture, dans un conteneur isolé .foodblock */
+function foodBlockHtml(lang){
+  if(!FOOD) return "";
+  var FL = FOOD.i18n[lang] || FOOD.i18n.fr;
+  var cf = FOOD.chef[lang] || FOOD.chef.fr;
+  var fh = FOOD_HEAD[lang] || FOOD_HEAD.fr;
+
+  var h = '<div class="foodblock">'+
+    '<div class="sec-head fb-top"><span class="s">'+fh.s+'</span>'+
+      '<div class="t">'+fh.t+'</div><div class="rule"><span class="dot"></span></div></div>';
+
+  // Suggestion du chef (seulement si active)
+  if(FOOD.chef && FOOD.chef.active !== false){
+    h += '<div class="chef">'+
+        '<img class="chef-ph" loading="lazy" src="'+FOOD.chef.img+'" alt="'+cf.title+'">'+
+        '<div class="chef-body">'+
+          '<div class="chef-eyebrow">'+cf.eyebrow+'</div>'+
+          '<div class="chef-titlerow"><div class="chef-title">'+cf.title+'</div>'+
+            '<div class="chef-price">'+FOOD.chef.price+' €</div></div>'+
+          '<div class="chef-desc">'+cf.desc+'</div>'+
+          '<div class="chef-plabel">'+cf.plabel+'</div>'+
+          '<ul class="chef-preps">'+cf.preps.map(function(p){
+            return '<li><b>'+p[0]+'</b> — '+p[1]+'</li>';
+          }).join("")+'</ul>'+
+        '</div>'+
+      '</div>';
+  }
+
+  // Sections nourriture
+  FOOD.menu.forEach(function(sec){
+    var st = FL.sections[sec.id];
+    h += '<section id="'+sec.id+'"><div class="sec-head"><span class="s">'+st.s+'</span>'+
+      '<div class="t">'+st.t+'</div><div class="rule"><span class="dot"></span></div></div>';
+    sec.items.forEach(function(it){
+      var t = FL.items[it.k] || {n:it.k, d:""};
+      var priceExtra = it.pp ? ' <small>'+FL.ui.perPers+'</small>' : '';
+      var badges = "";
+      if(it.tags){
+        badges = '<div class="badges">'+it.tags.map(function(tg){
+          if(tg==="min2") return '<span class="badge">'+FL.ui.min2+'</span>';
+          if(tg==="sundayonly") return '<span class="badge day">'+FL.ui.sundayonly+'</span>';
+          return "";
+        }).join("")+'</div>';
+      }
+      var img = it.ph ? '<img class="ph" loading="lazy" src="photos/'+it.ph+'.jpg" alt="'+t.n+'">' : '';
+      h += '<div class="item'+(it.ph?"":" nophoto")+'"><div class="txt">'+
+          '<div class="row1"><span class="nm">'+t.n+'</span><span class="lead-dots"></span>'+
+            '<span class="pr">€ '+it.p+priceExtra+'</span></div>'+
+          (t.d?'<div class="desc">'+t.d+'</div>':'')+badges+
+        '</div>'+img+'</div>';
+    });
+    if(sec.note && FL.notes[sec.id]){
+      h += '<div class="foot-note">'+FL.notes[sec.id]+'</div>';
+    }
+    h += '</section>';
+  });
+
+  return h + '</div>';
+}
+
+function getLang(){
+  var p = new URLSearchParams(location.search).get("lang");
+  if(p && B.i18n[p]) return p;
+  return "fr";
+}
+
+/* rend un item ; L = jeu de traductions {names,desc,labels,subs} ; secId pour l'icône */
+function renderItem(it, L, secId){
+  if(it.sub){
+    return '<div class="subhead">'+((L.subs && L.subs[it.sub]) || it.sub)+'</div>';
+  }
+  var name = (L.names && L.names[it.k]) || it.n || it.k;
+  var tile = window.brandTile(it.logo, secId, name, it.img);
+  var zero = it.z ? '<span class="zero">0%</span>' : '';
+  var descTxt = (it.d && L.desc && L.desc[it.k]) ? L.desc[it.k] : '';
+  var extArrow = '<svg class="extico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>';
+  var nameHtml = it.link
+    ? '<a class="nm nmlink" href="'+it.link+'" target="_blank" rel="noopener">'+name+extArrow+'</a>'
+    : '<span class="nm">'+name+'</span>';
+
+  if(it.variants){
+    var vars = it.variants.map(function(v){
+      var lbl = (L.labels && L.labels[v[0]]) || v[0];
+      return '<span class="v"><span class="vl">'+lbl+'</span><span class="vp">€ '+v[1]+'</span></span>';
+    }).join("");
+    return '<div class="item block">'+
+        '<div class="itop">'+tile+nameHtml+zero+'</div>'+
+        '<div class="vars">'+vars+'</div>'+
+      '</div>';
+  }
+  if(descTxt){
+    return '<div class="item block">'+
+        '<div class="itop">'+tile+nameHtml+zero+
+          '<span class="lead-dots"></span><span class="pr">€ '+it.p+'</span></div>'+
+        '<div class="desc">'+descTxt+'</div>'+
+      '</div>';
+  }
+  return '<div class="item">'+tile+nameHtml+zero+
+      '<span class="lead-dots"></span><span class="pr">€ '+it.p+'</span>'+
+    '</div>';
+}
+
+function sectionHtml(id, head, items, L){
+  var h = '<section id="'+id+'">'+
+    '<div class="sec-head"><span class="s">'+head.s+'</span>'+
+    '<div class="t">'+head.t+'</div>'+
+    '<div class="rule"><span class="dot"></span></div></div>';
+  items.forEach(function(it){ h += renderItem(it, L, id); });
+  return h + '</section>';
+}
+
+function render(lang){
+  var L = B.i18n[lang] || B.i18n.fr;
+  document.documentElement.lang = lang;
+  document.getElementById("back").setAttribute("href", "carte.html?lang="+lang);
+
+  var cur = LANGS.filter(function(x){return x.code===lang})[0] || LANGS[1];
+  document.getElementById("langFlag").textContent = cur.flag;
+  document.getElementById("langCode").textContent = cur.code.toUpperCase();
+  document.getElementById("langMenu").innerHTML = LANGS.map(function(x){
+    return '<a class="'+(x.code===lang?"on":"")+'" href="?lang='+x.code+'"><span class="fl">'+x.flag+'</span>'+x.label+'</a>';
+  }).join("");
+
+  // sections partagées (digestif, boissons chaudes) depuis desserts-data.js
+  var DL = DZ ? (DZ.i18n[lang] || DZ.i18n.fr) : null;
+  var tail = [];
+  if(DZ){
+    B.sharedTail.forEach(function(id){
+      var sec = DZ.sections.filter(function(s){return s.id===id})[0];
+      if(sec) tail.push({sec:sec, head:DL.sections[id]});
+    });
+  }
+
+  // chips
+  var chips = B.sections.map(function(sec){
+    return '<a class="chip" data-sec="'+sec.id+'" href="#'+sec.id+'">'+L.sections[sec.id].t+'</a>';
+  }).join("");
+  chips += tail.map(function(x){
+    return '<a class="chip" data-sec="'+x.sec.id+'" href="#'+x.sec.id+'">'+x.head.t+'</a>';
+  }).join("");
+  if(FOOD){
+    var FLc = FOOD.i18n[lang] || FOOD.i18n.fr;
+    chips += FOOD.menu.map(function(sec){
+      return '<a class="chip" data-sec="'+sec.id+'" href="#'+sec.id+'">'+FLc.sections[sec.id].t+'</a>';
+    }).join("");
+  }
+  document.getElementById("cats").innerHTML = chips;
+
+  // hero
+  var html = '<div class="hero">'+
+      '<img class="logo" src="logo-antika.png" alt="Antika">'+
+      '<div class="lead">'+L.hero.lead+'<span class="al">'+L.hero.al+'</span></div>'+
+    '</div>';
+
+  // sections boissons
+  B.sections.forEach(function(sec){
+    html += sectionHtml(sec.id, L.sections[sec.id], sec.items, L);
+  });
+
+  // sections partagées (digestif + boissons chaudes) ; noms via DL
+  tail.forEach(function(x){
+    html += sectionHtml(x.sec.id, x.head, x.sec.items, DL);
+  });
+
+  // rappel Nourriture + suggestion du chef (éviter de revenir en arrière)
+  html += foodBlockHtml(lang);
+
+  // footer
+  html += '<footer>'+
+      '<div class="fb">Antika</div>'+
+      '<div class="fs">Resto · Lounge · Bar · Event</div>'+
+      '<a class="fw" href="https://www.'+L.web+'" target="_blank" rel="noopener">'+L.web+'</a>'+
+    '</footer>';
+
+  document.getElementById("main").innerHTML = html;
+  wireScrollSpy();
+}
+
+/* language dropdown */
+var lw = document.getElementById("langWrap");
+document.getElementById("langBtn").addEventListener("click", function(e){
+  e.stopPropagation(); lw.classList.toggle("open");
+});
+document.addEventListener("click", function(){ lw.classList.remove("open"); });
+
+/* scroll-spy */
+function wireScrollSpy(){
+  var chips = [].slice.call(document.querySelectorAll(".chip"));
+  var secs = [].slice.call(document.querySelectorAll("section"));
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        var id=en.target.id;
+        chips.forEach(function(c){ c.classList.toggle("active", c.getAttribute("data-sec")===id); });
+        var active=document.querySelector(".chip.active");
+        if(active) active.scrollIntoView({inline:"center",block:"nearest",behavior:"smooth"});
+      }
+    });
+  },{rootMargin:"-120px 0px -70% 0px",threshold:0});
+  secs.forEach(function(s){ if(s) obs.observe(s); });
+
+  chips.forEach(function(c){
+    c.addEventListener("click", function(e){
+      e.preventDefault();
+      var t=document.getElementById(c.getAttribute("data-sec"));
+      if(t) window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-112,behavior:"smooth"});
+    });
+  });
+}
+
+/* Chargement anti-cache des données (voir menu.html) */
+(function(){
+  var v = "?v=" + Date.now();
+  function load(src){
+    return new Promise(function(res, rej){
+      var s = document.createElement("script");
+      s.src = src + v; s.onload = res; s.onerror = rej;
+      document.head.appendChild(s);
+    });
+  }
+  Promise.all([load("boisson-data.js"), load("desserts-data.js"), load("food-data.js")]).then(function(){
+    B = window.BOISSON; DZ = window.DESSERTS; FOOD = window.FOOD;
+    render(getLang());
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<script>
+/* Ouvert en /carte (sans barre finale), les liens relatifs (carte.html,
+   photos/…) partiraient de la racine du site : on remet la barre. */
+if (!/\/$/.test(location.pathname) && !/\.html$/.test(location.pathname)) {
+  location.replace(location.pathname + '/' + location.search + location.hash);
+}
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Menu — Antika</title>
+<meta name="theme-color" content="#0d0d0d">
+<style>
+  :root{
+    --bg:#0d0d0d;
+    --card:#161616;
+    --line:rgba(255,255,255,.12);
+    --ink:#f3efe7;
+    --muted:#9a938a;
+    --gold:#c9a24a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    min-height:100dvh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:32px 24px calc(32px + env(safe-area-inset-bottom));
+    text-align:center;
+  }
+  .logo{
+    width:min(240px,66vw);
+    height:auto;
+    margin-bottom:30px;
+  }
+  .groups{
+    width:100%;
+    max-width:340px;
+    display:flex;
+    flex-direction:column;
+    gap:28px;
+  }
+  .group-label{
+    font-size:12px;
+    font-weight:500;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:12px;
+  }
+  .pick{
+    font-size:12px;
+    font-weight:500;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:20px;
+  }
+  .langs{
+    width:100%;
+    max-width:340px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .lang{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    width:100%;
+    padding:18px 20px;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    color:var(--ink);
+    font-size:18px;
+    font-weight:500;
+    letter-spacing:.02em;
+    text-decoration:none;
+    -webkit-tap-highlight-color:transparent;
+    transition:border-color .2s ease, background .2s ease, transform .05s ease;
+  }
+  .lang:active{transform:scale(.98)}
+  .lang:hover{border-color:var(--gold);background:#1c1c1c}
+  .lang .flag{font-size:22px;line-height:1}
+  .lang .code{
+    margin-left:auto;
+    font-size:12px;
+    letter-spacing:.14em;
+    color:var(--muted);
+    text-transform:uppercase;
+  }
+  .lang--drinks{
+    margin-bottom:10px;
+    font-size:15px;
+    border-color:rgba(201,162,74,.45);
+  }
+  .lang--drinks .ic{color:var(--gold);flex:0 0 auto}
+  footer{
+    margin-top:40px;
+    font-size:12px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:#5a554e;
+  }
+  /* écran d'attente pendant la lecture de la config / redirection événement */
+  #loading{
+    position:fixed;inset:0;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--bg);
+    color:var(--muted);
+    font-size:13px;letter-spacing:.2em;text-transform:uppercase;
+    z-index:10;
+  }
+  .hidden{display:none !important}
+</style>
+</head>
+<body>
+  <div id="loading">Chargement…</div>
+
+  <img class="logo" src="logo-antika-white.png" alt="Antika">
+
+  <div class="pick">Taal · Langue · Language · Gjuha</div>
+
+  <nav class="langs">
+    <a class="lang" href="carte.html?lang=nl"><span class="flag">🇳🇱</span> Nederlands</a>
+    <a class="lang" href="carte.html?lang=fr"><span class="flag">🇫🇷</span> Français</a>
+    <a class="lang" href="carte.html?lang=en"><span class="flag">🇬🇧</span> English</a>
+    <a class="lang" href="carte.html?lang=al"><span class="flag">🇦🇱</span> Shqip</a>
+  </nav>
+
+  <footer>Antika</footer>
+
+<!-- Mode événement : logique partagée par les cinq pages (voir event-check.js).
+     Ici en fin de page car elle masque aussi l'écran « Chargement… ». -->
+<script src="event-check.js"></script>
+</body>
+</html>

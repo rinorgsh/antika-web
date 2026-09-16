@@ -82,6 +82,21 @@
         <!-- Données structurées Restaurant -->
         <script type="application/ld+json">@json($jsonLd, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE)</script>
 
+        {{-- Google Analytics 4 / Google Ads : chargé seulement si configuré. Consentement refusé par défaut (RGPD). --}}
+        @php($tracking = $site['tracking'] ?? [])
+        @if(!empty($tracking['ga4_id']) || !empty($tracking['ads_id']))
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('consent', 'default', {ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', wait_for_update: 500});
+                try { if (localStorage.getItem('antika_consent') === 'granted') { gtag('consent', 'update', {ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted', analytics_storage: 'granted'}); } } catch (e) {}
+                gtag('js', new Date());
+                @if(!empty($tracking['ga4_id'])) gtag('config', @json($tracking['ga4_id']), {send_page_view: false}); @endif
+                @if(!empty($tracking['ads_id'])) gtag('config', @json($tracking['ads_id'])); @endif
+            </script>
+            <script async src="https://www.googletagmanager.com/gtag/js?id={{ $tracking['ga4_id'] ?: $tracking['ads_id'] }}"></script>
+        @endif
+
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600|playfair-display:400,500,600,700&display=swap" rel="stylesheet" />
@@ -99,6 +114,10 @@
         <div
             class="zc-widget-config"
             data-restaurant="378407"
-            data-open="2000"></div>
+            @if(! \Illuminate\Support\Str::startsWith($page['component'], ['Simulator/', 'EventLanding']))
+            {{-- Ouverture automatique, sauf sur le devis événement et les pages d'annonces (elle masquerait le formulaire). --}}
+            data-open="2000"
+            @endif
+            ></div>
     </body>
 </html>

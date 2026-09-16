@@ -2,6 +2,7 @@
 import { Link, usePage } from '@inertiajs/vue3';
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import LanguageSwitcher from '@/Components/LanguageSwitcher.vue';
+import CookieConsent from '@/Components/CookieConsent.vue';
 
 const page = usePage();
 const site = computed(() => page.props.site);
@@ -17,10 +18,15 @@ const navLinks = computed(() => [
     { label: 'nav.home', href: '/' },
     { label: 'nav.menu', href: '/menu' },
     { label: 'nav.events_short', href: '/events' },
+    { label: 'nav.quote_short', href: '/events/simulator' },
     { label: 'nav.contact', href: '/contact' },
 ]);
 
-const isActive = (href) => page.url === href || (href !== '/' && page.url.startsWith(href));
+const isActive = (href) => {
+    const path = page.url.split('?')[0];
+    if (href === '/events') return path === '/events' || (path.startsWith('/events/') && !path.startsWith('/events/simulator'));
+    return path === href || (href !== '/' && path.startsWith(href));
+};
 </script>
 
 <template>
@@ -127,6 +133,8 @@ const isActive = (href) => page.url === href || (href !== '/' && page.url.starts
                 © {{ new Date().getFullYear() }} Antika Restaurant — {{ $t('footer.rights') }}
             </div>
         </footer>
+
+        <CookieConsent />
     </div>
 </template>
 

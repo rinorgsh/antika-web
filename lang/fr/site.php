@@ -16,6 +16,7 @@ return [
         'contact' => 'Contact',
         'reserve' => 'Réserver une table',
         'quote' => 'Calculer mon devis',
+        'quote_short' => 'Devis',
     ],
 
     'hero' => [
@@ -130,5 +131,11 @@ return [
         'contact_title' => 'Contact',
         'hours_title' => 'Heures d\'ouverture',
         'rights' => 'Tous droits réservés.',
+    ],
+
+    'cookies' => [
+        'text' => 'Nous utilisons des cookies pour mesurer la fréquentation du site et l\'efficacité de nos annonces. Vous pouvez les accepter ou les refuser.',
+        'refuse' => 'Refuser',
+        'accept' => 'Accepter',
     ],
 ];

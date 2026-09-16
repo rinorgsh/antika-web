@@ -13,9 +13,6 @@ return [
     // URL publique du site (canonical, Open Graph, sitemap). À adapter au domaine réel.
     'url' => rtrim(env('ANTIKA_SITE_URL', 'https://antikaresto.com'), '/'),
 
-    // Menu QR publié (GitHub Pages) — sert à l'aperçu de la soirée événement.
-    'menu_url' => rtrim(env('ANTIKA_MENU_URL', 'https://menu.antika-resto.ovh/menu.pdf'), '/'),
-
     // Données SEO / référencement.
     'seo' => [
         'cuisine' => ['Albanian', 'Mediterranean', 'Seafood'],
@@ -33,12 +30,13 @@ return [
 
     'links' => [
         // À remplacer par les URLs réelles fournies par le client.
-        // Carte interactive multilingue (photos, boissons, desserts) — la même que le QR au resto.
-        'menu' => rtrim(env('ANTIKA_MENU_URL', 'https://menu.antika-resto.ovh/menu.pdf'), '/'),
+        // Carte interactive multilingue (photos, boissons, desserts) — la même que le QR au resto,
+        // servie par le site lui-même (public/carte + CarteController).
+        'menu' => '/carte',
         'reserve' => env('ANTIKA_RESERVE_URL', 'https://bookings.zenchef.com/'),
         'takeaway' => env('ANTIKA_TAKEAWAY_URL', 'https://www.takeaway.com/'),
         // Simulateur de devis location de salle / événements (plateforme Baba Events).
-        'simulator' => env('ANTIKA_SIMULATOR_URL', 'https://baba-event.on-forge.com/simulateur'),
+        'simulator' => '/events/simulator',
         'maps' => 'https://maps.app.goo.gl/h4vQLeVi1iGkpzSV7',
     ],
 
@@ -47,15 +45,27 @@ return [
         'facebook' => env('ANTIKA_FACEBOOK_URL', ''),
     ],
 
-    // Publication de la carte QR : commit des fichiers de données régénérés
-    // dans le repo GitHub Pages (menu.antika-resto.ovh).
-    'github' => [
-        'token' => env('ANTIKA_GITHUB_TOKEN', ''),
-        'owner' => env('ANTIKA_GITHUB_OWNER', 'antika-resto'),
-        'repo' => env('ANTIKA_GITHUB_REPO', 'menu'),
-        'branch' => env('ANTIKA_GITHUB_BRANCH', 'main'),
-        // Dossier des fichiers de la carte dans le repo.
-        'base_path' => env('ANTIKA_GITHUB_BASE_PATH', 'menu.pdf'),
+    // Simulateur de devis événements (/events/simulator).
+    'events' => [
+        // Reçoivent chaque nouvelle demande, en plus des adresses saisies dans l'admin.
+        'notify_emails' => env('ANTIKA_EVENTS_NOTIFY', 'antika.info1982@gmail.com,molenveld.village@gmail.com'),
+    ],
+
+    // Pages d'atterrissage par occasion (/events/{clé}) => slug du type
+    // d'événement présélectionné dans le simulateur. Textes : lang/*/landing.php.
+    'landings' => [
+        'wedding' => 'mariage',
+        'birthday' => 'anniversaire',
+        'communion' => 'communion',
+        'corporate' => 'evenement-entreprise',
+    ],
+
+    // Suivi Google (Analytics 4 + Google Ads). Vide = aucun script chargé.
+    'tracking' => [
+        'ga4_id' => env('ANTIKA_GA4_ID', ''),                  // G-XXXXXXXXXX
+        'ads_id' => env('ANTIKA_GADS_ID', ''),                 // AW-XXXXXXXXXX
+        'ads_quote_label' => env('ANTIKA_GADS_QUOTE_LABEL', ''), // libellé de conversion « demande de devis »
+        'ads_call_label' => env('ANTIKA_GADS_CALL_LABEL', ''),   // libellé de conversion « clic sur le téléphone »
     ],
 
     // Images du carrousel d'accueil (défilement automatique).

@@ -41,7 +41,9 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => rtrim(env('APP_URL', 'http://localhost'), '/').'/storage',
+            // Servi par la route /media (pas besoin de php artisan storage:link).
+            // Adresse relative : fonctionne quel que soit le domaine (antikaresto.com, on-forge…).
+            'url' => '/media',
             'visibility' => 'public',
             'throw' => false,
             'report' => false,

@@ -97,7 +97,7 @@ abstract class MenuBoardPage extends Page
         if (! $photo) {
             return null;
         }
-        $base = rtrim(config('antika.menu_url', 'https://menu.antika-resto.ovh/menu.pdf'), '/');
+        $base = url('/carte');
 
         return str_contains($photo, '/')
             ? "{$base}/{$photo}"
@@ -189,23 +189,18 @@ abstract class MenuBoardPage extends Page
         $actions[] = Action::make('publish')
             ->label('Publier la carte')
             ->icon('heroicon-o-rocket-launch')
-            ->color('success')
+            ->color('primary')
             ->requiresConfirmation()
             ->modalHeading('Publier la carte en ligne ?')
-            ->modalDescription('Les changements seront visibles par les clients dans une minute environ.')
+            ->modalDescription('Les changements seront visibles par les clients immédiatement.')
             ->modalSubmitActionLabel('Oui, publier')
             ->action(function (MenuPublisher $publisher) {
-                if (! $publisher->isConfigured()) {
-                    Notification::make()->title('Publication non configurée')
-                        ->body("Le jeton GitHub n'est pas renseigné.")->warning()->send();
-
-                    return;
-                }
                 try {
                     $publisher->publish("Mise à jour de la carte depuis l'admin Antika");
-                    Notification::make()->title('Carte publiée ✓')
-                        ->body('Visible sur le menu QR dans ~1 min.')->success()->send();
+                    Notification::make()->title('Carte publiée')
+                        ->body('Visible tout de suite sur le menu QR.')->success()->send();
                 } catch (\Throwable $e) {
+                    report($e);
                     Notification::make()->title('Échec de la publication')
                         ->body($e->getMessage())->danger()->persistent()->send();
                 }

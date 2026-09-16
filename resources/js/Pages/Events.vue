@@ -1,5 +1,5 @@
 <script setup>
-import { Head, usePage } from '@inertiajs/vue3';
+import { Head, Link, usePage } from '@inertiajs/vue3';
 import { computed } from 'vue';
 import AppLayout from '@/Layouts/AppLayout.vue';
 import Eyebrow from '@/Components/Eyebrow.vue';
@@ -22,7 +22,7 @@ const ev = computed(() => page.props.translations.events);
                 <Eyebrow center>{{ ev.hero_eyebrow }}</Eyebrow>
                 <h1 class="mx-auto mt-6 max-w-3xl font-serif text-4xl leading-tight text-antika-cream sm:text-6xl">{{ ev.hero_title }}</h1>
                 <p class="mx-auto mt-6 max-w-2xl leading-relaxed text-stone-200">{{ ev.hero_text }}</p>
-                <a :href="site.links.simulator" target="_blank" rel="noopener" class="mt-9 inline-block rounded-full bg-antika-coral px-8 py-3.5 text-sm font-medium text-white transition-colors hover:bg-antika-copper">{{ ev.cta_button }}</a>
+                <Link :href="site.links.simulator" class="mt-9 inline-block rounded-full bg-antika-coral px-8 py-3.5 text-sm font-medium text-white transition-colors hover:bg-antika-copper">{{ ev.cta_button }}</Link>
             </div>
         </section>
 
@@ -87,7 +87,7 @@ const ev = computed(() => page.props.translations.events);
             <div v-reveal class="relative mx-auto max-w-3xl px-6 py-24 text-center">
                 <h2 class="font-serif text-4xl text-antika-cream sm:text-5xl">{{ ev.cta_title }}</h2>
                 <p class="mx-auto mt-5 max-w-xl leading-relaxed text-stone-300">{{ ev.cta_text }}</p>
-                <a :href="site.links.simulator" target="_blank" rel="noopener" class="mt-9 inline-block rounded-full bg-antika-coral px-9 py-4 text-sm font-semibold uppercase tracking-wide text-white transition-colors hover:bg-antika-copper">{{ ev.cta_button }}</a>
+                <Link :href="site.links.simulator" class="mt-9 inline-block rounded-full bg-antika-coral px-9 py-4 text-sm font-semibold uppercase tracking-wide text-white transition-colors hover:bg-antika-copper">{{ ev.cta_button }}</Link>
                 <p class="mt-6 text-sm text-stone-400">
                     {{ ev.cta_or }}
                     <a :href="`tel:${site.contact.phone_link}`" class="text-antika-cream hover:text-antika-copper">{{ site.contact.phone }}</a>

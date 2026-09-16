@@ -19,26 +19,17 @@ class ListMenuItems extends ListRecords
             Action::make('publish')
                 ->label('Publier la carte')
                 ->icon('heroicon-o-rocket-launch')
-                ->color('success')
+                ->color('primary')
                 ->requiresConfirmation()
                 ->modalHeading('Publier la carte en ligne ?')
-                ->modalDescription('Les modifications seront envoyées au menu QR (menu.antika-resto.ovh). Visible par les clients en une minute environ.')
+                ->modalDescription('Les modifications seront visibles immédiatement sur le menu QR.')
                 ->modalSubmitActionLabel('Oui, publier')
                 ->action(function (MenuPublisher $publisher) {
-                    if (! $publisher->isConfigured()) {
-                        Notification::make()
-                            ->title('Publication non configurée')
-                            ->body('Le jeton GitHub (ANTIKA_GITHUB_TOKEN) n\'est pas encore renseigné.')
-                            ->warning()->send();
-
-                        return;
-                    }
-
                     try {
-                        $url = $publisher->publish('Mise à jour de la carte depuis l\'admin Antika');
+                        $publisher->publish('Mise à jour de la carte depuis l\'admin Antika');
                         Notification::make()
-                            ->title('Carte publiée ✓')
-                            ->body('Les changements seront visibles sur le menu QR dans ~1 min.')
+                            ->title('Carte publiée')
+                            ->body('Visible tout de suite sur le menu QR.')
                             ->success()->send();
                     } catch (\Throwable $e) {
                         Notification::make()

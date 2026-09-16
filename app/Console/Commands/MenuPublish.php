@@ -7,24 +7,17 @@ use Illuminate\Console\Command;
 
 class MenuPublish extends Command
 {
-    protected $signature = 'menu:publish {--message= : Message de commit}';
+    protected $signature = 'menu:publish {--message= : Note enregistrée dans l\'historique}';
 
-    protected $description = 'Régénère la carte et la publie sur le menu QR (commit GitHub)';
+    protected $description = 'Régénère la carte et la publie sur le menu QR (/carte/)';
 
     public function handle(MenuPublisher $publisher): int
     {
-        if (! $publisher->isConfigured()) {
-            $this->error('Jeton GitHub manquant (ANTIKA_GITHUB_TOKEN).');
-
-            return self::FAILURE;
-        }
-
         $message = $this->option('message') ?: 'Mise à jour de la carte depuis l\'admin Antika';
 
         try {
-            $url = $publisher->publish($message);
-            $this->info('Carte publiée ✓');
-            $this->line('Commit : '.$url);
+            $publication = $publisher->publish($message);
+            $this->info("Carte publiée (publication n°{$publication->id}).");
 
             return self::SUCCESS;
         } catch (\Throwable $e) {

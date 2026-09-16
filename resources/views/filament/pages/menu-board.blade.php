@@ -11,20 +11,21 @@
             background:#fff;font-size:.875rem;font-weight:600;color:#52525b;cursor:pointer;
         }
         .mb-tab:hover{background:#fafafa}
-        .mb-tab[data-on="1"]{background:#18181b;color:#fff;border-color:#18181b}
+        .mb-tab[data-on="1"]{background:#d9551f;color:#fff;border-color:#d9551f}
         .dark .mb-tab{background:rgb(39 39 42);border-color:rgb(63 63 70);color:#d4d4d8}
-        .dark .mb-tab[data-on="1"]{background:#f4f4f5;color:#18181b;border-color:#f4f4f5}
+        .dark .mb-tab[data-on="1"]{background:#d9551f;color:#fff;border-color:#d9551f}
 
         .mb-cat{
-            border:1px solid rgb(228 228 231 / .9);border-radius:.85rem;background:#fff;
+            border:1px solid var(--ak-line, rgb(228 228 231));border-radius:.9rem;background:var(--ak-card, #fff);
+            box-shadow:var(--ak-shadow, none);
             margin-bottom:1rem;overflow:hidden;
         }
-        .dark .mb-cat{background:rgb(24 24 27);border-color:rgb(63 63 70)}
+
         .mb-cat-head{
             display:flex;align-items:center;gap:.75rem;padding:.85rem 1rem;
-            background:rgb(250 250 250);border-bottom:1px solid rgb(228 228 231 / .9);
+            background:var(--ak-head, rgb(250 250 250));border-bottom:1px solid var(--ak-line, rgb(228 228 231));
         }
-        .dark .mb-cat-head{background:rgb(39 39 42);border-color:rgb(63 63 70)}
+
         .mb-cat-title{font-weight:700;font-size:1rem;letter-spacing:.01em}
         .mb-count{font-size:.75rem;color:#71717a}
         .mb-grip{cursor:grab;color:#a1a1aa;font-size:1.1rem;line-height:1;user-select:none;touch-action:none}
@@ -84,7 +85,22 @@
             display:block;width:100%;padding:.9rem;border:1px dashed rgb(212 212 216);
             border-radius:.85rem;background:none;cursor:pointer;color:#71717a;font-weight:600;
         }
-        .mb-addcat:hover{border-color:#18181b;color:#18181b}
+        .mb-addcat:hover{border-color:#d9551f;color:#d9551f}
+
+        /* Téléphone : le nom prend toute la ligne, prix / interrupteur / suppression passent dessous. */
+        @media (max-width: 640px){
+            .mb-cat-head{flex-wrap:wrap;padding:.75rem}
+            .mb-row{flex-wrap:wrap;padding:.65rem .75rem;row-gap:.5rem}
+            .mb-name{flex:1 1 calc(100% - 110px)}
+            .mb-name .sub{white-space:normal}
+            .mb-price{margin-left:auto;width:110px}
+            .mb-price input{padding:.45rem .6rem;font-size:1rem}
+            .mb-sw{width:46px;height:26px}
+            .mb-sw::after{width:20px;height:20px}
+            .mb-sw[data-on="1"]::after{transform:translateX(20px)}
+            .mb-del{padding:.4rem .6rem}
+            .mb-tab{flex:1 1 auto;text-align:center}
+        }
         .mb-empty{padding:1rem;color:#a1a1aa;font-size:.85rem;text-align:center}
     </style>
 

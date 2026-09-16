@@ -32,8 +32,6 @@ const gallery = [
 
             <a
                 :href="menuUrl"
-                target="_blank"
-                rel="noopener"
                 class="mt-10 inline-flex items-center gap-2.5 rounded-full bg-antika-coral px-9 py-4 text-sm font-semibold uppercase tracking-wide text-white transition-colors hover:bg-antika-copper"
             >
                 {{ $t('menu.cta') }}

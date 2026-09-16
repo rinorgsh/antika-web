@@ -106,28 +106,19 @@ class EventSettings extends Page
             Action::make('publish')
                 ->label('Publier la carte')
                 ->icon('heroicon-o-rocket-launch')
-                ->color('success')
+                ->color('primary')
                 ->requiresConfirmation()
                 ->modalHeading(fn () => ($this->data['enabled'] ?? false)
                     ? 'Basculer les clients sur la page événement ?'
                     : 'Revenir à la carte du restaurant ?')
                 ->modalDescription(fn () => ($this->data['enabled'] ?? false)
-                    ? "Le QR code ouvrira la soirée « ".($this->data['title'] ?: 'sans titre')." ». Visible en une minute environ."
-                    : 'Le QR code réouvrira la carte du restaurant. Visible en une minute environ.')
+                    ? "Le QR code ouvrira la soirée « ".($this->data['title'] ?: 'sans titre')." ». Effet immédiat."
+                    : 'Le QR code réouvrira la carte du restaurant. Effet immédiat.')
                 ->modalSubmitActionLabel('Oui, publier')
                 ->action(function (MenuPublisher $publisher) {
                     // On enregistre avant de publier : sinon on publierait l'état d'avant.
                     foreach (['enabled', 'title', 'subtitle', 'footerNote'] as $k) {
                         MenuSetting::put("event.{$k}", $this->data[$k] ?? null);
-                    }
-
-                    if (! $publisher->isConfigured()) {
-                        Notification::make()
-                            ->title('Publication non configurée')
-                            ->body("Le jeton GitHub (ANTIKA_GITHUB_TOKEN) n'est pas renseigné.")
-                            ->warning()->send();
-
-                        return;
                     }
 
                     try {
@@ -136,10 +127,10 @@ class EventSettings extends Page
                             : 'Retour à la carte du restaurant');
 
                         Notification::make()
-                            ->title('Carte publiée ✓')
+                            ->title('Carte publiée')
                             ->body(($this->data['enabled'] ?? false)
-                                ? 'Les clients verront la soirée dans ~1 min.'
-                                : 'Les clients reverront la carte du restaurant dans ~1 min.')
+                                ? 'Les clients voient la soirée dès maintenant.'
+                                : 'Les clients revoient la carte du restaurant dès maintenant.')
                             ->success()->send();
                     } catch (\Throwable $e) {
                         Notification::make()

@@ -7,6 +7,7 @@ import { createApp, h } from 'vue';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy';
 import { i18n } from './i18n';
 import { reveal } from './reveal';
+import { installTracking } from './tracking';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Antika';
 
@@ -18,6 +19,8 @@ createInertiaApp({
             import.meta.glob('./Pages/**/*.vue'),
         ),
     setup({ el, App, props, plugin }) {
+        installTracking(props.initialPage.props.site?.tracking);
+
         return createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(ZiggyVue)

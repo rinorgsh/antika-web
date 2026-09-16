@@ -3,173 +3,103 @@
 namespace App\Services;
 
 use App\Models\MenuItem;
-use Illuminate\Support\Facades\Http;
+use App\Models\MenuPublication;
 use Illuminate\Support\Facades\Storage;
-use RuntimeException;
 
 /**
- * Publie la carte régénérée dans le repo GitHub Pages (menu.antika-resto.ovh)
- * en un seul commit atomique (API Git Data : blobs → tree → commit → ref).
+ * Publie la carte QR servie par le site lui-même (/carte/).
  *
- * Les fichiers texte (food-data.js…) et les éventuelles images (option A)
- * partent dans le même commit. GitHub Pages redéploie ensuite tout seul.
+ * Avant, la carte vivait sur GitHub Pages et « Publier » y poussait un commit.
+ * Désormais :
+ *   - les fichiers de données (food-data.js…) sont figés dans la table
+ *     menu_publications, servis par CarteController ;
+ *   - les photos/logos téléversés sont rangés dans storage/app/public/carte,
+ *     un dossier conservé d'un déploiement à l'autre.
+ *
+ * Effet immédiat : plus d'attente de redéploiement GitHub.
  */
 class MenuPublisher
 {
-    private string $owner;
-    private string $repo;
-    private string $branch;
-    private string $basePath;
-    private string $token;
+    /** Dossier des images téléversées, sur le disque « public ». */
+    public const UPLOAD_ROOT = 'carte';
 
     public function __construct(private MenuBuilder $builder)
     {
-        $cfg = config('antika.github');
-        $this->owner = $cfg['owner'];
-        $this->repo = $cfg['repo'];
-        $this->branch = $cfg['branch'];
-        $this->basePath = trim($cfg['base_path'], '/');
-        $this->token = $cfg['token'];
     }
 
+    /** Conservé pour compatibilité : la publication n'a plus besoin de réglage. */
     public function isConfigured(): bool
     {
-        return $this->token !== '';
+        return true;
     }
 
-    /**
-     * @param  array<string,string>  $extraFiles  chemin(relatif repo) => contenu binaire (images)
-     * @return string  URL du commit créé
-     */
-    public function publish(string $message, array $extraFiles = []): string
+    /** @return MenuPublication la publication créée */
+    public function publish(string $message): MenuPublication
     {
-        if (! $this->isConfigured()) {
-            throw new RuntimeException('Jeton GitHub manquant (ANTIKA_GITHUB_TOKEN).');
-        }
+        $this->syncUploads();
 
-        // Traite les photos/logos téléversés : bytes à pousser + met à jour les références en base
-        $extraFiles = array_merge($this->syncUploads(), $extraFiles);
+        $publication = MenuPublication::create([
+            'files' => $this->builder->all(),
+            'message' => $message,
+            'user_id' => auth()->id(),
+        ]);
 
-        // Fichiers de données régénérés depuis la base
-        $files = [];
-        foreach ($this->builder->all() as $name => $content) {
-            $files["{$this->basePath}/{$name}"] = ['content' => $content, 'binary' => false];
-        }
-        foreach ($extraFiles as $path => $content) {
-            $files[$path] = ['content' => $content, 'binary' => true];
-        }
+        // On garde un historique raisonnable (retour arrière possible).
+        $keep = MenuPublication::query()->orderByDesc('id')->limit(30)->pluck('id');
+        MenuPublication::query()->whereNotIn('id', $keep)->delete();
 
-        // 1. un blob par fichier. Indépendant de l'état de la branche : GitHub
-        //    adresse les blobs par leur contenu, on peut donc les créer une
-        //    seule fois même si l'écriture de la branche doit être rejouée.
-        $tree = [];
-        foreach ($files as $path => $file) {
-            $blob = $this->api('POST', 'git/blobs', $file['binary']
-                ? ['content' => base64_encode($file['content']), 'encoding' => 'base64']
-                : ['content' => $file['content'], 'encoding' => 'utf-8']);
-            $tree[] = ['path' => $path, 'mode' => '100644', 'type' => 'blob', 'sha' => $blob['sha']];
-        }
-
-        // 2. arbre + commit + avance de la branche, en repartant de la tête
-        //    courante. Si quelqu'un a publié entre-temps — ou si GitHub nous a
-        //    servi un état périmé juste après une poussée — l'écriture est
-        //    refusée (422 « not a fast forward ») : on relit et on rejoue.
-        $tentatives = 3;
-        for ($essai = 1; ; $essai++) {
-            $ref = $this->api('GET', "git/ref/heads/{$this->branch}");
-            $baseCommitSha = $ref['object']['sha'];
-            $baseCommit = $this->api('GET', "git/commits/{$baseCommitSha}");
-
-            $newTree = $this->api('POST', 'git/trees', [
-                'base_tree' => $baseCommit['tree']['sha'],
-                'tree' => $tree,
-            ]);
-            $commit = $this->api('POST', 'git/commits', [
-                'message' => $message,
-                'tree' => $newTree['sha'],
-                'parents' => [$baseCommitSha],
-            ]);
-
-            try {
-                $this->api('PATCH', "git/refs/heads/{$this->branch}", ['sha' => $commit['sha']]);
-                break;
-            } catch (RuntimeException $e) {
-                $conflit = str_contains($e->getMessage(), 'not a fast forward')
-                    || str_contains($e->getMessage(), '422');
-
-                if (! $conflit || $essai >= $tentatives) {
-                    throw $conflit
-                        ? new RuntimeException('La carte a changé sur GitHub pendant la publication. Réessayez dans quelques secondes.')
-                        : $e;
-                }
-
-                usleep(1_200_000);   // laisse GitHub se stabiliser avant de rejouer
-            }
-        }
-
-        return $commit['html_url'] ?? "https://github.com/{$this->owner}/{$this->repo}/commit/{$commit['sha']}";
+        return $publication;
     }
 
     /**
-     * Déplace les photos/logos téléversés vers le repo et met à jour les
-     * références (photo/logo) en base. Renvoie [chemin repo => bytes].
+     * Range les photos/logos téléversés dans le dossier de la carte et met à
+     * jour les références en base.
      *
-     * @return array<string,string>
+     * Le nom reçoit une empreinte du contenu (calamars-3f9a1c2b.jpg) : une
+     * nouvelle photo a donc toujours une nouvelle adresse. Sans ça, un
+     * téléphone qui a déjà la photo en cache continuerait d'afficher
+     * l'ancienne, et une image livrée avec le site masquerait la nouvelle.
      */
-    private function syncUploads(): array
+    private function syncUploads(): void
     {
-        $extra = [];
+        $disk = Storage::disk('public');
+
         $items = MenuItem::with('category')
-            ->whereNotNull('photo_upload')->orWhereNotNull('logo_upload')
+            ->where(fn ($q) => $q->whereNotNull('photo_upload')->orWhereNotNull('logo_upload'))
             ->get();
 
         foreach ($items as $item) {
             $surface = $item->category->surface;
 
-            if ($item->photo_upload && Storage::disk('public')->exists($item->photo_upload)) {
-                $bytes = Storage::disk('public')->get($item->photo_upload);
+            if ($item->photo_upload && $disk->exists($item->photo_upload)) {
+                $bytes = $disk->get($item->photo_upload);
+                $hash = substr(md5($bytes), 0, 8);
                 $ext = strtolower(pathinfo($item->photo_upload, PATHINFO_EXTENSION)) ?: 'jpg';
+
                 if ($surface === 'food' || $surface === 'event') {
                     // Ces deux rendus ajoutent "photos/" + ".jpg" : la référence
-                    // stockée est la clé nue, sans extension. Oublier 'event' ici
-                    // produisait des liens "photos/xxx.jpg.jpg" introuvables.
-                    $extra["photos/{$item->slug}.jpg"] = $bytes;
-                    $item->photo = $item->slug;
+                    // stockée est la clé nue, sans extension.
+                    $disk->put(self::UPLOAD_ROOT."/photos/{$item->slug}-{$hash}.jpg", $bytes);
+                    $item->photo = "{$item->slug}-{$hash}";
                 } else {
-                    $extra["drinks/{$item->slug}.{$ext}"] = $bytes;
-                    $item->photo = "{$item->slug}.{$ext}";
+                    $disk->put(self::UPLOAD_ROOT."/drinks/{$item->slug}-{$hash}.{$ext}", $bytes);
+                    $item->photo = "{$item->slug}-{$hash}.{$ext}";
                 }
-                Storage::disk('public')->delete($item->photo_upload);
+                $disk->delete($item->photo_upload);
                 $item->photo_upload = null;
             }
 
-            if ($item->logo_upload && Storage::disk('public')->exists($item->logo_upload)) {
-                $bytes = Storage::disk('public')->get($item->logo_upload);
+            if ($item->logo_upload && $disk->exists($item->logo_upload)) {
+                $bytes = $disk->get($item->logo_upload);
+                $hash = substr(md5($bytes), 0, 8);
                 $ext = strtolower(pathinfo($item->logo_upload, PATHINFO_EXTENSION)) ?: 'png';
-                $extra["logos/{$item->slug}.{$ext}"] = $bytes;
-                $item->logo = "{$item->slug}.{$ext}";
-                Storage::disk('public')->delete($item->logo_upload);
+                $disk->put(self::UPLOAD_ROOT."/logos/{$item->slug}-{$hash}.{$ext}", $bytes);
+                $item->logo = "{$item->slug}-{$hash}.{$ext}";
+                $disk->delete($item->logo_upload);
                 $item->logo_upload = null;
             }
 
             $item->save();
         }
-
-        return $extra;
-    }
-
-    private function api(string $method, string $path, array $body = []): array
-    {
-        $res = Http::withToken($this->token)
-            ->acceptJson()
-            ->withHeaders(['X-GitHub-Api-Version' => '2022-11-28', 'User-Agent' => 'antika-admin'])
-            ->send($method, "https://api.github.com/repos/{$this->owner}/{$this->repo}/{$path}",
-                $body ? ['json' => $body] : []);
-
-        if ($res->failed()) {
-            throw new RuntimeException("GitHub {$method} {$path} — ".$res->status().' : '.$res->body());
-        }
-
-        return $res->json();
     }
 }

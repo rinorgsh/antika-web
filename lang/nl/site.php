@@ -16,6 +16,7 @@ return [
         'contact' => 'Contact',
         'reserve' => 'Reserveer een tafel',
         'quote' => 'Bereken uw offerte',
+        'quote_short' => 'Offerte',
     ],
 
     'hero' => [
@@ -130,5 +131,11 @@ return [
         'contact_title' => 'Contact',
         'hours_title' => 'Openingsuren',
         'rights' => 'Alle rechten voorbehouden.',
+    ],
+
+    'cookies' => [
+        'text' => 'We gebruiken cookies om het bezoek aan de website en de doeltreffendheid van onze advertenties te meten. U kunt ze aanvaarden of weigeren.',
+        'refuse' => 'Weigeren',
+        'accept' => 'Aanvaarden',
     ],
 ];

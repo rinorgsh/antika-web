@@ -18,7 +18,13 @@ class SetLocale
 
     public function handle(Request $request, Closure $next): Response
     {
-        $locale = $request->session()->get('locale', self::DEFAULT);
+        // ?lang=fr dans l'adresse (liens d'annonces, QR…) : prioritaire et mémorisé.
+        $requested = $request->query('lang');
+        if (is_string($requested) && in_array($requested, self::SUPPORTED, true)) {
+            $request->session()->put('locale', $requested);
+        }
+
+        $locale = $request->session()->get('locale') ?? $this->fromBrowser($request);
 
         if (! in_array($locale, self::SUPPORTED, true)) {
             $locale = self::DEFAULT;
@@ -27,5 +33,16 @@ class SetLocale
         app()->setLocale($locale);
 
         return $next($request);
+    }
+
+    /**
+     * Première visite sans choix : langue du navigateur si on la propose
+     * (un Bruxellois francophone arrive en français), sinon néerlandais.
+     */
+    private function fromBrowser(Request $request): string
+    {
+        $preferred = $request->getPreferredLanguage(self::SUPPORTED);
+
+        return $request->headers->has('Accept-Language') && $preferred ? $preferred : self::DEFAULT;
     }
 }

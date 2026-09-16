@@ -7,3 +7,11 @@
         @apply bg-antika-ink text-stone-200;
     }
 }
+
+/* Sur le simulateur (mobile/tablette), le bouton flottant ZenChef masquait
+   la barre « Suivant » : on le retire tant que la page est affichée. */
+@media (max-width: 1023px) {
+    body.hide-zenchef iframe[class*="ZC_sdk__zc-iframe"] {
+        display: none !important;
+    }
+}

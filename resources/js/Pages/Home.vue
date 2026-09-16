@@ -98,8 +98,6 @@ const menuUrl = computed(() => `${site.value.links.menu}/carte.html?lang=${local
                         <p class="mt-5 max-w-md leading-relaxed text-stone-400">{{ $t('menu.intro') }}</p>
                         <a
                             :href="menuUrl"
-                            target="_blank"
-                            rel="noopener"
                             class="mt-8 inline-flex items-center gap-2.5 rounded-full bg-antika-coral px-9 py-4 text-sm font-semibold uppercase tracking-wide text-white transition-colors hover:bg-antika-copper"
                         >
                             {{ $t('menu.cta') }}
@@ -121,7 +119,7 @@ const menuUrl = computed(() => `${site.value.links.menu}/carte.html?lang=${local
                     <h2 class="mt-6 font-serif text-4xl text-antika-cream sm:text-5xl">{{ $t('events.hero_title') }}</h2>
                     <p class="mx-auto mt-6 max-w-2xl leading-relaxed text-stone-300">{{ $t('events.hero_text') }}</p>
                     <div class="mt-10 flex flex-wrap justify-center gap-4">
-                        <a :href="site.links.simulator" target="_blank" rel="noopener" class="rounded-full bg-antika-coral px-8 py-3 text-sm font-medium text-white transition-colors hover:bg-antika-copper">{{ $t('events.cta_button') }}</a>
+                        <Link :href="site.links.simulator" class="rounded-full bg-antika-coral px-8 py-3 text-sm font-medium text-white transition-colors hover:bg-antika-copper">{{ $t('events.cta_button') }}</Link>
                         <Link href="/events" class="rounded-full border border-antika-cream/50 px-8 py-3 text-sm font-medium text-antika-cream transition-colors hover:bg-antika-cream hover:text-antika-ink">{{ $t('nav.events_short') }}</Link>
                     </div>
                 </div>

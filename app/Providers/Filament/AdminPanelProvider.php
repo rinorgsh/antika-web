@@ -9,9 +9,11 @@ use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Pages\Dashboard;
 use Filament\Panel;
 use Filament\PanelProvider;
+use Filament\Navigation\NavigationGroup;
 use Filament\Support\Colors\Color;
+use Filament\Enums\ThemeMode;
+use Filament\View\PanelsRenderHook;
 use Filament\Widgets\AccountWidget;
-use Filament\Widgets\FilamentInfoWidget;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\PreventRequestForgery;
@@ -28,9 +30,21 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            // Identité Antika : cuivre du site, neutres chauds, logo, thème clair par défaut.
+            ->brandName('Antika')
+            ->brandLogo(asset('images/admin/logo-dark.png'))
+            ->darkModeBrandLogo(asset('images/admin/logo-light.png'))
+            ->brandLogoHeight('2.6rem')
+            ->favicon(asset('favicon-32.png'))
+            ->font('Figtree')
+            ->defaultThemeMode(ThemeMode::Light)
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::hex('#d9551f'),
+                'gray' => Color::Stone,
             ])
+            ->sidebarWidth('17rem')
+            // Styles complémentaires (fonds, cartes, menu, mobile) : resources/views/filament/admin-theme.blade.php
+            ->renderHook(PanelsRenderHook::HEAD_END, fn () => view('filament.admin-theme'))
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
             ->pages([
@@ -39,7 +53,12 @@ class AdminPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
             ->widgets([
                 AccountWidget::class,
-                FilamentInfoWidget::class,
+            ])
+            // Groupes repliés à l'ouverture : on déplie celui dont on a besoin.
+            ->navigationGroups([
+                NavigationGroup::make('Location de salle')->collapsed(),
+                NavigationGroup::make('Carte')->collapsed(),
+                NavigationGroup::make('Soirée événement')->collapsed(),
             ])
             ->middleware([
                 EncryptCookies::class,
@@ -51,6 +70,8 @@ class AdminPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
+                // Admin toujours en français (le site public, lui, suit la langue du visiteur).
+                \App\Http\Middleware\AdminLocale::class,
             ])
             ->authMiddleware([
                 Authenticate::class,
