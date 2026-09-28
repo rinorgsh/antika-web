@@ -9,8 +9,14 @@ const props = defineProps({
 const active = ref(0);
 let timer = null;
 
+// Seules l'image affichée et la suivante sont téléchargées : les autres
+// attendent leur tour (5 photos plein écran d'un coup ralentissaient l'accueil).
+const loaded = ref(new Set([0, 1]));
+const small = (img) => img.replace(/\.webp$/, '-sm.webp');
+
 const go = (i) => {
     active.value = (i + props.images.length) % props.images.length;
+    loaded.value = new Set([...loaded.value, active.value, (active.value + 1) % props.images.length]);
 };
 const next = () => go(active.value + 1);
 const prev = () => go(active.value - 1);
@@ -53,8 +59,12 @@ onBeforeUnmount(stop);
                 :class="i === active ? 'opacity-100' : 'opacity-0'"
             >
                 <img
+                    v-if="loaded.has(i)"
                     :src="img"
+                    :srcset="`${small(img)} 900w, ${img} 1920w`"
+                    sizes="100vw"
                     alt=""
+                    :fetchpriority="i === 0 ? 'high' : 'low'"
                     class="h-full w-full object-cover"
                     :class="i === active ? 'animate-kenburns' : ''"
                 />

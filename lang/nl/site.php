@@ -17,6 +17,7 @@ return [
         'reserve' => 'Reserveer een tafel',
         'quote' => 'Bereken uw offerte',
         'quote_short' => 'Offerte',
+        'quote_cta' => 'Offerte aanvragen',
     ],
 
     'hero' => [
@@ -72,9 +73,9 @@ return [
     'events' => [
         'hero_eyebrow' => 'Evenementen & Zaalverhuur',
         'hero_title' => 'Uw evenement bij Antika',
-        'hero_text' => 'Van huwelijk tot verjaardag of bedrijfsfeest — huur onze zaal en ons restaurant af, met catering, dranken en service volledig op maat.',
+        'hero_text' => 'Van huwelijk tot verjaardag, bedrijfsfeest of koffietafel — huur een zaal voor 40 tot :capacity gasten, met of zonder catering.',
         'intro_title' => 'Een unieke locatie voor uw feest',
-        'intro_text' => 'Ons restaurant kan (gedeeltelijk of volledig) geprivatiseerd worden voor uw privé-evenement. Wij verzorgen alles: de zaal, een verfijnd menu, de dranken en de bediening, zodat u zorgeloos kunt genieten met uw gasten.',
+        'intro_text' => 'Vijf ruimtes tussen de visvijvers van Elewijt, van een intiem salon tot het volledige domein. Huur enkel de zaal, of laat ons alles verzorgen: een verfijnd menu, de dranken en de bediening, zodat u zorgeloos kunt genieten met uw gasten.',
         'types_title' => 'Voor elke gelegenheid',
         'types' => [
             ['title' => 'Huwelijken', 'text' => 'Een onvergetelijk feest in een warme, stijlvolle omgeving.'],
@@ -82,10 +83,10 @@ return [
             ['title' => 'Bedrijfsevents', 'text' => 'Seminaries, recepties en teamdiners met professionele service.'],
             ['title' => 'Communies & feesten', 'text' => 'Elke gelegenheid verdient een geslaagd feest op maat.'],
         ],
-        'formula_title' => 'Alles inbegrepen',
+        'formula_title' => 'Alles is mogelijk',
         'formula_points' => [
             'Privatisering van de zaal of het volledige restaurant',
-            'Catering op maat: aperitief, voor-, hoofd- en nagerecht',
+            'Catering op maat — of enkel de zaal, u kiest',
             'Dranken: wijnen, frisdranken, cocktails en bar',
             'Tafelschikking, decoratie en bediening',
         ],
@@ -131,11 +132,91 @@ return [
         'contact_title' => 'Contact',
         'hours_title' => 'Openingsuren',
         'rights' => 'Alle rechten voorbehouden.',
+        'privacy' => 'Privacybeleid',
+        'cookies' => 'Cookie-instellingen',
     ],
 
     'cookies' => [
         'text' => 'We gebruiken cookies om het bezoek aan de website en de doeltreffendheid van onze advertenties te meten. U kunt ze aanvaarden of weigeren.',
         'refuse' => 'Weigeren',
         'accept' => 'Aanvaarden',
+    ],
+
+    'callback' => [
+        'title' => 'Liever gebeld worden?',
+        'text' => 'Laat uw nummer achter en we bellen u snel terug om uw feest te bespreken. Gratis en vrijblijvend.',
+        'name' => 'Naam',
+        'phone' => 'Telefoon',
+        'email' => 'E-mail (optioneel)',
+        'date' => 'Datum (indien gekend)',
+        'guests' => 'Aantal gasten',
+        'message' => 'Uw vraag (optioneel)',
+        'submit' => 'Bel mij terug',
+        'success_title' => 'Bedankt, we bellen u snel terug!',
+        'success_text' => 'Uw vraag is goed aangekomen. Dringend? Bel ons op :phone.',
+        'consent' => 'Door te versturen gaat u akkoord met ons :privacy.',
+        'privacy' => 'privacybeleid',
+        'errors' => ['phone' => 'Geef een geldig telefoonnummer op.', 'generic' => 'Versturen mislukt. Probeer opnieuw of bel ons.'],
+    ],
+
+    'reviews' => [
+        'eyebrow' => 'Wat onze gasten zeggen',
+        'rating' => ':rating/5 op Google',
+        'count' => ':count reviews',
+        'link' => 'Alle reviews lezen',
+    ],
+
+    'venues' => [
+        'eyebrow' => 'Onze zalen',
+        'title' => 'Een ruimte op maat van uw feest',
+        'text' => 'Van een intiem salon tot het volledige domein. Zalen kunnen gecombineerd worden.',
+        'seats' => ':count plaatsen',
+        'parking' => 'Parking',
+        'cloakroom' => 'Vestiaire',
+        'toilets' => 'Eigen sanitair',
+    ],
+
+    'faq' => [
+        'eyebrow' => 'Veelgestelde vragen',
+        'items' => [
+            ['q' => 'Kan ik de zaal huren zonder catering?', 'a' => 'Ja. U kunt enkel de zaal huren, of ons team laten zorgen voor eten, dranken en bediening. Kies in de offertesimulator gewoon « Zonder catering ».'],
+            ['q' => 'Hoeveel gasten kunnen er komen?', 'a' => 'Van een privésalon voor 40 personen tot het volledige domein voor :capacity gasten. De zalen kunnen gecombineerd worden.'],
+            ['q' => 'Wat kost een feest bij Antika?', 'a' => 'Elk feest is anders: de prijs hangt af van de zaal, het aantal gasten, het menu en de dranken. Stel uw feest samen in de simulator en u ontvangt gratis en vrijblijvend een offerte op maat.'],
+            ['q' => 'Houden jullie rekening met allergieën en dieetwensen?', 'a' => 'Zeker. Vermeld uw wensen (vegetarisch, allergieën…) bij uw aanvraag en de keuken past het menu aan. Een kindermenu is ook mogelijk.'],
+            ['q' => 'Is er parking?', 'a' => 'Ja, er is parking ter plaatse. Het domein ligt in Zemst (Elewijt), vlot bereikbaar via de E19 tussen Brussel, Mechelen en Leuven.'],
+            ['q' => 'Kan ik de zalen eerst bezoeken?', 'a' => 'Natuurlijk. Bel ons of vermeld het in uw aanvraag, dan spreken we een moment af.'],
+            ['q' => 'Hoe leg ik mijn datum vast?', 'a' => 'Na uw aanvraag bespreken we samen de details en ontvangt u een offerte. Uw datum ligt vast na akkoord en betaling van een voorschot.'],
+        ],
+    ],
+
+    'sticky' => [
+        'call' => 'Bellen',
+        'whatsapp' => 'WhatsApp',
+        'quote' => 'Offerte',
+    ],
+
+    'landings' => [
+        'title' => 'Zaalverhuur',
+        'venue-hire' => 'Feestzaal huren',
+        'wedding' => 'Huwelijksfeest',
+        'birthday' => 'Verjaardag',
+        'communion' => 'Communie & doopfeest',
+        'corporate' => 'Bedrijfsfeest',
+        'funeral' => 'Koffietafel',
+    ],
+
+    'privacy' => [
+        'meta_title' => 'Privacybeleid',
+        'title' => 'Privacybeleid',
+        'updated' => 'Laatst bijgewerkt: september 2026',
+        'sections' => [
+            ['title' => 'Wie zijn wij?', 'text' => 'Antika Restaurant (Antika Molenveld), Pater Penninckxstraat 32, 1982 Zemst, België — :email — :phone. Wij zijn verantwoordelijk voor de verwerking van de persoonsgegevens die u via deze website doorgeeft.'],
+            ['title' => 'Welke gegevens verzamelen we?', 'text' => 'Wanneer u een offerte of een terugbelverzoek aanvraagt: uw naam, telefoonnummer, e-mailadres, eventueel uw bedrijf, en de gegevens van uw evenement (datum, aantal gasten, keuzes, wensen en allergieën). Daarnaast de herkomst van uw bezoek (bijvoorbeeld een klik op een Google-advertentie). Tafelreservaties verlopen via Zenchef.'],
+            ['title' => 'Waarom?', 'text' => 'Om uw aanvraag te beantwoorden, een offerte op te maken en uw evenement te organiseren. Wij sturen u geen reclame zonder uw toestemming en verkopen uw gegevens nooit.'],
+            ['title' => 'Cookies en meting', 'text' => 'Alleen met uw toestemming gebruiken wij Google Analytics en Google Ads om het bezoek aan de website en de doeltreffendheid van onze advertenties te meten. Zonder toestemming plaatsen wij geen meetcookies. U kunt uw keuze altijd wijzigen via « Cookie-instellingen » onderaan de pagina.'],
+            ['title' => 'Met wie delen we uw gegevens?', 'text' => 'Enkel met de dienstverleners die we nodig hebben: onze hostingpartner, onze e-maildienst, Google (meting, alleen met uw toestemming) en Zenchef (tafelreservaties).'],
+            ['title' => 'Hoe lang bewaren we ze?', 'text' => 'Aanvragen zonder vervolg bewaren we maximaal twee jaar. Gegevens van een geboekt evenement bewaren we zolang de wet dat vereist voor onze boekhouding.'],
+            ['title' => 'Uw rechten', 'text' => 'U kunt uw gegevens inkijken, laten verbeteren of verwijderen, en u verzetten tegen hun gebruik. Stuur hiervoor een e-mail naar :email. U kunt ook klacht indienen bij de Gegevensbeschermingsautoriteit (www.gegevensbeschermingsautoriteit.be).'],
+        ],
     ],
 ];

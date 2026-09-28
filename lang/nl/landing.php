@@ -3,6 +3,7 @@
 // Landingspagina's voor advertenties (/events/wedding…). Eén blok per gelegenheid.
 return [
     'common' => [
+        'trust' => ['Tot :capacity gasten', 'Met of zonder catering', 'Parking ter plaatse', 'Vlak bij de E19'],
         'cta' => 'Stel mijn offerte samen',
         'cta_note' => 'Gratis en vrijblijvend — snel antwoord.',
         'or_call' => 'of bel ons op',
@@ -20,7 +21,7 @@ return [
 
     'wedding' => [
         'meta_title' => 'Feestzaal voor uw huwelijk in Zemst — Antika',
-        'meta_description' => 'Vier uw huwelijk bij Antika in Zemst: feestzalen tot 350 gasten, menu aan tafel of buffet, drankenformule à volonté. Vraag online uw offerte aan.',
+        'meta_description' => 'Vier uw huwelijk bij Antika in Zemst: feestzalen tot :capacity gasten, menu aan tafel of buffet, drankenformule à volonté. Vraag online uw offerte aan.',
         'eyebrow' => 'Huwelijksfeesten',
         'title' => 'Het huwelijksfeest van uw dromen, tussen vijvers en groen',
         'text' => 'Stijlvolle zalen, royale keuken en een team dat alles regelt, van de receptie tot de laatste dans.',
@@ -30,7 +31,7 @@ return [
             'Drankenformules à volonté, cava en aperitief',
             'Terras en tuin voor receptie en foto\'s',
         ],
-        'image' => '/images/events/banquet.jpg',
+        'image' => '/images/events/banquet.webp',
     ],
 
     'birthday' => [
@@ -45,7 +46,7 @@ return [
             'Dranken à volonté: frisdrank, bier, wijn',
             'DJ, decoratie en taart op aanvraag',
         ],
-        'image' => '/images/events/hall.jpg',
+        'image' => '/images/events/hall.webp',
     ],
 
     'communion' => [
@@ -60,7 +61,7 @@ return [
             'Tuin en terras',
             'Parking ter plaatse voor de hele familie',
         ],
-        'image' => '/images/events/garden.jpg',
+        'image' => '/images/events/garden.webp',
     ],
 
     'corporate' => [
@@ -75,6 +76,43 @@ return [
             'Drankenformules per persoon',
             'Scherm, geluid en verlichting op aanvraag',
         ],
-        'image' => '/images/events/hall.jpg',
+        'image' => '/images/events/hall.webp',
+    ],
+
+    'venue-hire' => [
+        'meta_title' => 'Feestzaal huren in Zemst, bij Mechelen — Antika',
+        'meta_description' => 'Feestzaal te huur in Zemst voor elk feest: van 40 tot :capacity gasten, met of zonder catering, parking ter plaatse. Vraag gratis uw offerte aan.',
+        'eyebrow' => 'Zaalverhuur',
+        'title' => 'Een feestzaal voor elk feest, met of zonder catering',
+        'text' => 'Verjaardag, huwelijk, communie, bedrijfsfeest of koffietafel: vijf ruimtes tussen de visvijvers van Elewijt, van 40 tot :capacity gasten. Enkel de zaal, of alles verzorgd door onze keuken.',
+        'points' => [
+            'Vijf ruimtes, te combineren tot het volledige domein',
+            'Enkel de zaal, of catering en dranken door ons team',
+            'Menu aan tafel, buffet of receptie met hapjes',
+            'Parking ter plaatse, vlot bereikbaar via de E19',
+        ],
+        'image' => '/images/events/hall.webp',
+    ],
+
+    'funeral' => [
+        'meta_title' => 'Koffietafel na een uitvaart in Zemst — Antika',
+        'meta_description' => 'Een verzorgde koffietafel na de uitvaart in Zemst: privézaal, koffie en taart, broodjes of een warme maaltijd. Bel ons, we regelen het snel.',
+        'eyebrow' => 'Koffietafel',
+        'title' => 'Een rustige plek om samen te herdenken',
+        'text' => 'Na het afscheid zorgen wij voor een sobere, verzorgde koffietafel, zodat u er kunt zijn voor uw familie. We helpen u snel en persoonlijk verder.',
+        'points' => [
+            'Privézaal op maat van uw gezelschap',
+            'Koffie en taart, broodjes of een warme maaltijd',
+            'Persoonlijke begeleiding, ook op korte termijn',
+            'Parking ter plaatse voor familie en vrienden',
+        ],
+        'image' => '/images/events/garden.webp',
+        'primary' => 'callback',
+        'cta' => 'Vraag een voorstel aan',
+        'steps' => [
+            ['title' => 'Contact', 'text' => 'Bel ons of laat uw nummer achter.'],
+            ['title' => 'Voorstel', 'text' => 'We stellen samen de koffietafel samen.'],
+            ['title' => 'Ontvangst', 'text' => 'Wij zorgen voor alles, in alle rust.'],
+        ],
     ],
 ];

@@ -24,6 +24,7 @@ return [
     ],
 
     'sidebar' => [
+        'no_catering' => 'No catering',
         'title' => 'Your selection',
         'type' => 'Type of event',
         'date' => 'Date & guests',
@@ -45,6 +46,9 @@ return [
     ],
 
     'step2' => [
+        'checking' => 'Checking availability…',
+        'available' => '{1} Good news: 1 room is still free on this date.|[2,*] Good news: :count rooms are still free on this date.',
+        'all_booked' => 'All rooms are already booked on this date. Pick another date or call us: there is sometimes a solution.',
         'title' => 'Date, time and number of guests',
         'date' => 'Event date',
         'slot' => 'Time',
@@ -65,6 +69,9 @@ return [
     ],
 
     'step4' => [
+        'no_catering_title' => 'No catering',
+        'no_catering_text' => 'You hire the venue only. A menu or bites can still be added later.',
+        'no_catering_tag' => 'Venue only',
         'title' => 'Choose your menu',
         'subtitle' => 'Pick a formula, then your dishes.',
         'buffet' => 'Buffet',
@@ -101,6 +108,7 @@ return [
         'requests' => 'Any special wishes?',
         'requests_placeholder' => 'Schedule of the day, decoration, questions…',
         'consent' => 'I agree that Antika may use this information to contact me about my request.',
+        'consent_privacy' => 'I agree that Antika may use this data to contact me about my request (:privacy).',
         'consent_legal' => 'I accept the :terms and the :privacy.',
         'terms' => 'terms and conditions',
         'privacy' => 'privacy policy',
@@ -117,7 +125,7 @@ return [
         'slot' => 'Please choose a time of day.',
         'guests' => 'Please enter at least one guest.',
         'venue' => 'Please choose at least one venue.',
-        'formula' => 'Please choose a menu formula.',
+        'formula' => 'Choose a menu or “no catering”.',
         'contact' => 'Please fill in your contact details.',
         'email' => 'This email address does not look valid.',
         'consent' => 'Please tick the box so that we can reply to you.',
@@ -154,6 +162,7 @@ return [
     ],
 
     'pdf' => [
+        'no_catering' => 'No catering — venue hire only',
         'filename' => 'antika-request-:number',
         'request' => 'REQUEST',
         'quote' => 'QUOTE',

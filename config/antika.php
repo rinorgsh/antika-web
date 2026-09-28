@@ -54,10 +54,12 @@ return [
     // Pages d'atterrissage par occasion (/events/{clé}) => slug du type
     // d'événement présélectionné dans le simulateur. Textes : lang/*/landing.php.
     'landings' => [
+        'venue-hire' => null,          // location de salle, toutes occasions
         'wedding' => 'mariage',
         'birthday' => 'anniversaire',
         'communion' => 'communion',
         'corporate' => 'evenement-entreprise',
+        'funeral' => 'funerailles',     // koffietafel
     ],
 
     // Suivi Google (Analytics 4 + Google Ads). Vide = aucun script chargé.
@@ -66,23 +68,25 @@ return [
         'ads_id' => env('ANTIKA_GADS_ID', ''),                 // AW-XXXXXXXXXX
         'ads_quote_label' => env('ANTIKA_GADS_QUOTE_LABEL', ''), // libellé de conversion « demande de devis »
         'ads_call_label' => env('ANTIKA_GADS_CALL_LABEL', ''),   // libellé de conversion « clic sur le téléphone »
+        'ads_lead_label' => env('ANTIKA_GADS_LEAD_LABEL', ''),   // « demande de rappel » (formulaire court)
+        'ads_contact_label' => env('ANTIKA_GADS_CONTACT_LABEL', ''), // « clic WhatsApp / e-mail » (conversion secondaire)
     ],
 
     // Images du carrousel d'accueil (défilement automatique).
     // 01 = vraie salle Antika, 02 = salle banquet, 04 = carpaccio, 05 = calamars
     // (vraies photos client) ; 03 = visuel gastronomique libre de droits (Pexels).
     'hero_images' => [
-        '/images/hero/01.jpg',
-        '/images/hero/02.jpg',
-        '/images/hero/04.jpg',
-        '/images/hero/05.jpg',
-        '/images/hero/03.jpg',
+        '/images/hero/01.webp',
+        '/images/hero/02.webp',
+        '/images/hero/04.webp',
+        '/images/hero/05.webp',
+        '/images/hero/03.webp',
     ],
 
     // Quelques chiffres clés affichés sur le site (modifiables).
+    // La capacité événements se règle dans l'admin (Réglages devis).
     'stats' => [
         'seats' => '120',
-        'event_capacity' => '150',
         'years' => '10',
     ],
 ];

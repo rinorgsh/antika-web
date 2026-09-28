@@ -20,6 +20,12 @@ class EventSetting extends Model
         'quote_validity_days' => '30',
         'terms_url' => '',
         'privacy_url' => '',
+        // Site public (pages événements et d'annonces).
+        'max_capacity' => '350',
+        'google_rating' => '',
+        'google_reviews_count' => '',
+        'google_reviews_url' => '',
+        'reviews' => '[]',
     ];
 
     protected $guarded = [];
@@ -43,6 +49,14 @@ class EventSetting extends Model
     public static function flushCache(): void
     {
         Cache::forget(self::CACHE_KEY);
+    }
+
+    /** Avis mis en avant sur le site : [{text, author, occasion}]. */
+    public static function reviews(): array
+    {
+        $reviews = json_decode((string) static::get('reviews'), true);
+
+        return is_array($reviews) ? array_values(array_filter($reviews, fn ($r) => filled($r['text'] ?? null))) : [];
     }
 
     /** Adresses qui reçoivent les nouvelles demandes (séparées par des virgules). */

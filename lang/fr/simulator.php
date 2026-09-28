@@ -24,6 +24,7 @@ return [
     ],
 
     'sidebar' => [
+        'no_catering' => 'Sans traiteur',
         'title' => 'Votre sélection',
         'type' => 'Type d\'événement',
         'date' => 'Date & invités',
@@ -45,6 +46,9 @@ return [
     ],
 
     'step2' => [
+        'checking' => 'Vérification des disponibilités…',
+        'available' => '{1} Bonne nouvelle : 1 salle est encore libre à cette date.|[2,*] Bonne nouvelle : :count salles sont encore libres à cette date.',
+        'all_booked' => 'Toutes les salles sont déjà réservées à cette date. Choisissez une autre date ou appelez-nous : il y a parfois une solution.',
         'title' => 'Date, moment et nombre d\'invités',
         'date' => 'Date de l\'événement',
         'slot' => 'Moment',
@@ -65,6 +69,9 @@ return [
     ],
 
     'step4' => [
+        'no_catering_title' => 'Sans traiteur',
+        'no_catering_text' => 'Vous louez uniquement la salle. Un menu ou des bouchées peuvent toujours être ajoutés plus tard.',
+        'no_catering_tag' => 'Salle seule',
         'title' => 'Choisissez votre menu',
         'subtitle' => 'Sélectionnez une formule, puis vos plats.',
         'buffet' => 'Buffet',
@@ -101,6 +108,7 @@ return [
         'requests' => 'Un souhait particulier ?',
         'requests_placeholder' => 'Déroulé de la journée, décoration, questions…',
         'consent' => 'J\'accepte qu\'Antika utilise ces informations pour me recontacter au sujet de ma demande.',
+        'consent_privacy' => 'J\'accepte qu\'Antika utilise ces données pour me recontacter au sujet de ma demande (:privacy).',
         'consent_legal' => 'J\'accepte les :terms et la :privacy.',
         'terms' => 'conditions générales',
         'privacy' => 'politique de confidentialité',
@@ -117,7 +125,7 @@ return [
         'slot' => 'Choisissez un moment de la journée.',
         'guests' => 'Indiquez au moins une personne.',
         'venue' => 'Choisissez au moins un espace.',
-        'formula' => 'Choisissez une formule de menu.',
+        'formula' => 'Choisissez une formule ou « sans traiteur ».',
         'contact' => 'Merci de compléter vos coordonnées.',
         'email' => 'Cette adresse e-mail ne semble pas valide.',
         'consent' => 'Merci de cocher la case pour que nous puissions vous répondre.',
@@ -154,6 +162,7 @@ return [
     ],
 
     'pdf' => [
+        'no_catering' => 'Sans traiteur — location de salle seule',
         'filename' => 'antika-demande-:number',
         'request' => 'DEMANDE',
         'quote' => 'DEVIS',

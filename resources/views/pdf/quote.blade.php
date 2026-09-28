@@ -104,6 +104,12 @@
         </div>
     @endif
 
+    @if($quote->quoteMenus->isEmpty())
+        <div class="section">
+            <h3>{{ $t('menu') }}</h3>
+            <table class="lines"><tr><td>{{ $t('no_catering') }}</td></tr></table>
+        </div>
+    @endif
     @foreach($quote->quoteMenus as $menu)
         <div class="section">
             <h3>{{ $t('menu') }}</h3>

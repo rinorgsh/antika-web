@@ -1,14 +1,20 @@
 <script setup>
-import { onMounted, ref } from 'vue';
+import { onBeforeUnmount, onMounted, ref } from 'vue';
 import { setConsent, storedConsent, trackingEnabled } from '@/tracking';
 
 // Bandeau affiché uniquement si un outil de suivi est configuré et
 // qu'aucun choix n'a encore été fait sur ce navigateur.
 const visible = ref(false);
 
-onMounted(() => {
+const refresh = () => {
     visible.value = trackingEnabled() && !storedConsent();
+};
+
+onMounted(() => {
+    refresh();
+    window.addEventListener('antika:consent', refresh);
 });
+onBeforeUnmount(() => window.removeEventListener('antika:consent', refresh));
 
 const choose = (granted) => {
     setConsent(granted);

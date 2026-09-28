@@ -3,6 +3,14 @@ import { Link, usePage } from '@inertiajs/vue3';
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import LanguageSwitcher from '@/Components/LanguageSwitcher.vue';
 import CookieConsent from '@/Components/CookieConsent.vue';
+import StickyActions from '@/Components/StickyActions.vue';
+import { reopenConsent } from '@/tracking';
+
+// stickyBar : barre Appeler / WhatsApp / Devis fixée en bas sur mobile (pages événements).
+const props = defineProps({
+    stickyBar: { type: Boolean, default: false },
+    quoteUrl: { type: String, default: '/events/simulator' },
+});
 
 const page = usePage();
 const site = computed(() => page.props.site);
@@ -18,9 +26,10 @@ const navLinks = computed(() => [
     { label: 'nav.home', href: '/' },
     { label: 'nav.menu', href: '/menu' },
     { label: 'nav.events_short', href: '/events' },
-    { label: 'nav.quote_short', href: '/events/simulator' },
     { label: 'nav.contact', href: '/contact' },
 ]);
+
+const landingLinks = computed(() => Object.keys(site.value.landings || {}).map((key) => ({ key, href: `/events/${key}` })));
 
 const isActive = (href) => {
     const path = page.url.split('?')[0];
@@ -30,7 +39,7 @@ const isActive = (href) => {
 </script>
 
 <template>
-    <div class="flex min-h-screen flex-col bg-antika-ink text-stone-200">
+    <div class="flex min-h-screen flex-col bg-antika-ink text-stone-200" :class="props.stickyBar ? 'pb-16 lg:pb-0' : ''">
         <header class="fixed inset-x-0 top-0 z-50 transition-all duration-300" :class="scrolled ? 'bg-antika-ink/95 shadow-lg shadow-black/30 backdrop-blur' : 'bg-gradient-to-b from-antika-ink/80 to-transparent'">
             <!-- Barre supérieure : coordonnées (se replie au scroll) -->
             <div class="hidden overflow-hidden border-b border-white/10 transition-all duration-300 md:block" :class="scrolled ? 'max-h-0 border-transparent opacity-0' : 'max-h-12 opacity-100'">
@@ -47,7 +56,7 @@ const isActive = (href) => {
             <!-- Barre de navigation -->
             <div class="mx-auto flex max-w-7xl items-center justify-between px-6 transition-all duration-300" :class="scrolled ? 'py-3' : 'py-4'">
                 <Link href="/" class="flex items-center">
-                    <img src="/images/logo.png" alt="Antika" class="w-auto transition-all duration-300" :class="scrolled ? 'h-11' : 'h-14'" />
+                    <img src="/images/logo.webp" alt="Antika" width="360" height="155" class="w-auto transition-all duration-300" :class="scrolled ? 'h-11' : 'h-14'" />
                 </Link>
 
                 <nav class="hidden items-center gap-8 lg:flex">
@@ -63,18 +72,25 @@ const isActive = (href) => {
                     -->
                 </nav>
 
-                <div class="hidden items-center gap-5 lg:flex">
+                <div class="hidden items-center gap-3 lg:flex">
                     <button
                         type="button"
                         data-zc-action="open"
-                        class="border border-antika-cream/60 px-6 py-2.5 text-xs font-semibold uppercase tracking-widest text-antika-cream transition-colors hover:bg-antika-cream hover:text-antika-ink"
+                        class="border border-antika-cream/60 px-5 py-2.5 text-xs font-semibold uppercase tracking-widest text-antika-cream transition-colors hover:bg-antika-cream hover:text-antika-ink"
                     >{{ $t('nav.reserve') }}</button>
+                    <Link
+                        :href="props.quoteUrl"
+                        class="rounded-full bg-antika-coral px-5 py-2.5 text-xs font-semibold uppercase tracking-widest text-white transition-colors hover:bg-antika-copper"
+                    >{{ $t('nav.quote_cta') }}</Link>
                 </div>
 
-                <button class="text-antika-cream lg:hidden" @click="mobileOpen = !mobileOpen" aria-label="Menu">
-                    <svg v-if="!mobileOpen" class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" /></svg>
-                    <svg v-else class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" /></svg>
-                </button>
+                <div class="flex items-center gap-4 lg:hidden">
+                    <Link :href="props.quoteUrl" class="rounded-full bg-antika-coral px-4 py-2 text-[11px] font-semibold uppercase tracking-wider text-white">{{ $t('nav.quote_short') }}</Link>
+                    <button class="text-antika-cream" @click="mobileOpen = !mobileOpen" aria-label="Menu">
+                        <svg v-if="!mobileOpen" class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                        <svg v-else class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" /></svg>
+                    </button>
+                </div>
             </div>
 
             <!-- Navigation mobile -->
@@ -93,7 +109,8 @@ const isActive = (href) => {
                         <a :href="site.links.takeaway" target="_blank" rel="noopener" class="text-base uppercase tracking-wide text-stone-100">{{ $t('nav.takeaway') }}</a>
                         -->
 
-                        <button type="button" data-zc-action="open" class="mt-1 border border-antika-cream/60 px-6 py-3 text-center text-xs font-semibold uppercase tracking-widest text-antika-cream" @click="mobileOpen = false">{{ $t('nav.reserve') }}</button>
+                        <Link :href="props.quoteUrl" class="mt-1 rounded-full bg-antika-coral px-6 py-3 text-center text-xs font-semibold uppercase tracking-widest text-white" @click="mobileOpen = false">{{ $t('nav.quote_cta') }}</Link>
+                        <button type="button" data-zc-action="open" class="border border-antika-cream/60 px-6 py-3 text-center text-xs font-semibold uppercase tracking-widest text-antika-cream" @click="mobileOpen = false">{{ $t('nav.reserve') }}</button>
                         <div class="pt-2"><LanguageSwitcher /></div>
                     </div>
                 </nav>
@@ -106,9 +123,9 @@ const isActive = (href) => {
 
         <!-- Pied de page -->
         <footer class="border-t border-white/10 bg-antika-panel">
-            <div class="mx-auto grid max-w-7xl gap-10 px-6 py-14 sm:grid-cols-2 lg:grid-cols-4">
+            <div class="mx-auto grid max-w-7xl gap-10 px-6 py-14 sm:grid-cols-2 lg:grid-cols-5">
                 <div class="sm:col-span-2 lg:col-span-1">
-                    <img src="/images/logo.png" alt="Antika" class="h-16 w-auto" />
+                    <img src="/images/logo.webp" alt="Antika" width="360" height="155" loading="lazy" class="h-16 w-auto" />
                     <p class="mt-4 max-w-xs text-sm text-stone-400">{{ $t('footer.tagline') }}</p>
                 </div>
                 <div>
@@ -121,6 +138,12 @@ const isActive = (href) => {
                     <a :href="`mailto:${site.contact.email}`" class="block text-sm text-stone-300 hover:text-antika-cream">{{ site.contact.email }}</a>
                 </div>
                 <div>
+                    <p class="text-xs font-semibold uppercase tracking-widest text-antika-copper">{{ $t('landings.title') }}</p>
+                    <ul class="mt-3 space-y-1 text-sm">
+                        <li v-for="l in landingLinks" :key="l.key"><Link :href="l.href" class="text-stone-300 hover:text-antika-cream">{{ $t(`landings.${l.key}`) }}</Link></li>
+                    </ul>
+                </div>
+                <div>
                     <p class="text-xs font-semibold uppercase tracking-widest text-antika-copper">{{ $t('footer.hours_title') }}</p>
                     <ul class="mt-3 space-y-1 text-sm text-stone-300">
                         <li class="flex justify-between gap-4"><span>{{ $t('hours.mon_thu') }}</span><span class="text-stone-500">{{ $t('hours.evening') }}</span></li>
@@ -129,11 +152,14 @@ const isActive = (href) => {
                     </ul>
                 </div>
             </div>
-            <div class="border-t border-white/10 py-5 text-center text-xs text-stone-500">
-                © {{ new Date().getFullYear() }} Antika Restaurant — {{ $t('footer.rights') }}
+            <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 border-t border-white/10 px-6 py-5 text-center text-xs text-stone-500">
+                <span>© {{ new Date().getFullYear() }} Antika Restaurant — {{ $t('footer.rights') }}</span>
+                <Link :href="page.props.marketing?.privacy_url || '/privacy'" class="hover:text-antika-cream">{{ $t('footer.privacy') }}</Link>
+                <button type="button" class="hover:text-antika-cream" @click="reopenConsent">{{ $t('footer.cookies') }}</button>
             </div>
         </footer>
 
+        <StickyActions v-if="props.stickyBar" :quote-url="props.quoteUrl" />
         <CookieConsent />
     </div>
 </template>

@@ -16,6 +16,7 @@ use App\Models\ExtraItem;
 use App\Models\Quote;
 use App\Models\Venue;
 use App\Services\QuotePdf;
+use App\Services\Thumbnails;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -56,7 +57,7 @@ class SimulatorController extends Controller
                 'id' => $v->id,
                 'name' => $v->tr('name', $l),
                 'description' => $v->tr('short_description', $l) ?: $v->tr('description', $l),
-                'image' => $v->coverUrl(),
+                'image' => Thumbnails::url($v->coverImagePath(), 800),
                 'capacity' => $v->capacity_seated,
                 'has_parking' => $v->has_parking,
                 'has_vestiaire' => $v->has_vestiaire,
@@ -70,7 +71,7 @@ class SimulatorController extends Controller
                     'name' => $f->tr('name', $l),
                     'description' => $f->tr('short_description', $l) ?: $f->tr('description', $l),
                     'type' => $f->type,
-                    'image' => EventMenuFormula::imageUrl($f->image_path),
+                    'image' => Thumbnails::url($f->image_path, 800),
                     'categories' => $f->menuCategories->map(fn ($c) => [
                         'id' => $c->id,
                         'name' => $c->tr('name', $l),
@@ -78,7 +79,7 @@ class SimulatorController extends Controller
                             'id' => $i->id,
                             'name' => $i->tr('name', $l),
                             'description' => $i->tr('description', $l),
-                            'image' => EventMenuItem::imageUrl($i->image_path),
+                            'image' => Thumbnails::url($i->image_path, 400),
                             'has_supplement' => (float) $i->supplement_price > 0,
                         ])->values(),
                     ])->filter(fn ($c) => $c['items']->isNotEmpty())->values(),
@@ -96,7 +97,7 @@ class SimulatorController extends Controller
                         'id' => $o->id,
                         'name' => $o->tr('name', $l),
                         'description' => $o->tr('description', $l),
-                        'image' => DrinkOption::imageUrl($o->image_path),
+                        'image' => Thumbnails::url($o->image_path, 160),
                         'unit_type' => $o->unit_type,
                         'all_in' => $o->price_all_in !== null,
                     ])->values(),
@@ -113,7 +114,7 @@ class SimulatorController extends Controller
                         'id' => $i->id,
                         'name' => $i->tr('name', $l),
                         'description' => $i->tr('description', $l),
-                        'image' => ExtraItem::imageUrl($i->image_path),
+                        'image' => Thumbnails::url($i->image_path, 160),
                         'price_type' => $i->price_type,
                         'exclusive_group' => $i->exclusive_group,
                         'is_default' => $i->is_default,
@@ -159,7 +160,8 @@ class SimulatorController extends Controller
             'special_requests' => 'nullable|string|max:2000',
             'venue_ids' => 'required|array|min:1',
             'venue_ids.*' => 'integer|exists:venues,id',
-            'menu_formula_id' => 'required|exists:event_menu_formulas,id',
+            // Vide = location de salle sans traiteur.
+            'menu_formula_id' => 'nullable|exists:event_menu_formulas,id',
             'menu_choices' => 'nullable|array',
             'menu_choices.*' => 'integer|exists:event_menu_items,id',
             'drinks' => 'nullable|array',
@@ -223,6 +225,10 @@ class SimulatorController extends Controller
             ],
             // Conversion à déclarer une seule fois (pas en cas de rechargement).
             'trackConversion' => (bool) session('simulator.just_submitted'),
+            // Conversions améliorées Google Ads (haché par Google), seulement juste après l'envoi.
+            'userData' => session('simulator.just_submitted')
+                ? ['email' => $quote->customer->email, 'phone' => $quote->customer->phone]
+                : null,
             'whatsapp' => EventSetting::get('whatsapp'),
         ]);
     }
@@ -277,22 +283,24 @@ class SimulatorController extends Controller
             $quote->quoteVenues()->create(['venue_id' => $venue->id, 'price' => $venue->price]);
         }
 
-        $formula = EventMenuFormula::with('menuCategories')->findOrFail($v['menu_formula_id']);
-        // On n'accepte que des plats de la formule choisie.
-        $choices = EventMenuItem::whereIn('id', array_unique($v['menu_choices'] ?? []))
-            ->whereIn('menu_category_id', $formula->menuCategories->pluck('id'))
-            ->get();
-        $supplements = (float) $choices->sum('supplement_price') * $guests;
+        if (! empty($v['menu_formula_id'])) {
+            $formula = EventMenuFormula::with('menuCategories')->findOrFail($v['menu_formula_id']);
+            // On n'accepte que des plats de la formule choisie.
+            $choices = EventMenuItem::whereIn('id', array_unique($v['menu_choices'] ?? []))
+                ->whereIn('menu_category_id', $formula->menuCategories->pluck('id'))
+                ->get();
+            $supplements = (float) $choices->sum('supplement_price') * $guests;
 
-        $quoteMenu = $quote->quoteMenus()->create([
-            'menu_formula_id' => $formula->id,
-            'guest_count' => $guests,
-            'price_per_person' => $formula->price_per_person,
-            'supplements_total' => $supplements,
-            'total' => (float) $formula->price_per_person * $guests + $supplements,
-        ]);
-        foreach ($choices as $item) {
-            $quoteMenu->quoteMenuChoices()->create(['menu_item_id' => $item->id]);
+            $quoteMenu = $quote->quoteMenus()->create([
+                'menu_formula_id' => $formula->id,
+                'guest_count' => $guests,
+                'price_per_person' => $formula->price_per_person,
+                'supplements_total' => $supplements,
+                'total' => (float) $formula->price_per_person * $guests + $supplements,
+            ]);
+            foreach ($choices as $item) {
+                $quoteMenu->quoteMenuChoices()->create(['menu_item_id' => $item->id]);
+            }
         }
 
         foreach (collect($v['drinks'] ?? [])->unique('id') as $line) {

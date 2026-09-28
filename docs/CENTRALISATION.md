@@ -30,7 +30,8 @@ Puis, dans Forge > antika > Environment : `DB_DATABASE=antika`.
 
 ### 1. Déployer antika-website
 Variables à ajouter (Forge > Environment) : voir `.env.example` (ANTIKA_EVENTS_NOTIFY, LEGACY_SIM_DB_DATABASE, MAIL_*).
-Le script de déploiement doit contenir `php artisan migrate --force`.
+Le script de déploiement doit contenir `php artisan migrate --force`, puis `php artisan images:thumbs`
+(miniatures WebP du simulateur, servies ensuite directement par nginx).
 
 ### 2. Reprendre les données de l'ancien simulateur
 ```bash
@@ -66,13 +67,19 @@ Déployer baba-event (routes de redirection), puis Forge > baba-event > Environm
 - Garder `baba-event.on-forge.com` quelques mois pour les redirections, puis le supprimer.
 
 ### 7. Google Ads
-1. Créer la propriété GA4 et le compte Ads, puis une conversion « Demande de devis » (valeur dynamique)
-   et une « Clic téléphone ».
-2. Renseigner `ANTIKA_GA4_ID`, `ANTIKA_GADS_ID`, `ANTIKA_GADS_QUOTE_LABEL`, `ANTIKA_GADS_CALL_LABEL`.
-3. Annonces : pointer sur `/events/wedding?lang=nl` (campagne NL) ou `?lang=fr` (campagne FR).
+1. Créer la propriété GA4 et le compte Ads, puis les conversions :
+   « Demande de devis » (principale, valeur dynamique), « Demande de rappel » (principale),
+   « Clic téléphone » (principale), « Clic WhatsApp / e-mail » (secondaire).
+   Activer les conversions améliorées (Enhanced conversions, via gtag) dans Google Ads.
+2. Renseigner `ANTIKA_GA4_ID`, `ANTIKA_GADS_ID`, `ANTIKA_GADS_QUOTE_LABEL`, `ANTIKA_GADS_CALL_LABEL`,
+   `ANTIKA_GADS_LEAD_LABEL`, `ANTIKA_GADS_CONTACT_LABEL`.
+3. Annonces (le site est en néerlandais par défaut) : `/events/venue-hire`, `/events/wedding`, `/events/birthday`,
+   `/events/communion`, `/events/corporate`, `/events/funeral` ; ajouter `?lang=fr` pour les campagnes FR.
 4. Admin > Demandes de devis : colonne « Source » = Ads pour les demandes venues d'une annonce.
 
 ## À compléter dans l'admin
+- Réglages devis > « Site : confiance et capacité » : capacité maximale, note et nombre d'avis Google, lien des avis,
+  2–3 avis mis en avant, numéro WhatsApp.
 - Traductions NL / EN du catalogue (types, salles, formules, plats, boissons, extras) : reprises en FR.
 - Réglages devis : URL des conditions générales et de la politique de confidentialité (sinon case de consentement simple).
 - Vérifier le taux de TVA (21 % par défaut) et les textes des pages d'annonces (`lang/*/landing.php`).

@@ -34,10 +34,12 @@
 
             <div style="font-size:12px;text-transform:uppercase;letter-spacing:1px;color:#d9551f;margin:18px 0 6px;">Sélection</div>
             <strong>Espaces :</strong> {{ $quote->quoteVenues->map(fn ($l) => $fr($l->venue))->join(', ') ?: '—' }}<br>
-            @foreach($quote->quoteMenus as $m)
+            @forelse($quote->quoteMenus as $m)
                 <strong>Menu :</strong> {{ $fr($m->menuFormula) }}
                 @if($m->quoteMenuChoices->isNotEmpty()) ({{ $m->quoteMenuChoices->map(fn ($ch) => $fr($ch->menuItem))->join(', ') }})@endif<br>
-            @endforeach
+            @empty
+                <strong>Menu :</strong> sans traiteur (location de salle seule)<br>
+            @endforelse
             <strong>Boissons :</strong> {{ $quote->quoteDrinks->map(fn ($l) => $fr($l->drinkOption).($l->pricing_mode === 'per_unit' ? ' ×'.$l->quantity : ''))->join(', ') ?: '—' }}<br>
             <strong>Extras :</strong> {{ $quote->quoteExtras->map(fn ($l) => $fr($l->extraItem))->join(', ') ?: '—' }}<br>
             @if($quote->child_menu)<strong>Menu enfant souhaité</strong><br>@endif

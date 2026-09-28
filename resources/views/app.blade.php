@@ -8,7 +8,10 @@
             $locale = app()->getLocale();
             $site = config('antika');
             $url = $site['url'];
-            $canonical = $url . (request()->getPathInfo() === '/' ? '' : request()->getPathInfo());
+            $path = request()->getPathInfo();
+            // Une adresse par langue : néerlandais sans paramètre, ?lang=fr / ?lang=en sinon.
+            $langUrl = fn ($l) => $url . $path . ($l === 'nl' ? '' : '?lang=' . $l);
+            $canonical = $langUrl($locale);
             $metaTitle = trans('site.meta.title');
             $metaDesc = trans('site.meta.description');
             $ogImage = $url . '/images/og-image.jpg';
@@ -54,6 +57,10 @@
         <meta name="author" content="Antika Restaurant">
         <meta name="theme-color" content="#0c0a09">
         <link rel="canonical" href="{{ $canonical }}">
+        @foreach (['nl', 'fr', 'en'] as $alt)
+            <link rel="alternate" hreflang="{{ $alt }}" href="{{ $langUrl($alt) }}">
+        @endforeach
+        <link rel="alternate" hreflang="x-default" href="{{ $langUrl('nl') }}">
 
         <!-- Open Graph -->
         <meta property="og:type" content="restaurant">
@@ -92,9 +99,15 @@
                 try { if (localStorage.getItem('antika_consent') === 'granted') { gtag('consent', 'update', {ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted', analytics_storage: 'granted'}); } } catch (e) {}
                 gtag('js', new Date());
                 @if(!empty($tracking['ga4_id'])) gtag('config', @json($tracking['ga4_id']), {send_page_view: false}); @endif
-                @if(!empty($tracking['ads_id'])) gtag('config', @json($tracking['ads_id'])); @endif
+                {{-- Conversions améliorées : e-mail / téléphone du formulaire envoyés hachés par Google. --}}
+                @if(!empty($tracking['ads_id'])) gtag('config', @json($tracking['ads_id']), {allow_enhanced_conversions: true}); @endif
             </script>
             <script async src="https://www.googletagmanager.com/gtag/js?id={{ $tracking['ga4_id'] ?: $tracking['ads_id'] }}"></script>
+        @endif
+
+        @if ($page['component'] === 'Home' && ($hero = $site['hero_images'][0] ?? null))
+            {{-- Première photo du carrousel : téléchargée avant le JavaScript. --}}
+            <link rel="preload" as="image" href="{{ $hero }}" imagesrcset="{{ str_replace('.webp', '-sm.webp', $hero) }} 900w, {{ $hero }} 1920w" imagesizes="100vw" fetchpriority="high">
         @endif
 
         <!-- Fonts -->
@@ -114,8 +127,8 @@
         <div
             class="zc-widget-config"
             data-restaurant="378407"
-            @if(! \Illuminate\Support\Str::startsWith($page['component'], ['Simulator/', 'EventLanding']))
-            {{-- Ouverture automatique, sauf sur le devis événement et les pages d'annonces (elle masquerait le formulaire). --}}
+            @if(! \Illuminate\Support\Str::startsWith($page['component'], ['Simulator/', 'EventLanding', 'Events', 'Privacy']))
+            {{-- Ouverture automatique, sauf sur les pages événements / d'annonces (elle masquerait le devis) et légales. --}}
             data-open="2000"
             @endif
             ></div>

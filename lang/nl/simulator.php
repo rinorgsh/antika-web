@@ -24,6 +24,7 @@ return [
     ],
 
     'sidebar' => [
+        'no_catering' => 'Zonder catering',
         'title' => 'Uw selectie',
         'type' => 'Soort feest',
         'date' => 'Datum & gasten',
@@ -45,6 +46,9 @@ return [
     ],
 
     'step2' => [
+        'checking' => 'Beschikbaarheid controleren…',
+        'available' => '{1} Goed nieuws: 1 zaal is nog vrij op deze datum.|[2,*] Goed nieuws: :count zalen zijn nog vrij op deze datum.',
+        'all_booked' => 'Alle zalen zijn al gereserveerd op deze datum. Kies een andere datum of bel ons: soms is er toch een oplossing.',
         'title' => 'Datum, moment en aantal gasten',
         'date' => 'Datum van het feest',
         'slot' => 'Moment',
@@ -65,6 +69,9 @@ return [
     ],
 
     'step4' => [
+        'no_catering_title' => 'Zonder catering',
+        'no_catering_text' => 'U huurt enkel de zaal. Menu of hapjes kunnen later nog altijd toegevoegd worden.',
+        'no_catering_tag' => 'Enkel zaal',
         'title' => 'Kies uw menu',
         'subtitle' => 'Kies een formule en daarna uw gerechten.',
         'buffet' => 'Buffet',
@@ -101,6 +108,7 @@ return [
         'requests' => 'Een speciale wens?',
         'requests_placeholder' => 'Verloop van de dag, decoratie, vragen…',
         'consent' => 'Ik ga ermee akkoord dat Antika deze gegevens gebruikt om mij te contacteren over mijn aanvraag.',
+        'consent_privacy' => 'Ik ga ermee akkoord dat Antika deze gegevens gebruikt om mij te contacteren over mijn aanvraag (:privacy).',
         'consent_legal' => 'Ik ga akkoord met de :terms en het :privacy.',
         'terms' => 'algemene voorwaarden',
         'privacy' => 'privacybeleid',
@@ -117,7 +125,7 @@ return [
         'slot' => 'Kies een moment van de dag.',
         'guests' => 'Geef minstens één persoon op.',
         'venue' => 'Kies minstens één zaal.',
-        'formula' => 'Kies een menuformule.',
+        'formula' => 'Kies een menuformule of « zonder catering ».',
         'contact' => 'Vul uw contactgegevens volledig in.',
         'email' => 'Dit e-mailadres lijkt niet geldig.',
         'consent' => 'Vink het vakje aan zodat we u kunnen antwoorden.',
@@ -154,6 +162,7 @@ return [
     ],
 
     'pdf' => [
+        'no_catering' => 'Zonder catering — enkel zaalverhuur',
         'filename' => 'antika-aanvraag-:number',
         'request' => 'AANVRAAG',
         'quote' => 'OFFERTE',

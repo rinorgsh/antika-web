@@ -39,7 +39,7 @@ const menuUrl = computed(() => `${site.value.links.menu}/carte.html?lang=${local
         <section class="py-24">
             <div class="mx-auto grid max-w-7xl items-center gap-14 px-6 lg:grid-cols-2">
                 <div v-reveal class="relative">
-                    <img src="/images/about.jpg" alt="" class="aspect-[4/5] w-full rounded-sm object-cover shadow-2xl" />
+                    <img src="/images/about.webp" alt="" loading="lazy" class="aspect-[4/5] w-full rounded-sm object-cover shadow-2xl" />
                     <div class="absolute -bottom-5 -left-5 hidden h-28 w-28 border border-antika-copper/60 lg:block"></div>
                 </div>
                 <div v-reveal="120">
@@ -53,7 +53,7 @@ const menuUrl = computed(() => `${site.value.links.menu}/carte.html?lang=${local
                             <p class="mt-1 text-xs uppercase tracking-wide text-stone-400">{{ $t('stats.seats') }}</p>
                         </div>
                         <div>
-                            <p class="font-serif text-3xl text-antika-copper sm:text-4xl">{{ site.stats.event_capacity }}</p>
+                            <p class="font-serif text-3xl text-antika-copper sm:text-4xl">{{ page.props.marketing.capacity }}</p>
                             <p class="mt-1 text-xs uppercase tracking-wide text-stone-400">{{ $t('stats.capacity') }}</p>
                         </div>
                         <div>
@@ -90,8 +90,8 @@ const menuUrl = computed(() => `${site.value.links.menu}/carte.html?lang=${local
 
                 <div class="mt-16 grid items-center gap-12 lg:grid-cols-2">
                     <div v-reveal class="grid grid-cols-2 gap-4">
-                        <img src="/images/dishes/d1.jpg" alt="" class="mt-8 aspect-[4/5] w-full rounded-sm object-cover shadow-xl" />
-                        <img src="/images/dishes/d2.jpg" alt="" class="aspect-[4/5] w-full rounded-sm object-cover shadow-xl" />
+                        <img src="/images/dishes/d1.webp" alt="" loading="lazy" class="mt-8 aspect-[4/5] w-full rounded-sm object-cover shadow-xl" />
+                        <img src="/images/dishes/d2.webp" alt="" loading="lazy" class="aspect-[4/5] w-full rounded-sm object-cover shadow-xl" />
                     </div>
                     <div v-reveal="120">
                         <Eyebrow>{{ $t('menu.title') }}</Eyebrow>
@@ -111,7 +111,7 @@ const menuUrl = computed(() => `${site.value.links.menu}/carte.html?lang=${local
 
         <!-- TEASER ÉVÉNEMENTS / LOCATION -->
         <section class="relative overflow-hidden">
-            <img src="/images/events/banquet.jpg" alt="" class="absolute inset-0 h-full w-full object-cover" />
+            <img src="/images/events/banquet.webp" srcset="/images/events/banquet-sm.webp 900w, /images/events/banquet.webp 1920w" sizes="100vw" alt="" loading="lazy" class="absolute inset-0 h-full w-full object-cover" />
             <div class="absolute inset-0 bg-antika-ink/85"></div>
             <div class="relative mx-auto max-w-3xl px-6 py-24 text-center">
                 <div v-reveal>

@@ -2,8 +2,16 @@
 import { Head, Link, usePage } from '@inertiajs/vue3';
 import { computed } from 'vue';
 import AppLayout from '@/Layouts/AppLayout.vue';
+import CallbackForm from '@/Components/CallbackForm.vue';
 import Eyebrow from '@/Components/Eyebrow.vue';
+import FaqList from '@/Components/FaqList.vue';
+import ReviewsBlock from '@/Components/ReviewsBlock.vue';
+import VenueGrid from '@/Components/VenueGrid.vue';
 import { t } from '@/i18n';
+
+defineProps({
+    venues: { type: Array, default: () => [] },
+});
 
 const page = usePage();
 const site = computed(() => page.props.site);
@@ -11,18 +19,24 @@ const ev = computed(() => page.props.translations.events);
 </script>
 
 <template>
-    <Head :title="t('nav.events')" />
+    <Head>
+        <title>{{ t('nav.events') }}</title>
+        <meta head-key="description" name="description" :content="ev.hero_text" />
+    </Head>
 
-    <AppLayout>
+    <AppLayout sticky-bar>
         <!-- HERO -->
         <section class="relative flex min-h-[80vh] items-center overflow-hidden">
-            <img src="/images/events/banquet.jpg" alt="" class="absolute inset-0 h-full w-full object-cover" />
+            <img src="/images/events/banquet.webp" srcset="/images/events/banquet-sm.webp 900w, /images/events/banquet.webp 1920w" sizes="100vw" alt="" fetchpriority="high" class="absolute inset-0 h-full w-full object-cover" />
             <div class="absolute inset-0 bg-gradient-to-t from-antika-ink via-antika-ink/70 to-antika-ink/60"></div>
             <div class="relative mx-auto w-full max-w-7xl px-6 pt-24 text-center">
                 <Eyebrow center>{{ ev.hero_eyebrow }}</Eyebrow>
                 <h1 class="mx-auto mt-6 max-w-3xl font-serif text-4xl leading-tight text-antika-cream sm:text-6xl">{{ ev.hero_title }}</h1>
                 <p class="mx-auto mt-6 max-w-2xl leading-relaxed text-stone-200">{{ ev.hero_text }}</p>
-                <Link :href="site.links.simulator" class="mt-9 inline-block rounded-full bg-antika-coral px-8 py-3.5 text-sm font-medium text-white transition-colors hover:bg-antika-copper">{{ ev.cta_button }}</Link>
+                <div class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+                    <Link :href="site.links.simulator" class="inline-block rounded-full bg-antika-coral px-8 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-antika-copper">{{ ev.cta_button }}</Link>
+                    <a href="#callback" class="inline-block rounded-full border border-antika-cream/50 px-8 py-3.5 text-sm font-medium text-antika-cream transition-colors hover:bg-antika-cream hover:text-antika-ink">{{ $t('callback.title') }}</a>
+                </div>
             </div>
         </section>
 
@@ -42,20 +56,22 @@ const ev = computed(() => page.props.translations.events);
                     </ul>
                 </div>
                 <div v-reveal="120" class="relative">
-                    <img src="/images/events/garden.jpg" alt="" class="aspect-[4/5] w-full rounded-sm object-cover shadow-2xl" />
+                    <img src="/images/events/garden.webp" alt="" loading="lazy" class="aspect-[4/5] w-full rounded-sm object-cover shadow-2xl" />
                     <div class="absolute -bottom-5 -right-5 hidden h-28 w-28 border border-antika-copper/60 lg:block"></div>
                 </div>
             </div>
         </section>
 
+        <VenueGrid :venues="venues" />
+
         <!-- TYPES D'ÉVÉNEMENTS -->
-        <section class="bg-antika-panel py-24">
+        <section class="py-24">
             <div class="mx-auto max-w-7xl px-6">
                 <div v-reveal class="text-center">
                     <Eyebrow center>{{ ev.types_title }}</Eyebrow>
                 </div>
                 <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                    <div v-for="(type, i) in ev.types" :key="i" v-reveal="i * 100" class="border border-white/10 bg-antika-ink/40 p-8 transition-colors hover:border-antika-copper/50">
+                    <div v-for="(type, i) in ev.types" :key="i" v-reveal="i * 100" class="border border-white/10 bg-antika-panel p-8 transition-colors hover:border-antika-copper/50">
                         <span class="font-serif text-3xl text-antika-copper">0{{ i + 1 }}</span>
                         <h3 class="mt-4 font-serif text-xl text-antika-cream">{{ type.title }}</h3>
                         <p class="mt-3 text-sm leading-relaxed text-stone-400">{{ type.text }}</p>
@@ -80,9 +96,11 @@ const ev = computed(() => page.props.translations.events);
             </div>
         </section>
 
+        <ReviewsBlock />
+
         <!-- CTA SIMULATEUR -->
         <section class="relative overflow-hidden">
-            <img src="/images/events/hall.jpg" alt="" class="absolute inset-0 h-full w-full object-cover" />
+            <img src="/images/events/hall.webp" srcset="/images/events/hall-sm.webp 900w, /images/events/hall.webp 1920w" sizes="100vw" alt="" loading="lazy" class="absolute inset-0 h-full w-full object-cover" />
             <div class="absolute inset-0 bg-antika-ink/88"></div>
             <div v-reveal class="relative mx-auto max-w-3xl px-6 py-24 text-center">
                 <h2 class="font-serif text-4xl text-antika-cream sm:text-5xl">{{ ev.cta_title }}</h2>
@@ -94,5 +112,14 @@ const ev = computed(() => page.props.translations.events);
                 </p>
             </div>
         </section>
+
+        <!-- Rappel -->
+        <section id="callback" class="scroll-mt-24 py-20">
+            <div class="mx-auto max-w-xl px-6">
+                <CallbackForm source="/events" />
+            </div>
+        </section>
+
+        <FaqList />
     </AppLayout>
 </template>

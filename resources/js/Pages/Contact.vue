@@ -23,7 +23,7 @@ const mapEmbed = 'https://www.google.com/maps?q=Pater+Penninckxstraat+32,+1982+Z
     <AppLayout>
         <!-- En-tête de page (dégage le header fixe) -->
         <section class="relative flex min-h-[44vh] items-center overflow-hidden">
-            <img src="/images/interior.jpg" alt="" class="absolute inset-0 h-full w-full object-cover" />
+            <img src="/images/interior.webp" srcset="/images/interior-sm.webp 900w, /images/interior.webp 1920w" sizes="100vw" alt="" fetchpriority="high" class="absolute inset-0 h-full w-full object-cover" />
             <div class="absolute inset-0 bg-antika-ink/75"></div>
             <div class="relative mx-auto w-full max-w-7xl px-6 pt-28 text-center">
                 <Eyebrow center>{{ $t('visit.eyebrow') }}</Eyebrow>

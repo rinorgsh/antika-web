@@ -2,7 +2,9 @@
 import { Head, router, usePage } from '@inertiajs/vue3';
 import { computed, nextTick, onBeforeUnmount, onMounted, reactive, ref, watch } from 'vue';
 import AppLayout from '@/Layouts/AppLayout.vue';
+import CallbackForm from '@/Components/CallbackForm.vue';
 import Eyebrow from '@/Components/Eyebrow.vue';
+import Modal from '@/Components/Modal.vue';
 import { attribution, event as trackEvent } from '@/tracking';
 
 const props = defineProps({
@@ -18,6 +20,8 @@ const props = defineProps({
 
 const page = usePage();
 const site = computed(() => page.props.site);
+const marketing = computed(() => page.props.marketing || {});
+const callbackOpen = ref(false);
 const locale = computed(() => page.props.locale || 'nl');
 
 /* ------------------------------------------------------------------ */
@@ -69,6 +73,7 @@ const form = reactive({
     guest_count: 50,
     venue_ids: [],
     menu_formula_id: null,
+    no_catering: false,     // location de salle seule
     menu_choices: {},       // servi à table : { categoryId: itemId }
     supplements: [],        // buffet : plats à supplément ajoutés
     child_menu: false,
@@ -133,7 +138,11 @@ const summary = computed(() => [
         done: !!(form.event_date && form.event_time_slot),
     },
     { label: s('sidebar.venue'), value: selectedVenues.value.map((v) => v.name).join(', '), done: form.venue_ids.length > 0 },
-    { label: s('sidebar.menu'), value: selectedFormula.value?.name, done: !!form.menu_formula_id },
+    {
+        label: s('sidebar.menu'),
+        value: form.no_catering ? s('sidebar.no_catering') : selectedFormula.value?.name,
+        done: !!form.menu_formula_id || form.no_catering,
+    },
     { label: s('sidebar.drinks'), value: drinksCount.value ? choice('sidebar.drinks_count', drinksCount.value) : '', done: drinksCount.value > 0 },
 ]);
 
@@ -150,7 +159,7 @@ const validate = (n) => {
         if (!form.guest_count || form.guest_count < 1) e.guest_count = s('errors.guests');
     }
     if (n === 3 && !form.venue_ids.length) e.venue_ids = s('errors.venue');
-    if (n === 4 && !form.menu_formula_id) e.menu_formula_id = s('errors.formula');
+    if (n === 4 && !form.menu_formula_id && !form.no_catering) e.menu_formula_id = s('errors.formula');
     if (n === 6) {
         if (![form.first_name, form.last_name, form.email, form.phone].every((v) => v.trim())) e.contact = s('errors.contact');
         else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) e.contact = s('errors.email');
@@ -205,9 +214,12 @@ const changeGuests = (delta) => {
     form.guest_count = Math.max(1, (Number(form.guest_count) || 0) + delta);
 };
 
+const checkingAvailability = ref(false);
+
 watch(() => form.event_date, async (date) => {
     availability.value = {};
     if (!date || date < minDate) return;
+    checkingAvailability.value = true;
     try {
         const { data } = await window.axios.post(route('simulator.availability'), { date });
         if (form.event_date !== date) return;   // une autre date a été choisie entre-temps
@@ -216,8 +228,14 @@ watch(() => form.event_date, async (date) => {
         form.venue_ids = form.venue_ids.filter((id) => data[id] !== false);
     } catch (e) {
         /* sans réponse, on laisse choisir : le serveur revérifie à l'envoi */
+    } finally {
+        if (form.event_date === date) checkingAvailability.value = false;
     }
 });
+
+// « Bonne nouvelle : 3 zalen zijn nog vrij » dès le choix de la date (étape 2).
+const freeVenues = computed(() => props.venues.filter((v) => availability.value[v.id] === true).length);
+const availabilityKnown = computed(() => Object.keys(availability.value).length > 0);
 
 const isUnavailable = (venue) => availability.value[venue.id] === false;
 
@@ -232,10 +250,19 @@ const toggleVenue = (venue) => {
 /* ------------------------------------------------------------------ */
 
 const chooseFormula = (id) => {
+    form.no_catering = false;
     if (form.menu_formula_id === id) return;
     form.menu_formula_id = id;
     form.menu_choices = {};
     form.supplements = [];
+};
+
+const chooseNoCatering = () => {
+    form.no_catering = true;
+    form.menu_formula_id = null;
+    form.menu_choices = {};
+    form.supplements = [];
+    form.child_menu = false;
 };
 
 const toggleSupplement = (id) => {
@@ -301,12 +328,11 @@ const toggleExtraCategory = (id) => {
 /* ------------------------------------------------------------------ */
 
 const consentHtml = computed(() => {
-    if (!props.legal?.terms && !props.legal?.privacy) return null;
-    const link = (url, label) => (url ? `<a href="${url}" target="_blank" rel="noopener" class="underline hover:text-antika-cream">${label}</a>` : label);
-    return s('step6.consent_legal', {
-        terms: link(props.legal.terms, s('step6.terms')),
-        privacy: link(props.legal.privacy, s('step6.privacy')),
-    });
+    const link = (url, label) => `<a href="${url}" target="_blank" rel="noopener" class="underline hover:text-antika-cream">${label}</a>`;
+    const privacy = link(props.legal?.privacy || '/privacy', s('step6.privacy'));
+    // Sans conditions générales : accord simple + lien vers la politique de confidentialité.
+    if (!props.legal?.terms) return s('step6.consent_privacy', { privacy });
+    return s('step6.consent_legal', { terms: link(props.legal.terms, s('step6.terms')), privacy });
 });
 
 const submit = () => {
@@ -333,8 +359,8 @@ const submit = () => {
         dietary_requirements: form.dietary_requirements,
         special_requests: form.special_requests,
         venue_ids: form.venue_ids,
-        menu_formula_id: form.menu_formula_id,
-        menu_choices: isBuffet.value ? form.supplements : Object.values(form.menu_choices),
+        menu_formula_id: form.no_catering ? null : form.menu_formula_id,
+        menu_choices: form.no_catering ? [] : isBuffet.value ? form.supplements : Object.values(form.menu_choices),
         drinks,
         extras: Object.entries(form.extras).map(([id, quantity]) => ({ id: Number(id), quantity })),
         tracking: attribution(),
@@ -443,6 +469,9 @@ const CHECK = 'm4.5 12.75 6 6 9-13.5';
                                         <span v-if="type.description" class="mt-1 hidden text-sm leading-relaxed text-stone-400 sm:block">{{ type.description }}</span>
                                     </button>
                                 </div>
+                                <p class="mt-8 text-center text-sm text-stone-400">
+                                    <button type="button" class="border-b border-antika-copper pb-0.5 text-antika-cream hover:text-antika-copper" @click="callbackOpen = true">{{ $t('callback.title') }}</button>
+                                </p>
                             </section>
 
                             <!-- ============ 2. DATE & INVITÉS ============ -->
@@ -452,6 +481,12 @@ const CHECK = 'm4.5 12.75 6 6 9-13.5';
                                 <label class="field-label" for="event-date">{{ s('step2.date') }}</label>
                                 <input id="event-date" v-model="form.event_date" type="date" :min="minDate" class="field" />
                                 <p v-if="errors.event_date" class="field-error">{{ errors.event_date }}</p>
+                                <p v-else-if="checkingAvailability" class="mt-2 text-sm text-stone-500">{{ s('step2.checking') }}</p>
+                                <p v-else-if="availabilityKnown && freeVenues > 0" class="mt-2 flex items-center gap-2 text-sm text-emerald-400">
+                                    <svg class="h-4 w-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" :d="CHECK" /></svg>
+                                    {{ choice('step2.available', freeVenues) }}
+                                </p>
+                                <p v-else-if="availabilityKnown" class="mt-2 text-sm text-amber-400">{{ s('step2.all_booked') }}</p>
 
                                 <p class="field-label mt-7">{{ s('step2.slot') }}</p>
                                 <div class="grid grid-cols-3 gap-2 sm:gap-3">
@@ -544,6 +579,19 @@ const CHECK = 'm4.5 12.75 6 6 9-13.5';
                                             <h3 class="absolute inset-x-4 bottom-3 font-serif text-xl text-antika-cream">{{ formula.name }}</h3>
                                         </div>
                                         <p v-if="formula.description" class="line-clamp-2 p-4 text-sm leading-relaxed text-stone-400">{{ formula.description }}</p>
+                                    </button>
+                                    <button
+                                        type="button"
+                                        class="card flex w-[78vw] shrink-0 snap-center flex-col text-left sm:w-auto"
+                                        :class="form.no_catering ? 'card-on' : ''"
+                                        @click="chooseNoCatering"
+                                    >
+                                        <div class="relative flex h-44 items-end bg-gradient-to-br from-antika-ink to-black/60 p-4">
+                                            <span v-if="form.no_catering" class="tick absolute left-3 top-3"><svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" :d="CHECK" /></svg></span>
+                                            <span class="absolute right-3 top-3 rounded-full bg-antika-ink/80 px-2.5 py-1 text-[11px] uppercase tracking-wider text-stone-200">{{ s('step4.no_catering_tag') }}</span>
+                                            <h3 class="font-serif text-xl text-antika-cream">{{ s('step4.no_catering_title') }}</h3>
+                                        </div>
+                                        <p class="p-4 text-sm leading-relaxed text-stone-400">{{ s('step4.no_catering_text') }}</p>
                                     </button>
                                 </div>
 
@@ -691,8 +739,7 @@ const CHECK = 'm4.5 12.75 6 6 9-13.5';
 
                                         <label class="col-span-2 mt-1 flex cursor-pointer items-start gap-3 text-xs leading-relaxed text-stone-400">
                                             <input v-model="form.consent" type="checkbox" class="mt-0.5 h-4 w-4 shrink-0 rounded border-white/30 bg-transparent text-antika-copper focus:ring-antika-copper/40" />
-                                            <span v-if="consentHtml" v-html="consentHtml"></span>
-                                            <span v-else>{{ s('step6.consent') }}</span>
+                                            <span v-html="consentHtml"></span>
                                         </label>
                                         <p v-if="errors.contact" class="field-error col-span-2">{{ errors.contact }}</p>
                                         <p v-if="errors.consent" class="field-error col-span-2">{{ errors.consent }}</p>
@@ -763,12 +810,22 @@ const CHECK = 'm4.5 12.75 6 6 9-13.5';
                                     </span>
                                 </li>
                             </ul>
-                            <a :href="`tel:${site.contact.phone_link}`" class="mt-6 block border-t border-white/10 pt-5 text-center text-sm text-stone-300 hover:text-antika-cream">{{ site.contact.phone }}</a>
+                            <div class="mt-6 space-y-2 border-t border-white/10 pt-5 text-center text-sm">
+                                <a :href="`tel:${site.contact.phone_link}`" class="block text-stone-300 hover:text-antika-cream">{{ site.contact.phone }}</a>
+                                <button type="button" class="text-antika-copper hover:text-antika-cream" @click="callbackOpen = true">{{ $t('callback.title') }}</button>
+                            </div>
+                            <p v-if="marketing.rating" class="mt-4 text-center text-xs text-stone-500">
+                                <span class="text-antika-copper">★</span> {{ $t('reviews.rating').replace(':rating', marketing.rating) }}<template v-if="marketing.reviews_count"> · {{ $t('reviews.count').replace(':count', marketing.reviews_count) }}</template>
+                            </p>
                         </div>
                     </aside>
                 </div>
             </div>
         </div>
+
+        <Modal :show="callbackOpen" max-width="lg" @close="callbackOpen = false">
+            <CallbackForm :event-type-id="form.event_type_id" source="/events/simulator" />
+        </Modal>
 
         <!-- Barre du bas (mobile / tablette) -->
         <div class="fixed inset-x-0 bottom-0 z-40 border-t border-white/10 bg-antika-ink/95 backdrop-blur lg:hidden" style="padding-bottom: env(safe-area-inset-bottom, 0px)">

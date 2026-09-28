@@ -24,7 +24,9 @@ class SetLocale
             $request->session()->put('locale', $requested);
         }
 
-        $locale = $request->session()->get('locale') ?? $this->fromBrowser($request);
+        // Pas de choix explicite : néerlandais, quelle que soit la langue du navigateur.
+        // Les annonces FR pointent vers ?lang=fr ; le sélecteur de langue reste disponible.
+        $locale = $request->session()->get('locale', self::DEFAULT);
 
         if (! in_array($locale, self::SUPPORTED, true)) {
             $locale = self::DEFAULT;
@@ -33,16 +35,5 @@ class SetLocale
         app()->setLocale($locale);
 
         return $next($request);
-    }
-
-    /**
-     * Première visite sans choix : langue du navigateur si on la propose
-     * (un Bruxellois francophone arrive en français), sinon néerlandais.
-     */
-    private function fromBrowser(Request $request): string
-    {
-        $preferred = $request->getPreferredLanguage(self::SUPPORTED);
-
-        return $request->headers->has('Accept-Language') && $preferred ? $preferred : self::DEFAULT;
     }
 }

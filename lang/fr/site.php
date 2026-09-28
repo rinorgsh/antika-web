@@ -17,6 +17,7 @@ return [
         'reserve' => 'Réserver une table',
         'quote' => 'Calculer mon devis',
         'quote_short' => 'Devis',
+        'quote_cta' => 'Demander un devis',
     ],
 
     'hero' => [
@@ -72,9 +73,9 @@ return [
     'events' => [
         'hero_eyebrow' => 'Événements & Location de salle',
         'hero_title' => 'Votre événement chez Antika',
-        'hero_text' => 'Du mariage à l\'anniversaire ou l\'événement d\'entreprise — privatisez notre salle et notre restaurant, avec traiteur, boissons et service entièrement sur mesure.',
+        'hero_text' => 'Mariage, anniversaire, événement d\'entreprise ou réception après funérailles — louez une salle de 40 à :capacity invités, avec ou sans traiteur.',
         'intro_title' => 'Un lieu unique pour votre fête',
-        'intro_text' => 'Notre restaurant peut être privatisé (en partie ou en totalité) pour votre événement privé. Nous nous occupons de tout : la salle, un menu raffiné, les boissons et le service, pour que vous profitiez sereinement de vos invités.',
+        'intro_text' => 'Cinq espaces au bord des étangs d\'Elewijt, du salon intime au domaine entier. Louez uniquement la salle, ou laissez-nous tout organiser : un menu raffiné, les boissons et le service, pour que vous profitiez sereinement de vos invités.',
         'types_title' => 'Pour chaque occasion',
         'types' => [
             ['title' => 'Mariages', 'text' => 'Une fête inoubliable dans un cadre chaleureux et élégant.'],
@@ -82,10 +83,10 @@ return [
             ['title' => 'Événements d\'entreprise', 'text' => 'Séminaires, réceptions et dîners d\'équipe avec un service professionnel.'],
             ['title' => 'Communions & fêtes', 'text' => 'Chaque occasion mérite une fête réussie et sur mesure.'],
         ],
-        'formula_title' => 'Tout compris',
+        'formula_title' => 'Tout est possible',
         'formula_points' => [
             'Privatisation de la salle ou du restaurant entier',
-            'Traiteur sur mesure : apéritif, entrée, plat et dessert',
+            'Traiteur sur mesure — ou la salle seule, à vous de choisir',
             'Boissons : vins, softs, cocktails et bar',
             'Mise en place, décoration et service',
         ],
@@ -131,11 +132,91 @@ return [
         'contact_title' => 'Contact',
         'hours_title' => 'Heures d\'ouverture',
         'rights' => 'Tous droits réservés.',
+        'privacy' => 'Politique de confidentialité',
+        'cookies' => 'Paramètres cookies',
     ],
 
     'cookies' => [
         'text' => 'Nous utilisons des cookies pour mesurer la fréquentation du site et l\'efficacité de nos annonces. Vous pouvez les accepter ou les refuser.',
         'refuse' => 'Refuser',
         'accept' => 'Accepter',
+    ],
+
+    'callback' => [
+        'title' => 'Vous préférez être rappelé ?',
+        'text' => 'Laissez votre numéro, nous vous rappelons rapidement pour parler de votre fête. Gratuit et sans engagement.',
+        'name' => 'Nom',
+        'phone' => 'Téléphone',
+        'email' => 'E-mail (facultatif)',
+        'date' => 'Date (si connue)',
+        'guests' => 'Nombre d\'invités',
+        'message' => 'Votre question (facultatif)',
+        'submit' => 'Rappelez-moi',
+        'success_title' => 'Merci, nous vous rappelons très vite !',
+        'success_text' => 'Votre demande est bien arrivée. Urgent ? Appelez-nous au :phone.',
+        'consent' => 'En envoyant, vous acceptez notre :privacy.',
+        'privacy' => 'politique de confidentialité',
+        'errors' => ['phone' => 'Indiquez un numéro de téléphone valide.', 'generic' => 'L\'envoi a échoué. Réessayez ou appelez-nous.'],
+    ],
+
+    'reviews' => [
+        'eyebrow' => 'Ce que disent nos clients',
+        'rating' => ':rating/5 sur Google',
+        'count' => ':count avis',
+        'link' => 'Lire tous les avis',
+    ],
+
+    'venues' => [
+        'eyebrow' => 'Nos salles',
+        'title' => 'Un espace à la mesure de votre fête',
+        'text' => 'Du salon intime au domaine entier. Les salles peuvent être combinées.',
+        'seats' => ':count places',
+        'parking' => 'Parking',
+        'cloakroom' => 'Vestiaire',
+        'toilets' => 'Sanitaires privés',
+    ],
+
+    'faq' => [
+        'eyebrow' => 'Questions fréquentes',
+        'items' => [
+            ['q' => 'Puis-je louer la salle sans traiteur ?', 'a' => 'Oui. Vous pouvez louer uniquement la salle, ou confier à notre équipe le repas, les boissons et le service. Dans le simulateur, choisissez simplement « Sans traiteur ».'],
+            ['q' => 'Combien d\'invités pouvez-vous accueillir ?', 'a' => 'Du salon privé pour 40 personnes au domaine entier pour :capacity invités. Les salles peuvent être combinées.'],
+            ['q' => 'Combien coûte une fête chez Antika ?', 'a' => 'Chaque fête est différente : le prix dépend de la salle, du nombre d\'invités, du menu et des boissons. Composez votre fête dans le simulateur et recevez gratuitement un devis sur mesure, sans engagement.'],
+            ['q' => 'Tenez-vous compte des allergies et régimes ?', 'a' => 'Bien sûr. Indiquez vos souhaits (végétarien, allergies…) dans votre demande et la cuisine adapte le menu. Un menu enfant est aussi possible.'],
+            ['q' => 'Y a-t-il un parking ?', 'a' => 'Oui, un parking est disponible sur place. Le domaine se trouve à Zemst (Elewijt), facilement accessible par l\'E19 entre Bruxelles, Malines et Louvain.'],
+            ['q' => 'Puis-je visiter les salles avant ?', 'a' => 'Bien sûr. Appelez-nous ou indiquez-le dans votre demande, nous fixerons un moment ensemble.'],
+            ['q' => 'Comment réserver ma date ?', 'a' => 'Après votre demande, nous discutons des détails et vous recevez un devis. Votre date est confirmée après accord et versement d\'un acompte.'],
+        ],
+    ],
+
+    'sticky' => [
+        'call' => 'Appeler',
+        'whatsapp' => 'WhatsApp',
+        'quote' => 'Devis',
+    ],
+
+    'landings' => [
+        'title' => 'Location de salle',
+        'venue-hire' => 'Louer une salle',
+        'wedding' => 'Mariage',
+        'birthday' => 'Anniversaire',
+        'communion' => 'Communion & baptême',
+        'corporate' => 'Événement d\'entreprise',
+        'funeral' => 'Réception après funérailles',
+    ],
+
+    'privacy' => [
+        'meta_title' => 'Politique de confidentialité',
+        'title' => 'Politique de confidentialité',
+        'updated' => 'Dernière mise à jour : septembre 2026',
+        'sections' => [
+            ['title' => 'Qui sommes-nous ?', 'text' => 'Antika Restaurant (Antika Molenveld), Pater Penninckxstraat 32, 1982 Zemst, Belgique — :email — :phone. Nous sommes responsables du traitement des données personnelles que vous nous transmettez via ce site.'],
+            ['title' => 'Quelles données collectons-nous ?', 'text' => 'Lorsque vous demandez un devis ou un rappel : votre nom, téléphone, e-mail, éventuellement votre société, et les informations de votre événement (date, nombre d\'invités, choix, souhaits et allergies). Ainsi que la provenance de votre visite (par exemple un clic sur une annonce Google). Les réservations de table passent par Zenchef.'],
+            ['title' => 'Pourquoi ?', 'text' => 'Pour répondre à votre demande, établir un devis et organiser votre événement. Nous ne vous envoyons pas de publicité sans votre accord et ne vendons jamais vos données.'],
+            ['title' => 'Cookies et mesure d\'audience', 'text' => 'Uniquement avec votre accord, nous utilisons Google Analytics et Google Ads pour mesurer la fréquentation du site et l\'efficacité de nos annonces. Sans accord, aucun cookie de mesure n\'est déposé. Vous pouvez modifier votre choix à tout moment via « Paramètres cookies » en bas de page.'],
+            ['title' => 'Avec qui partageons-nous vos données ?', 'text' => 'Uniquement avec les prestataires nécessaires : notre hébergeur, notre service d\'envoi d\'e-mails, Google (mesure, seulement avec votre accord) et Zenchef (réservations de table).'],
+            ['title' => 'Combien de temps les conservons-nous ?', 'text' => 'Les demandes sans suite sont conservées au maximum deux ans. Les données d\'un événement réservé sont conservées aussi longtemps que la loi l\'exige pour notre comptabilité.'],
+            ['title' => 'Vos droits', 'text' => 'Vous pouvez consulter, corriger ou supprimer vos données et vous opposer à leur utilisation. Écrivez-nous à :email. Vous pouvez aussi introduire une plainte auprès de l\'Autorité de protection des données (www.autoriteprotectiondonnees.be).'],
+        ],
     ],
 ];

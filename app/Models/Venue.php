@@ -55,9 +55,14 @@ class Venue extends Model
     /** Image principale (ou la première), en URL publique. */
     public function coverUrl(): ?string
     {
+        return static::imageUrl($this->coverImagePath());
+    }
+
+    public function coverImagePath(): ?string
+    {
         $image = $this->venueImages->firstWhere('is_primary', true) ?? $this->venueImages->first();
 
-        return static::imageUrl($image?->image_path);
+        return $image?->image_path;
     }
 
     /**

@@ -3,6 +3,7 @@
 // Pages d'atterrissage des annonces (/events/wedding…). Une entrée par occasion.
 return [
     'common' => [
+        'trust' => ['Jusqu\'à :capacity invités', 'Avec ou sans traiteur', 'Parking sur place', 'À deux pas de l\'E19'],
         'cta' => 'Composer mon devis',
         'cta_note' => 'Gratuit et sans engagement — réponse rapide.',
         'or_call' => 'ou appelez-nous au',
@@ -20,7 +21,7 @@ return [
 
     'wedding' => [
         'meta_title' => 'Salle de mariage à Zemst — Antika',
-        'meta_description' => 'Fêtez votre mariage chez Antika à Zemst : salles de réception jusqu\'à 350 invités, menu servi ou buffet, boissons à volonté. Demandez votre devis en ligne.',
+        'meta_description' => 'Fêtez votre mariage chez Antika à Zemst : salles de réception jusqu\'à :capacity invités, menu servi ou buffet, boissons à volonté. Demandez votre devis en ligne.',
         'eyebrow' => 'Mariages',
         'title' => 'Le mariage dont vous rêvez, entre étangs et verdure',
         'text' => 'Salles élégantes, cuisine généreuse et une équipe qui s\'occupe de tout, de l\'apéritif à la dernière danse.',
@@ -30,7 +31,7 @@ return [
             'Formules boissons à volonté, cava et apéritif',
             'Terrasse et jardin pour la réception et les photos',
         ],
-        'image' => '/images/events/banquet.jpg',
+        'image' => '/images/events/banquet.webp',
     ],
 
     'birthday' => [
@@ -45,7 +46,7 @@ return [
             'Boissons à volonté : softs, bières, vins',
             'DJ, décoration et gâteau sur demande',
         ],
-        'image' => '/images/events/hall.jpg',
+        'image' => '/images/events/hall.webp',
     ],
 
     'communion' => [
@@ -60,7 +61,7 @@ return [
             'Jardin et terrasse',
             'Parking sur place pour toute la famille',
         ],
-        'image' => '/images/events/garden.jpg',
+        'image' => '/images/events/garden.webp',
     ],
 
     'corporate' => [
@@ -75,6 +76,43 @@ return [
             'Formules boissons au forfait par personne',
             'Écran, sono et éclairage sur demande',
         ],
-        'image' => '/images/events/hall.jpg',
+        'image' => '/images/events/hall.webp',
+    ],
+
+    'venue-hire' => [
+        'meta_title' => 'Location de salle à Zemst, près de Malines — Antika',
+        'meta_description' => 'Salle à louer à Zemst pour toutes vos fêtes : de 40 à :capacity invités, avec ou sans traiteur, parking sur place. Demandez gratuitement votre devis.',
+        'eyebrow' => 'Location de salle',
+        'title' => 'Une salle pour chaque fête, avec ou sans traiteur',
+        'text' => 'Anniversaire, mariage, communion, fête d\'entreprise ou réception après funérailles : cinq espaces au bord des étangs d\'Elewijt, de 40 à :capacity invités. La salle seule, ou tout organisé par notre cuisine.',
+        'points' => [
+            'Cinq espaces, combinables jusqu\'au domaine entier',
+            'La salle seule, ou traiteur et boissons par notre équipe',
+            'Menu servi, buffet ou réception avec bouchées',
+            'Parking sur place, accès facile par l\'E19',
+        ],
+        'image' => '/images/events/hall.webp',
+    ],
+
+    'funeral' => [
+        'meta_title' => 'Réception après funérailles à Zemst — Antika',
+        'meta_description' => 'Une réception soignée après les funérailles à Zemst : salle privée, café et gâteaux, sandwiches ou repas chaud. Appelez-nous, nous organisons tout rapidement.',
+        'eyebrow' => 'Réception après funérailles',
+        'title' => 'Un lieu paisible pour se souvenir ensemble',
+        'text' => 'Après l\'adieu, nous préparons une réception sobre et soignée, pour que vous puissiez être auprès de votre famille. Nous vous aidons rapidement et personnellement.',
+        'points' => [
+            'Salle privée adaptée à votre groupe',
+            'Café et gâteaux, sandwiches ou repas chaud',
+            'Accompagnement personnel, même dans un délai court',
+            'Parking sur place pour la famille et les amis',
+        ],
+        'image' => '/images/events/garden.webp',
+        'primary' => 'callback',
+        'cta' => 'Demander une proposition',
+        'steps' => [
+            ['title' => 'Contact', 'text' => 'Appelez-nous ou laissez votre numéro.'],
+            ['title' => 'Proposition', 'text' => 'Nous composons la réception ensemble.'],
+            ['title' => 'Accueil', 'text' => 'Nous nous occupons de tout, en toute discrétion.'],
+        ],
     ],
 ];

@@ -58,12 +58,37 @@ export function event(name, params = {}) {
     gtag('event', name, params);
 }
 
+/**
+ * Données du formulaire pour les conversions améliorées Google Ads : Google
+ * les hache avant envoi (seulement si le visiteur a accepté les cookies).
+ */
+export function setUserData({ email, phone } = {}) {
+    const data = {};
+    if (email) data.email = email.trim().toLowerCase();
+    if (phone) {
+        // Format international attendu (+32…) : 0495… devient +32495…
+        const digits = phone.replace(/[^\d+]/g, '');
+        data.phone_number = digits.startsWith('+') ? digits : digits.startsWith('00') ? `+${digits.slice(2)}` : digits.startsWith('0') ? `+32${digits.slice(1)}` : `+${digits}`;
+    }
+    if (Object.keys(data).length) gtag('set', 'user_data', data);
+}
+
 /** Conversion Google Ads (libellé défini dans config/antika.php -> tracking). */
 export function adsConversion(labelKey, params = {}) {
     const label = config[labelKey];
     if (config.ads_id && label) {
         gtag('event', 'conversion', { send_to: `${config.ads_id}/${label}`, ...params });
     }
+}
+
+/** Réaffiche le bandeau cookies (lien « Cookie-instellingen » du pied de page). */
+export function reopenConsent() {
+    try {
+        localStorage.removeItem(CONSENT_KEY);
+    } catch (e) {
+        /* ignoré */
+    }
+    window.dispatchEvent(new Event('antika:consent'));
 }
 
 export function storedConsent() {
@@ -114,6 +139,10 @@ export function installTracking(trackingConfig) {
             adsConversion('ads_call_label');
         } else if (href.includes('wa.me/')) {
             event('whatsapp_click', { link_url: href });
+            adsConversion('ads_contact_label');
+        } else if (href.startsWith('mailto:')) {
+            event('email_click', { link_url: href });
+            adsConversion('ads_contact_label');
         }
     });
 }

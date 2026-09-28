@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Middleware\SetLocale;
+use App\Http\Controllers\CallbackController;
 use App\Http\Controllers\CarteController;
 use App\Http\Controllers\SimulatorController;
-use Illuminate\Support\Facades\Storage;
+use App\Http\Middleware\SetLocale;
+use App\Models\EventType;
+use App\Support\EventsContent;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -17,7 +19,7 @@ use Inertia\Inertia;
 
 Route::get('/', fn () => Inertia::render('Home'))->name('home');
 Route::get('/menu', fn () => Inertia::render('Menu'))->name('menu');
-Route::get('/events', fn () => Inertia::render('Events'))->name('events');
+Route::get('/events', fn () => Inertia::render('Events', ['venues' => EventsContent::venues()]))->name('events');
 
 /*
 |--------------------------------------------------------------------------
@@ -32,15 +34,21 @@ Route::prefix('events/simulator')->name('simulator.')->controller(SimulatorContr
     Route::get('/pdf/{quoteNumber}', 'pdf')->name('pdf');
 });
 
+// Formulaire court « Bel mij terug » (pages événements et d'annonces).
+Route::post('/events/callback', [CallbackController::class, 'store'])->middleware('throttle:5,1')->name('callback.store');
+
 // Pages d'atterrissage par occasion (Google Ads) : /events/wedding, /events/birthday…
 Route::get('/events/{occasion}', function (string $occasion) {
     return Inertia::render('EventLanding', [
         'occasion' => $occasion,
         'eventType' => config("antika.landings.{$occasion}"),
-        'strings' => ['common' => trans('landing.common'), $occasion => trans("landing.{$occasion}")],
+        'eventTypeId' => EventType::where('slug', config("antika.landings.{$occasion}"))->value('id'),
+        'strings' => EventsContent::withCapacity(['common' => trans('landing.common'), $occasion => trans("landing.{$occasion}")]),
+        'venues' => EventsContent::venues(),
     ]);
 })->whereIn('occasion', array_keys(config('antika.landings')))->name('events.landing');
 Route::get('/contact', fn () => Inertia::render('Contact'))->name('contact');
+Route::get('/privacy', fn () => Inertia::render('Privacy'))->name('privacy');
 
 // Changement de langue : on mémorise le choix en session puis on revient en arrière.
 Route::get('/locale/{locale}', function (string $locale) {
@@ -65,12 +73,21 @@ Route::get('/sitemap.xml', function () {
         $paths["/events/{$occasion}"] = '0.8';
     }
     $paths['/contact'] = '0.6';
+    $paths['/privacy'] = '0.2';
 
+    // Chaque page dans les 3 langues (NL sans paramètre, ?lang=fr / ?lang=en), liées entre elles.
+    $lang = fn (string $loc, string $l) => $l === 'nl' ? $loc : "{$loc}?lang={$l}";
     $xml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
-    $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
+    $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">' . "\n";
     foreach ($paths as $path => $priority) {
         $loc = $base . $path;
-        $xml .= "    <url><loc>{$loc}</loc><changefreq>monthly</changefreq><priority>{$priority}</priority></url>\n";
+        $alternates = '';
+        foreach (SetLocale::SUPPORTED as $l) {
+            $alternates .= '<xhtml:link rel="alternate" hreflang="' . $l . '" href="' . e($lang($loc, $l)) . '"/>';
+        }
+        foreach (SetLocale::SUPPORTED as $l) {
+            $xml .= '    <url><loc>' . e($lang($loc, $l)) . "</loc>{$alternates}<changefreq>monthly</changefreq><priority>{$priority}</priority></url>\n";
+        }
     }
     $xml .= '</urlset>';
 
@@ -88,10 +105,6 @@ Route::redirect('/carte', '/carte/', 302);
 Route::get('/carte/{file}', [CarteController::class, 'data'])
     ->whereIn('file', array_keys(CarteController::DATA_FILES))
     ->name('carte.data');
-Route::get('/carte/{dir}/{file}', [CarteController::class, 'upload'])
-    ->whereIn('dir', ['photos', 'drinks', 'logos'])
-    ->where('file', '[A-Za-z0-9._-]+')
-    ->name('carte.upload');
 
 // QR codes imprimés : menu.antika-resto.ovh/menu.pdf(/…) -> antikaresto.com/carte/…
 Route::get('/menu.pdf/{path?}', [CarteController::class, 'legacy'])
@@ -100,14 +113,3 @@ Route::get('/menu.pdf/{path?}', [CarteController::class, 'legacy'])
 
 // Aperçu de la soirée avec les données non publiées (admin connecté).
 Route::get('/admin/event/preview', [CarteController::class, 'eventPreview'])->name('event.preview');
-
-// Fichiers du disque « public » (images téléversées) sans lien symbolique
-// public/storage à recréer à chaque déploiement.
-Route::get('/media/{path}', function (string $path) {
-    abort_if(str_contains($path, '..'), 404);
-    abort_unless(Storage::disk('public')->exists($path), 404);
-
-    return response()->file(Storage::disk('public')->path($path), [
-        'Cache-Control' => 'public, max-age=604800',
-    ]);
-})->where('path', '.*')->name('media');

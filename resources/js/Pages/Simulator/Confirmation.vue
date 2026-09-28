@@ -2,13 +2,14 @@
 import { Head, Link, usePage } from '@inertiajs/vue3';
 import { computed, onMounted } from 'vue';
 import AppLayout from '@/Layouts/AppLayout.vue';
-import { adsConversion, event as trackEvent } from '@/tracking';
+import { adsConversion, event as trackEvent, setUserData } from '@/tracking';
 
 const props = defineProps({
     strings: { type: Object, required: true },
     quote: { type: Object, required: true },
     trackConversion: { type: Boolean, default: false },
     whatsapp: { type: String, default: '' },
+    userData: { type: Object, default: null },
 });
 
 const page = usePage();
@@ -28,6 +29,7 @@ onMounted(() => {
     // Une seule fois, juste après l'envoi (pas au rechargement de la page).
     if (!props.trackConversion) return;
     const value = Math.round(props.quote.value || 0);
+    setUserData(props.userData || {});
     trackEvent('generate_lead', { currency: 'EUR', value, guests: props.quote.guests });
     adsConversion('ads_quote_label', { value, currency: 'EUR', transaction_id: props.quote.number });
 });

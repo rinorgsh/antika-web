@@ -5,6 +5,8 @@ namespace App\Filament\Pages;
 use App\Models\EventSetting;
 use BackedEnum;
 use Filament\Actions\Action;
+use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
@@ -35,6 +37,7 @@ class EventQuoteSettings extends Page
         foreach (array_keys(EventSetting::DEFAULTS) as $key) {
             $this->data[$key] = EventSetting::get($key);
         }
+        $this->data['reviews'] = EventSetting::reviews();
     }
 
     public function content(Schema $schema): Schema
@@ -61,8 +64,25 @@ class EventQuoteSettings extends Page
                 TextInput::make('deposit_percentage')->label('Acompte (%)')->numeric()->required(),
                 TextInput::make('quote_validity_days')->label('Validité d\'un devis (jours)')->numeric()->required(),
             ]),
+            Section::make('Site : confiance et capacité')
+                ->description('Affichés sur les pages Événements et les pages d\'annonces Google Ads. Laisser vide pour masquer.')
+                ->columns(2)->schema([
+                    TextInput::make('max_capacity')->label('Capacité maximale (invités)')->numeric()
+                        ->helperText('Chiffre repris partout : « jusqu\'à … invités ».'),
+                    TextInput::make('google_reviews_url')->label('Lien vers les avis Google')->url()
+                        ->placeholder('https://g.page/r/…'),
+                    TextInput::make('google_rating')->label('Note Google')->placeholder('4,7'),
+                    TextInput::make('google_reviews_count')->label('Nombre d\'avis Google')->numeric()->placeholder('250'),
+                    Repeater::make('reviews')->label('Avis mis en avant')->columnSpanFull()
+                        ->helperText('3 avis idéalement, copiés tels quels depuis Google (dans leur langue d\'origine).')
+                        ->schema([
+                            Textarea::make('text')->label('Avis')->rows(3)->required()->columnSpanFull(),
+                            TextInput::make('author')->label('Auteur')->placeholder('Sarah V.'),
+                            TextInput::make('occasion')->label('Occasion')->placeholder('Huwelijk · juni 2026'),
+                        ])->columns(2)->maxItems(6)->defaultItems(0)->collapsible()->reorderable(),
+                ]),
             Section::make('Mentions légales')
-                ->description('Si renseignés, la case à cocher du formulaire renvoie vers ces pages.')
+                ->description('Si renseignés, la case à cocher du formulaire renvoie vers ces pages. Sans lien, la page /privacy du site est utilisée.')
                 ->columns(2)->schema([
                     TextInput::make('terms_url')->label('Conditions générales (URL)')->url(),
                     TextInput::make('privacy_url')->label('Politique de confidentialité (URL)')->url(),
@@ -77,7 +97,8 @@ class EventQuoteSettings extends Page
                 ->action(function () {
                     $this->validate();
                     foreach (array_keys(EventSetting::DEFAULTS) as $key) {
-                        EventSetting::put($key, $this->data[$key] ?? null);
+                        $value = $this->data[$key] ?? null;
+                        EventSetting::put($key, is_array($value) ? json_encode(array_values($value), JSON_UNESCAPED_UNICODE) : $value);
                     }
                     Notification::make()->title('Réglages enregistrés')->success()->send();
                 }),

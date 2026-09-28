@@ -29,6 +29,9 @@
         @foreach($quote->quoteVenues as $l)
             <tr><td class="k">Espace</td><td class="n">{{ $fr($l->venue) }}</td><td class="d"></td><td class="m">{{ $money($l->price) }}</td></tr>
         @endforeach
+        @if($quote->quoteMenus->isEmpty())
+            <tr><td class="k">Menu</td><td class="n">Sans traiteur (location de salle seule)</td><td class="d"></td><td class="m"></td></tr>
+        @endif
         @foreach($quote->quoteMenus as $m)
             <tr>
                 <td class="k">Menu</td>

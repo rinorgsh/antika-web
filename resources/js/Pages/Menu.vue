@@ -15,8 +15,8 @@ const menuUrl = computed(() => `${site.value.links.menu}/carte.html?lang=${local
 
 // Photos d'ambiance (aperçu appétissant).
 const gallery = [
-    '/images/menu/cluster/29.jpg', '/images/menu/cluster/24.jpg', '/images/menu/cluster/37.jpg',
-    '/images/menu/cluster/38.jpg', '/images/menu/cluster/19.jpg', '/images/menu/cluster/44.jpg',
+    '/images/menu/cluster/29.webp', '/images/menu/cluster/24.webp', '/images/menu/cluster/37.webp',
+    '/images/menu/cluster/38.webp', '/images/menu/cluster/19.webp', '/images/menu/cluster/44.webp',
 ];
 </script>
 
