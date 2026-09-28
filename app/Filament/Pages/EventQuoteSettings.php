@@ -72,7 +72,7 @@ class EventQuoteSettings extends Page
                     TextInput::make('google_reviews_url')->label('Lien vers les avis Google')->url()
                         ->placeholder('https://g.page/r/…'),
                     TextInput::make('google_rating')->label('Note Google')->placeholder('4,7'),
-                    TextInput::make('google_reviews_count')->label('Nombre d\'avis Google')->numeric()->placeholder('250'),
+                    TextInput::make('google_reviews_count')->label('Nombre d\'avis Google')->placeholder('180+'),
                     Repeater::make('reviews')->label('Avis mis en avant')->columnSpanFull()
                         ->helperText('3 avis idéalement, copiés tels quels depuis Google (dans leur langue d\'origine).')
                         ->schema([

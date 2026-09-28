@@ -6,7 +6,10 @@ import AppLayout from '@/Layouts/AppLayout.vue';
 const page = usePage();
 const site = computed(() => page.props.site);
 const p = computed(() => page.props.translations.privacy);
-const fill = (text) => text.replaceAll(':email', site.value.contact.email).replaceAll(':phone', site.value.contact.phone);
+const fill = (text) => text
+    .replaceAll(':email', site.value.contact.email)
+    .replaceAll(':phone', site.value.contact.phone)
+    .replaceAll(':company', `${site.value.company.name} (${site.value.company.number})`);
 </script>
 
 <template>

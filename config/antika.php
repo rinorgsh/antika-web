@@ -21,6 +21,12 @@ return [
         'geo' => ['lat' => '50.9595', 'lng' => '4.5103'],
     ],
 
+    // Exploitant (mention légale obligatoire sur un site belge : nom + numéro d'entreprise).
+    'company' => [
+        'name' => 'BMZ EVENT BV',
+        'number' => '0632.633.901',
+    ],
+
     'contact' => [
         'address' => 'Pater Penninckxstraat 32, 1982 Zemst',
         'phone' => '+32 495 52 66 56',

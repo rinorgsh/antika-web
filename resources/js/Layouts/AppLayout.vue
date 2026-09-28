@@ -154,6 +154,7 @@ const isActive = (href) => {
             </div>
             <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 border-t border-white/10 px-6 py-5 text-center text-xs text-stone-500">
                 <span>© {{ new Date().getFullYear() }} Antika Restaurant — {{ $t('footer.rights') }}</span>
+                <span>{{ site.company.name }} · {{ $t('footer.company_number') }} {{ site.company.number }}</span>
                 <Link :href="page.props.marketing?.privacy_url || '/privacy'" class="hover:text-antika-cream">{{ $t('footer.privacy') }}</Link>
                 <button type="button" class="hover:text-antika-cream" @click="reopenConsent">{{ $t('footer.cookies') }}</button>
             </div>

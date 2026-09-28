@@ -22,9 +22,10 @@ class EventSetting extends Model
         'privacy_url' => '',
         // Site public (pages événements et d'annonces).
         'max_capacity' => '350',
-        'google_rating' => '',
-        'google_reviews_count' => '',
-        'google_reviews_url' => '',
+        // Relevé public (décembre 2025 : 4,6 ★ sur 183 avis) — à tenir à jour dans l'admin.
+        'google_rating' => '4,6',
+        'google_reviews_count' => '180+',
+        'google_reviews_url' => 'https://maps.app.goo.gl/h4vQLeVi1iGkpzSV7',
         'reviews' => '[]',
     ];
 

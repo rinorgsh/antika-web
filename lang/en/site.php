@@ -132,6 +132,7 @@ return [
         'contact_title' => 'Contact',
         'hours_title' => 'Opening hours',
         'rights' => 'All rights reserved.',
+        'company_number' => 'Company no.',
         'privacy' => 'Privacy policy',
         'cookies' => 'Cookie settings',
     ],
@@ -210,7 +211,7 @@ return [
         'title' => 'Privacy policy',
         'updated' => 'Last updated: September 2026',
         'sections' => [
-            ['title' => 'Who are we?', 'text' => 'Antika Restaurant (Antika Molenveld), Pater Penninckxstraat 32, 1982 Zemst, Belgium — :email — :phone. We are responsible for the personal data you send us through this website.'],
+            ['title' => 'Who are we?', 'text' => 'Antika Restaurant (Antika Molenveld), operated by :company, Pater Penninckxstraat 32, 1982 Zemst, Belgium — :email — :phone. We are responsible for the personal data you send us through this website.'],
             ['title' => 'What data do we collect?', 'text' => 'When you request a quote or a call back: your name, phone number, email address, your company if any, and the details of your event (date, number of guests, choices, wishes and allergies). Also where your visit came from (for example a click on a Google ad). Table bookings are handled by Zenchef.'],
             ['title' => 'Why?', 'text' => 'To answer your request, prepare a quote and organise your event. We never send you advertising without your consent and never sell your data.'],
             ['title' => 'Cookies and analytics', 'text' => 'Only with your consent, we use Google Analytics and Google Ads to measure visits to the website and the effectiveness of our ads. Without consent, no measurement cookies are set. You can change your choice at any time via “Cookie settings” at the bottom of the page.'],
