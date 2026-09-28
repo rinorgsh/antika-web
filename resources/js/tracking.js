@@ -134,15 +134,18 @@ export function installTracking(trackingConfig) {
         const link = e.target.closest && e.target.closest('a[href]');
         if (!link) return;
         const href = link.getAttribute('href') || '';
+        // Conversions Ads seulement sur les pages événements : ailleurs, un appel
+        // sert souvent à réserver une table, pas à louer une salle.
+        const eventsPage = window.location.pathname.startsWith('/events');
         if (href.startsWith('tel:')) {
-            event('phone_click', { link_url: href });
-            adsConversion('ads_call_label');
+            event('phone_click', { link_url: href, events_page: eventsPage });
+            if (eventsPage) adsConversion('ads_call_label');
         } else if (href.includes('wa.me/')) {
             event('whatsapp_click', { link_url: href });
-            adsConversion('ads_contact_label');
+            if (eventsPage) adsConversion('ads_contact_label');
         } else if (href.startsWith('mailto:')) {
             event('email_click', { link_url: href });
-            adsConversion('ads_contact_label');
+            if (eventsPage) adsConversion('ads_contact_label');
         }
     });
 }
