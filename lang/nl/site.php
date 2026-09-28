@@ -71,6 +71,7 @@ return [
     ],
 
     'events' => [
+        'meta_title' => 'Zaal huren in Zemst voor elk feest — Antika',
         'hero_eyebrow' => 'Evenementen & Zaalverhuur',
         'hero_title' => 'Uw evenement bij Antika',
         'hero_text' => 'Van huwelijk tot verjaardag, bedrijfsfeest of koffietafel — huur een zaal voor 40 tot :capacity gasten, met of zonder catering.',

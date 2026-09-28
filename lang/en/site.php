@@ -71,6 +71,7 @@ return [
     ],
 
     'events' => [
+        'meta_title' => 'Venue hire in Zemst for every occasion — Antika',
         'hero_eyebrow' => 'Events & Venue hire',
         'hero_title' => 'Your event at Antika',
         'hero_text' => 'Weddings, birthdays, corporate events or funeral receptions — hire a room for 40 to :capacity guests, with or without catering.',

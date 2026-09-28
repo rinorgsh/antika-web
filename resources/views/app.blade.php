@@ -14,6 +14,24 @@
             $canonical = $langUrl($locale);
             $metaTitle = trans('site.meta.title');
             $metaDesc = trans('site.meta.description');
+            // Titre et description propres à la page dès le HTML serveur (Google, robots Ads, partages) ;
+            // le <Head> de chaque page Vue prend ensuite le relais côté client.
+            $pageProps = $page['props'] ?? [];
+            switch ($page['component'] ?? '') {
+                case 'EventLanding':
+                    $landing = $pageProps['strings'][$pageProps['occasion'] ?? ''] ?? [];
+                    $metaTitle = $landing['meta_title'] ?? $metaTitle;
+                    $metaDesc = $landing['meta_description'] ?? $metaDesc;
+                    break;
+                case 'Events':
+                    $metaTitle = trans('site.events.meta_title');
+                    $metaDesc = \App\Support\EventsContent::withCapacity(trans('site.events.hero_text'));
+                    break;
+                case 'Simulator/Index':
+                    $metaTitle = trans('simulator.meta.title') . ' — Antika';
+                    $metaDesc = trans('simulator.meta.description');
+                    break;
+            }
             $ogImage = $url . '/images/og-image.jpg';
             $ogLocale = ['nl' => 'nl_BE', 'fr' => 'fr_BE', 'en' => 'en_GB'][$locale] ?? 'nl_BE';
             $jsonLd = [

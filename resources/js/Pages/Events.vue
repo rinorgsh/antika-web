@@ -20,7 +20,7 @@ const ev = computed(() => page.props.translations.events);
 
 <template>
     <Head>
-        <title>{{ t('nav.events') }}</title>
+        <title>{{ ev.meta_title }}</title>
         <meta head-key="description" name="description" :content="ev.hero_text" />
     </Head>
 

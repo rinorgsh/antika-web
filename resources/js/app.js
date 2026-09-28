@@ -9,10 +9,10 @@ import { i18n } from './i18n';
 import { reveal } from './reveal';
 import { installTracking } from './tracking';
 
-const appName = import.meta.env.VITE_APP_NAME || 'Antika';
 
 createInertiaApp({
-    title: (title) => `${title} - ${appName}`,
+    // Les titres des pages d'annonces contiennent déjà « Antika » : pas de doublon.
+    title: (title) => (!title ? 'Antika' : title.includes('Antika') ? title : `${title} — Antika`),
     resolve: (name) =>
         resolvePageComponent(
             `./Pages/${name}.vue`,

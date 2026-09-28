@@ -71,6 +71,7 @@ return [
     ],
 
     'events' => [
+        'meta_title' => 'Location de salle de fête à Zemst — Antika',
         'hero_eyebrow' => 'Événements & Location de salle',
         'hero_title' => 'Votre événement chez Antika',
         'hero_text' => 'Mariage, anniversaire, événement d\'entreprise ou réception après funérailles — louez une salle de 40 à :capacity invités, avec ou sans traiteur.',
