@@ -61,7 +61,7 @@ onBeforeUnmount(stop);
                 <img
                     v-if="loaded.has(i)"
                     :src="img"
-                    :srcset="`${small(img)} 900w, ${img} 1920w`"
+                    :srcset="`${small(img)} 900w, ${img} 1536w`"
                     sizes="100vw"
                     alt=""
                     :fetchpriority="i === 0 ? 'high' : 'low'"

@@ -107,7 +107,7 @@
 
         @if ($page['component'] === 'Home' && ($hero = $site['hero_images'][0] ?? null))
             {{-- Première photo du carrousel : téléchargée avant le JavaScript. --}}
-            <link rel="preload" as="image" href="{{ $hero }}" imagesrcset="{{ str_replace('.webp', '-sm.webp', $hero) }} 900w, {{ $hero }} 1920w" imagesizes="100vw" fetchpriority="high">
+            <link rel="preload" as="image" href="{{ $hero }}" imagesrcset="{{ str_replace('.webp', '-sm.webp', $hero) }} 900w, {{ $hero }} 1536w" imagesizes="100vw" fetchpriority="high">
         @endif
 
         <!-- Fonts -->

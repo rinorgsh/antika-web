@@ -78,15 +78,12 @@ return [
         'ads_contact_label' => env('ANTIKA_GADS_CONTACT_LABEL', ''), // « clic WhatsApp / e-mail » (conversion secondaire)
     ],
 
-    // Images du carrousel d'accueil (défilement automatique).
-    // 01 = vraie salle Antika, 02 = salle banquet, 04 = carpaccio, 05 = calamars
-    // (vraies photos client) ; 03 = visuel gastronomique libre de droits (Pexels).
+    // Images du carrousel d'accueil (défilement automatique) : les trois salles
+    // (La Villa Feestzaal, Antika Restaurant Zaal, Privat Salon), en WebP + version -sm mobile.
     'hero_images' => [
-        '/images/hero/01.webp',
-        '/images/hero/02.webp',
-        '/images/hero/04.webp',
-        '/images/hero/05.webp',
-        '/images/hero/03.webp',
+        '/images/hero/villa-feestzaal.webp',
+        '/images/hero/restaurant-zaal.webp',
+        '/images/hero/privat-salon.webp',
     ],
 
     // Quelques chiffres clés affichés sur le site (modifiables).
