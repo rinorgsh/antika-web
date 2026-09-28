@@ -71,7 +71,7 @@ return [
 
     // Suivi Google (Analytics 4 + Google Ads). Vide = aucun script chargé.
     'tracking' => [
-        'ga4_id' => env('ANTIKA_GA4_ID', ''),                  // G-XXXXXXXXXX
+        'ga4_id' => env('ANTIKA_GA4_ID', 'G-N662Q9XLQV'),      // propriété GA4 « antikaresto.com » (compte Antika)
         'ads_id' => env('ANTIKA_GADS_ID', ''),                 // AW-XXXXXXXXXX
         'ads_quote_label' => env('ANTIKA_GADS_QUOTE_LABEL', ''), // libellé de conversion « demande de devis »
         'ads_call_label' => env('ANTIKA_GADS_CALL_LABEL', ''),   // libellé de conversion « clic sur le téléphone »
