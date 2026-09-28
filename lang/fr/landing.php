@@ -64,21 +64,6 @@ return [
         'image' => '/images/events/garden.webp',
     ],
 
-    'corporate' => [
-        'meta_title' => 'Événement d\'entreprise à Zemst — Antika',
-        'meta_description' => 'Dîner d\'équipe, réception, séminaire ou fête du personnel chez Antika à Zemst, accessible depuis Bruxelles et Malines. Devis en ligne.',
-        'eyebrow' => 'Entreprises',
-        'title' => 'Réceptions et dîners d\'équipe, en toute simplicité',
-        'text' => 'Fête du personnel, réception clients ou séminaire : un cadre unique à deux pas de l\'E19, et une facture claire.',
-        'points' => [
-            'Accès rapide depuis Bruxelles et Malines',
-            'Buffet ou menu servi à table',
-            'Formules boissons au forfait par personne',
-            'Écran, sono et éclairage sur demande',
-        ],
-        'image' => '/images/events/hall.webp',
-    ],
-
     'venue-hire' => [
         'meta_title' => 'Location de salle à Zemst, près de Malines — Antika',
         'meta_description' => 'Salle à louer à Zemst pour toutes vos fêtes : de 40 à :capacity invités, avec ou sans traiteur, parking sur place. Demandez gratuitement votre devis.',
@@ -114,5 +99,45 @@ return [
             ['title' => 'Proposition', 'text' => 'Nous composons la réception ensemble.'],
             ['title' => 'Accueil', 'text' => 'Nous nous occupons de tout, en toute discrétion.'],
         ],
+    ],
+
+    'corporate' => [
+        'meta_title' => 'Fête du personnel, réception ou séminaire à Zemst — Antika',
+        'meta_description' => 'Fête du personnel, réception, dîner d\'équipe ou séminaire chez Antika à Zemst, près de l\'E19 entre Bruxelles et Malines. Jusqu\'à :capacity invités, une seule facture. Devis gratuit.',
+        'eyebrow' => 'Entreprises',
+        'title' => 'Votre événement d\'entreprise, du dîner d\'équipe à la fête du personnel',
+        'text' => 'Fête du personnel, réception clients, séminaire ou fête de fin d\'année : un lieu unique près de l\'E19, une équipe qui s\'occupe de tout et une seule facture au nom de votre société.',
+        'points' => [
+            'De la réunion en salon privé jusqu\'à :capacity invités',
+            'Walking dinner, buffet ou dîner à table',
+            'Formules boissons par personne, sans surprise',
+            'Écran, projecteur, sono et DJ sur demande',
+            'Une seule facture au nom de votre société',
+        ],
+        'formats_title' => 'Formules entreprises',
+        'formats' => [
+            ['title' => 'Fête de fin d\'année', 'text' => 'Dîner ou buffet, formule boissons et DJ pour votre personnel, en décembre ou janvier.'],
+            ['title' => 'Réception & walking dinner', 'text' => 'Debout, avec bouchées et boissons : idéal pour réseauter avec clients et partenaires.'],
+            ['title' => 'Séminaire & réunion', 'text' => 'Salle privée avec écran et projecteur, complétée d\'un café, d\'un lunch ou d\'un dîner.'],
+            ['title' => 'Dîner d\'équipe', 'text' => 'Un menu soigné servi à table pour votre équipe, dans un espace privé.'],
+        ],
+        'image' => '/images/events/hall.webp',
+    ],
+
+    'year-end' => [
+        'meta_title' => 'Fête de fin d\'année d\'entreprise à Zemst — Antika',
+        'meta_description' => 'La fête de fin d\'année de votre entreprise chez Antika à Zemst : salle privée jusqu\'à :capacity invités, dîner ou buffet, boissons et DJ. Les dates de décembre partent vite : demandez votre devis.',
+        'eyebrow' => 'Fête de fin d\'année',
+        'title' => 'La fête de fin d\'année de votre entreprise, clé en main',
+        'text' => 'Dîner ou buffet, boissons à volonté, DJ et décoration : nous nous occupons de tout, vous profitez avec votre équipe. Les dates les plus demandées de décembre et janvier partent vite.',
+        'points' => [
+            'Salle privée de 40 à :capacity personnes',
+            'Dîner à table, buffet ou walking dinner',
+            'Formule boissons à volonté, par personne',
+            'DJ, décoration et photobooth sur demande',
+            'Une seule facture au nom de votre société',
+        ],
+        'image' => '/images/events/banquet.webp',
+        'cta' => 'Vérifier ma date',
     ],
 ];

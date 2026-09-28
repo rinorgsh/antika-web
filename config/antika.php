@@ -65,6 +65,7 @@ return [
         'birthday' => 'anniversaire',
         'communion' => 'communion',
         'corporate' => 'evenement-entreprise',
+        'year-end' => 'evenement-entreprise',   // eindejaarsfeest (saison sept.–janv.)
         'funeral' => 'funerailles',     // koffietafel
     ],
 

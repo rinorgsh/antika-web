@@ -64,21 +64,6 @@ return [
         'image' => '/images/events/garden.webp',
     ],
 
-    'corporate' => [
-        'meta_title' => 'Corporate event venue in Zemst — Antika',
-        'meta_description' => 'Team dinner, reception, seminar or staff party at Antika in Zemst, easy to reach from Brussels and Mechelen. Online quote.',
-        'eyebrow' => 'Companies',
-        'title' => 'Receptions and team dinners, made easy',
-        'text' => 'Staff party, client reception or seminar: a unique setting close to the E19, with a clear invoice.',
-        'points' => [
-            'Easy access from Brussels and Mechelen',
-            'Buffet or seated menu',
-            'Per-person drinks packages',
-            'Screen, sound and lighting on request',
-        ],
-        'image' => '/images/events/hall.webp',
-    ],
-
     'venue-hire' => [
         'meta_title' => 'Venue hire in Zemst, near Mechelen — Antika',
         'meta_description' => 'Party venue for hire in Zemst for every occasion: 40 to :capacity guests, with or without catering, on-site parking. Request your free quote.',
@@ -114,5 +99,45 @@ return [
             ['title' => 'Proposal', 'text' => 'We plan the reception together.'],
             ['title' => 'Reception', 'text' => 'We take care of everything, quietly.'],
         ],
+    ],
+
+    'corporate' => [
+        'meta_title' => 'Company party, reception or seminar in Zemst — Antika',
+        'meta_description' => 'Staff party, reception, team dinner or seminar at Antika in Zemst, right by the E19 between Brussels and Mechelen. Up to :capacity guests, one invoice. Free quote.',
+        'eyebrow' => 'Companies',
+        'title' => 'Your company event, from team dinner to staff party',
+        'text' => 'Staff party, client reception, seminar or year-end party: a unique venue right by the E19, a team that handles everything and one clear invoice in your company’s name.',
+        'points' => [
+            'From a meeting in the private lounge up to :capacity guests',
+            'Walking dinner, buffet or seated dinner',
+            'Per-person drinks packages, no surprises',
+            'Screen, projector, sound and DJ on request',
+            'One invoice in your company’s name',
+        ],
+        'formats_title' => 'Packages for companies',
+        'formats' => [
+            ['title' => 'Year-end party', 'text' => 'Dinner or buffet, drinks package and DJ for your staff, in December or January.'],
+            ['title' => 'Reception & walking dinner', 'text' => 'Standing, with bites and drinks: ideal for networking with clients and partners.'],
+            ['title' => 'Seminar & meeting', 'text' => 'Private room with screen and projector, with coffee, lunch or dinner.'],
+            ['title' => 'Team dinner', 'text' => 'A refined seated menu for your team, in a private space.'],
+        ],
+        'image' => '/images/events/hall.webp',
+    ],
+
+    'year-end' => [
+        'meta_title' => 'Company year-end party in Zemst — Antika',
+        'meta_description' => 'Your company’s year-end party at Antika in Zemst: private room for up to :capacity guests, dinner or buffet, drinks and DJ. December dates go fast: request your quote now.',
+        'eyebrow' => 'Year-end party',
+        'title' => 'Your company’s year-end party, fully taken care of',
+        'text' => 'Dinner or buffet, open bar, DJ and decoration: we handle everything, you enjoy it with your team. The most popular dates in December and January fill up fast.',
+        'points' => [
+            'Private room for 40 to :capacity people',
+            'Seated dinner, buffet or walking dinner',
+            'Open-bar drinks package, per person',
+            'DJ, decoration and photo booth on request',
+            'One invoice in your company’s name',
+        ],
+        'image' => '/images/events/banquet.webp',
+        'cta' => 'Check my date',
     ],
 ];

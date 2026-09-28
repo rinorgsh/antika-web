@@ -203,6 +203,7 @@ return [
         'birthday' => 'Verjaardag',
         'communion' => 'Communie & doopfeest',
         'corporate' => 'Bedrijfsfeest',
+        'year-end' => 'Eindejaarsfeest',
         'funeral' => 'Koffietafel',
     ],
 

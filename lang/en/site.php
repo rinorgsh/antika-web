@@ -203,6 +203,7 @@ return [
         'birthday' => 'Birthdays',
         'communion' => 'Communion & christening',
         'corporate' => 'Corporate events',
+        'year-end' => 'Year-end party',
         'funeral' => 'Funeral reception',
     ],
 

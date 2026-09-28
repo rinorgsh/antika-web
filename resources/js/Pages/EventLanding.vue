@@ -86,6 +86,22 @@ const small = (img) => img.replace(/\.webp$/, '-sm.webp');
             </div>
         </section>
 
+        <!-- Formules (pages entreprises) -->
+        <section v-if="o.formats" class="border-t border-white/10 py-20">
+            <div class="mx-auto max-w-6xl px-6">
+                <div v-reveal class="text-center">
+                    <Eyebrow center>{{ o.formats_title }}</Eyebrow>
+                </div>
+                <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                    <div v-for="(f, i) in o.formats" :key="i" v-reveal="i * 100" class="border border-white/10 bg-antika-panel p-7">
+                        <span class="font-serif text-3xl text-antika-copper">0{{ i + 1 }}</span>
+                        <h3 class="mt-3 font-serif text-xl text-antika-cream">{{ f.title }}</h3>
+                        <p class="mt-2 text-sm leading-relaxed text-stone-400">{{ f.text }}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <VenueGrid :venues="venues" />
 
         <ReviewsBlock />

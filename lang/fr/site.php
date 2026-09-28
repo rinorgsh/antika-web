@@ -203,6 +203,7 @@ return [
         'birthday' => 'Anniversaire',
         'communion' => 'Communion & baptême',
         'corporate' => 'Événement d\'entreprise',
+        'year-end' => 'Fête de fin d\'année',
         'funeral' => 'Réception après funérailles',
     ],
 

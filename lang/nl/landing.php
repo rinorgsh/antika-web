@@ -64,21 +64,6 @@ return [
         'image' => '/images/events/garden.webp',
     ],
 
-    'corporate' => [
-        'meta_title' => 'Bedrijfsfeest of personeelsfeest in Zemst — Antika',
-        'meta_description' => 'Teamdiner, receptie, seminarie of personeelsfeest bij Antika in Zemst, vlot bereikbaar vanuit Brussel en Mechelen. Online offerte.',
-        'eyebrow' => 'Bedrijven',
-        'title' => 'Recepties en teamdiners, helemaal zorgeloos',
-        'text' => 'Personeelsfeest, klantenreceptie of seminarie: een unieke locatie vlak bij de E19, met een duidelijke factuur.',
-        'points' => [
-            'Vlot bereikbaar vanuit Brussel en Mechelen',
-            'Buffet of menu aan tafel',
-            'Drankenformules per persoon',
-            'Scherm, geluid en verlichting op aanvraag',
-        ],
-        'image' => '/images/events/hall.webp',
-    ],
-
     'venue-hire' => [
         'meta_title' => 'Feestzaal huren in Zemst, bij Mechelen — Antika',
         'meta_description' => 'Feestzaal te huur in Zemst voor elk feest: van 40 tot :capacity gasten, met of zonder catering, parking ter plaatse. Vraag gratis uw offerte aan.',
@@ -114,5 +99,45 @@ return [
             ['title' => 'Voorstel', 'text' => 'We stellen samen de koffietafel samen.'],
             ['title' => 'Ontvangst', 'text' => 'Wij zorgen voor alles, in alle rust.'],
         ],
+    ],
+
+    'corporate' => [
+        'meta_title' => 'Bedrijfsfeest, personeelsfeest of seminarie in Zemst — Antika',
+        'meta_description' => 'Personeelsfeest, receptie, teamdiner of seminarie bij Antika in Zemst, vlak bij de E19 tussen Brussel en Mechelen. Tot :capacity gasten, één factuur. Vraag gratis uw offerte aan.',
+        'eyebrow' => 'Bedrijven',
+        'title' => 'Uw bedrijfsevent, van teamdiner tot personeelsfeest',
+        'text' => 'Personeelsfeest, klantenreceptie, seminarie of eindejaarsfeest: een unieke locatie vlak bij de E19, een team dat alles regelt en één duidelijke factuur op naam van uw bedrijf.',
+        'points' => [
+            'Van een vergadering in het privésalon tot :capacity gasten',
+            'Walking dinner, buffet of diner aan tafel',
+            'Drankenformules per persoon, zonder verrassingen',
+            'Scherm, beamer, geluid en DJ op aanvraag',
+            'Eén factuur op naam van uw bedrijf',
+        ],
+        'formats_title' => 'Formules voor bedrijven',
+        'formats' => [
+            ['title' => 'Eindejaarsfeest', 'text' => 'Diner of buffet, drankenformule en DJ voor uw personeel, in december of januari.'],
+            ['title' => 'Receptie & walking dinner', 'text' => 'Staand, met hapjes en drank: ideaal om te netwerken met klanten en partners.'],
+            ['title' => 'Seminarie & vergadering', 'text' => 'Privézaal met scherm en beamer, aangevuld met koffie, lunch of diner.'],
+            ['title' => 'Teamdiner', 'text' => 'Een verzorgd menu aan tafel voor uw team, in een eigen ruimte.'],
+        ],
+        'image' => '/images/events/hall.webp',
+    ],
+
+    'year-end' => [
+        'meta_title' => 'Eindejaarsfeest of kerstfeest voor uw personeel in Zemst — Antika',
+        'meta_description' => 'Het eindejaarsfeest van uw bedrijf bij Antika in Zemst: privézaal tot :capacity gasten, diner of buffet, drankenformule en DJ. Data in december en januari gaan snel: vraag nu uw offerte aan.',
+        'eyebrow' => 'Eindejaarsfeest',
+        'title' => 'Het eindejaarsfeest van uw bedrijf, volledig geregeld',
+        'text' => 'Diner of buffet, drankenformule à volonté, DJ en decoratie: wij zorgen voor alles, u geniet met uw team. De populairste data in december en januari zijn snel volzet.',
+        'points' => [
+            'Privézaal van 40 tot :capacity personen',
+            'Diner aan tafel, buffet of walking dinner',
+            'Drankenformule à volonté, per persoon',
+            'DJ, decoratie en photobooth op aanvraag',
+            'Eén factuur op naam van uw bedrijf',
+        ],
+        'image' => '/images/events/banquet.webp',
+        'cta' => 'Controleer uw datum',
     ],
 ];
