@@ -31,7 +31,7 @@ return [
         'address' => 'Pater Penninckxstraat 32, 1982 Zemst',
         'phone' => '+32 495 52 66 56',
         'phone_link' => '+32495526656',
-        'email' => 'info@antikaresto.com',
+        'email' => 'info@antikababa.be',
     ],
 
     'links' => [

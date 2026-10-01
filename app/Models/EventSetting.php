@@ -10,7 +10,7 @@ class EventSetting extends Model
 {
     public const DEFAULTS = [
         'company_name' => 'Antika Events',
-        'email' => 'info@antikaresto.com',
+        'email' => 'info@antikababa.be',
         'phone' => '+32 495 52 66 56',
         'whatsapp' => '32495526656',
         'address' => 'Pater Penninckxstraat 32, 1982 Zemst',
