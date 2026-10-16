@@ -77,6 +77,7 @@ return [
         'ads_call_label' => env('ANTIKA_GADS_CALL_LABEL', 'GensCNDvyIkdEPrdtexE'),   // libellé de conversion « clic sur le téléphone »
         'ads_lead_label' => env('ANTIKA_GADS_LEAD_LABEL', '_NzwCKuauokdEPrdtexE'),   // « demande de rappel » (formulaire court)
         'ads_contact_label' => env('ANTIKA_GADS_CONTACT_LABEL', 'BkM3CL6F0YkdEPrdtexE'), // « clic WhatsApp / e-mail » (conversion secondaire)
+        'ads_reserve_label' => env('ANTIKA_GADS_RESERVE_LABEL', 'VUrnCIqng58dEPrdtexE'), // « réservation restaurant » : bouton Zenchef ou appel hors pages événements
     ],
 
     // Images du carrousel d'accueil (défilement automatique) : les trois salles

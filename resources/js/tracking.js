@@ -129,17 +129,24 @@ export function installTracking(trackingConfig) {
         });
     });
 
-    // Clics téléphone / WhatsApp, où qu'ils soient sur le site.
+    // Clics téléphone / WhatsApp / réservation, où qu'ils soient sur le site.
     document.addEventListener('click', (e) => {
-        const link = e.target.closest && e.target.closest('a[href]');
+        if (!e.target.closest) return;
+        // Boutons « Réserver » (ouvrent la modale Zenchef).
+        if (e.target.closest('[data-zc-action="open"]')) {
+            event('reservation_click', { page_path: window.location.pathname });
+            adsConversion('ads_reserve_label');
+            return;
+        }
+        const link = e.target.closest('a[href]');
         if (!link) return;
         const href = link.getAttribute('href') || '';
-        // Conversions Ads seulement sur les pages événements : ailleurs, un appel
-        // sert souvent à réserver une table, pas à louer une salle.
+        // Pages événements : un appel = location de salle ; ailleurs, il sert
+        // surtout à réserver une table (conversion « réservation restaurant »).
         const eventsPage = window.location.pathname.startsWith('/events');
         if (href.startsWith('tel:')) {
             event('phone_click', { link_url: href, events_page: eventsPage });
-            if (eventsPage) adsConversion('ads_call_label');
+            adsConversion(eventsPage ? 'ads_call_label' : 'ads_reserve_label');
         } else if (href.includes('wa.me/')) {
             event('whatsapp_click', { link_url: href });
             if (eventsPage) adsConversion('ads_contact_label');
