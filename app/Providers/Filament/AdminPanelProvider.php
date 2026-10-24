@@ -59,6 +59,7 @@ class AdminPanelProvider extends PanelProvider
                 NavigationGroup::make('Location de salle')->collapsed(),
                 NavigationGroup::make('Carte')->collapsed(),
                 NavigationGroup::make('Soirée événement')->collapsed(),
+                NavigationGroup::make('Festival 1912')->collapsed(),
             ])
             ->middleware([
                 EncryptCookies::class,

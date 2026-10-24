@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ ($page['component'] ?? '') === 'Sponsors' ? ($page['props']['lang'] ?? 'fr') : str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,6 +11,12 @@
             $path = request()->getPathInfo();
             // Une adresse par langue : néerlandais sans paramètre, ?lang=fr / ?lang=en sinon.
             $langUrl = fn ($l) => $url . $path . ($l === 'nl' ? '' : '?lang=' . $l);
+            // Festival 1912 : langues propres à la page (fr, nl, sq), français sans paramètre.
+            $sponsors = ($page['component'] ?? '') === 'Sponsors';
+            if ($sponsors) {
+                $locale = $page['props']['lang'] ?? 'fr';
+                $langUrl = fn ($l) => $url . $path . ($l === 'fr' ? '' : '?lang=' . $l);
+            }
             $canonical = $langUrl($locale);
             $metaTitle = trans('site.meta.title');
             $metaDesc = trans('site.meta.description');
@@ -27,13 +33,17 @@
                     $metaTitle = trans('site.events.meta_title');
                     $metaDesc = \App\Support\EventsContent::withCapacity(trans('site.events.hero_text'));
                     break;
+                case 'Sponsors':
+                    $metaTitle = $pageProps['strings']['meta']['title'] ?? $metaTitle;
+                    $metaDesc = $pageProps['strings']['meta']['description'] ?? $metaDesc;
+                    break;
                 case 'Simulator/Index':
                     $metaTitle = trans('simulator.meta.title') . ' — Antika';
                     $metaDesc = trans('simulator.meta.description');
                     break;
             }
             $ogImage = $url . '/images/og-image.jpg';
-            $ogLocale = ['nl' => 'nl_BE', 'fr' => 'fr_BE', 'en' => 'en_GB'][$locale] ?? 'nl_BE';
+            $ogLocale = ['nl' => 'nl_BE', 'fr' => 'fr_BE', 'en' => 'en_GB', 'sq' => 'sq_AL'][$locale] ?? 'nl_BE';
             $jsonLd = [
                 '@context' => 'https://schema.org',
                 '@type' => 'Restaurant',
@@ -75,10 +85,10 @@
         <meta name="author" content="Antika Restaurant">
         <meta name="theme-color" content="#0c0a09">
         <link rel="canonical" href="{{ $canonical }}">
-        @foreach (['nl', 'fr', 'en'] as $alt)
+        @foreach ($sponsors ? ['fr', 'nl', 'sq'] : ['nl', 'fr', 'en'] as $alt)
             <link rel="alternate" hreflang="{{ $alt }}" href="{{ $langUrl($alt) }}">
         @endforeach
-        <link rel="alternate" hreflang="x-default" href="{{ $langUrl('nl') }}">
+        <link rel="alternate" hreflang="x-default" href="{{ $langUrl($sponsors ? 'fr' : 'nl') }}">
 
         <!-- Open Graph -->
         <meta property="og:type" content="restaurant">
@@ -140,7 +150,8 @@
     <body class="font-sans antialiased">
         @inertia
 
-        {{-- Widget de réservation Zenchef (modale déclenchée par les boutons data-zc-action="open") --}}
+        {{-- Widget de réservation Zenchef (modale déclenchée par les boutons data-zc-action="open") ; absent de la page Festival 1912. --}}
+        @unless ($page['component'] === 'Sponsors')
         <script>;(function (d, s, id) {const el = d.getElementsByTagName(s)[0]; if (d.getElementById(id) || el.parentNode == null) {return;} var js = d.createElement(s);  js.id = id; js.async = true; js.src = 'https://sdk.zenchef.com/v1/sdk.min.js';  el.parentNode.insertBefore(js, el); })(document, 'script', 'zenchef-sdk')</script>
         <div
             class="zc-widget-config"
@@ -150,5 +161,6 @@
             data-open="2000"
             @endif
             ></div>
+        @endunless
     </body>
 </html>

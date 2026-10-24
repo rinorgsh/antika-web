@@ -132,6 +132,8 @@ export function installTracking(trackingConfig) {
     // Clics téléphone / WhatsApp / réservation, où qu'ils soient sur le site.
     document.addEventListener('click', (e) => {
         if (!e.target.closest) return;
+        // Page Festival 1912 : rien à voir avec les conversions Antika.
+        if (window.location.pathname.startsWith('/sponsors')) return;
         // Boutons « Réserver » (ouvrent la modale Zenchef).
         if (e.target.closest('[data-zc-action="open"]')) {
             event('reservation_click', { page_path: window.location.pathname });

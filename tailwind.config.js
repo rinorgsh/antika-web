@@ -25,6 +25,12 @@ export default {
                     coral: '#e0654f', // boutons d'action (CTA)
                     cream: '#f5efcf', // crème/or du logo et highlights
                 },
+                // Festival 1912 (page /sponsors, temporaire) : rouge albanais.
+                festival: {
+                    DEFAULT: '#c8102e',
+                    dark: '#a00d25',
+                    light: '#f0596f',
+                },
             },
         },
     },

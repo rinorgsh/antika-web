@@ -1,0 +1,74 @@
+<?php
+
+// Festival 1912 (page temporaire /sponsors).
+return [
+    'meta' => [
+        'title' => 'Festival 1912 — Sponsors, exposants et donateurs',
+        'description' => 'Devenez sponsor, exposant ou donateur du Festival 1912. Première demande de participation, sans engagement.',
+    ],
+    'lang_names' => ['fr' => 'Français', 'nl' => 'Nederlands', 'sq' => 'Shqip'],
+    'hero' => [
+        'title' => 'Festival 1912',
+        'subtitle' => 'Formulaire de participation et de soutien',
+        'text' => 'Entreprises, commerçants, associations ou particuliers : remplissez ce formulaire pour devenir sponsor, exposant ou donateur du festival. Votre demande est sans engagement.',
+        'cta' => 'Remplir le formulaire',
+    ],
+    'form' => [
+        'type_title' => 'Type de participation',
+        'type_hint' => 'Sélectionnez l’option qui correspond à votre demande.',
+        'types' => [
+            'sponsor' => ['label' => 'Sponsor', 'text' => 'Soutien financier en échange de visibilité.'],
+            'exhibitor' => ['label' => 'Exposant', 'text' => 'Location d’un stand commercial.'],
+            'sponsor_exhibitor' => ['label' => 'Sponsor & Exposant', 'text' => 'Sponsoring avec présence commerciale sur place.'],
+            'donor' => ['label' => 'Donateur', 'text' => 'Contribution libre en soutien à l’École Albanaise « Vatra » de Bruxelles.'],
+        ],
+        'contact_title' => 'Coordonnées',
+        'name' => 'Nom et prénom',
+        'organization' => 'Nom de l’entreprise ou de l’organisation',
+        'optional' => 'facultatif',
+        'phone' => 'Numéro de téléphone',
+        'email' => 'Adresse e-mail',
+        'activity_title' => 'Activité de votre organisation',
+        'activity' => 'Quelle est l’activité principale de votre entreprise ou organisation ?',
+        'promote' => 'Quels produits, services ou activités souhaitez-vous promouvoir lors du festival ?',
+        'sell' => 'Quels produits ou services souhaitez-vous vendre sur place, le cas échéant ?',
+        'extra_title' => 'Informations complémentaires',
+        'message' => 'Avez-vous des demandes particulières ou des informations à nous communiquer ?',
+        'required_note' => 'Les champs marqués * sont obligatoires.',
+        'submit' => 'Envoyer ma demande',
+        'consent' => 'Vos données servent uniquement au traitement de votre demande. :privacy',
+        'privacy' => 'Politique de confidentialité',
+    ],
+    'notice' => [
+        'title' => 'Information importante',
+        'lines' => [
+            'Ce formulaire constitue une première demande de participation, sans engagement.',
+            'Après examen de votre candidature, notre équipe prendra contact avec vous afin de discuter des possibilités de collaboration.',
+            'En cas d’acceptation, une proposition détaillée ainsi qu’un contrat précisant les conditions de participation vous seront transmis.',
+        ],
+    ],
+    'success' => [
+        'title' => 'Merci, votre demande est bien envoyée.',
+        'text' => 'Notre équipe va l’examiner et vous recontactera. Une confirmation vous a été envoyée par e-mail.',
+    ],
+    'partners_title' => 'Avec',
+    'tagline' => 'Ensemble pour notre culture, notre communauté et les générations futures.',
+    'errors' => [
+        'type' => 'Veuillez choisir un type de participation.',
+        'name' => 'Veuillez indiquer votre nom et prénom.',
+        'organization' => 'Veuillez indiquer le nom de votre entreprise ou organisation.',
+        'phone' => 'Veuillez indiquer un numéro de téléphone valide.',
+        'email' => 'Veuillez indiquer une adresse e-mail valide.',
+        'too_long' => 'Ce texte est trop long.',
+        'generic' => 'Une erreur est survenue. Veuillez réessayer.',
+    ],
+    'email' => [
+        'subject' => 'Festival 1912 — Nous avons bien reçu votre demande',
+        'greeting' => 'Bonjour :name,',
+        'intro' => 'Merci pour votre intérêt pour le Festival 1912. Nous avons bien reçu votre demande de participation.',
+        'recap' => 'Récapitulatif',
+        'type' => 'Type de participation',
+        'signoff' => 'Cordialement,',
+        'team' => 'L’équipe du Festival 1912',
+    ],
+];

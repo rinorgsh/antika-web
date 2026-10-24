@@ -3,6 +3,7 @@
 use App\Http\Controllers\CallbackController;
 use App\Http\Controllers\CarteController;
 use App\Http\Controllers\SimulatorController;
+use App\Http\Controllers\SponsorController;
 use App\Http\Middleware\SetLocale;
 use App\Models\EventType;
 use App\Support\EventsContent;
@@ -48,6 +49,11 @@ Route::get('/events/{occasion}', function (string $occasion) {
     ]);
 })->whereIn('occasion', array_keys(config('antika.landings')))->name('events.landing');
 Route::get('/contact', fn () => Inertia::render('Contact'))->name('contact');
+
+// Festival 1912 (temporaire) : formulaire sponsors / exposants / donateurs, en FR, NL et albanais.
+// Hors sitemap et hors suivi Google Ads. À retirer après le festival.
+Route::get('/sponsors', [SponsorController::class, 'index'])->name('sponsors.index');
+Route::post('/sponsors', [SponsorController::class, 'store'])->middleware('throttle:5,1')->name('sponsors.store');
 Route::get('/privacy', fn () => Inertia::render('Privacy'))->name('privacy');
 
 // Changement de langue : on mémorise le choix en session puis on revient en arrière.
