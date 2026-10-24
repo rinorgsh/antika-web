@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 264 48" role="img" aria-label="AURAE">
+    <defs>
+        <linearGradient id="metal" x1="0" y1="0" x2="264" y2="0" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#e2c38a"/>
+            <stop offset=".22" stop-color="#d8dcdc"/>
+            <stop offset=".42" stop-color="#d9b77f"/>
+            <stop offset=".62" stop-color="#eef0ef"/>
+            <stop offset=".8" stop-color="#d4b075"/>
+            <stop offset="1" stop-color="#c9ccca"/>
+        </linearGradient>
+    </defs>
+    <g fill="none" stroke="url(#metal)" stroke-width="2.6" stroke-linejoin="miter">
+        <path d="M2 44 L21 4 L40 44"/>
+        <path d="M64 4 V27 a15 15 0 0 0 30 0 V4"/>
+        <path d="M118 4 H136 a10.5 10.5 0 0 1 0 21 H128 L147 44"/>
+        <path d="M166 44 L185 4 L204 44"/>
+        <path d="M228 5 H262 M228 24 H258 M228 43 H262"/>
+    </g>
+</svg>

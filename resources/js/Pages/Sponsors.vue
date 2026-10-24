@@ -13,7 +13,15 @@ const props = defineProps({
 const s = computed(() => props.strings);
 const f = computed(() => props.strings.form);
 
-const partners = ['BABA', 'ANTIKA', 'AURAE', 'VATRA', 'GRUPI RINIA', 'FEMX'];
+// Logos dans public/images/festival ; sans fichier, le nom s'affiche en texte.
+const partners = [
+    { name: 'BABA', logo: '/images/festival/baba.webp', h: 'h-7 sm:h-8' },
+    { name: 'ANTIKA', logo: '/images/festival/antika.png', h: 'h-11 sm:h-12' },
+    { name: 'AURAE', logo: '/images/festival/aurae.svg', h: 'h-5 sm:h-6' },
+    { name: 'VATRA' },
+    { name: 'GRUPI RINIA' },
+    { name: 'FEMX' },
+];
 const types = ['sponsor', 'exhibitor', 'sponsor_exhibitor', 'donor'];
 
 const form = reactive({
@@ -102,7 +110,10 @@ const submit = () => {
         <section class="border-y border-white/10 bg-antika-panel">
             <div class="mx-auto flex max-w-5xl flex-wrap items-center justify-center gap-x-8 gap-y-3 px-4 py-6 sm:px-6">
                 <span class="w-full text-center text-[11px] uppercase tracking-[0.3em] text-stone-500 sm:w-auto">{{ s.partners_title }}</span>
-                <span v-for="p in partners" :key="p" class="font-serif text-lg tracking-widest text-antika-cream/80">{{ p }}</span>
+                <template v-for="p in partners" :key="p.name">
+                    <img v-if="p.logo" :src="p.logo" :alt="p.name" class="w-auto object-contain" :class="p.h" loading="lazy" />
+                    <span v-else class="font-serif text-lg tracking-widest text-antika-cream/80">{{ p.name }}</span>
+                </template>
             </div>
         </section>
 
