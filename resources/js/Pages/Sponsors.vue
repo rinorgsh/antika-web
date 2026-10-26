@@ -13,16 +13,24 @@ const props = defineProps({
 const s = computed(() => props.strings);
 const f = computed(() => props.strings.form);
 
-// Logos dans public/images/festival ; sans fichier, le nom s'affiche en texte.
+// Logos dans public/images/festival, chacun dans une case de même taille ;
+// `h` compense les proportions (logos larges plus bas, logos ronds plus hauts).
 const partners = [
-    { name: 'BABA', logo: '/images/festival/baba.webp', h: 'h-7 sm:h-8' },
-    { name: 'ANTIKA', logo: '/images/festival/antika.png', h: 'h-11 sm:h-12' },
-    { name: 'AURAE', logo: '/images/festival/aurae.svg', h: 'h-5 sm:h-6' },
-    { name: 'VATRA' },
-    { name: 'GRUPI RINIA' },
-    { name: 'FEMX' },
+    { name: 'BABA', logo: '/images/festival/baba.webp', h: 'max-h-7 sm:max-h-8' },
+    { name: 'ANTIKA', logo: '/images/festival/antika.png', h: 'max-h-12 sm:max-h-14' },
+    { name: 'AURAE', logo: '/images/festival/aurae.svg', h: 'max-h-5 sm:max-h-6' },
+    { name: 'VATRA', logo: '/images/festival/vatra.webp', h: 'max-h-7 sm:max-h-8' },
+    { name: 'GRUPI RINIA', logo: '/images/festival/grupi-rinia.webp', h: 'max-h-16 sm:max-h-20' },
+    { name: 'FEMX', logo: '/images/festival/femx.webp', h: 'max-h-6 sm:max-h-7' },
 ];
 const types = ['sponsor', 'exhibitor', 'sponsor_exhibitor', 'donor'];
+// Pictogrammes (Heroicons outline) : étoile, stand, mégaphone, cœur.
+const typeIcons = {
+    sponsor: 'M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z',
+    exhibitor: 'M13.5 21v-7.5a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349M3.75 21V9.349m0 0a3.004 3.004 0 0 0 3.75-.615A2.993 2.993 0 0 0 9.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 0 0 2.25 1.016c.896 0 1.7-.393 2.25-1.015a3.001 3.001 0 0 0 3.75.614m-16.5 0a3.004 3.004 0 0 1-.621-4.72l1.189-1.19A1.5 1.5 0 0 1 5.378 3h13.243a1.5 1.5 0 0 1 1.06.44l1.19 1.189a3 3 0 0 1-.621 4.72M6.75 18h3.75a.75.75 0 0 0 .75-.75V13.5a.75.75 0 0 0-.75-.75H6.75a.75.75 0 0 0-.75.75v3.75c0 .414.336.75.75.75Z',
+    sponsor_exhibitor: 'M10.34 15.84c-.688-.06-1.386-.09-2.09-.09H7.5a4.5 4.5 0 1 1 0-9h.75c.704 0 1.402-.03 2.09-.09m0 9.18c.253.962.584 1.892.985 2.783.247.55.06 1.21-.463 1.511l-.657.38c-.551.318-1.26.117-1.527-.461a20.845 20.845 0 0 1-1.44-4.282m3.102.069a18.03 18.03 0 0 1-.59-4.59c0-1.586.205-3.124.59-4.59m0 9.18a23.848 23.848 0 0 1 8.835 2.535M10.34 6.66a23.847 23.847 0 0 0 8.835-2.535m0 0A23.74 23.74 0 0 0 18.795 3m.38 1.125a23.91 23.91 0 0 1 1.014 5.395m-1.014 8.855c-.118.38-.245.754-.38 1.125m.38-1.125a23.91 23.91 0 0 0 1.014-5.395m0-3.46c.495.413.811 1.035.811 1.73 0 .695-.316 1.317-.811 1.73m0-3.46a24.347 24.347 0 0 1 0 3.46',
+    donor: 'M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z',
+};
 
 const form = reactive({
     participation_type: '',
@@ -93,9 +101,8 @@ const submit = () => {
 
         <!-- En-tête -->
         <section class="relative overflow-hidden">
-            <div class="pointer-events-none absolute inset-x-0 -top-10 select-none text-center font-serif text-[38vw] leading-none text-white/[0.03] sm:text-[22rem]" aria-hidden="true">1912</div>
-            <div class="relative mx-auto max-w-3xl px-4 pb-16 pt-10 text-center sm:px-6 sm:pt-16">
-                <span class="mx-auto block h-1 w-16 bg-festival"></span>
+            <div class="relative mx-auto max-w-3xl px-4 pb-16 pt-6 text-center sm:px-6 sm:pt-10">
+                <img src="/images/festival/festival-1912.webp" alt="Festival 1912" class="mx-auto h-44 w-auto sm:h-56" width="384" height="480" />
                 <h1 class="mt-8 font-serif text-5xl text-antika-cream sm:text-7xl">{{ s.hero.title }}</h1>
                 <p class="mt-4 text-sm font-semibold uppercase tracking-[0.25em] text-festival-light">{{ s.hero.subtitle }}</p>
                 <p class="mx-auto mt-6 max-w-xl leading-relaxed text-stone-300">{{ s.hero.text }}</p>
@@ -108,12 +115,13 @@ const submit = () => {
 
         <!-- Partenaires -->
         <section class="border-y border-white/10 bg-antika-panel">
-            <div class="mx-auto flex max-w-5xl flex-wrap items-center justify-center gap-x-8 gap-y-3 px-4 py-6 sm:px-6">
-                <span class="w-full text-center text-[11px] uppercase tracking-[0.3em] text-stone-500 sm:w-auto">{{ s.partners_title }}</span>
-                <template v-for="p in partners" :key="p.name">
-                    <img v-if="p.logo" :src="p.logo" :alt="p.name" class="w-auto object-contain" :class="p.h" loading="lazy" />
-                    <span v-else class="font-serif text-lg tracking-widest text-antika-cream/80">{{ p.name }}</span>
-                </template>
+            <div class="mx-auto max-w-5xl px-4 py-8 sm:px-6">
+                <p class="text-center text-[11px] uppercase tracking-[0.3em] text-stone-500">{{ s.partners_title }}</p>
+                <ul class="mt-6 grid grid-cols-3 gap-x-4 gap-y-6 sm:grid-cols-6">
+                    <li v-for="p in partners" :key="p.name" class="flex h-16 items-center justify-center sm:h-20">
+                        <img :src="p.logo" :alt="p.name" class="w-auto max-w-full object-contain" :class="p.h" loading="lazy" />
+                    </li>
+                </ul>
             </div>
         </section>
 
@@ -139,6 +147,13 @@ const submit = () => {
                             :class="form.participation_type === type ? 'border-festival bg-festival/10' : 'border-white/15 hover:border-white/30'"
                         >
                             <input v-model="form.participation_type" type="radio" name="participation_type" :value="type" class="mt-1 border-white/30 bg-antika-ink text-festival focus:ring-festival focus:ring-offset-antika-ink" />
+                            <span
+                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border transition-colors"
+                                :class="form.participation_type === type ? 'border-festival bg-festival text-white' : 'border-white/20 text-festival-light'"
+                                aria-hidden="true"
+                            >
+                                <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" :d="typeIcons[type]" /></svg>
+                            </span>
                             <span>
                                 <span class="block font-semibold text-antika-cream">{{ f.types[type].label }}</span>
                                 <span class="mt-1 block text-sm leading-snug text-stone-400">{{ f.types[type].text }}</span>
