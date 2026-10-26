@@ -17,9 +17,9 @@ const f = computed(() => props.strings.form);
 // `h` compense les proportions (logos larges plus bas, logos ronds plus hauts).
 const partners = [
     { name: 'BABA', logo: '/images/festival/baba.webp', h: 'max-h-7 sm:max-h-8' },
+    { name: 'VATRA', logo: '/images/festival/vatra.webp', h: 'max-h-7 sm:max-h-8' },
     { name: 'ANTIKA', logo: '/images/festival/antika.png', h: 'max-h-12 sm:max-h-14' },
     { name: 'AURAE', logo: '/images/festival/aurae.svg', h: 'max-h-5 sm:max-h-6' },
-    { name: 'VATRA', logo: '/images/festival/vatra.webp', h: 'max-h-7 sm:max-h-8' },
     { name: 'GRUPI RINIA', logo: '/images/festival/grupi-rinia.webp', h: 'max-h-16 sm:max-h-20' },
     { name: 'FEMX', logo: '/images/festival/femx.webp', h: 'max-h-6 sm:max-h-7' },
 ];
