@@ -104,7 +104,11 @@ const submit = () => {
             <div class="relative mx-auto max-w-3xl px-4 pb-16 pt-6 text-center sm:px-6 sm:pt-10">
                 <img src="/images/festival/festival-1912.webp" alt="Festival 1912" class="mx-auto h-44 w-auto sm:h-56" width="384" height="480" />
                 <h1 class="mt-8 font-serif text-5xl text-antika-cream sm:text-7xl">{{ s.hero.title }}</h1>
-                <p class="mt-4 text-sm font-semibold uppercase tracking-[0.25em] text-festival-light">{{ s.hero.subtitle }}</p>
+                <p class="mt-3 text-sm font-semibold uppercase tracking-[0.35em] text-stone-300">{{ s.hero.edition }}</p>
+                <p class="mt-8 font-serif text-7xl leading-none text-festival-light sm:text-9xl">{{ s.hero.date }}</p>
+                <p class="mt-3 text-sm uppercase tracking-[0.2em] text-stone-400">{{ s.hero.date_full }}</p>
+                <span class="mx-auto mt-8 block h-px w-16 bg-white/15"></span>
+                <p class="mt-8 text-sm font-semibold uppercase tracking-[0.25em] text-festival-light">{{ s.hero.subtitle }}</p>
                 <p class="mx-auto mt-6 max-w-xl leading-relaxed text-stone-300">{{ s.hero.text }}</p>
                 <a href="#formulaire" class="mt-9 inline-flex items-center gap-2 rounded-full bg-festival px-8 py-3.5 text-sm font-semibold uppercase tracking-wide text-white transition-colors hover:bg-festival-dark">
                     {{ s.hero.cta }}

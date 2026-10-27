@@ -9,6 +9,9 @@ return [
     'lang_names' => ['fr' => 'Français', 'nl' => 'Nederlands', 'sq' => 'Shqip'],
     'hero' => [
         'title' => 'Festival 1912',
+        'edition' => 'Édition 2026',
+        'date' => '29-11',
+        'date_full' => 'Dimanche 29 novembre 2026',
         'subtitle' => 'Formulaire de participation et de soutien',
         'text' => 'Entreprises, commerçants, associations ou particuliers : remplissez ce formulaire pour devenir sponsor, exposant ou donateur du festival. Votre demande est sans engagement.',
         'cta' => 'Remplir le formulaire',

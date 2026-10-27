@@ -9,6 +9,9 @@ return [
     'lang_names' => ['fr' => 'Français', 'nl' => 'Nederlands', 'sq' => 'Shqip'],
     'hero' => [
         'title' => 'Festivali 1912',
+        'edition' => 'Edicioni 2026',
+        'date' => '29-11',
+        'date_full' => 'E diel, 29 nëntor 2026',
         'subtitle' => 'Formulari i pjesëmarrjes dhe i mbështetjes',
         'text' => 'Kompani, tregtarë, shoqata ose individë: plotësoni këtë formular për t’u bërë sponsor, ekspozues ose dhurues i festivalit. Kërkesa juaj është pa asnjë detyrim.',
         'cta' => 'Plotësoni formularin',
