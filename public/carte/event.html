@@ -7,7 +7,7 @@
 <meta name="theme-color" content="#050505">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Rubik+Wet+Paint&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Cinzel:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#050505;
@@ -151,8 +151,8 @@
 
   @media (max-width:380px){
     main{padding:0 16px}
-    .nav{margin:20px -16px 0;padding:10px 16px}
     .nm{font-size:19px}
+    .theme-redflag .poster,.theme-redflag .finale{margin-left:-16px;margin-right:-16px}
     .pr{font-size:18px}
     .row .ph{width:52px;height:52px}
     .row.big .ph{width:64px;height:64px}
@@ -192,22 +192,6 @@
   .infos .v{font-family:var(--serif);font-weight:700;font-size:21px;color:var(--ink);margin-top:2px;white-space:nowrap}
   .infos a.v{display:block;text-decoration:none;color:var(--gold)}
 
-  /* ---------- Navigation des sections (collante) ---------- */
-  .nav{
-    position:sticky;top:0;z-index:4;margin:20px -20px 0;padding:10px 20px;
-    scroll-padding-inline:20px;
-    display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;
-    background:linear-gradient(180deg,var(--bg) 70%,transparent);
-  }
-  .nav::-webkit-scrollbar{display:none}
-  .nav a{
-    flex:0 0 auto;padding:12px 16px;border-radius:999px;line-height:1;
-    border:1px solid var(--line);color:var(--ink);text-decoration:none;
-    font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
-    background:rgba(0,0,0,.35);
-  }
-  .nav a.on{border-color:var(--gold);color:var(--gold)}
-  section{scroll-margin-top:64px}
 
   /* ---------- Photo cliquable ---------- */
   .zoom{
@@ -263,106 +247,118 @@
 
   /* ============================================================
      THÈME « RED FLAG » (event.theme = redflag)
-     Repris des affiches : rideaux de velours rouge, lueur de bougie
-     dorée, titre Didone or sur deux lignes, petites capitales très
-     espacées encadrées de losanges (« SAVE THE DATE · 30 OCT »).
+     D'après les visuels de la soirée : capitonné de cuir bordeaux,
+     clé dorée au ruban rouge, porte en arche, capitales romaines
+     dorées avec éclats de lumière. Les images sont dans event/redflag/.
      ============================================================ */
   body.theme-redflag{
-    --bg:#070203;
+    --bg:#0a0204;
     --ink:#f6ead8;
-    --muted:#9a8274;
-    --gold:#e2b25e;
+    --muted:#a88d7c;
+    --gold:#e6b45c;
     --gold-deep:#a8762a;
     --neon:#d4213d;
-    --ember:#e8566a;
-    --line:rgba(226,178,94,.2);
+    --ember:#f0707f;
+    --line:rgba(230,180,92,.22);
+    --roman:"Cinzel","Playfair Display",var(--serif);
+    /* Cuir capitonné assombri : on le devine derrière la carte sans gêner la lecture. */
     --glow:
-      radial-gradient(70% 45% at 50% 0%, rgba(240,170,80,.18), transparent 65%),
-      radial-gradient(38% 90% at 0% 45%, rgba(150,14,30,.42), transparent 70%),
-      radial-gradient(38% 90% at 100% 45%, rgba(150,14,30,.42), transparent 70%),
-      radial-gradient(90% 40% at 50% 108%, rgba(120,10,24,.35), transparent 65%);
+      radial-gradient(80% 38% at 50% 0%, rgba(240,170,80,.14), transparent 70%),
+      linear-gradient(180deg, rgba(10,2,4,.74), rgba(10,2,4,.82) 45%, rgba(10,2,4,.74)),
+      url("event/redflag/leather.webp") center/cover no-repeat;
   }
-  .theme-redflag .hero{padding-top:52px}
-  .theme-redflag .hero .title{
-    font-family:"Playfair Display",var(--serif);font-weight:500;
-    text-transform:uppercase;letter-spacing:-.01em;
-    font-size:clamp(64px,22vw,112px);line-height:.9;
-    width:min-content;margin:0 auto;   /* « RED » au-dessus de « FLAG », comme l'affiche */
-    background:linear-gradient(180deg,#fff1cf 0%,#f0c878 30%,#d39b45 55%,#9c6a22 80%,#e8bd6c 100%);
-    -webkit-background-clip:text;background-clip:text;
-    filter:drop-shadow(0 0 18px rgba(240,180,90,.28)) drop-shadow(0 3px 2px rgba(0,0,0,.7));
+  .theme-redflag main{position:relative;z-index:1}
+
+  /* --- Ouverture : l'affiche de la soirée, pleine largeur, fondue dans la page --- */
+  .theme-redflag .hero{padding-top:22px}
+  .theme-redflag .hero .logo{width:78px;margin-bottom:16px}
+  .theme-redflag .poster{
+    margin:0 -20px;aspect-ratio:1122/1402;background:#120406;
+    -webkit-mask:linear-gradient(180deg,#000 0,#000 90%,transparent 100%);
+            mask:linear-gradient(180deg,#000 0,#000 90%,transparent 100%);
+  }
+  .theme-redflag .poster img{width:100%;height:100%;object-fit:cover}
+  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .theme-redflag .hero .tag{
+    font-style:italic;font-family:"Playfair Display",var(--serif);font-weight:500;
+    letter-spacing:.2em;color:#cdb5a1;margin:-6px auto 0;position:relative;
   }
   .theme-redflag .hero .sub{
-    font-family:var(--serif);font-weight:600;font-size:15px;
-    letter-spacing:.38em;color:var(--ink);margin-top:22px;
+    font-family:var(--roman);font-weight:600;font-size:17px;
+    letter-spacing:.3em;color:var(--gold);margin-top:16px;
     display:flex;align-items:center;justify-content:center;gap:14px;
   }
   .theme-redflag .hero .sub::before,.theme-redflag .hero .sub::after{
     content:"";height:1px;width:38px;flex:0 0 auto;
     background:linear-gradient(90deg,transparent,var(--gold),transparent);
   }
+  .theme-redflag .lineup .lbl{font-family:var(--roman);letter-spacing:.42em}
+  .theme-redflag .lineup .names{font-family:var(--roman);font-weight:500;color:#f2dcb6}
+  .theme-redflag .infos .v{font-family:var(--roman);font-weight:600}
+
+  /* --- Séparateurs : la clé dorée de l'affiche --- */
+  .theme-redflag .rule i,.theme-redflag .sec-rule i{
+    width:58px;height:18px;transform:none;
+    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 20'%3E%3Cg fill='none' stroke='%23e6b45c' stroke-width='1.6'%3E%3Ccircle cx='9' cy='10' r='6.5'/%3E%3Ccircle cx='9' cy='10' r='2.4'/%3E%3C/g%3E%3Cg fill='%23e6b45c'%3E%3Crect x='15' y='9' width='44' height='2' rx='1'/%3E%3Crect x='18' y='7' width='1.6' height='6'/%3E%3Crect x='21' y='7' width='1.6' height='6'/%3E%3Crect x='50' y='11' width='3' height='6'/%3E%3Crect x='55' y='11' width='3' height='4.5'/%3E%3C/g%3E%3C/svg%3E") center/contain no-repeat;
+    filter:drop-shadow(0 0 6px rgba(240,180,90,.45));
+  }
+
+  /* --- Titres de section : capitales romaines dorées + éclat qui scintille --- */
   .theme-redflag .sec-title{
-    font-family:"Playfair Display",var(--serif);font-weight:500;letter-spacing:.08em;
+    font-family:var(--roman);font-weight:600;letter-spacing:.06em;
+    display:table;margin:0 auto;position:relative;
+    background:linear-gradient(180deg,#fff3d4 0%,#f3cd80 32%,#d9a04a 58%,#a06c22 82%,#e9bf6e 100%);
+    -webkit-background-clip:text;background-clip:text;
+    filter:drop-shadow(0 0 14px rgba(240,180,90,.32)) drop-shadow(0 2px 2px rgba(0,0,0,.8));
   }
-  .theme-redflag .head .t{font-family:var(--serif);font-size:14px;letter-spacing:.3em;color:var(--neon)}
-  .theme-redflag .row + .row{border-top-color:rgba(212,33,61,.12)}
-  .theme-redflag .row .ph{border-color:rgba(212,33,61,.45);box-shadow:0 6px 20px rgba(120,10,24,.45)}
-  .theme-redflag .row .ph.logo{border-color:rgba(255,255,255,.2)}
-  .theme-redflag .dots{border-bottom-color:rgba(212,33,61,.35)}
-  .theme-redflag footer{border-top-color:rgba(212,33,61,.3)}
-  .theme-redflag footer .fb{font-family:"Playfair Display",var(--serif);font-weight:500}
-  /* --- Red Flag, suite : rideaux, bougies, grain, rouge à lèvres --- */
-  /* Rideaux de velours aux deux bords, plis en dégradés répétés. */
-  .theme-redflag .curtain{
-    position:fixed;top:0;bottom:0;width:clamp(10px,3.4vw,90px);z-index:0;pointer-events:none;
+  .theme-redflag .sec-title::after{
+    content:"";position:absolute;top:-6px;right:-14px;width:24px;height:24px;pointer-events:none;
     background:
-      linear-gradient(180deg,rgba(0,0,0,.55),transparent 18%,transparent 80%,rgba(0,0,0,.6)),
-      repeating-linear-gradient(90deg,#2a0207 0,#6e0a17 7px,#9c1424 11px,#5a0812 16px,#2a0207 22px);
+      radial-gradient(circle,#fff 0 1.4px,rgba(255,225,160,.85) 2.2px,transparent 6px),
+      linear-gradient(90deg,transparent,#fff7df 50%,transparent) center/100% 1.2px no-repeat,
+      linear-gradient(0deg,transparent,#fff7df 50%,transparent) center/1.2px 100% no-repeat;
+    animation:eclat 2.8s ease-in-out infinite;
   }
-  .theme-redflag .curtain.l{left:0;-webkit-mask:linear-gradient(90deg,#000 40%,transparent);mask:linear-gradient(90deg,#000 40%,transparent)}
-  .theme-redflag .curtain.r{right:0;-webkit-mask:linear-gradient(270deg,#000 40%,transparent);mask:linear-gradient(270deg,#000 40%,transparent)}
+  @keyframes eclat{
+    0%,100%{opacity:.35;transform:scale(.7) rotate(0)}
+    50%{opacity:1;transform:scale(1.1) rotate(45deg)}
+  }
+
+  /* --- Lignes de la carte --- */
+  .theme-redflag .head{border-bottom-color:rgba(230,180,92,.28)}
+  .theme-redflag .head .t{font-family:var(--roman);font-size:13px;font-weight:600;letter-spacing:.24em;color:#f3d9a4}
+  .theme-redflag .head .t::before{content:"";display:inline-block;width:6px;height:6px;margin:0 10px 2px 0;background:var(--neon);transform:rotate(45deg)}
+  .theme-redflag .row + .row{border-top-color:rgba(230,180,92,.1)}
+  .theme-redflag .row .ph{border-color:rgba(230,180,92,.45);box-shadow:0 8px 22px rgba(0,0,0,.55),0 0 0 3px rgba(120,10,24,.35)}
+  .theme-redflag .row .ph.logo{border-color:rgba(255,255,255,.2);box-shadow:0 6px 18px rgba(0,0,0,.5)}
+  .theme-redflag .dots{border-bottom-color:rgba(230,180,92,.28)}
+  .theme-redflag .nm .sub{color:var(--ember);text-transform:uppercase;font-size:10px;letter-spacing:.18em}
+  .theme-redflag .note{color:#b39b8a}
+
+  /* --- Fin de carte : la femme à la rose, fondue en haut et en bas --- */
+  .theme-redflag .finale{
+    margin:60px -20px -10px;aspect-ratio:941/1672;max-height:120vh;background:#120406;
+    -webkit-mask:linear-gradient(180deg,transparent 0,#000 22%,#000 78%,transparent 100%);
+            mask:linear-gradient(180deg,transparent 0,#000 22%,#000 78%,transparent 100%);
+  }
+  .theme-redflag .finale img{width:100%;height:100%;object-fit:cover}
+  .theme-redflag footer{border-top-color:rgba(230,180,92,.25);position:relative}
+  .theme-redflag footer .fb{font-family:var(--roman);font-weight:600;letter-spacing:.08em}
+
   /* Grain de pellicule, très léger. */
   .theme-redflag .grain{
-    position:fixed;inset:0;z-index:3;pointer-events:none;opacity:.045;
+    position:fixed;inset:0;z-index:3;pointer-events:none;opacity:.04;
     background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
-  .theme-redflag main{position:relative;z-index:1}
-  /* Lueur de bougie qui vacille derrière le titre. */
-  .theme-redflag .hero{position:relative}
-  .theme-redflag .hero::before{
-    content:"";position:absolute;left:50%;top:120px;width:340px;height:260px;margin-left:-170px;z-index:-1;
-    background:radial-gradient(closest-side,rgba(255,176,80,.26),transparent);
-    animation:flamme 3.2s ease-in-out infinite alternate;
-  }
-  @keyframes flamme{
-    0%{opacity:.75;transform:scale(1)}
-    35%{opacity:1;transform:scale(1.04)}
-    55%{opacity:.82;transform:scale(.98)}
-    100%{opacity:.95;transform:scale(1.02)}
-  }
-  .theme-redflag .hero .tag{font-style:italic;font-family:"Playfair Display",var(--serif);font-weight:500;letter-spacing:.24em;color:#c9b3a0}
-  .theme-redflag .lineup .names{color:#f0d9b5}
-  .theme-redflag .infos > div + div{border-left-color:rgba(226,178,94,.35)}
-  .theme-redflag .rule i,.theme-redflag .sec-rule i{background:var(--neon);outline:1px solid var(--gold);outline-offset:2px}
-  .theme-redflag .nav{background:linear-gradient(180deg,#070203 72%,transparent)}
-  .theme-redflag .nav a{border-color:rgba(212,33,61,.4)}
-  .theme-redflag .nav a.on{border-color:var(--gold);background:rgba(212,33,61,.18)}
-  .theme-redflag .nm .sub{color:var(--ember);text-transform:uppercase;font-size:10px;letter-spacing:.18em}
-  .theme-redflag #lb{background:rgba(12,1,3,.88)}
-  .theme-redflag #lb img{border-color:rgba(212,33,61,.5);box-shadow:0 30px 90px rgba(150,14,30,.45)}
-  .theme-redflag #lb .t{font-family:"Playfair Display",var(--serif);font-weight:500}
-  /* « I hate you / I love you » écrit au rouge à lèvres, comme l'affiche du miroir. */
-  .scrawl{
-    text-align:center;margin:64px 0 -14px;transform:rotate(-4deg);
-    font-family:"Rubik Wet Paint",cursive;color:#c8102e;line-height:1.05;
-    text-shadow:0 0 18px rgba(200,16,46,.35);
-  }
-  .scrawl div{font-size:clamp(34px,11vw,52px)}
-  .scrawl s{text-decoration-thickness:4px;text-decoration-color:#e0263f}
+  .theme-redflag #lb{background:rgba(12,1,3,.9)}
+  .theme-redflag #lb img{border-color:rgba(230,180,92,.5);box-shadow:0 30px 90px rgba(150,14,30,.45)}
+  .theme-redflag #lb .t{font-family:var(--roman);font-weight:600}
+  @media (prefers-reduced-motion:reduce){ .theme-redflag .sec-title::after{animation:none} }
 
   /* Téléphones : placé en dernier pour l'emporter sur les règles du thème. */
   @media (max-width:480px){
-    .theme-redflag .hero .sub{font-size:13.5px;letter-spacing:.26em;gap:10px}
+    .theme-redflag .hero .sub{font-size:14px;letter-spacing:.2em;gap:10px}
+    .theme-redflag .sec-title{font-size:clamp(26px,8.4vw,40px)}
     .theme-redflag .hero .sub::before,.theme-redflag .hero .sub::after{width:22px}
     .lineup .names{font-size:13px;letter-spacing:.14em}
     .hero .tag{font-size:11.5px}
@@ -481,7 +477,7 @@ function separateurs(){
 }
 window.addEventListener('resize', separateurs);
 
-function heroHtml(E){
+function heroHtml(E, theme){
   var tel = E.reservation ? String(E.reservation).replace(/[^\d+]/g,'') : '';
   var infos = '';
   if(E.doors){
@@ -492,8 +488,13 @@ function heroHtml(E){
   }
   return '<div class="hero">'+
       '<img class="logo" src="logo-antika-white.png" alt="Antika">'+
-      (E.tagline ? '<div class="tag">'+esc(E.tagline)+'</div>' : '')+
-      '<div class="title">'+esc(E.title || "")+'</div>'+
+      /* Red Flag : l'affiche de la soirée remplace le titre dessiné en CSS. */
+      (theme === "redflag"
+        ? '<div class="poster"><img src="event/redflag/poster.webp" alt="" fetchpriority="high" decoding="async"></div>'+
+          '<h1 class="sr">'+esc(E.title || "")+'</h1>'+
+          (E.tagline ? '<div class="tag">'+esc(E.tagline)+'</div>' : '')
+        : (E.tagline ? '<div class="tag">'+esc(E.tagline)+'</div>' : '')+
+          '<div class="title">'+esc(E.title || "")+'</div>')+
       (E.subtitle ? '<div class="sub">'+esc(E.subtitle)+'</div>' : '')+
       (E.lineup ? '<div class="lineup"><div class="lbl">Line up</div><div class="names">'+lineupHtml(E.lineup)+'</div></div>' : '')+
       (infos ? '<div class="infos">'+infos+'</div>' : '')+
@@ -509,13 +510,7 @@ function render(E){
   PHOTOS = [];
 
   var secs = E.sections || [];
-  var html = heroHtml(E);
-
-  if(secs.length > 1){
-    html += '<nav class="nav">'+secs.map(function(sec){
-      return '<a href="#'+esc(sec.id)+'">'+esc(sec.title || sec.id)+'</a>';
-    }).join('')+'</nav>';
-  }
+  var html = heroHtml(E, theme);
 
   secs.forEach(function(sec){
     html += '<section id="'+esc(sec.id)+'">';
@@ -526,7 +521,7 @@ function render(E){
   });
 
   if(theme === "redflag"){
-    html += '<div class="scrawl rv" aria-hidden="true"><div>I <s>hate</s> you</div><div>I love you</div></div>';
+    html += '<div class="finale" aria-hidden="true"><img src="event/redflag/finale.webp" alt="" loading="lazy" decoding="async"></div>';
   }
 
   var f = E.footer || {};
@@ -539,7 +534,7 @@ function render(E){
 
   document.getElementById("main").innerHTML = html;
   if(theme === "redflag"){
-    ['curtain l','curtain r','grain'].forEach(function(c){
+    ['grain'].forEach(function(c){
       var d = document.createElement('div'); d.className = c; d.setAttribute('aria-hidden','true');
       document.body.appendChild(d);
     });
@@ -548,7 +543,6 @@ function render(E){
   separateurs();
   if(document.fonts && document.fonts.ready){ document.fonts.ready.then(separateurs); }
   animer();
-  suivreNav();
 }
 
 /* ---------- Apparition des lignes au défilement ---------- */
@@ -566,23 +560,6 @@ function animer(){
     });
   }, {rootMargin:'0px 0px -6% 0px'});
   els.forEach(function(e){ io.observe(e); });
-}
-
-/* ---------- Onglet actif de la navigation ---------- */
-function suivreNav(){
-  var liens = document.querySelectorAll('.nav a');
-  if(!liens.length || !('IntersectionObserver' in window)) return;
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(en){
-      if(!en.isIntersecting) return;
-      liens.forEach(function(a){
-        var on = a.getAttribute('href') === '#'+en.target.id;
-        a.classList.toggle('on', on);
-        if(on && a.scrollIntoView){ a.parentNode.scrollTo({left:a.offsetLeft-20, behavior:'smooth'}); }
-      });
-    });
-  }, {rootMargin:'-45% 0px -50% 0px'});
-  document.querySelectorAll('main section').forEach(function(s){ io.observe(s); });
 }
 
 /* ---------- Visionneuse : toucher une photo l'agrandit ----------
