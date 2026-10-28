@@ -123,6 +123,11 @@ class MenuBuilder
             'subtitle' => MenuSetting::get('event.subtitle', ''),
             // Habillage de event.html (classe theme-xxx) : '' = doré classique.
             'theme' => MenuSetting::get('event.theme', ''),
+            // Infos de l'affiche, facultatives : masquées si vides.
+            'tagline' => MenuSetting::get('event.tagline', ''),
+            'lineup' => MenuSetting::get('event.lineup', ''),
+            'doors' => MenuSetting::get('event.doors', ''),
+            'reservation' => MenuSetting::get('event.reservation', ''),
             'sections' => $sections,
             'footer' => [
                 'note' => MenuSetting::get('event.footerNote', ''),

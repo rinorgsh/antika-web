@@ -45,6 +45,10 @@ class EventSettings extends Page
             'subtitle' => MenuSetting::get('event.subtitle', ''),
             'footerNote' => MenuSetting::get('event.footerNote', ''),
             'theme' => MenuSetting::get('event.theme', ''),
+            'tagline' => MenuSetting::get('event.tagline', ''),
+            'lineup' => MenuSetting::get('event.lineup', ''),
+            'doors' => MenuSetting::get('event.doors', ''),
+            'reservation' => MenuSetting::get('event.reservation', ''),
         ];
     }
 
@@ -80,6 +84,22 @@ class EventSettings extends Page
                                 'redflag' => 'Red Flag (velours rouge & or)',
                             ])
                             ->selectablePlaceholder(false),
+                        TextInput::make('tagline')
+                            ->label('Accroche (au-dessus du titre)')
+                            ->placeholder("Don't take it… you know he is a..")
+                            ->maxLength(80),
+                        TextInput::make('lineup')
+                            ->label('Line-up')
+                            ->placeholder('Ank - FemX - Valbon')
+                            ->maxLength(120),
+                        TextInput::make('doors')
+                            ->label('Ouverture des portes')
+                            ->placeholder('19:00')
+                            ->maxLength(20),
+                        TextInput::make('reservation')
+                            ->label('Téléphone de réservation')
+                            ->helperText('Cliquable sur la page : appelle directement.')
+                            ->maxLength(30),
                         TextInput::make('footerNote')
                             ->label('Mention de bas de page')
                             ->placeholder('Prices in euros, VAT and service included.')
@@ -102,7 +122,7 @@ class EventSettings extends Page
                 ->label('Enregistrer')
                 ->icon('heroicon-o-check')
                 ->action(function () {
-                    foreach (['enabled', 'title', 'subtitle', 'footerNote', 'theme'] as $k) {
+                    foreach (['enabled', 'title', 'subtitle', 'footerNote', 'theme', 'tagline', 'lineup', 'doors', 'reservation'] as $k) {
                         MenuSetting::put("event.{$k}", $this->data[$k] ?? null);
                     }
 
@@ -126,7 +146,7 @@ class EventSettings extends Page
                 ->modalSubmitActionLabel('Oui, publier')
                 ->action(function (MenuPublisher $publisher) {
                     // On enregistre avant de publier : sinon on publierait l'état d'avant.
-                    foreach (['enabled', 'title', 'subtitle', 'footerNote', 'theme'] as $k) {
+                    foreach (['enabled', 'title', 'subtitle', 'footerNote', 'theme', 'tagline', 'lineup', 'doors', 'reservation'] as $k) {
                         MenuSetting::put("event.{$k}", $this->data[$k] ?? null);
                     }
 
