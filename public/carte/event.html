@@ -31,11 +31,14 @@
     -webkit-font-smoothing:antialiased;
     padding-bottom:calc(48px + env(safe-area-inset-bottom));
     /* halo chaud très diffus, comme les lanternes du visuel */
-    background-image:
+    --glow:
       radial-gradient(120% 60% at 50% -10%, rgba(255,138,43,.13), transparent 60%),
       radial-gradient(90% 50% at 50% 105%, rgba(255,47,116,.09), transparent 60%);
-    background-attachment:fixed;
   }
+  /* Couche fixe plutôt que background-attachment:fixed : ignoré par iOS,
+     et il force Android à repeindre tout l'écran à chaque défilement. */
+  body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:var(--glow)}
+  button,a{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
   img{display:block;max-width:100%}
   main{max-width:640px;margin:0 auto;padding:0 20px}
 
@@ -93,7 +96,7 @@
     font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
     color:var(--neon);
   }
-  .head .n{font-size:11px;color:var(--muted);font-style:italic}
+  .head .n{font-size:12px;color:var(--muted);font-style:italic}
 
   /* ---------- Lignes ---------- */
   .row{
@@ -121,7 +124,7 @@
   }
   .pr small{font-family:var(--sans);font-size:10px;font-weight:500;color:var(--muted);letter-spacing:.02em}
   .note{
-    font-size:12.5px;color:var(--muted);line-height:1.5;
+    font-size:13.5px;color:var(--muted);line-height:1.5;
     margin:3px 0 0;max-width:46ch;
   }
   .row.nopr .dots{display:none}
@@ -146,6 +149,19 @@
   }
   .hidden{display:none !important}
 
+  @media (max-width:380px){
+    main{padding:0 16px}
+    .nav{margin:20px -16px 0;padding:10px 16px}
+    .nm{font-size:19px}
+    .pr{font-size:18px}
+    .row .ph{width:52px;height:52px}
+    .row.big .ph{width:64px;height:64px}
+    .infos > div{padding:0 14px}
+    .infos .v{font-size:18px}
+    .lineup .names{font-size:12px;letter-spacing:.12em}
+  }
+  .lineup .sep{display:inline-block;margin:0 .5em;color:var(--gold)}
+  .lineup .nm2{white-space:nowrap}
   @media (min-width:560px){
     .nm{font-size:23px}
     .pr{font-size:22px}
@@ -164,7 +180,7 @@
   .lineup .lbl::before,.lineup .lbl::after{content:"";height:1px;width:60px;background:linear-gradient(90deg,transparent,var(--gold))}
   .lineup .lbl::after{transform:scaleX(-1)}
   .lineup .names{
-    margin-top:10px;font-family:var(--serif);font-weight:600;font-size:15px;
+    text-wrap:balance;margin-top:10px;font-family:var(--serif);font-weight:600;font-size:15px;
     letter-spacing:.22em;text-transform:uppercase;color:var(--ink);line-height:1.8;
   }
   .infos{
@@ -179,18 +195,19 @@
   /* ---------- Navigation des sections (collante) ---------- */
   .nav{
     position:sticky;top:0;z-index:4;margin:20px -20px 0;padding:10px 20px;
+    scroll-padding-inline:20px;
     display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;
     background:linear-gradient(180deg,var(--bg) 70%,transparent);
   }
   .nav::-webkit-scrollbar{display:none}
   .nav a{
-    flex:0 0 auto;padding:7px 14px;border-radius:999px;
+    flex:0 0 auto;padding:12px 16px;border-radius:999px;line-height:1;
     border:1px solid var(--line);color:var(--ink);text-decoration:none;
     font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
     background:rgba(0,0,0,.35);
   }
   .nav a.on{border-color:var(--gold);color:var(--gold)}
-  section{scroll-margin-top:52px}
+  section{scroll-margin-top:64px}
 
   /* ---------- Photo cliquable ---------- */
   .zoom{
@@ -208,18 +225,19 @@
   /* ---------- Visionneuse ---------- */
   #lb{
     position:fixed;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;
-    padding:24px;background:rgba(3,1,1,.86);
+    padding:calc(64px + env(safe-area-inset-top)) 20px calc(24px + env(safe-area-inset-bottom));
+    background:rgba(3,1,1,.86);touch-action:pan-y;
     -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
     opacity:0;visibility:hidden;transition:opacity .25s ease,visibility 0s .25s;
   }
   #lb.open{opacity:1;visibility:visible;transition:opacity .25s ease}
   #lb .card{
-    width:100%;max-width:440px;text-align:center;
+    width:100%;max-width:440px;max-height:100%;overflow-y:auto;text-align:center;
     transform:scale(.92) translateY(10px);transition:transform .32s cubic-bezier(.2,.8,.2,1);
   }
   #lb.open .card{transform:none}
   #lb img{
-    width:100%;aspect-ratio:1;object-fit:cover;border-radius:20px;
+    width:100%;max-width:min(100%,62vh);margin:0 auto;aspect-ratio:1;object-fit:cover;border-radius:20px;
     border:1px solid var(--line);box-shadow:0 30px 80px rgba(0,0,0,.7);background:#111;
   }
   #lb .t{font-family:var(--serif);font-weight:700;font-size:28px;margin-top:18px;line-height:1.15}
@@ -227,8 +245,9 @@
   #lb .p{font-family:var(--serif);font-weight:700;font-size:24px;color:var(--gold);margin-top:6px}
   #lb .p small{font-family:var(--sans);font-size:11px;color:var(--muted)}
   #lb .d{font-size:13.5px;color:var(--muted);margin:8px auto 0;max-width:38ch;line-height:1.55}
+  #lb .count{font-size:10px;letter-spacing:.3em;color:var(--muted);margin-top:14px}
   #lb .x{
-    position:absolute;top:calc(14px + env(safe-area-inset-top));right:14px;width:44px;height:44px;
+    position:absolute;z-index:1;top:calc(14px + env(safe-area-inset-top));right:14px;width:44px;height:44px;
     border-radius:50%;border:1px solid var(--line);background:rgba(0,0,0,.5);color:var(--ink);
     font-size:22px;line-height:1;cursor:pointer;
   }
@@ -257,7 +276,7 @@
     --neon:#d4213d;
     --ember:#e8566a;
     --line:rgba(226,178,94,.2);
-    background-image:
+    --glow:
       radial-gradient(70% 45% at 50% 0%, rgba(240,170,80,.18), transparent 65%),
       radial-gradient(38% 90% at 0% 45%, rgba(150,14,30,.42), transparent 70%),
       radial-gradient(38% 90% at 100% 45%, rgba(150,14,30,.42), transparent 70%),
@@ -295,7 +314,7 @@
   /* --- Red Flag, suite : rideaux, bougies, grain, rouge à lèvres --- */
   /* Rideaux de velours aux deux bords, plis en dégradés répétés. */
   .theme-redflag .curtain{
-    position:fixed;top:0;bottom:0;width:clamp(16px,6vw,90px);z-index:0;pointer-events:none;
+    position:fixed;top:0;bottom:0;width:clamp(10px,3.4vw,90px);z-index:0;pointer-events:none;
     background:
       linear-gradient(180deg,rgba(0,0,0,.55),transparent 18%,transparent 80%,rgba(0,0,0,.6)),
       repeating-linear-gradient(90deg,#2a0207 0,#6e0a17 7px,#9c1424 11px,#5a0812 16px,#2a0207 22px);
@@ -304,7 +323,7 @@
   .theme-redflag .curtain.r{right:0;-webkit-mask:linear-gradient(270deg,#000 40%,transparent);mask:linear-gradient(270deg,#000 40%,transparent)}
   /* Grain de pellicule, très léger. */
   .theme-redflag .grain{
-    position:fixed;inset:0;z-index:3;pointer-events:none;opacity:.07;mix-blend-mode:overlay;
+    position:fixed;inset:0;z-index:3;pointer-events:none;opacity:.045;
     background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
   .theme-redflag main{position:relative;z-index:1}
@@ -340,6 +359,14 @@
   }
   .scrawl div{font-size:clamp(34px,11vw,52px)}
   .scrawl s{text-decoration-thickness:4px;text-decoration-color:#e0263f}
+
+  /* Téléphones : placé en dernier pour l'emporter sur les règles du thème. */
+  @media (max-width:480px){
+    .theme-redflag .hero .sub{font-size:13.5px;letter-spacing:.26em;gap:10px}
+    .theme-redflag .hero .sub::before,.theme-redflag .hero .sub::after{width:22px}
+    .lineup .names{font-size:13px;letter-spacing:.14em}
+    .hero .tag{font-size:11.5px}
+  }
 </style>
 </head>
 <body>
@@ -350,11 +377,12 @@
 <div id="lb" role="dialog" aria-modal="true" aria-label="Photo">
   <button class="x" type="button" aria-label="Close">×</button>
   <div class="card">
-    <img alt="">
+    <img alt="" decoding="async">
     <div class="t"></div>
     <div class="s"></div>
     <div class="p"></div>
     <div class="d"></div>
+    <div class="count"></div>
   </div>
 </div>
 
@@ -378,6 +406,17 @@ var PHOTOS = [];
 
 /* "drinks/x.jpg" -> tel quel · "x.jpg" -> photos/x.jpg · "x" -> photos/x.jpg
    (téléversement admin, ou image déjà présente sur la carte du restaurant). */
+/* Miniature WebP de 192 px (thumbs/…) pour la liste : quelques Ko au lieu
+   de 100-200 Ko par image, ça compte sur la 4G saturée d'une soirée.
+   Absente (photo téléversée depuis l'admin) -> onerror reprend l'original. */
+function thumbSrc(src){
+  return /^(photos|drinks|logos)\//.test(src) ? 'thumbs/' + src.replace(/\.(jpe?g|png|webp)$/i,'') + '.webp' : src;
+}
+function thumbFallback(img){
+  var o = img.getAttribute('data-src');
+  if(o && img.getAttribute('src') !== o){ img.setAttribute('src', o); }
+}
+
 function imgSrc(img){
   return img.indexOf('/') >= 0
     ? img
@@ -403,8 +442,8 @@ function rowHtml(it){
   if(it.img){
     var src = imgSrc(it.img);
     var estLogo = src.indexOf('logos/') === 0;
-    var tag = '<img class="ph'+(estLogo ? ' logo' : '')+'" loading="lazy" src="'+
-      esc(src)+'" alt="'+esc(it.n)+'">';
+    var tag = '<img class="ph'+(estLogo ? ' logo' : '')+'" loading="lazy" decoding="async" width="60" height="60"'+
+      ' src="'+esc(thumbSrc(src))+'" data-src="'+esc(src)+'" onerror="thumbFallback(this)" alt="'+esc(it.n)+'">';
     if(estLogo){
       photo = tag;
     }else{
@@ -422,6 +461,26 @@ function rowHtml(it){
     '</div>';
 }
 
+/* "Ank · FemX - Valbon" -> noms insécables séparés par un point doré. */
+function lineupHtml(txt){
+  return String(txt).split(/\s*[·•|,-]\s*/).filter(Boolean).map(function(n){
+    return '<span class="nm2">'+esc(n)+'</span>';
+  }).join('<span class="sep">·</span>');
+}
+
+/* Un séparateur qui tombe en bout de ligne (nom suivant renvoyé à la ligne)
+   est rendu invisible : pas de « · » qui pendouille sur un petit écran. */
+function separateurs(){
+  document.querySelectorAll('.lineup .sep').forEach(function(sep){
+    sep.style.visibility = '';
+    var suivant = sep.nextElementSibling;
+    if(!suivant) return;
+    var a = sep.getBoundingClientRect(), b = suivant.getBoundingClientRect();
+    if(b.top > (a.top + a.bottom) / 2){ sep.style.visibility = 'hidden'; }
+  });
+}
+window.addEventListener('resize', separateurs);
+
 function heroHtml(E){
   var tel = E.reservation ? String(E.reservation).replace(/[^\d+]/g,'') : '';
   var infos = '';
@@ -436,7 +495,7 @@ function heroHtml(E){
       (E.tagline ? '<div class="tag">'+esc(E.tagline)+'</div>' : '')+
       '<div class="title">'+esc(E.title || "")+'</div>'+
       (E.subtitle ? '<div class="sub">'+esc(E.subtitle)+'</div>' : '')+
-      (E.lineup ? '<div class="lineup"><div class="lbl">Line up</div><div class="names">'+esc(E.lineup)+'</div></div>' : '')+
+      (E.lineup ? '<div class="lineup"><div class="lbl">Line up</div><div class="names">'+lineupHtml(E.lineup)+'</div></div>' : '')+
       (infos ? '<div class="infos">'+infos+'</div>' : '')+
       '<div class="rule"><i></i></div>'+
     '</div>';
@@ -486,6 +545,8 @@ function render(E){
     });
   }
   document.getElementById("loading").classList.add("hidden");
+  separateurs();
+  if(document.fonts && document.fonts.ready){ document.fonts.ready.then(separateurs); }
   animer();
   suivreNav();
 }
@@ -493,6 +554,8 @@ function render(E){
 /* ---------- Apparition des lignes au défilement ---------- */
 function animer(){
   var els = document.querySelectorAll('.rv');
+  var h = window.innerHeight || 800;
+  els.forEach(function(e){ if(e.getBoundingClientRect().top < h){ e.classList.add('in'); } });
   if(!('IntersectionObserver' in window)){
     els.forEach(function(e){ e.classList.add('in'); });
     return;
@@ -527,15 +590,21 @@ function suivreNav(){
    ferme la photo au lieu de quitter la carte. */
 (function(){
   var lb = document.getElementById('lb');
-  var ouvert = false;
+  var card = lb.querySelector('.card');
+  var ouvert = false, courant = 0;
 
-  function remplir(it){
+  function remplir(i){
+    var it = PHOTOS[i];
+    courant = i;
     lb.querySelector('img').src = it.src;
     lb.querySelector('img').alt = it.n;
     lb.querySelector('.t').textContent = it.n;
     lb.querySelector('.s').textContent = it.sub || '';
     lb.querySelector('.p').innerHTML = it.p ? prixHtml(it) : '';
     lb.querySelector('.d').textContent = it.d || '';
+    lb.querySelector('.count').textContent = PHOTOS.length > 1 ? (i+1)+' / '+PHOTOS.length : '';
+    /* Précharge les voisines : le glissement suivant est instantané. */
+    [i-1,i+1].forEach(function(j){ if(PHOTOS[j]){ (new Image()).src = PHOTOS[j].src; } });
   }
   function fermerVisuel(){
     ouvert = false;
@@ -546,9 +615,9 @@ function suivreNav(){
   document.addEventListener('click', function(e){
     var b = e.target.closest && e.target.closest('.zoom');
     if(!b) return;
-    var it = PHOTOS[+b.getAttribute('data-i')];
-    if(!it) return;
-    remplir(it);
+    var i = +b.getAttribute('data-i');
+    if(!PHOTOS[i]) return;
+    remplir(i);
     lb.classList.add('open');
     document.body.classList.add('lb-open');
     ouvert = true;
@@ -560,7 +629,40 @@ function suivreNav(){
     if(history.state && history.state.lb){ history.back(); }   /* popstate fermera */
     else { fermerVisuel(); }
   }
-  lb.addEventListener('click', fermer);   /* toucher n'importe où ferme */
+  var glisse = false;
+  lb.addEventListener('click', function(){ if(!glisse) fermer(); });   /* toucher n'importe où ferme */
+
+  var x0 = null, y0 = 0;
+  lb.addEventListener('touchstart', function(e){
+    x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; glisse = false;
+  }, {passive:true});
+  lb.addEventListener('touchmove', function(e){
+    if(x0 === null) return;
+    var dx = e.touches[0].clientX - x0, dy = e.touches[0].clientY - y0;
+    if(Math.abs(dx) > 10 || dy > 10){ glisse = true; }
+    card.style.transition = 'none';
+    card.style.transform = Math.abs(dx) > Math.abs(dy)
+      ? 'translateX('+dx+'px)'
+      : 'translateY('+Math.max(0,dy)+'px)';
+  }, {passive:true});
+  lb.addEventListener('touchend', function(e){
+    if(x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0;
+    x0 = null;
+    card.style.transition = ''; card.style.transform = '';
+    if(Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy)){
+      var j = courant + (dx < 0 ? 1 : -1);
+      if(PHOTOS[j]){ remplir(j); }
+    }else if(dy > 90){
+      fermer();
+    }
+    setTimeout(function(){ glisse = false; }, 0);
+  });
+  document.addEventListener('keydown', function(e){
+    if(!ouvert) return;
+    if(e.key === 'ArrowRight' && PHOTOS[courant+1]) remplir(courant+1);
+    if(e.key === 'ArrowLeft' && PHOTOS[courant-1]) remplir(courant-1);
+  });
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape') fermer(); });
   window.addEventListener('popstate', function(){ if(ouvert) fermerVisuel(); });
 })();
