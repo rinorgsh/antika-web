@@ -152,7 +152,7 @@
   @media (max-width:380px){
     main{padding:0 16px}
     .nm{font-size:19px}
-    .theme-redflag .poster,.theme-redflag .finale{margin-left:-16px;margin-right:-16px}
+    .theme-redflag .finale{margin-left:-16px;margin-right:-16px}
     .pr{font-size:18px}
     .row .ph{width:52px;height:52px}
     .row.big .ph{width:64px;height:64px}
@@ -269,15 +269,16 @@
   }
   .theme-redflag main{position:relative;z-index:1}
 
-  /* --- Ouverture : l'affiche de la soirée, pleine largeur, fondue dans la page --- */
-  .theme-redflag .hero{padding-top:22px}
-  .theme-redflag .hero .logo{width:78px;margin-bottom:16px}
-  .theme-redflag .poster{
-    margin:0 -20px;aspect-ratio:1122/1402;background:#120406;
-    -webkit-mask:linear-gradient(180deg,#000 0,#000 90%,transparent 100%);
-            mask:linear-gradient(180deg,#000 0,#000 90%,transparent 100%);
+  /* --- Ouverture : juste le titre, capitales romaines dorées, puis la carte --- */
+  .theme-redflag .hero{padding:56px 0 6px}
+  .theme-redflag .hero .title{
+    font-family:var(--roman);font-weight:600;text-transform:uppercase;
+    font-size:clamp(66px,21vw,116px);line-height:.92;letter-spacing:.01em;
+    width:min-content;margin:0 auto;   /* « RED » au-dessus de « FLAG », comme l'affiche */
+    background:linear-gradient(180deg,#fff3d4 0%,#f3cd80 30%,#d9a04a 56%,#9c6a22 80%,#e9bf6e 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    filter:drop-shadow(0 0 22px rgba(240,180,90,.35)) drop-shadow(0 3px 2px rgba(0,0,0,.8));
   }
-  .theme-redflag .poster img{width:100%;height:100%;object-fit:cover}
   .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
   .theme-redflag .hero .tag{
     font-style:italic;font-family:"Playfair Display",var(--serif);font-weight:500;
@@ -478,6 +479,10 @@ function separateurs(){
 window.addEventListener('resize', separateurs);
 
 function heroHtml(E, theme){
+  /* Red Flag : le titre seul, puis directement la carte (demande du client). */
+  if(theme === "redflag"){
+    return '<div class="hero"><h1 class="title">'+esc(E.title || "")+'</h1><div class="rule"><i></i></div></div>';
+  }
   var tel = E.reservation ? String(E.reservation).replace(/[^\d+]/g,'') : '';
   var infos = '';
   if(E.doors){
@@ -488,13 +493,8 @@ function heroHtml(E, theme){
   }
   return '<div class="hero">'+
       '<img class="logo" src="logo-antika-white.png" alt="Antika">'+
-      /* Red Flag : l'affiche de la soirée remplace le titre dessiné en CSS. */
-      (theme === "redflag"
-        ? '<div class="poster"><img src="event/redflag/poster.webp" alt="" fetchpriority="high" decoding="async"></div>'+
-          '<h1 class="sr">'+esc(E.title || "")+'</h1>'+
-          (E.tagline ? '<div class="tag">'+esc(E.tagline)+'</div>' : '')
-        : (E.tagline ? '<div class="tag">'+esc(E.tagline)+'</div>' : '')+
-          '<div class="title">'+esc(E.title || "")+'</div>')+
+      (E.tagline ? '<div class="tag">'+esc(E.tagline)+'</div>' : '')+
+      '<div class="title">'+esc(E.title || "")+'</div>'+
       (E.subtitle ? '<div class="sub">'+esc(E.subtitle)+'</div>' : '')+
       (E.lineup ? '<div class="lineup"><div class="lbl">Line up</div><div class="names">'+lineupHtml(E.lineup)+'</div></div>' : '')+
       (infos ? '<div class="infos">'+infos+'</div>' : '')+
