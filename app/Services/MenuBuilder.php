@@ -114,18 +114,41 @@ class MenuBuilder
                 $section['items'][] = $row;
             }
 
+            $section['items'] = $this->withoutEmptyHeads($section['items']);
             $sections[] = $section;
         }
 
         return [
             'title' => MenuSetting::get('event.title', ''),
             'subtitle' => MenuSetting::get('event.subtitle', ''),
+            // Habillage de event.html (classe theme-xxx) : '' = doré classique.
+            'theme' => MenuSetting::get('event.theme', ''),
             'sections' => $sections,
             'footer' => [
                 'note' => MenuSetting::get('event.footerNote', ''),
                 'web' => MenuSetting::get('event.web', 'antikaresto.com'),
             ],
         ];
+    }
+
+    /**
+     * Retire un sous-titre dont toutes les lignes sont éteintes : sinon
+     * « 5 shots = 25 € » resterait affiché seul, sans rien dessous.
+     */
+    private function withoutEmptyHeads(array $rows): array
+    {
+        $out = [];
+        foreach ($rows as $i => $row) {
+            if (isset($row['h'])) {
+                $next = $rows[$i + 1] ?? null;
+                if ($next === null || isset($next['h'])) {
+                    continue;
+                }
+            }
+            $out[] = $row;
+        }
+
+        return $out;
     }
 
     private function js(string $global, array $data): string

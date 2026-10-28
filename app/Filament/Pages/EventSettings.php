@@ -7,6 +7,7 @@ use App\Services\MenuPublisher;
 use BackedEnum;
 use UnitEnum;
 use Filament\Actions\Action;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Notifications\Notification;
@@ -43,6 +44,7 @@ class EventSettings extends Page
             'title' => MenuSetting::get('event.title', ''),
             'subtitle' => MenuSetting::get('event.subtitle', ''),
             'footerNote' => MenuSetting::get('event.footerNote', ''),
+            'theme' => MenuSetting::get('event.theme', ''),
         ];
     }
 
@@ -71,6 +73,13 @@ class EventSettings extends Page
                             ->label('Sous-titre')
                             ->placeholder('Lounge · Bar · Discotheque')
                             ->maxLength(80),
+                        Select::make('theme')
+                            ->label('Habillage')
+                            ->options([
+                                '' => 'Classique (noir & or)',
+                                'redflag' => 'Red Flag (velours rouge & or)',
+                            ])
+                            ->selectablePlaceholder(false),
                         TextInput::make('footerNote')
                             ->label('Mention de bas de page')
                             ->placeholder('Prices in euros, VAT and service included.')
@@ -93,7 +102,7 @@ class EventSettings extends Page
                 ->label('Enregistrer')
                 ->icon('heroicon-o-check')
                 ->action(function () {
-                    foreach (['enabled', 'title', 'subtitle', 'footerNote'] as $k) {
+                    foreach (['enabled', 'title', 'subtitle', 'footerNote', 'theme'] as $k) {
                         MenuSetting::put("event.{$k}", $this->data[$k] ?? null);
                     }
 
@@ -117,7 +126,7 @@ class EventSettings extends Page
                 ->modalSubmitActionLabel('Oui, publier')
                 ->action(function (MenuPublisher $publisher) {
                     // On enregistre avant de publier : sinon on publierait l'état d'avant.
-                    foreach (['enabled', 'title', 'subtitle', 'footerNote'] as $k) {
+                    foreach (['enabled', 'title', 'subtitle', 'footerNote', 'theme'] as $k) {
                         MenuSetting::put("event.{$k}", $this->data[$k] ?? null);
                     }
 

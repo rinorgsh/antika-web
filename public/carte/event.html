@@ -7,7 +7,7 @@
 <meta name="theme-color" content="#050505">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#050505;
@@ -150,6 +150,56 @@
     .nm{font-size:23px}
     .pr{font-size:22px}
   }
+  /* ============================================================
+     THÈME « RED FLAG » (event.theme = redflag)
+     Repris des affiches : rideaux de velours rouge, lueur de bougie
+     dorée, titre Didone or sur deux lignes, petites capitales très
+     espacées encadrées de losanges (« SAVE THE DATE · 30 OCT »).
+     ============================================================ */
+  body.theme-redflag{
+    --bg:#070203;
+    --ink:#f6ead8;
+    --muted:#9a8274;
+    --gold:#e2b25e;
+    --gold-deep:#a8762a;
+    --neon:#d4213d;
+    --ember:#e8566a;
+    --line:rgba(226,178,94,.2);
+    background-image:
+      radial-gradient(70% 45% at 50% 0%, rgba(240,170,80,.18), transparent 65%),
+      radial-gradient(38% 90% at 0% 45%, rgba(150,14,30,.42), transparent 70%),
+      radial-gradient(38% 90% at 100% 45%, rgba(150,14,30,.42), transparent 70%),
+      radial-gradient(90% 40% at 50% 108%, rgba(120,10,24,.35), transparent 65%);
+  }
+  .theme-redflag .hero{padding-top:52px}
+  .theme-redflag .hero .title{
+    font-family:"Playfair Display",var(--serif);font-weight:500;
+    text-transform:uppercase;letter-spacing:-.01em;
+    font-size:clamp(64px,22vw,112px);line-height:.9;
+    width:min-content;margin:0 auto;   /* « RED » au-dessus de « FLAG », comme l'affiche */
+    background:linear-gradient(180deg,#fff1cf 0%,#f0c878 30%,#d39b45 55%,#9c6a22 80%,#e8bd6c 100%);
+    -webkit-background-clip:text;background-clip:text;
+    filter:drop-shadow(0 0 18px rgba(240,180,90,.28)) drop-shadow(0 3px 2px rgba(0,0,0,.7));
+  }
+  .theme-redflag .hero .sub{
+    font-family:var(--serif);font-weight:600;font-size:15px;
+    letter-spacing:.38em;color:var(--ink);margin-top:22px;
+    display:flex;align-items:center;justify-content:center;gap:14px;
+  }
+  .theme-redflag .hero .sub::before,.theme-redflag .hero .sub::after{
+    content:"";height:1px;width:38px;flex:0 0 auto;
+    background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  }
+  .theme-redflag .sec-title{
+    font-family:"Playfair Display",var(--serif);font-weight:500;letter-spacing:.08em;
+  }
+  .theme-redflag .head .t{font-family:var(--serif);font-size:14px;letter-spacing:.3em;color:var(--neon)}
+  .theme-redflag .row + .row{border-top-color:rgba(212,33,61,.12)}
+  .theme-redflag .row .ph{border-color:rgba(212,33,61,.45);box-shadow:0 6px 20px rgba(120,10,24,.45)}
+  .theme-redflag .row .ph.logo{border-color:rgba(255,255,255,.2)}
+  .theme-redflag .dots{border-bottom-color:rgba(212,33,61,.35)}
+  .theme-redflag footer{border-top-color:rgba(212,33,61,.3)}
+  .theme-redflag footer .fb{font-family:"Playfair Display",var(--serif);font-weight:500}
 </style>
 </head>
 <body>
@@ -210,6 +260,8 @@ function rowHtml(it){
 
 function render(E){
   document.title = "Antika — " + (E.title || "Event");
+  /* Habillage choisi dans l'admin (Événement > Habillage). */
+  if(E.theme){ document.body.classList.add("theme-" + String(E.theme).replace(/[^a-z0-9-]/gi,"")); }
 
   var html = '<div class="hero">'+
       '<img class="logo" src="logo-antika-white.png" alt="Antika">'+
