@@ -32,10 +32,10 @@ class CarteTest extends TestCase
     public function test_old_qr_code_address_redirects_to_the_menu(): void
     {
         $this->get('http://menu.antika-resto.ovh/menu.pdf/carte.html?lang=nl')
-            ->assertRedirect('https://antikaresto.com/carte/carte.html?lang=nl');
+            ->assertRedirect('http://menu.antika-resto.ovh/carte/carte.html?lang=nl');
 
         $this->get('http://menu.antika-resto.ovh/menu.pdf')
-            ->assertRedirect('https://antikaresto.com/carte/');
+            ->assertRedirect('http://menu.antika-resto.ovh/carte/');
     }
 
     public function test_unknown_files_are_not_served(): void

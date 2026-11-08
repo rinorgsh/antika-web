@@ -59,12 +59,11 @@ class CarteController extends Controller
      */
     public function legacy(Request $request, string $path = ''): RedirectResponse
     {
-        $target = rtrim(config('antika.url'), '/').'/carte/'.ltrim($path, '/');
-
-        // En local (ou sur l'adresse on-forge), on reste sur le même hôte.
-        if ($request->getHost() === parse_url(config('app.url'), PHP_URL_HOST)) {
-            $target = url('/carte/'.ltrim($path, '/'));
-        }
+        // TEMPORAIRE (08/11/2026) : antikaresto.com est en panne DNS (domaine
+        // expiré puis renouvelé, zone restée sur le parking Namecheap). Le QR
+        // reste donc sur menu.antika-resto.ovh, qui sert la même carte.
+        // À annuler (git revert) quand antikaresto.com pointe de nouveau sur Forge.
+        $target = $request->getSchemeAndHttpHost().'/carte/'.ltrim($path, '/');
 
         if ($qs = $request->getQueryString()) {
             $target .= '?'.$qs;
